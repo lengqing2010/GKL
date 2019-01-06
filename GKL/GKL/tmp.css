@@ -1,0 +1,315 @@
+﻿html {
+    background-color: #fff;
+    margin: 0;
+    padding: 4px;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.3);
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+a {
+    color: #333;
+    outline: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: underline;
+}
+
+a:link, a:visited,
+a:active, a:hover {
+    color: #333;
+}
+
+a:hover {
+    background-color: #c7d1d6;
+}
+
+header, footer, hgroup,
+nav, section {
+    display: block;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+    h5 a:link, h5 a:visited, h5 a:active {
+        padding: 0;
+        text-decoration: none;
+    }
+
+label {
+    display: block;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+label.checkbox {
+    display: inline;
+}
+
+input, textarea {
+    /*border: 2px solid #e2e2e2;*/
+    background: #fff;
+    color: #333;
+    font-size: .85em;
+    margin: 0px;
+    width: 300px;
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.3);
+}
+
+textarea {
+    font-family: inherit;
+    width: 500px;
+}
+
+    input:focus, textarea:focus {
+        border: 1px solid #7ac0da;
+    }
+
+    input[type="checkbox"] {
+        background: transparent;
+        border: inherit;
+        width: auto;
+    }
+
+    input[type="submit"],
+    input[type="button"],
+    input[type="reset"],
+    button {
+        border: 1px solid #787878;
+        cursor: pointer;
+        font-weight: 600;
+        padding: 2px;
+        margin-right: 2px;
+        width:auto;
+        padding: 4px;
+        margin-right: 2px;
+        border-radius:6px;
+        text-decoration:none;
+	    background:#8bf13c;
+	    color:#000;
+	    -webkit-transition:all linear 0.30s;
+	    -moz-transition:all linear 0.30s;
+	    transition:all linear 0.30s;
+        padding-left:6px; padding-right:6px;
+
+    }
+
+    input[type="button"]:hover {
+        background-color: #fff;
+        color:#000;
+    }
+    input[type="submit"]:hover {
+        background-color: #fff;
+        color:#000;
+    }
+    button:hover {
+        background-color: #fff;
+        color:#000;
+    }
+
+
+    td input[type="submit"],
+    td input[type="button"],
+    td button {
+        font-size: 1em;
+        padding: 0px;
+        margin-right: 4px;
+    }
+
+.error {
+    color: #e80c4d;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+
+/* tables
+----------------------------------------------------------*/
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    border: 0 none;
+}
+
+
+td {
+    border: black 1px solid;
+    font-size: .85em;
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.4);
+}
+
+.jyouken_panel th {
+    border: black 1px solid;
+    background-color:#99ccff;
+    height:16px;
+    text-align:left;
+    border:none;
+    font-size:10px;
+}
+
+.jyouken_panel td input{
+    font-size: 10px;
+    margin:0 auto 0 auto;
+    padding:2px;
+    height:14px;
+  
+    border-bottom: solid 1px #000;
+  
+}
+.jyouken_panel td{
+     padding-left:4px;
+     border:none;
+}
+.ms_input {
+    margin-top:-1px;
+}
+.ms_input tr{
+    height:20px;
+}
+
+.ms_input td {
+    padding:1px;
+}
+.ms_input input{
+    border: black 2px inset ;
+    font-size: 11px;
+    margin:0 auto 0 auto;
+    height:16px;
+    padding:2px;
+}
+
+
+.ms_title td{
+    background-color: #99ccff;
+    border: black 1px solid;
+    font-size: .85em;
+    text-align:center;
+    height:30px;
+    padding:2px;
+}
+
+.jq_ms tr{
+    cursor:pointer;
+}
+.jq_ms td{
+    border: black 1px solid;
+    font-size: 10px;
+    padding:2px 2px 0px 2px;
+    height:20px;
+}
+
+
+
+.jq_ms_2 tr{
+
+}
+.jq_ms_2 td{
+    border: black 1px solid;
+    font-size: 9px;
+    padding:0px;
+    height:10px;
+    line-height:10px;
+}
+.jq_ms_2 th{
+    background-color: #99ccff;
+    border: black 1px solid;
+    font-size: 10px;
+    padding:0px;
+    height:10px;
+    text-align:center;
+}
+
+
+
+
+
+.datagrid-mask{
+    position:absolute;
+    left:0;
+    top:0;
+    text-align:center;
+    vertical-align:middle;
+    font-size:40px;
+    line-height:800px;
+    z-index:10000;
+    background-color:#ccc;
+    opacity:0.4;
+    filter:alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+}
+
+
+.btn_hid{
+    height:15px; 
+    width:110px;
+    vertical-align:middle; 
+    padding:1px;
+    float:right;
+    font-size:8px;
+    border-radius:16px;
+    background-color:#ccc;
+}
+.btn_main{
+    height:22px;    
+    width: 90px;  
+    border: 1px solid #787878;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.btn_main:hover {
+    background-color: #fff;
+    color:#000;
+}
