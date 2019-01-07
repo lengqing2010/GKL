@@ -122,7 +122,7 @@ Me.hidOldRowIdx.Text = ""
 
         'データ存在チェック
             If IsHaveData() Then
-                Common.ShowMsg(Me.Page, "データ存在しました。")
+                Common.ShowMsg(Me.Page, "数据已经存在")
                 Exit Sub
             End If
             Try

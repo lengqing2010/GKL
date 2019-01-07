@@ -125,7 +125,7 @@ Me.hidOldRowIdx.Text = ""
 
         'データ存在チェック
             If IsHaveData() Then
-                Common.ShowMsg(Me.Page, "データ存在しました。")
+                Common.ShowMsg(Me.Page, "数据已经存在")
                 Exit Sub
             End If
             Try
@@ -157,4 +157,7 @@ Me.hidOldRowIdx.Text = ""
 Me.hidOldRowIdx.Text = ""
     End Sub
 
+    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Server.Transfer("Default.aspx")
+    End Sub
 End Class

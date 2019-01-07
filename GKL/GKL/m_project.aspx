@@ -20,7 +20,10 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>工程MS</div>
+        <div class='title_div'>工程MS
+            <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
+        </div>
+
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
@@ -47,9 +50,12 @@
         <br /> <hr />
 
 <!--Button部-->
+        <div style="width:520px; text-align:right;">
+
         <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
         <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
         <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
+        </div>
  <br /> <hr />
 
 <!--明細Title部-->
@@ -57,13 +63,13 @@
       <table class='ms_title' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
-                  工程ID 10
+                  工程ID
               </td>
               <td style="width:170px;">
-                  生产线 10
+                  生产线
               </td>
               <td style="">
-                  工程名 40
+                  工程名
               </td>
           </tr>
       </table>

@@ -14,11 +14,11 @@ Public DA AS NEW MToolsDA
 
     ''' <summary>
     ''' 
-    ''' Infoを検索する
+    ''' 治具MSInfoを検索する
     ''' </summary>
-    '''<param name="toolId_key">tool_id</param>
-'''<param name="lineId_key">line_id</param>
-    ''' <returns>Info</returns>
+    '''<param name="toolId_key">治具ID</param>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>治具MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
@@ -38,15 +38,15 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' Infoを更新する
+    ''' 治具MSInfoを更新する
     ''' </summary>
-    '''<param name="toolId_key">tool_id</param>
-'''<param name="lineId_key">line_id</param>
-'''<param name="toolId">tool_id</param>
-'''<param name="lineId">line_id</param>
-'''<param name="projectName">project_name</param>
-'''<param name="toolName">tool_name</param>
-    ''' <returns>Info</returns>
+    '''<param name="toolId_key">治具ID</param>
+'''<param name="lineId_key">生产线</param>
+'''<param name="toolId">治具ID</param>
+'''<param name="lineId">生产线</param>
+'''<param name="projectName">工程</param>
+'''<param name="toolName">治具显示文本</param>
+    ''' <returns>治具MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
@@ -67,7 +67,7 @@ Public Function UpdMTools(Byval toolId_key AS String, _
            projectName, _
            toolName)
     'SQLコメント
-    '--**テーブル： : m_tools
+    '--**テーブル：治具MS : m_tools
     Return DA.UpdMTools( _
            toolId_key, _
            lineId_key, _
@@ -80,13 +80,13 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' Infoを登録する
+    ''' 治具MSInfoを登録する
     ''' </summary>
-    '''<param name="toolId">tool_id</param>
-'''<param name="lineId">line_id</param>
-'''<param name="projectName">project_name</param>
-'''<param name="toolName">tool_name</param>
-    ''' <returns>Info</returns>
+    '''<param name="toolId">治具ID</param>
+'''<param name="lineId">生产线</param>
+'''<param name="projectName">工程</param>
+'''<param name="toolName">治具显示文本</param>
+    ''' <returns>治具MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
@@ -103,7 +103,7 @@ Public Function InsMTools(Byval toolId AS String, _
            projectName, _
            toolName)
     'SQLコメント
-    '--**テーブル： : m_tools
+    '--**テーブル：治具MS : m_tools
     Return DA.InsMTools( _
            toolId, _
            lineId, _
@@ -114,11 +114,11 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' Infoを削除する
+    ''' 治具MSInfoを削除する
     ''' </summary>
-    '''<param name="toolId_key">tool_id</param>
-'''<param name="lineId_key">line_id</param>
-    ''' <returns>Info</returns>
+    '''<param name="toolId_key">治具ID</param>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>治具MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
@@ -131,7 +131,7 @@ Public Function DelMTools(Byval toolId_key AS String, _
            toolId_key, _
            lineId_key)
     'SQLコメント
-    '--**テーブル： : m_tools
+    '--**テーブル：治具MS : m_tools
     Return DA.DelMTools( _
            toolId_key, _
            lineId_key)

@@ -163,20 +163,26 @@ Me.hidOldRowIdx.Text = ""
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
+        If tbxLineId.Text = "" Then
+            Common.ShowMsg(Me.Page, "数据没有输入")
+            Exit Sub
 
+        End If
         'データ存在チェック
-            If IsHaveData() Then
-                Common.ShowMsg(Me.Page, "データ存在しました。")
-                Exit Sub
-            End If
-            Try
-            BC.InsMTemp(tbxlineId.Text, tbxtempId.Text, tbxchkMethodId.Text, tbxprojectId.Text, tbxprojectName.Text, tbxpicId.Text, tbxpicName.Text, tbxchkKmName.Text, tbxpicSign.Text, tbxchkId.Text, tbxchkName.Text, tbxtoolId.Text, tbxkj0.Text, tbxkj1.Text, tbxkj2.Text, tbxkjExplain.Text)
-                MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        If IsHaveData() Then
+            Common.ShowMsg(Me.Page, "数据已经存在")
+            Exit Sub
+        End If
+
+
+        Try
+            BC.InsMTemp(tbxLineId.Text, tbxTempId.Text, tbxChkMethodId.Text, tbxProjectId.Text, tbxProjectName.Text, tbxPicId.Text, tbxPicName.Text, tbxChkKmName.Text, tbxPicSign.Text, tbxChkId.Text, tbxChkName.Text, tbxToolId.Text, tbxKj0.Text, tbxKj1.Text, tbxKj2.Text, tbxKjExplain.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
 
     ''' <summary>

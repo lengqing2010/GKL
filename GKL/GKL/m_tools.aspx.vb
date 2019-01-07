@@ -36,16 +36,16 @@ Partial Class m_tools
        MyMethod.GetCurrentMethod.Name)
        Me.tbxToolId.Attributes.Item("itType") = "varchar"
        Me.tbxToolId.Attributes.Item("itLength") = "40"
-       Me.tbxToolId.Attributes.Item("itName") = "tool_id"
+       Me.tbxToolId.Attributes.Item("itName") = "治具ID"
        Me.tbxLineId.Attributes.Item("itType") = "varchar"
        Me.tbxLineId.Attributes.Item("itLength") = "10"
-       Me.tbxLineId.Attributes.Item("itName") = "line_id"
+       Me.tbxLineId.Attributes.Item("itName") = "生产线"
        Me.tbxProjectName.Attributes.Item("itType") = "nvarchar"
        Me.tbxProjectName.Attributes.Item("itLength") = "40"
-       Me.tbxProjectName.Attributes.Item("itName") = "project_name"
+       Me.tbxProjectName.Attributes.Item("itName") = "工程"
        Me.tbxToolName.Attributes.Item("itType") = "nvarchar"
        Me.tbxToolName.Attributes.Item("itLength") = "80"
-       Me.tbxToolName.Attributes.Item("itName") = "tool_name"
+       Me.tbxToolName.Attributes.Item("itName") = "治具显示文本"
 
     End Sub
 
@@ -160,4 +160,7 @@ Me.hidOldRowIdx.Text = ""
 Me.hidOldRowIdx.Text = ""
     End Sub
 
+    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Server.Transfer("Default.aspx")
+    End Sub
 End Class

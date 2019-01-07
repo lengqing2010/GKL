@@ -319,5 +319,11 @@ td {
 
 .title_div{
     font-size:26px;
+    width:80%;
 
+}
+
+.jq_back{
+    margin-right:0px;
+    float:right;
 }

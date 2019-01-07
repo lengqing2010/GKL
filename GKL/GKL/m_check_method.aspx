@@ -20,7 +20,10 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>检查方法MS</div>
+
+        <div class='title_div'>检查方法MS
+            <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
+        </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
@@ -45,9 +48,12 @@
         <br /> <hr />
 
 <!--Button部-->
-        <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
-        <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
-        <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
+        <div style="width:820px; text-align:right;">
+
+            <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
+            <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
+            <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
+        </div>
  <br /> <hr />
 <div style="margin-left:390px;">
 检查方法<br />( 0:input

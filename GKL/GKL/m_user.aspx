@@ -20,7 +20,9 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>用户MS</div>
+        <div class='title_div'>用户MS
+            <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
+        </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
@@ -30,30 +32,31 @@
             <td>
               <asp:TextBox ID="tbxUserCd_key" class="jq_user_cd_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
-            <td></td>
+            <td>
+        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="20" Width="50"/>
+                </td>
             </tr>
         </table>
         <br /> <hr />
 
 <!--Button部-->
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" />
-        <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
-        <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
-        <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
- <br /> <hr />
+        <div style="width:520px; text-align:right;">
+            <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
+            <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
+            <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
+        </div>
 
 <!--明細Title部-->
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_title' style="width:520px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
-                  用户CD 10
-              </td>
+                  用户CD</td>
               <td style="width:170px;">
-                  生产线 10
+                  生产线
               </td>
               <td style="">
-                  用户名 10
+                  用户名
               </td>
           </tr>
       </table>

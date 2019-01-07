@@ -13,11 +13,11 @@ Public Class MToolsDA
 
     ''' <summary>
     ''' 
-    ''' Infoを検索する
+    ''' 治具MSInfoを検索する
     ''' </summary>
-    '''<param name="toolId_key">tool_id</param>
-'''<param name="lineId_key">line_id</param>
-    ''' <returns>Info</returns>
+    '''<param name="toolId_key">治具ID</param>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>治具MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
@@ -30,22 +30,22 @@ Public Class MToolsDA
            toolId_key, _
            lineId_key)
         'SQLコメント
-        '--**テーブル： : m_tools
+        '--**テーブル：治具MS : m_tools
         Dim sb As New StringBuilder
         'SQL文
         sb.AppendLine("SELECT")
-        sb.AppendLine("tool_id")                                                   'tool_id
-        sb.AppendLine(", line_id")                                                 'line_id
-        sb.AppendLine(", project_name")                                            'project_name
-        sb.AppendLine(", tool_name")                                               'tool_name
+        sb.AppendLine("tool_id")                                                   '治具ID
+        sb.AppendLine(", line_id")                                                 '生产线
+        sb.AppendLine(", project_name")                                            '工程
+        sb.AppendLine(", tool_name")                                               '治具显示文本
 
         sb.AppendLine("FROM m_tools")
         sb.AppendLine("WHERE 1=1")
             If toolId_key<>"" Then
-            sb.AppendLine("AND tool_id=@tool_id_key")   'tool_id
+            sb.AppendLine("AND tool_id=@tool_id_key")   '治具ID
         End If
     If lineId_key<>"" Then
-            sb.AppendLine("AND line_id=@line_id_key")   'line_id
+            sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
 
     '僶儔儊僞奿擺
@@ -62,15 +62,15 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' Infoを更新する
+    ''' 治具MSInfoを更新する
     ''' </summary>
-    '''<param name="toolId_key">tool_id</param>
-'''<param name="lineId_key">line_id</param>
-'''<param name="toolId">tool_id</param>
-'''<param name="lineId">line_id</param>
-'''<param name="projectName">project_name</param>
-'''<param name="toolName">tool_name</param>
-    ''' <returns>Info</returns>
+    '''<param name="toolId_key">治具ID</param>
+'''<param name="lineId_key">生产线</param>
+'''<param name="toolId">治具ID</param>
+'''<param name="lineId">生产线</param>
+'''<param name="projectName">工程</param>
+'''<param name="toolName">治具显示文本</param>
+    ''' <returns>治具MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
@@ -91,23 +91,23 @@ Public Function UpdMTools(Byval toolId_key AS String, _
            projectName, _
            toolName)
     'SQLコメント
-    '--**テーブル： : m_tools
+    '--**テーブル：治具MS : m_tools
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("UPDATE m_tools")
     sb.AppendLine("SET")
-    sb.AppendLine("tool_id=@tool_id")                                              'tool_id
-    sb.AppendLine(", line_id=@line_id")                                            'line_id
-    sb.AppendLine(", project_name=@project_name")   'project_name
-    sb.AppendLine(", tool_name=@tool_name")   'tool_name
+    sb.AppendLine("tool_id=@tool_id")                                              '治具ID
+    sb.AppendLine(", line_id=@line_id")                                            '生产线
+    sb.AppendLine(", project_name=@project_name")   '工程
+    sb.AppendLine(", tool_name=@tool_name")   '治具显示文本
 
     sb.AppendLine("FROM m_tools")
     sb.AppendLine("WHERE 1=1")
         If toolId_key<>"" Then
-            sb.AppendLine("AND tool_id=@tool_id_key")   'tool_id
+            sb.AppendLine("AND tool_id=@tool_id_key")   '治具ID
         End If
     If lineId_key<>"" Then
-            sb.AppendLine("AND line_id=@line_id_key")   'line_id
+            sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
 
     '僶儔儊僞奿擺
@@ -129,13 +129,13 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' Infoを登録する
+    ''' 治具MSInfoを登録する
     ''' </summary>
-    '''<param name="toolId">tool_id</param>
-'''<param name="lineId">line_id</param>
-'''<param name="projectName">project_name</param>
-'''<param name="toolName">tool_name</param>
-    ''' <returns>Info</returns>
+    '''<param name="toolId">治具ID</param>
+'''<param name="lineId">生产线</param>
+'''<param name="projectName">工程</param>
+'''<param name="toolName">治具显示文本</param>
+    ''' <returns>治具MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
@@ -152,22 +152,22 @@ Public Function InsMTools(Byval toolId AS String, _
            projectName, _
            toolName)
     'SQLコメント
-    '--**テーブル： : m_tools
+    '--**テーブル：治具MS : m_tools
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("INSERT INTO  m_tools")
     sb.AppendLine("(")
-        sb.AppendLine("tool_id")                                                   'tool_id
-        sb.AppendLine(", line_id")                                                 'line_id
-        sb.AppendLine(", project_name")                                            'project_name
-        sb.AppendLine(", tool_name")                                               'tool_name
+        sb.AppendLine("tool_id")                                                   '治具ID
+        sb.AppendLine(", line_id")                                                 '生产线
+        sb.AppendLine(", project_name")                                            '工程
+        sb.AppendLine(", tool_name")                                               '治具显示文本
 
     sb.AppendLine(")")
     sb.AppendLine("VALUES(")
-    sb.AppendLine("@tool_id")                                                      'tool_id
-    sb.AppendLine(", @line_id")                                                    'line_id
-    sb.AppendLine(", @project_name")                                               'project_name
-    sb.AppendLine(", @tool_name")                                                  'tool_name
+    sb.AppendLine("@tool_id")                                                      '治具ID
+    sb.AppendLine(", @line_id")                                                    '生产线
+    sb.AppendLine(", @project_name")                                               '工程
+    sb.AppendLine(", @tool_name")                                                  '治具显示文本
 
     sb.AppendLine(")")
     '僶儔儊僞奿擺
@@ -186,11 +186,11 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' Infoを削除する
+    ''' 治具MSInfoを削除する
     ''' </summary>
-    '''<param name="toolId_key">tool_id</param>
-'''<param name="lineId_key">line_id</param>
-    ''' <returns>Info</returns>
+    '''<param name="toolId_key">治具ID</param>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>治具MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
@@ -203,16 +203,16 @@ Public Function DelMTools(Byval toolId_key AS String, _
            toolId_key, _
            lineId_key)
     'SQLコメント
-    '--**テーブル： : m_tools
+    '--**テーブル：治具MS : m_tools
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("DELETE FROM m_tools")
     sb.AppendLine("WHERE 1=1")
         If toolId_key<>"" Then
-            sb.AppendLine("AND tool_id=@tool_id_key")   'tool_id
+            sb.AppendLine("AND tool_id=@tool_id_key")   '治具ID
         End If
     If lineId_key<>"" Then
-            sb.AppendLine("AND line_id=@line_id_key")   'line_id
+            sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
 
     '僶儔儊僞奿擺

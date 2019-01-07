@@ -38,12 +38,12 @@ Public Class MUserDA
         sb.AppendLine("FROM m_user")
         sb.AppendLine("WHERE 1=1")
             If userCd_key<>"" Then
-            sb.AppendLine("AND user_cd=@user_cd_key")   '用户CD
+            sb.AppendLine("AND user_cd like @user_cd_key")   '用户CD
         End If
 
     '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
-    paramList.Add(MakeParam("@user_cd_key", SqlDbType.nvarchar, 10, userCd_key))
+        paramList.Add(MakeParam("@user_cd_key", SqlDbType.NVarChar, 13, "%" & userCd_key & "%"))
 
     Dim dsInfo As New Data.DataSet
     FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_user", paramList.ToArray)
