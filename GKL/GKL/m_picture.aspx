@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"  />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>?片MS</title>
+    <title>m_picture</title>
 
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
@@ -20,20 +20,20 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>?片MS</div>
+        <div class='title_div'>m_picture</div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
-            <td>?片ID : &nbsp;</td>
+            <td>pic_id : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxPicId_key" class="jq_pic_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td></td>
             </tr>
             <tr>
-            <td>生?? : &nbsp;</td>
+            <td>line_id : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
@@ -53,14 +53,14 @@
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_title' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:170px;">
-                  ?片ID 10
+              <td style="width:70px;">
+                  pic_id 10
               </td>
-              <td style="width:170px;">
-                  生?? 10
+              <td style="width:70px;">
+                  line_id 10
               </td>
               <td style="">
-                  ?片名称 200
+                  pic_name 200
               </td>
           </tr>
       </table>
@@ -70,10 +70,10 @@
 <div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_input' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:170px;">
+              <td style="width:70px;">
               <asp:TextBox ID="tbxPicId" class="jq_pic_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
           </td>
-              <td style="width:170px;">
+              <td style="width:70px;">
               <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
           </td>
               <td style="">
@@ -83,8 +83,8 @@
       </table>
    <asp:GridView CssClass ="jq_ms" Width="560px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
-          <asp:TemplateField><ItemTemplate ><%#Eval("pic_id")%></ItemTemplate><ItemStyle Width="170px" HorizontalAlign="Left" CssClass="jq_pic_id" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="170px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("pic_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_pic_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("pic_name")%></ItemTemplate><ItemStyle  HorizontalAlign="Left" CssClass="jq_pic_name" /></asp:TemplateField>
       </Columns>
    </asp:GridView>

@@ -15,9 +15,6 @@ Partial Class t_check_ms
     ''' <remarks></remarks>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         Me.lblMsg.Text = ""
         If Not IsPostBack Then
@@ -34,18 +31,18 @@ Partial Class t_check_ms
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Me.tbxChkNo.Attributes.Item("itType") = "varchar"
        Me.tbxChkNo.Attributes.Item("itLength") = "20"
-       Me.tbxChkNo.Attributes.Item("itName") = "??No"
+       Me.tbxChkNo.Attributes.Item("itName") = "检查No"
        Me.tbxChkMethodId.Attributes.Item("itType") = "varchar"
        Me.tbxChkMethodId.Attributes.Item("itLength") = "10"
-       Me.tbxChkMethodId.Attributes.Item("itName") = "???目ID"
+       Me.tbxChkMethodId.Attributes.Item("itName") = "检查项目ID"
        Me.tbxChkFlg.Attributes.Item("itType") = "varchar"
        Me.tbxChkFlg.Attributes.Item("itLength") = "1"
-       Me.tbxChkFlg.Attributes.Item("itName") = "??flg"
+       Me.tbxChkFlg.Attributes.Item("itName") = "检查flg"
        Me.tbxIn1.Attributes.Item("itType") = "varchar"
        Me.tbxIn1.Attributes.Item("itLength") = "20"
        Me.tbxIn1.Attributes.Item("itName") = "入力値1"
@@ -54,11 +51,11 @@ Partial Class t_check_ms
        Me.tbxIn2.Attributes.Item("itName") = "入力値2"
        Me.tbxChkResult.Attributes.Item("itType") = "varchar"
        Me.tbxChkResult.Attributes.Item("itLength") = "20"
-       Me.tbxChkResult.Attributes.Item("itName") = "???果"
-       Me.tbxMark.Attributes.Item("itType") = "varchar"
+       Me.tbxChkResult.Attributes.Item("itName") = "检查结果"
+       Me.tbxMark.Attributes.Item("itType") = "nvarchar"
        Me.tbxMark.Attributes.Item("itLength") = "200"
-       Me.tbxMark.Attributes.Item("itName") = "?考"
-       Me.tbxKj0.Attributes.Item("itType") = "varchar"
+       Me.tbxMark.Attributes.Item("itName") = "备考"
+       Me.tbxKj0.Attributes.Item("itType") = "nvarchar"
        Me.tbxKj0.Attributes.Item("itLength") = "100"
        Me.tbxKj0.Attributes.Item("itName") = "基准"
        Me.tbxKj1.Attributes.Item("itType") = "varchar"
@@ -67,8 +64,8 @@ Partial Class t_check_ms
        Me.tbxKj2.Attributes.Item("itType") = "varchar"
        Me.tbxKj2.Attributes.Item("itLength") = "20"
        Me.tbxKj2.Attributes.Item("itName") = "工差2"
-       Me.tbxKjExplain.Attributes.Item("itType") = "date"
-       Me.tbxKjExplain.Attributes.Item("itLength") = "3"
+       Me.tbxKjExplain.Attributes.Item("itType") = "nvarchar"
+       Me.tbxKjExplain.Attributes.Item("itLength") = "200"
        Me.tbxKjExplain.Attributes.Item("itName") = "基准説明"
        Me.tbxInsUser.Attributes.Item("itType") = "varchar"
        Me.tbxInsUser.Attributes.Item("itLength") = "20"
@@ -83,7 +80,7 @@ Partial Class t_check_ms
     ''' 明細項目設定
     ''' </summary>
     public Sub MsInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
             '明細設定
@@ -100,9 +97,6 @@ Partial Class t_check_ms
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSelect_Click(sender As Object, e As System.EventArgs) Handles btnSelect.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         MsInit()
     End Sub
@@ -114,7 +108,7 @@ Partial Class t_check_ms
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelTCheckMs(tbxChkNo_key.Text)
@@ -127,7 +121,7 @@ Partial Class t_check_ms
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelTCheckMs(tbxChkNo.Text).Rows.Count > 0
@@ -141,9 +135,6 @@ Partial Class t_check_ms
     ''' <remarks></remarks>
     Protected Sub btnUpdate_Click(sender As Object, e As System.EventArgs) Handles btnUpdate.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.UpdTCheckMs(hidchkNo.Text,tbxchkNo.Text, tbxchkMethodId.Text, tbxchkFlg.Text, tbxin1.Text, tbxin2.Text, tbxchkResult.Text, tbxmark.Text, tbxkj0.Text, tbxkj1.Text, tbxkj2.Text, tbxkjExplain.Text, tbxinsUser.Text, tbxinsDate.Text)
@@ -161,9 +152,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         'データ存在チェック
             If IsHaveData() Then
@@ -188,9 +176,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <remarks></remarks>
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.DelTCheckMs(hidchkNo.Text)

@@ -13,37 +13,37 @@ Public Class MUserDA
 
     ''' <summary>
     ''' 
-    ''' 社員MS情報を検索する
+    ''' 用户MSInfoを検索する
     ''' </summary>
-    '''<param name="userCd_key">社員CD</param>
-    ''' <returns>社員MS情報</returns>
+    '''<param name="userCd_key">用户CD</param>
+    ''' <returns>用户MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
     Public Function SelMUser(Byval userCd_key AS String) As Data.DataTable
-        'EMAB障害対応情報の格納処理
+        'EMAB　ＥＲＲ
         EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            userCd_key)
         'SQLコメント
-        '--**テーブル：社員MS : m_user
+        '--**テーブル：用户MS : m_user
         Dim sb As New StringBuilder
         'SQL文
         sb.AppendLine("SELECT")
-        sb.AppendLine("user_cd")                                                   '社員CD
-        sb.AppendLine(", line_id")                                                 '生産ライン
-        sb.AppendLine(", user_name")                                               '社員名
+        sb.AppendLine("user_cd")                                                   '用户CD
+        sb.AppendLine(", line_id")                                                 '生产线
+        sb.AppendLine(", user_name")                                               '用户名
 
         sb.AppendLine("FROM m_user")
         sb.AppendLine("WHERE 1=1")
             If userCd_key<>"" Then
-            sb.AppendLine("AND user_cd=@user_cd_key")   '社員CD
+            sb.AppendLine("AND user_cd=@user_cd_key")   '用户CD
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
-    paramList.Add(MakeParam("@user_cd_key", SqlDbType.VarChar, 10, userCd_key))
+    paramList.Add(MakeParam("@user_cd_key", SqlDbType.nvarchar, 10, userCd_key))
 
     Dim dsInfo As New Data.DataSet
     FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_user", paramList.ToArray)
@@ -54,50 +54,50 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 社員MS情報を更新する
+    ''' 用户MSInfoを更新する
     ''' </summary>
-    '''<param name="userCd_key">社員CD</param>
-'''<param name="userCd">社員CD</param>
-'''<param name="lineId">生産ライン</param>
-'''<param name="userName">社員名</param>
-    ''' <returns>社員MS情報</returns>
+    '''<param name="userCd_key">用户CD</param>
+'''<param name="userCd">用户CD</param>
+'''<param name="lineId">生产线</param>
+'''<param name="userName">用户名</param>
+    ''' <returns>用户MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function UpdMUser(Byval userCd_key AS String, _
            Byval userCd AS String, _
            Byval lineId AS String, _
            Byval userName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            userCd_key, _
            userCd, _
            lineId, _
            userName)
     'SQLコメント
-    '--**テーブル：社員MS : m_user
+    '--**テーブル：用户MS : m_user
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("UPDATE m_user")
     sb.AppendLine("SET")
-    sb.AppendLine("user_cd=@user_cd")                                              '社員CD
-    sb.AppendLine(", line_id=@line_id")                                            '生産ライン
-    sb.AppendLine(", user_name=@user_name")   '社員名
+    sb.AppendLine("user_cd=@user_cd")                                              '用户CD
+    sb.AppendLine(", line_id=@line_id")                                            '生产线
+    sb.AppendLine(", user_name=@user_name")   '用户名
 
     sb.AppendLine("FROM m_user")
     sb.AppendLine("WHERE 1=1")
         If userCd_key<>"" Then
-            sb.AppendLine("AND user_cd=@user_cd_key")   '社員CD
+            sb.AppendLine("AND user_cd=@user_cd_key")   '用户CD
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
-    paramList.Add(MakeParam("@user_cd_key", SqlDbType.VarChar, 10, userCd_key))
+    paramList.Add(MakeParam("@user_cd_key", SqlDbType.nvarchar, 10, userCd_key))
 
-    paramList.Add(MakeParam("@user_cd", SqlDbType.VarChar, 10, userCd))
-    paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
+    paramList.Add(MakeParam("@user_cd", SqlDbType.nvarchar, 10, userCd))
+    paramList.Add(MakeParam("@line_id", SqlDbType.nvarchar, 10, lineId))
     paramList.Add(MakeParam("@user_name", SqlDbType.nvarchar, 10, userName))
 
 
@@ -109,46 +109,46 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 社員MS情報を登録する
+    ''' 用户MSInfoを登録する
     ''' </summary>
-    '''<param name="userCd">社員CD</param>
-'''<param name="lineId">生産ライン</param>
-'''<param name="userName">社員名</param>
-    ''' <returns>社員MS情報</returns>
+    '''<param name="userCd">用户CD</param>
+'''<param name="lineId">生产线</param>
+'''<param name="userName">用户名</param>
+    ''' <returns>用户MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function InsMUser(Byval userCd AS String, _
            Byval lineId AS String, _
            Byval userName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            userCd, _
            lineId, _
            userName)
     'SQLコメント
-    '--**テーブル：社員MS : m_user
+    '--**テーブル：用户MS : m_user
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("INSERT INTO  m_user")
     sb.AppendLine("(")
-        sb.AppendLine("user_cd")                                                   '社員CD
-        sb.AppendLine(", line_id")                                                 '生産ライン
-        sb.AppendLine(", user_name")                                               '社員名
+        sb.AppendLine("user_cd")                                                   '用户CD
+        sb.AppendLine(", line_id")                                                 '生产线
+        sb.AppendLine(", user_name")                                               '用户名
 
     sb.AppendLine(")")
     sb.AppendLine("VALUES(")
-    sb.AppendLine("@user_cd")                                                      '社員CD
-    sb.AppendLine(", @line_id")                                                    '生産ライン
-    sb.AppendLine(", @user_name")                                                  '社員名
+    sb.AppendLine("@user_cd")                                                      '用户CD
+    sb.AppendLine(", @line_id")                                                    '生产线
+    sb.AppendLine(", @user_name")                                                  '用户名
 
     sb.AppendLine(")")
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
-    paramList.Add(MakeParam("@user_cd", SqlDbType.VarChar, 10, userCd))
-    paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
+    paramList.Add(MakeParam("@user_cd", SqlDbType.nvarchar, 10, userCd))
+    paramList.Add(MakeParam("@line_id", SqlDbType.nvarchar, 10, lineId))
     paramList.Add(MakeParam("@user_name", SqlDbType.nvarchar, 10, userName))
 
 
@@ -160,32 +160,32 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 社員MS情報を削除する
+    ''' 用户MSInfoを削除する
     ''' </summary>
-    '''<param name="userCd_key">社員CD</param>
-    ''' <returns>社員MS情報</returns>
+    '''<param name="userCd_key">用户CD</param>
+    ''' <returns>用户MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function DelMUser(Byval userCd_key AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            userCd_key)
     'SQLコメント
-    '--**テーブル：社員MS : m_user
+    '--**テーブル：用户MS : m_user
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("DELETE FROM m_user")
     sb.AppendLine("WHERE 1=1")
         If userCd_key<>"" Then
-            sb.AppendLine("AND user_cd=@user_cd_key")   '社員CD
+            sb.AppendLine("AND user_cd=@user_cd_key")   '用户CD
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
-    paramList.Add(MakeParam("@user_cd_key", SqlDbType.VarChar, 10, userCd_key))
+    paramList.Add(MakeParam("@user_cd_key", SqlDbType.nvarchar, 10, userCd_key))
 
 
     SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray) 
@@ -201,7 +201,7 @@ End Function
         ''' <returns></returns>
         ''' <remarks></remarks>
         Private Function GetIntValue(ByVal v As Object) As Object
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name )
             If v Is DBNull.Value Or v.ToString = "" Then
                 Return DBNull.Value

@@ -14,19 +14,19 @@ Public DA AS NEW MProjectDA
 
     ''' <summary>
     ''' 
-    ''' 工程MS情報を検索する
+    ''' 工程MSInfoを検索する
     ''' </summary>
     '''<param name="projectId_key">工程ID</param>
-'''<param name="lineId_key">生??</param>
-    ''' <returns>工程MS情報</returns>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>工程MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function SelMProject(Byval projectId_key AS String, _
            Byval lineId_key AS String) As Data.DataTable
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            projectId_key, _
            lineId_key)
@@ -38,17 +38,17 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 工程MS情報を更新する
+    ''' 工程MSInfoを更新する
     ''' </summary>
     '''<param name="projectId_key">工程ID</param>
-'''<param name="lineId_key">生??</param>
+'''<param name="lineId_key">生产线</param>
 '''<param name="projectId">工程ID</param>
-'''<param name="lineId">生??</param>
+'''<param name="lineId">生产线</param>
 '''<param name="projectName">工程名</param>
-    ''' <returns>工程MS情報</returns>
+    ''' <returns>工程MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function UpdMProject(Byval projectId_key AS String, _
@@ -56,7 +56,7 @@ Public Function UpdMProject(Byval projectId_key AS String, _
            Byval projectId AS String, _
            Byval lineId AS String, _
            Byval projectName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            projectId_key, _
            lineId_key, _
@@ -76,21 +76,21 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 工程MS情報を登録する
+    ''' 工程MSInfoを登録する
     ''' </summary>
     '''<param name="projectId">工程ID</param>
-'''<param name="lineId">生??</param>
+'''<param name="lineId">生产线</param>
 '''<param name="projectName">工程名</param>
-    ''' <returns>工程MS情報</returns>
+    ''' <returns>工程MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function InsMProject(Byval projectId AS String, _
            Byval lineId AS String, _
            Byval projectName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            projectId, _
            lineId, _
@@ -106,19 +106,19 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 工程MS情報を削除する
+    ''' 工程MSInfoを削除する
     ''' </summary>
     '''<param name="projectId_key">工程ID</param>
-'''<param name="lineId_key">生??</param>
-    ''' <returns>工程MS情報</returns>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>工程MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function DelMProject(Byval projectId_key AS String, _
            Byval lineId_key AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            projectId_key, _
            lineId_key)

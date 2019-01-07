@@ -15,9 +15,6 @@ Partial Class m_temp_name
     ''' <remarks></remarks>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         Me.lblMsg.Text = ""
         If Not IsPostBack Then
@@ -34,15 +31,15 @@ Partial Class m_temp_name
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Me.tbxTempId.Attributes.Item("itType") = "varchar"
        Me.tbxTempId.Attributes.Item("itLength") = "10"
-       Me.tbxTempId.Attributes.Item("itName") = "??模板?号"
+       Me.tbxTempId.Attributes.Item("itName") = "temp_id"
        Me.tbxTempName.Attributes.Item("itType") = "nvarchar"
        Me.tbxTempName.Attributes.Item("itLength") = "200"
-       Me.tbxTempName.Attributes.Item("itName") = "模板名称"
+       Me.tbxTempName.Attributes.Item("itName") = "temp_name"
 
     End Sub
 
@@ -50,7 +47,7 @@ Partial Class m_temp_name
     ''' 明細項目設定
     ''' </summary>
     public Sub MsInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
             '明細設定
@@ -67,9 +64,6 @@ Partial Class m_temp_name
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSelect_Click(sender As Object, e As System.EventArgs) Handles btnSelect.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         MsInit()
     End Sub
@@ -81,7 +75,7 @@ Partial Class m_temp_name
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelMTempName(tbxTempId_key.Text)
@@ -94,7 +88,7 @@ Partial Class m_temp_name
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelMTempName(tbxTempId.Text).Rows.Count > 0
@@ -108,9 +102,6 @@ Partial Class m_temp_name
     ''' <remarks></remarks>
     Protected Sub btnUpdate_Click(sender As Object, e As System.EventArgs) Handles btnUpdate.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.UpdMTempName(hidtempId.Text,tbxtempId.Text, tbxtempName.Text)
@@ -128,9 +119,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         'データ存在チェック
             If IsHaveData() Then
@@ -155,9 +143,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <remarks></remarks>
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.DelMTempName(hidtempId.Text)

@@ -28,19 +28,19 @@ function AjaxPost(ajaxActionType){
         }
     });
 }
-// 更新
+// 峏怴
 function ajax_update(){
     AjaxPost('update');
 }
-// 削除
+// 嶍彍
 function ajax_delete(){
     AjaxPost('delete');
 }
-// 登録
+// 搊榐
 function ajax_insert(){
     AjaxPost('insert');
 }
-// 検索
+// 専嶕
 function ajax_select(){
     AjaxPost('select');
 }
@@ -52,11 +52,11 @@ function ajax_select(){
     //Dim tbxCode As String = Request.Form("tbxCode")
     //Dim tbxTempId As String = Request.Form("tbxTempId")
 
-//検索
+//専嶕
 //       Return BC.SelTCdTempRelation(tbxLineId_key ,tbxCode_key ,tbxTempId_key)
-//登録
+//搊榐
 //       Return BC.InsTCdTempRelation(tbxLineId ,tbxCode ,tbxTempId)
-//削除
+//嶍彍
 //       Return BC.DelTCdTempRelation(tbxLineId_key ,tbxCode_key ,tbxTempId_key)
-//更新
+//峏怴
 //       Return BC.UpdTCdTempRelation(tbxLineId_key ,tbxCode_key ,tbxTempId_key ,tbxLineId ,tbxCode ,tbxTempId)

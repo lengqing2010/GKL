@@ -14,17 +14,17 @@ Public DA AS NEW TCheckPlanDA
 
     ''' <summary>
     ''' 
-    ''' ????情報を検索する
+    ''' 检查计划Infoを検索する
     ''' </summary>
-    '''<param name="planNo_key">??No</param>
-'''<param name="chkNo_key">??No</param>
+    '''<param name="planNo_key">计划No</param>
+'''<param name="chkNo_key">检查No</param>
 '''<param name="makeNo_key">作番</param>
 '''<param name="code_key">コード</param>
-'''<param name="lineId_key">生??</param>
-    ''' <returns>????情報</returns>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>检查计划Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function SelTCheckPlan(Byval planNo_key AS String, _
@@ -32,7 +32,7 @@ Public Function SelTCheckPlan(Byval planNo_key AS String, _
            Byval makeNo_key AS String, _
            Byval code_key AS String, _
            Byval lineId_key AS String) As Data.DataTable
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            planNo_key, _
            chkNo_key, _
@@ -50,27 +50,27 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' ????情報を更新する
+    ''' 检查计划Infoを更新する
     ''' </summary>
-    '''<param name="planNo_key">??No</param>
-'''<param name="chkNo_key">??No</param>
+    '''<param name="planNo_key">计划No</param>
+'''<param name="chkNo_key">检查No</param>
 '''<param name="makeNo_key">作番</param>
 '''<param name="code_key">コード</param>
-'''<param name="lineId_key">生??</param>
-'''<param name="planNo">??No</param>
-'''<param name="chkNo">??No</param>
+'''<param name="lineId_key">生产线</param>
+'''<param name="planNo">计划No</param>
+'''<param name="chkNo">检查No</param>
 '''<param name="makeNo">作番</param>
 '''<param name="code">コード</param>
-'''<param name="lineId">生??</param>
+'''<param name="lineId">生产线</param>
 '''<param name="suu">数量</param>
-'''<param name="yoteiChkDate">????日</param>
-'''<param name="status">状?</param>
+'''<param name="yoteiChkDate">预订检查日</param>
+'''<param name="status">状态</param>
 '''<param name="insUser">登録者</param>
 '''<param name="insDate">登録日</param>
-    ''' <returns>????情報</returns>
+    ''' <returns>检查计划Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function UpdTCheckPlan(Byval planNo_key AS String, _
@@ -88,7 +88,7 @@ Public Function UpdTCheckPlan(Byval planNo_key AS String, _
            Byval status AS String, _
            Byval insUser AS String, _
            Byval insDate AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            planNo_key, _
            chkNo_key, _
@@ -106,7 +106,7 @@ Public Function UpdTCheckPlan(Byval planNo_key AS String, _
            insUser, _
            insDate)
     'SQLコメント
-    '--**テーブル：???? : t_check_plan
+    '--**テーブル：检查计划 : t_check_plan
     Return DA.UpdTCheckPlan( _
            planNo_key, _
            chkNo_key, _
@@ -128,22 +128,22 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' ????情報を登録する
+    ''' 检查计划Infoを登録する
     ''' </summary>
-    '''<param name="planNo">??No</param>
-'''<param name="chkNo">??No</param>
+    '''<param name="planNo">计划No</param>
+'''<param name="chkNo">检查No</param>
 '''<param name="makeNo">作番</param>
 '''<param name="code">コード</param>
-'''<param name="lineId">生??</param>
+'''<param name="lineId">生产线</param>
 '''<param name="suu">数量</param>
-'''<param name="yoteiChkDate">????日</param>
-'''<param name="status">状?</param>
+'''<param name="yoteiChkDate">预订检查日</param>
+'''<param name="status">状态</param>
 '''<param name="insUser">登録者</param>
 '''<param name="insDate">登録日</param>
-    ''' <returns>????情報</returns>
+    ''' <returns>检查计划Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function InsTCheckPlan(Byval planNo AS String, _
@@ -156,7 +156,7 @@ Public Function InsTCheckPlan(Byval planNo AS String, _
            Byval status AS String, _
            Byval insUser AS String, _
            Byval insDate AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            planNo, _
            chkNo, _
@@ -169,7 +169,7 @@ Public Function InsTCheckPlan(Byval planNo AS String, _
            insUser, _
            insDate)
     'SQLコメント
-    '--**テーブル：???? : t_check_plan
+    '--**テーブル：检查计划 : t_check_plan
     Return DA.InsTCheckPlan( _
            planNo, _
            chkNo, _
@@ -186,17 +186,17 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' ????情報を削除する
+    ''' 检查计划Infoを削除する
     ''' </summary>
-    '''<param name="planNo_key">??No</param>
-'''<param name="chkNo_key">??No</param>
+    '''<param name="planNo_key">计划No</param>
+'''<param name="chkNo_key">检查No</param>
 '''<param name="makeNo_key">作番</param>
 '''<param name="code_key">コード</param>
-'''<param name="lineId_key">生??</param>
-    ''' <returns>????情報</returns>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>检查计划Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function DelTCheckPlan(Byval planNo_key AS String, _
@@ -204,7 +204,7 @@ Public Function DelTCheckPlan(Byval planNo_key AS String, _
            Byval makeNo_key AS String, _
            Byval code_key AS String, _
            Byval lineId_key AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            planNo_key, _
            chkNo_key, _
@@ -212,7 +212,7 @@ Public Function DelTCheckPlan(Byval planNo_key AS String, _
            code_key, _
            lineId_key)
     'SQLコメント
-    '--**テーブル：???? : t_check_plan
+    '--**テーブル：检查计划 : t_check_plan
     Return DA.DelTCheckPlan( _
            planNo_key, _
            chkNo_key, _

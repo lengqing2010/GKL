@@ -14,19 +14,19 @@ Public DA AS NEW MToolsDA
 
     ''' <summary>
     ''' 
-    ''' 治具MS情報を検索する
+    ''' Infoを検索する
     ''' </summary>
-    '''<param name="toolId_key">治具ID</param>
-'''<param name="lineId_key">生??</param>
-    ''' <returns>治具MS情報</returns>
+    '''<param name="toolId_key">tool_id</param>
+'''<param name="lineId_key">line_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function SelMTools(Byval toolId_key AS String, _
            Byval lineId_key AS String) As Data.DataTable
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            toolId_key, _
            lineId_key)
@@ -38,18 +38,18 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 治具MS情報を更新する
+    ''' Infoを更新する
     ''' </summary>
-    '''<param name="toolId_key">治具ID</param>
-'''<param name="lineId_key">生??</param>
-'''<param name="toolId">治具ID</param>
-'''<param name="lineId">生??</param>
-'''<param name="projectName">工程</param>
-'''<param name="toolName">治具?示文本</param>
-    ''' <returns>治具MS情報</returns>
+    '''<param name="toolId_key">tool_id</param>
+'''<param name="lineId_key">line_id</param>
+'''<param name="toolId">tool_id</param>
+'''<param name="lineId">line_id</param>
+'''<param name="projectName">project_name</param>
+'''<param name="toolName">tool_name</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function UpdMTools(Byval toolId_key AS String, _
@@ -58,7 +58,7 @@ Public Function UpdMTools(Byval toolId_key AS String, _
            Byval lineId AS String, _
            Byval projectName AS String, _
            Byval toolName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            toolId_key, _
            lineId_key, _
@@ -67,7 +67,7 @@ Public Function UpdMTools(Byval toolId_key AS String, _
            projectName, _
            toolName)
     'SQLコメント
-    '--**テーブル：治具MS : m_tools
+    '--**テーブル： : m_tools
     Return DA.UpdMTools( _
            toolId_key, _
            lineId_key, _
@@ -80,30 +80,30 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 治具MS情報を登録する
+    ''' Infoを登録する
     ''' </summary>
-    '''<param name="toolId">治具ID</param>
-'''<param name="lineId">生??</param>
-'''<param name="projectName">工程</param>
-'''<param name="toolName">治具?示文本</param>
-    ''' <returns>治具MS情報</returns>
+    '''<param name="toolId">tool_id</param>
+'''<param name="lineId">line_id</param>
+'''<param name="projectName">project_name</param>
+'''<param name="toolName">tool_name</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function InsMTools(Byval toolId AS String, _
            Byval lineId AS String, _
            Byval projectName AS String, _
            Byval toolName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            toolId, _
            lineId, _
            projectName, _
            toolName)
     'SQLコメント
-    '--**テーブル：治具MS : m_tools
+    '--**テーブル： : m_tools
     Return DA.InsMTools( _
            toolId, _
            lineId, _
@@ -114,24 +114,24 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 治具MS情報を削除する
+    ''' Infoを削除する
     ''' </summary>
-    '''<param name="toolId_key">治具ID</param>
-'''<param name="lineId_key">生??</param>
-    ''' <returns>治具MS情報</returns>
+    '''<param name="toolId_key">tool_id</param>
+'''<param name="lineId_key">line_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function DelMTools(Byval toolId_key AS String, _
            Byval lineId_key AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            toolId_key, _
            lineId_key)
     'SQLコメント
-    '--**テーブル：治具MS : m_tools
+    '--**テーブル： : m_tools
     Return DA.DelMTools( _
            toolId_key, _
            lineId_key)

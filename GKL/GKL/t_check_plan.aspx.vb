@@ -15,9 +15,6 @@ Partial Class t_check_plan
     ''' <remarks></remarks>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         Me.lblMsg.Text = ""
         If Not IsPostBack Then
@@ -34,15 +31,15 @@ Partial Class t_check_plan
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Me.tbxPlanNo.Attributes.Item("itType") = "varchar"
        Me.tbxPlanNo.Attributes.Item("itLength") = "20"
-       Me.tbxPlanNo.Attributes.Item("itName") = "??No"
+       Me.tbxPlanNo.Attributes.Item("itName") = "计划No"
        Me.tbxChkNo.Attributes.Item("itType") = "varchar"
        Me.tbxChkNo.Attributes.Item("itLength") = "20"
-       Me.tbxChkNo.Attributes.Item("itName") = "??No"
+       Me.tbxChkNo.Attributes.Item("itName") = "检查No"
        Me.tbxMakeNo.Attributes.Item("itType") = "varchar"
        Me.tbxMakeNo.Attributes.Item("itLength") = "20"
        Me.tbxMakeNo.Attributes.Item("itName") = "作番"
@@ -51,21 +48,21 @@ Partial Class t_check_plan
        Me.tbxCode.Attributes.Item("itName") = "コード"
        Me.tbxLineId.Attributes.Item("itType") = "varchar"
        Me.tbxLineId.Attributes.Item("itLength") = "10"
-       Me.tbxLineId.Attributes.Item("itName") = "生??"
+       Me.tbxLineId.Attributes.Item("itName") = "生产线"
        Me.tbxSuu.Attributes.Item("itType") = "varchar"
        Me.tbxSuu.Attributes.Item("itLength") = "10"
        Me.tbxSuu.Attributes.Item("itName") = "数量"
-       Me.tbxYoteiChkDate.Attributes.Item("itType") = "varchar"
-       Me.tbxYoteiChkDate.Attributes.Item("itLength") = "20"
-       Me.tbxYoteiChkDate.Attributes.Item("itName") = "????日"
+       Me.tbxYoteiChkDate.Attributes.Item("itType") = "date"
+       Me.tbxYoteiChkDate.Attributes.Item("itLength") = "3"
+       Me.tbxYoteiChkDate.Attributes.Item("itName") = "预订检查日"
        Me.tbxStatus.Attributes.Item("itType") = "varchar"
        Me.tbxStatus.Attributes.Item("itLength") = "1"
-       Me.tbxStatus.Attributes.Item("itName") = "状?"
-       Me.tbxInsUser.Attributes.Item("itType") = "varchar"
+       Me.tbxStatus.Attributes.Item("itName") = "状态"
+       Me.tbxInsUser.Attributes.Item("itType") = "nvarchar"
        Me.tbxInsUser.Attributes.Item("itLength") = "20"
        Me.tbxInsUser.Attributes.Item("itName") = "登録者"
-       Me.tbxInsDate.Attributes.Item("itType") = "varchar"
-       Me.tbxInsDate.Attributes.Item("itLength") = "20"
+       Me.tbxInsDate.Attributes.Item("itType") = "date"
+       Me.tbxInsDate.Attributes.Item("itLength") = "3"
        Me.tbxInsDate.Attributes.Item("itName") = "登録日"
 
     End Sub
@@ -74,7 +71,7 @@ Partial Class t_check_plan
     ''' 明細項目設定
     ''' </summary>
     public Sub MsInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
             '明細設定
@@ -91,9 +88,6 @@ Partial Class t_check_plan
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSelect_Click(sender As Object, e As System.EventArgs) Handles btnSelect.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         MsInit()
     End Sub
@@ -105,7 +99,7 @@ Partial Class t_check_plan
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelTCheckPlan(tbxPlanNo_key.Text, tbxChkNo_key.Text, tbxMakeNo_key.Text, tbxCode_key.Text, tbxLineId_key.Text)
@@ -118,7 +112,7 @@ Partial Class t_check_plan
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelTCheckPlan(tbxPlanNo.Text, tbxChkNo.Text, tbxMakeNo.Text, tbxCode.Text, tbxLineId.Text).Rows.Count > 0
@@ -132,9 +126,6 @@ Partial Class t_check_plan
     ''' <remarks></remarks>
     Protected Sub btnUpdate_Click(sender As Object, e As System.EventArgs) Handles btnUpdate.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.UpdTCheckPlan(hidplanNo.Text, hidchkNo.Text, hidmakeNo.Text, hidcode.Text, hidlineId.Text,tbxplanNo.Text, tbxchkNo.Text, tbxmakeNo.Text, tbxcode.Text, tbxlineId.Text, tbxsuu.Text, tbxyoteiChkDate.Text, tbxstatus.Text, tbxinsUser.Text, tbxinsDate.Text)
@@ -152,9 +143,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         'データ存在チェック
             If IsHaveData() Then
@@ -179,9 +167,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <remarks></remarks>
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.DelTCheckPlan(hidplanNo.Text, hidchkNo.Text, hidmakeNo.Text, hidcode.Text, hidlineId.Text)

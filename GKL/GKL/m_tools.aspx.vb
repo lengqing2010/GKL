@@ -15,9 +15,6 @@ Partial Class m_tools
     ''' <remarks></remarks>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         Me.lblMsg.Text = ""
         If Not IsPostBack Then
@@ -34,21 +31,21 @@ Partial Class m_tools
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Me.tbxToolId.Attributes.Item("itType") = "varchar"
        Me.tbxToolId.Attributes.Item("itLength") = "40"
-       Me.tbxToolId.Attributes.Item("itName") = "治具ID"
+       Me.tbxToolId.Attributes.Item("itName") = "tool_id"
        Me.tbxLineId.Attributes.Item("itType") = "varchar"
        Me.tbxLineId.Attributes.Item("itLength") = "10"
-       Me.tbxLineId.Attributes.Item("itName") = "生??"
+       Me.tbxLineId.Attributes.Item("itName") = "line_id"
        Me.tbxProjectName.Attributes.Item("itType") = "nvarchar"
        Me.tbxProjectName.Attributes.Item("itLength") = "40"
-       Me.tbxProjectName.Attributes.Item("itName") = "工程"
+       Me.tbxProjectName.Attributes.Item("itName") = "project_name"
        Me.tbxToolName.Attributes.Item("itType") = "nvarchar"
        Me.tbxToolName.Attributes.Item("itLength") = "80"
-       Me.tbxToolName.Attributes.Item("itName") = "治具?示文本"
+       Me.tbxToolName.Attributes.Item("itName") = "tool_name"
 
     End Sub
 
@@ -56,7 +53,7 @@ Partial Class m_tools
     ''' 明細項目設定
     ''' </summary>
     public Sub MsInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
             '明細設定
@@ -73,9 +70,6 @@ Partial Class m_tools
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSelect_Click(sender As Object, e As System.EventArgs) Handles btnSelect.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         MsInit()
     End Sub
@@ -87,7 +81,7 @@ Partial Class m_tools
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelMTools(tbxToolId_key.Text, tbxLineId_key.Text)
@@ -100,7 +94,7 @@ Partial Class m_tools
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelMTools(tbxToolId.Text, tbxLineId.Text).Rows.Count > 0
@@ -114,9 +108,6 @@ Partial Class m_tools
     ''' <remarks></remarks>
     Protected Sub btnUpdate_Click(sender As Object, e As System.EventArgs) Handles btnUpdate.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.UpdMTools(hidtoolId.Text, hidlineId.Text,tbxtoolId.Text, tbxlineId.Text, tbxprojectName.Text, tbxtoolName.Text)
@@ -134,9 +125,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         'データ存在チェック
             If IsHaveData() Then
@@ -161,9 +149,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <remarks></remarks>
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.DelMTools(hidtoolId.Text, hidlineId.Text)

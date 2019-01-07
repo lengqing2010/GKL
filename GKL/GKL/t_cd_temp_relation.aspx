@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"  />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>商品模板??</title>
+    <title>t_cd_temp_relation</title>
 
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
@@ -20,27 +20,27 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>商品模板??</div>
+        <div class='title_div'>t_cd_temp_relation</div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
-            <td>生?? : &nbsp;</td>
+            <td>line_id : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td></td>
             </tr>
             <tr>
-            <td>コード : &nbsp;</td>
+            <td>code : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxCode_key" class="jq_code_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td></td>
             </tr>
             <tr>
-            <td>??模板?号 : &nbsp;</td>
+            <td>temp_id : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
@@ -60,14 +60,14 @@
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_title' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:170px;">
-                  生?? 10
+              <td style="width:70px;">
+                  line_id 10
               </td>
               <td style="width:210px;">
-                  コード 20
+                  code 20
               </td>
               <td style="">
-                  ??模板?号 10
+                  temp_id 10
               </td>
           </tr>
       </table>
@@ -77,7 +77,7 @@
 <div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_input' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:170px;">
+              <td style="width:70px;">
               <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
           </td>
               <td style="width:210px;">
@@ -90,7 +90,7 @@
       </table>
    <asp:GridView CssClass ="jq_ms" Width="560px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
-          <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="170px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("code")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_code" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("temp_id")%></ItemTemplate><ItemStyle  HorizontalAlign="Left" CssClass="jq_temp_id" /></asp:TemplateField>
       </Columns>

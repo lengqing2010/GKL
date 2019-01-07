@@ -15,9 +15,6 @@ Partial Class t_cd_temp_relation
     ''' <remarks></remarks>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         Me.lblMsg.Text = ""
         If Not IsPostBack Then
@@ -34,18 +31,18 @@ Partial Class t_cd_temp_relation
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Me.tbxLineId.Attributes.Item("itType") = "varchar"
        Me.tbxLineId.Attributes.Item("itLength") = "10"
-       Me.tbxLineId.Attributes.Item("itName") = "生??"
+       Me.tbxLineId.Attributes.Item("itName") = "line_id"
        Me.tbxCode.Attributes.Item("itType") = "varchar"
        Me.tbxCode.Attributes.Item("itLength") = "20"
-       Me.tbxCode.Attributes.Item("itName") = "コード"
+       Me.tbxCode.Attributes.Item("itName") = "code"
        Me.tbxTempId.Attributes.Item("itType") = "varchar"
        Me.tbxTempId.Attributes.Item("itLength") = "10"
-       Me.tbxTempId.Attributes.Item("itName") = "??模板?号"
+       Me.tbxTempId.Attributes.Item("itName") = "temp_id"
 
     End Sub
 
@@ -53,7 +50,7 @@ Partial Class t_cd_temp_relation
     ''' 明細項目設定
     ''' </summary>
     public Sub MsInit()
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
             '明細設定
@@ -70,9 +67,6 @@ Partial Class t_cd_temp_relation
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSelect_Click(sender As Object, e As System.EventArgs) Handles btnSelect.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         MsInit()
     End Sub
@@ -84,7 +78,7 @@ Partial Class t_cd_temp_relation
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelTCdTempRelation(tbxLineId_key.Text, tbxCode_key.Text, tbxTempId_key.Text)
@@ -97,7 +91,7 @@ Partial Class t_cd_temp_relation
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB障害対応情報の格納処理
+      'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
        Return BC.SelTCdTempRelation(tbxLineId.Text, tbxCode.Text, tbxTempId.Text).Rows.Count > 0
@@ -111,9 +105,6 @@ Partial Class t_cd_temp_relation
     ''' <remarks></remarks>
     Protected Sub btnUpdate_Click(sender As Object, e As System.EventArgs) Handles btnUpdate.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.UpdTCdTempRelation(hidlineId.Text, hidcode.Text, hidtempId.Text,tbxlineId.Text, tbxcode.Text, tbxtempId.Text)
@@ -131,9 +122,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         'データ存在チェック
             If IsHaveData() Then
@@ -158,9 +146,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <remarks></remarks>
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.DelTCdTempRelation(hidlineId.Text, hidcode.Text, hidtempId.Text)

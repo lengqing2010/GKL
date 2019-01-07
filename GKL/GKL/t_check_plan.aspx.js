@@ -37,19 +37,19 @@ function AjaxPost(ajaxActionType){
         }
     });
 }
-// 更新
+// 峏怴
 function ajax_update(){
     AjaxPost('update');
 }
-// 削除
+// 嶍彍
 function ajax_delete(){
     AjaxPost('delete');
 }
-// 登録
+// 搊榐
 function ajax_insert(){
     AjaxPost('insert');
 }
-// 検索
+// 専嶕
 function ajax_select(){
     AjaxPost('select');
 }
@@ -70,11 +70,11 @@ function ajax_select(){
     //Dim tbxInsUser As String = Request.Form("tbxInsUser")
     //Dim tbxInsDate As String = Request.Form("tbxInsDate")
 
-//検索
+//専嶕
 //       Return BC.SelTCheckPlan(tbxPlanNo_key ,tbxChkNo_key ,tbxMakeNo_key ,tbxCode_key ,tbxLineId_key)
-//登録
+//搊榐
 //       Return BC.InsTCheckPlan(tbxPlanNo ,tbxChkNo ,tbxMakeNo ,tbxCode ,tbxLineId ,tbxSuu ,tbxYoteiChkDate ,tbxStatus ,tbxInsUser ,tbxInsDate)
-//削除
+//嶍彍
 //       Return BC.DelTCheckPlan(tbxPlanNo_key ,tbxChkNo_key ,tbxMakeNo_key ,tbxCode_key ,tbxLineId_key)
-//更新
+//峏怴
 //       Return BC.UpdTCheckPlan(tbxPlanNo_key ,tbxChkNo_key ,tbxMakeNo_key ,tbxCode_key ,tbxLineId_key ,tbxPlanNo ,tbxChkNo ,tbxMakeNo ,tbxCode ,tbxLineId ,tbxSuu ,tbxYoteiChkDate ,tbxStatus ,tbxInsUser ,tbxInsDate)

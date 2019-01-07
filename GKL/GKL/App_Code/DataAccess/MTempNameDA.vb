@@ -13,34 +13,34 @@ Public Class MTempNameDA
 
     ''' <summary>
     ''' 
-    ''' 模板名称MS情報を検索する
+    ''' Infoを検索する
     ''' </summary>
-    '''<param name="tempId_key">??模板?号</param>
-    ''' <returns>模板名称MS情報</returns>
+    '''<param name="tempId_key">temp_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
     Public Function SelMTempName(Byval tempId_key AS String) As Data.DataTable
-        'EMAB障害対応情報の格納処理
+        'EMAB　ＥＲＲ
         EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            tempId_key)
         'SQLコメント
-        '--**テーブル：模板名称MS : m_temp_name
+        '--**テーブル： : m_temp_name
         Dim sb As New StringBuilder
         'SQL文
         sb.AppendLine("SELECT")
-        sb.AppendLine("temp_id")                                                   '??模板?号
-        sb.AppendLine(", temp_name")                                               '模板名称
+        sb.AppendLine("temp_id")                                                   'temp_id
+        sb.AppendLine(", temp_name")                                               'temp_name
 
         sb.AppendLine("FROM m_temp_name")
         sb.AppendLine("WHERE 1=1")
             If tempId_key<>"" Then
-            sb.AppendLine("AND temp_id=@temp_id_key")   '??模板?号
+            sb.AppendLine("AND temp_id=@temp_id_key")   'temp_id
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@temp_id_key", SqlDbType.VarChar, 10, tempId_key))
 
@@ -53,41 +53,41 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 模板名称MS情報を更新する
+    ''' Infoを更新する
     ''' </summary>
-    '''<param name="tempId_key">??模板?号</param>
-'''<param name="tempId">??模板?号</param>
-'''<param name="tempName">模板名称</param>
-    ''' <returns>模板名称MS情報</returns>
+    '''<param name="tempId_key">temp_id</param>
+'''<param name="tempId">temp_id</param>
+'''<param name="tempName">temp_name</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function UpdMTempName(Byval tempId_key AS String, _
            Byval tempId AS String, _
            Byval tempName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            tempId_key, _
            tempId, _
            tempName)
     'SQLコメント
-    '--**テーブル：模板名称MS : m_temp_name
+    '--**テーブル： : m_temp_name
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("UPDATE m_temp_name")
     sb.AppendLine("SET")
-    sb.AppendLine("temp_id=@temp_id")                                              '??模板?号
-    sb.AppendLine(", temp_name=@temp_name")   '模板名称
+    sb.AppendLine("temp_id=@temp_id")                                              'temp_id
+    sb.AppendLine(", temp_name=@temp_name")   'temp_name
 
     sb.AppendLine("FROM m_temp_name")
     sb.AppendLine("WHERE 1=1")
         If tempId_key<>"" Then
-            sb.AppendLine("AND temp_id=@temp_id_key")   '??模板?号
+            sb.AppendLine("AND temp_id=@temp_id_key")   'temp_id
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@temp_id_key", SqlDbType.VarChar, 10, tempId_key))
 
@@ -103,38 +103,38 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 模板名称MS情報を登録する
+    ''' Infoを登録する
     ''' </summary>
-    '''<param name="tempId">??模板?号</param>
-'''<param name="tempName">模板名称</param>
-    ''' <returns>模板名称MS情報</returns>
+    '''<param name="tempId">temp_id</param>
+'''<param name="tempName">temp_name</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function InsMTempName(Byval tempId AS String, _
            Byval tempName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            tempId, _
            tempName)
     'SQLコメント
-    '--**テーブル：模板名称MS : m_temp_name
+    '--**テーブル： : m_temp_name
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("INSERT INTO  m_temp_name")
     sb.AppendLine("(")
-        sb.AppendLine("temp_id")                                                   '??模板?号
-        sb.AppendLine(", temp_name")                                               '模板名称
+        sb.AppendLine("temp_id")                                                   'temp_id
+        sb.AppendLine(", temp_name")                                               'temp_name
 
     sb.AppendLine(")")
     sb.AppendLine("VALUES(")
-    sb.AppendLine("@temp_id")                                                      '??模板?号
-    sb.AppendLine(", @temp_name")                                                  '模板名称
+    sb.AppendLine("@temp_id")                                                      'temp_id
+    sb.AppendLine(", @temp_name")                                                  'temp_name
 
     sb.AppendLine(")")
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@temp_id", SqlDbType.VarChar, 10, tempId))
     paramList.Add(MakeParam("@temp_name", SqlDbType.nvarchar, 200, tempName))
@@ -148,30 +148,30 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 模板名称MS情報を削除する
+    ''' Infoを削除する
     ''' </summary>
-    '''<param name="tempId_key">??模板?号</param>
-    ''' <returns>模板名称MS情報</returns>
+    '''<param name="tempId_key">temp_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function DelMTempName(Byval tempId_key AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            tempId_key)
     'SQLコメント
-    '--**テーブル：模板名称MS : m_temp_name
+    '--**テーブル： : m_temp_name
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("DELETE FROM m_temp_name")
     sb.AppendLine("WHERE 1=1")
         If tempId_key<>"" Then
-            sb.AppendLine("AND temp_id=@temp_id_key")   '??模板?号
+            sb.AppendLine("AND temp_id=@temp_id_key")   'temp_id
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@temp_id_key", SqlDbType.VarChar, 10, tempId_key))
 
@@ -189,7 +189,7 @@ End Function
         ''' <returns></returns>
         ''' <remarks></remarks>
         Private Function GetIntValue(ByVal v As Object) As Object
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name )
             If v Is DBNull.Value Or v.ToString = "" Then
                 Return DBNull.Value

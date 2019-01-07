@@ -13,47 +13,47 @@ Public Class TCdTempRelationDA
 
     ''' <summary>
     ''' 
-    ''' 商品模板??情報を検索する
+    ''' Infoを検索する
     ''' </summary>
-    '''<param name="lineId_key">生??</param>
-'''<param name="code_key">コード</param>
-'''<param name="tempId_key">??模板?号</param>
-    ''' <returns>商品模板??情報</returns>
+    '''<param name="lineId_key">line_id</param>
+'''<param name="code_key">code</param>
+'''<param name="tempId_key">temp_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
     Public Function SelTCdTempRelation(Byval lineId_key AS String, _
            Byval code_key AS String, _
            Byval tempId_key AS String) As Data.DataTable
-        'EMAB障害対応情報の格納処理
+        'EMAB　ＥＲＲ
         EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            lineId_key, _
            code_key, _
            tempId_key)
         'SQLコメント
-        '--**テーブル：商品模板?? : t_cd_temp_relation
+        '--**テーブル： : t_cd_temp_relation
         Dim sb As New StringBuilder
         'SQL文
         sb.AppendLine("SELECT")
-        sb.AppendLine("line_id")                                                   '生??
-        sb.AppendLine(", code")                                                    'コード
-        sb.AppendLine(", temp_id")                                                 '??模板?号
+        sb.AppendLine("line_id")                                                   'line_id
+        sb.AppendLine(", code")                                                    'code
+        sb.AppendLine(", temp_id")                                                 'temp_id
 
         sb.AppendLine("FROM t_cd_temp_relation")
         sb.AppendLine("WHERE 1=1")
             If lineId_key<>"" Then
-            sb.AppendLine("AND line_id=@line_id_key")   '生??
+            sb.AppendLine("AND line_id=@line_id_key")   'line_id
         End If
     If code_key<>"" Then
-            sb.AppendLine("AND code=@code_key")   'コード
+            sb.AppendLine("AND code=@code_key")   'code
         End If
     If tempId_key<>"" Then
-            sb.AppendLine("AND temp_id=@temp_id_key")   '??模板?号
+            sb.AppendLine("AND temp_id=@temp_id_key")   'temp_id
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
     paramList.Add(MakeParam("@code_key", SqlDbType.VarChar, 20, code_key))
@@ -68,18 +68,18 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 商品模板??情報を更新する
+    ''' Infoを更新する
     ''' </summary>
-    '''<param name="lineId_key">生??</param>
-'''<param name="code_key">コード</param>
-'''<param name="tempId_key">??模板?号</param>
-'''<param name="lineId">生??</param>
-'''<param name="code">コード</param>
-'''<param name="tempId">??模板?号</param>
-    ''' <returns>商品模板??情報</returns>
+    '''<param name="lineId_key">line_id</param>
+'''<param name="code_key">code</param>
+'''<param name="tempId_key">temp_id</param>
+'''<param name="lineId">line_id</param>
+'''<param name="code">code</param>
+'''<param name="tempId">temp_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function UpdTCdTempRelation(Byval lineId_key AS String, _
@@ -88,7 +88,7 @@ Public Function UpdTCdTempRelation(Byval lineId_key AS String, _
            Byval lineId AS String, _
            Byval code AS String, _
            Byval tempId AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            lineId_key, _
            code_key, _
@@ -97,28 +97,28 @@ Public Function UpdTCdTempRelation(Byval lineId_key AS String, _
            code, _
            tempId)
     'SQLコメント
-    '--**テーブル：商品模板?? : t_cd_temp_relation
+    '--**テーブル： : t_cd_temp_relation
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("UPDATE t_cd_temp_relation")
     sb.AppendLine("SET")
-    sb.AppendLine("line_id=@line_id")                                              '生??
-    sb.AppendLine(", code=@code")                                                  'コード
-    sb.AppendLine(", temp_id=@temp_id")                                            '??模板?号
+    sb.AppendLine("line_id=@line_id")                                              'line_id
+    sb.AppendLine(", code=@code")                                                  'code
+    sb.AppendLine(", temp_id=@temp_id")                                            'temp_id
 
     sb.AppendLine("FROM t_cd_temp_relation")
     sb.AppendLine("WHERE 1=1")
         If lineId_key<>"" Then
-            sb.AppendLine("AND line_id=@line_id_key")   '生??
+            sb.AppendLine("AND line_id=@line_id_key")   'line_id
         End If
     If code_key<>"" Then
-            sb.AppendLine("AND code=@code_key")   'コード
+            sb.AppendLine("AND code=@code_key")   'code
         End If
     If tempId_key<>"" Then
-            sb.AppendLine("AND temp_id=@temp_id_key")   '??模板?号
+            sb.AppendLine("AND temp_id=@temp_id_key")   'temp_id
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
     paramList.Add(MakeParam("@code_key", SqlDbType.VarChar, 20, code_key))
@@ -137,43 +137,43 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 商品模板??情報を登録する
+    ''' Infoを登録する
     ''' </summary>
-    '''<param name="lineId">生??</param>
-'''<param name="code">コード</param>
-'''<param name="tempId">??模板?号</param>
-    ''' <returns>商品模板??情報</returns>
+    '''<param name="lineId">line_id</param>
+'''<param name="code">code</param>
+'''<param name="tempId">temp_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function InsTCdTempRelation(Byval lineId AS String, _
            Byval code AS String, _
            Byval tempId AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            lineId, _
            code, _
            tempId)
     'SQLコメント
-    '--**テーブル：商品模板?? : t_cd_temp_relation
+    '--**テーブル： : t_cd_temp_relation
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("INSERT INTO  t_cd_temp_relation")
     sb.AppendLine("(")
-        sb.AppendLine("line_id")                                                   '生??
-        sb.AppendLine(", code")                                                    'コード
-        sb.AppendLine(", temp_id")                                                 '??模板?号
+        sb.AppendLine("line_id")                                                   'line_id
+        sb.AppendLine(", code")                                                    'code
+        sb.AppendLine(", temp_id")                                                 'temp_id
 
     sb.AppendLine(")")
     sb.AppendLine("VALUES(")
-    sb.AppendLine("@line_id")                                                      '生??
-    sb.AppendLine(", @code")                                                       'コード
-    sb.AppendLine(", @temp_id")                                                    '??模板?号
+    sb.AppendLine("@line_id")                                                      'line_id
+    sb.AppendLine(", @code")                                                       'code
+    sb.AppendLine(", @temp_id")                                                    'temp_id
 
     sb.AppendLine(")")
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
     paramList.Add(MakeParam("@code", SqlDbType.VarChar, 20, code))
@@ -188,42 +188,42 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 商品模板??情報を削除する
+    ''' Infoを削除する
     ''' </summary>
-    '''<param name="lineId_key">生??</param>
-'''<param name="code_key">コード</param>
-'''<param name="tempId_key">??模板?号</param>
-    ''' <returns>商品模板??情報</returns>
+    '''<param name="lineId_key">line_id</param>
+'''<param name="code_key">code</param>
+'''<param name="tempId_key">temp_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function DelTCdTempRelation(Byval lineId_key AS String, _
            Byval code_key AS String, _
            Byval tempId_key AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            lineId_key, _
            code_key, _
            tempId_key)
     'SQLコメント
-    '--**テーブル：商品模板?? : t_cd_temp_relation
+    '--**テーブル： : t_cd_temp_relation
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("DELETE FROM t_cd_temp_relation")
     sb.AppendLine("WHERE 1=1")
         If lineId_key<>"" Then
-            sb.AppendLine("AND line_id=@line_id_key")   '生??
+            sb.AppendLine("AND line_id=@line_id_key")   'line_id
         End If
     If code_key<>"" Then
-            sb.AppendLine("AND code=@code_key")   'コード
+            sb.AppendLine("AND code=@code_key")   'code
         End If
     If tempId_key<>"" Then
-            sb.AppendLine("AND temp_id=@temp_id_key")   '??模板?号
+            sb.AppendLine("AND temp_id=@temp_id_key")   'temp_id
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
     paramList.Add(MakeParam("@code_key", SqlDbType.VarChar, 20, code_key))
@@ -243,7 +243,7 @@ End Function
         ''' <returns></returns>
         ''' <remarks></remarks>
         Private Function GetIntValue(ByVal v As Object) As Object
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name )
             If v Is DBNull.Value Or v.ToString = "" Then
                 Return DBNull.Value

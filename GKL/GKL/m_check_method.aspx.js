@@ -29,19 +29,19 @@ function AjaxPost(ajaxActionType){
         }
     });
 }
-// 更新
+// 峏怴
 function ajax_update(){
     AjaxPost('update');
 }
-// 削除
+// 嶍彍
 function ajax_delete(){
     AjaxPost('delete');
 }
-// 登録
+// 搊榐
 function ajax_insert(){
     AjaxPost('insert');
 }
-// 検索
+// 専嶕
 function ajax_select(){
     AjaxPost('select');
 }
@@ -54,11 +54,11 @@ function ajax_select(){
     //Dim tbxChkFormula As String = Request.Form("tbxChkFormula")
     //Dim tbxVerifyMethodExplain As String = Request.Form("tbxVerifyMethodExplain")
 
-//検索
+//専嶕
 //       Return BC.SelMCheckMethod(tbxChkId_key ,tbxChkName_key)
-//登録
+//搊榐
 //       Return BC.InsMCheckMethod(tbxChkId ,tbxChkName ,tbxChkMethod ,tbxChkFormula ,tbxVerifyMethodExplain)
-//削除
+//嶍彍
 //       Return BC.DelMCheckMethod(tbxChkId_key ,tbxChkName_key)
-//更新
+//峏怴
 //       Return BC.UpdMCheckMethod(tbxChkId_key ,tbxChkName_key ,tbxChkId ,tbxChkName ,tbxChkMethod ,tbxChkFormula ,tbxVerifyMethodExplain)

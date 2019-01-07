@@ -13,17 +13,17 @@ Public Class TCheckPlanDA
 
     ''' <summary>
     ''' 
-    ''' ????情報を検索する
+    ''' 检查计划Infoを検索する
     ''' </summary>
-    '''<param name="planNo_key">??No</param>
-'''<param name="chkNo_key">??No</param>
+    '''<param name="planNo_key">计划No</param>
+'''<param name="chkNo_key">检查No</param>
 '''<param name="makeNo_key">作番</param>
 '''<param name="code_key">コード</param>
-'''<param name="lineId_key">生??</param>
-    ''' <returns>????情報</returns>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>检查计划Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
     Public Function SelTCheckPlan(Byval planNo_key AS String, _
@@ -31,7 +31,7 @@ Public Class TCheckPlanDA
            Byval makeNo_key AS String, _
            Byval code_key AS String, _
            Byval lineId_key AS String) As Data.DataTable
-        'EMAB障害対応情報の格納処理
+        'EMAB　ＥＲＲ
         EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            planNo_key, _
            chkNo_key, _
@@ -39,28 +39,28 @@ Public Class TCheckPlanDA
            code_key, _
            lineId_key)
         'SQLコメント
-        '--**テーブル：???? : t_check_plan
+        '--**テーブル：检查计划 : t_check_plan
         Dim sb As New StringBuilder
         'SQL文
         sb.AppendLine("SELECT")
-        sb.AppendLine("plan_no")                                                   '??No
-        sb.AppendLine(", chk_no")                                                  '??No
+        sb.AppendLine("plan_no")                                                   '计划No
+        sb.AppendLine(", chk_no")                                                  '检查No
         sb.AppendLine(", make_no")                                                 '作番
         sb.AppendLine(", code")                                                    'コード
-        sb.AppendLine(", line_id")                                                 '生??
+        sb.AppendLine(", line_id")                                                 '生产线
         sb.AppendLine(", suu")                                                     '数量
-        sb.AppendLine(", yotei_chk_date")   '????日
-        sb.AppendLine(", status")                                                  '状?
+        sb.AppendLine(", yotei_chk_date")   '预订检查日
+        sb.AppendLine(", status")                                                  '状态
         sb.AppendLine(", ins_user")                                                '登録者
         sb.AppendLine(", ins_date")                                                '登録日
 
         sb.AppendLine("FROM t_check_plan")
         sb.AppendLine("WHERE 1=1")
             If planNo_key<>"" Then
-            sb.AppendLine("AND plan_no=@plan_no_key")   '??No
+            sb.AppendLine("AND plan_no=@plan_no_key")   '计划No
         End If
     If chkNo_key<>"" Then
-            sb.AppendLine("AND chk_no=@chk_no_key")   '??No
+            sb.AppendLine("AND chk_no=@chk_no_key")   '检查No
         End If
     If makeNo_key<>"" Then
             sb.AppendLine("AND make_no=@make_no_key")   '作番
@@ -69,10 +69,10 @@ Public Class TCheckPlanDA
             sb.AppendLine("AND code=@code_key")   'コード
         End If
     If lineId_key<>"" Then
-            sb.AppendLine("AND line_id=@line_id_key")   '生??
+            sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@plan_no_key", SqlDbType.VarChar, 20, planNo_key))
     paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
@@ -89,27 +89,27 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' ????情報を更新する
+    ''' 检查计划Infoを更新する
     ''' </summary>
-    '''<param name="planNo_key">??No</param>
-'''<param name="chkNo_key">??No</param>
+    '''<param name="planNo_key">计划No</param>
+'''<param name="chkNo_key">检查No</param>
 '''<param name="makeNo_key">作番</param>
 '''<param name="code_key">コード</param>
-'''<param name="lineId_key">生??</param>
-'''<param name="planNo">??No</param>
-'''<param name="chkNo">??No</param>
+'''<param name="lineId_key">生产线</param>
+'''<param name="planNo">计划No</param>
+'''<param name="chkNo">检查No</param>
 '''<param name="makeNo">作番</param>
 '''<param name="code">コード</param>
-'''<param name="lineId">生??</param>
+'''<param name="lineId">生产线</param>
 '''<param name="suu">数量</param>
-'''<param name="yoteiChkDate">????日</param>
-'''<param name="status">状?</param>
+'''<param name="yoteiChkDate">预订检查日</param>
+'''<param name="status">状态</param>
 '''<param name="insUser">登録者</param>
 '''<param name="insDate">登録日</param>
-    ''' <returns>????情報</returns>
+    ''' <returns>检查计划Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function UpdTCheckPlan(Byval planNo_key AS String, _
@@ -127,7 +127,7 @@ Public Function UpdTCheckPlan(Byval planNo_key AS String, _
            Byval status AS String, _
            Byval insUser AS String, _
            Byval insDate AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            planNo_key, _
            chkNo_key, _
@@ -145,29 +145,29 @@ Public Function UpdTCheckPlan(Byval planNo_key AS String, _
            insUser, _
            insDate)
     'SQLコメント
-    '--**テーブル：???? : t_check_plan
+    '--**テーブル：检查计划 : t_check_plan
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("UPDATE t_check_plan")
     sb.AppendLine("SET")
-    sb.AppendLine("plan_no=@plan_no")                                              '??No
-    sb.AppendLine(", chk_no=@chk_no")                                              '??No
+    sb.AppendLine("plan_no=@plan_no")                                              '计划No
+    sb.AppendLine(", chk_no=@chk_no")                                              '检查No
     sb.AppendLine(", make_no=@make_no")                                            '作番
     sb.AppendLine(", code=@code")                                                  'コード
-    sb.AppendLine(", line_id=@line_id")                                            '生??
+    sb.AppendLine(", line_id=@line_id")                                            '生产线
     sb.AppendLine(", suu=@suu")                                                    '数量
-    sb.AppendLine(", yotei_chk_date=@yotei_chk_date")   '????日
-    sb.AppendLine(", status=@status")                                              '状?
+    sb.AppendLine(", yotei_chk_date=@yotei_chk_date")   '预订检查日
+    sb.AppendLine(", status=@status")                                              '状态
     sb.AppendLine(", ins_user=@ins_user")   '登録者
     sb.AppendLine(", ins_date=@ins_date")   '登録日
 
     sb.AppendLine("FROM t_check_plan")
     sb.AppendLine("WHERE 1=1")
         If planNo_key<>"" Then
-            sb.AppendLine("AND plan_no=@plan_no_key")   '??No
+            sb.AppendLine("AND plan_no=@plan_no_key")   '计划No
         End If
     If chkNo_key<>"" Then
-            sb.AppendLine("AND chk_no=@chk_no_key")   '??No
+            sb.AppendLine("AND chk_no=@chk_no_key")   '检查No
         End If
     If makeNo_key<>"" Then
             sb.AppendLine("AND make_no=@make_no_key")   '作番
@@ -176,10 +176,10 @@ Public Function UpdTCheckPlan(Byval planNo_key AS String, _
             sb.AppendLine("AND code=@code_key")   'コード
         End If
     If lineId_key<>"" Then
-            sb.AppendLine("AND line_id=@line_id_key")   '生??
+            sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@plan_no_key", SqlDbType.VarChar, 20, planNo_key))
     paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
@@ -193,10 +193,10 @@ Public Function UpdTCheckPlan(Byval planNo_key AS String, _
     paramList.Add(MakeParam("@code", SqlDbType.VarChar, 20, code))
     paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
     paramList.Add(MakeParam("@suu", SqlDbType.VarChar, 10, suu))
-    paramList.Add(MakeParam("@yotei_chk_date", SqlDbType.VarChar, 20, yoteiChkDate))
+    paramList.Add(MakeParam("@yotei_chk_date", SqlDbType.date, 3, IIf(yoteiChkDate = "" , DBNull.Value, yoteiChkDate)))
     paramList.Add(MakeParam("@status", SqlDbType.VarChar, 1, status))
-    paramList.Add(MakeParam("@ins_user", SqlDbType.VarChar, 20, insUser))
-    paramList.Add(MakeParam("@ins_date", SqlDbType.VarChar, 20, insDate))
+    paramList.Add(MakeParam("@ins_user", SqlDbType.nvarchar, 20, insUser))
+    paramList.Add(MakeParam("@ins_date", SqlDbType.date, 3, IIf(insDate = "" , DBNull.Value, insDate)))
 
 
     SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray) 
@@ -207,22 +207,22 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' ????情報を登録する
+    ''' 检查计划Infoを登録する
     ''' </summary>
-    '''<param name="planNo">??No</param>
-'''<param name="chkNo">??No</param>
+    '''<param name="planNo">计划No</param>
+'''<param name="chkNo">检查No</param>
 '''<param name="makeNo">作番</param>
 '''<param name="code">コード</param>
-'''<param name="lineId">生??</param>
+'''<param name="lineId">生产线</param>
 '''<param name="suu">数量</param>
-'''<param name="yoteiChkDate">????日</param>
-'''<param name="status">状?</param>
+'''<param name="yoteiChkDate">预订检查日</param>
+'''<param name="status">状态</param>
 '''<param name="insUser">登録者</param>
 '''<param name="insDate">登録日</param>
-    ''' <returns>????情報</returns>
+    ''' <returns>检查计划Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function InsTCheckPlan(Byval planNo AS String, _
@@ -235,7 +235,7 @@ Public Function InsTCheckPlan(Byval planNo AS String, _
            Byval status AS String, _
            Byval insUser AS String, _
            Byval insDate AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            planNo, _
            chkNo, _
@@ -248,37 +248,37 @@ Public Function InsTCheckPlan(Byval planNo AS String, _
            insUser, _
            insDate)
     'SQLコメント
-    '--**テーブル：???? : t_check_plan
+    '--**テーブル：检查计划 : t_check_plan
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("INSERT INTO  t_check_plan")
     sb.AppendLine("(")
-        sb.AppendLine("plan_no")                                                   '??No
-        sb.AppendLine(", chk_no")                                                  '??No
+        sb.AppendLine("plan_no")                                                   '计划No
+        sb.AppendLine(", chk_no")                                                  '检查No
         sb.AppendLine(", make_no")                                                 '作番
         sb.AppendLine(", code")                                                    'コード
-        sb.AppendLine(", line_id")                                                 '生??
+        sb.AppendLine(", line_id")                                                 '生产线
         sb.AppendLine(", suu")                                                     '数量
-        sb.AppendLine(", yotei_chk_date")   '????日
-        sb.AppendLine(", status")                                                  '状?
+        sb.AppendLine(", yotei_chk_date")   '预订检查日
+        sb.AppendLine(", status")                                                  '状态
         sb.AppendLine(", ins_user")                                                '登録者
         sb.AppendLine(", ins_date")                                                '登録日
 
     sb.AppendLine(")")
     sb.AppendLine("VALUES(")
-    sb.AppendLine("@plan_no")                                                      '??No
-    sb.AppendLine(", @chk_no")                                                     '??No
+    sb.AppendLine("@plan_no")                                                      '计划No
+    sb.AppendLine(", @chk_no")                                                     '检查No
     sb.AppendLine(", @make_no")                                                    '作番
     sb.AppendLine(", @code")                                                       'コード
-    sb.AppendLine(", @line_id")                                                    '生??
+    sb.AppendLine(", @line_id")                                                    '生产线
     sb.AppendLine(", @suu")                                                        '数量
-    sb.AppendLine(", @yotei_chk_date")                                             '????日
-    sb.AppendLine(", @status")                                                     '状?
+    sb.AppendLine(", @yotei_chk_date")                                             '预订检查日
+    sb.AppendLine(", @status")                                                     '状态
     sb.AppendLine(", @ins_user")                                                   '登録者
     sb.AppendLine(", @ins_date")                                                   '登録日
 
     sb.AppendLine(")")
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@plan_no", SqlDbType.VarChar, 20, planNo))
     paramList.Add(MakeParam("@chk_no", SqlDbType.VarChar, 20, chkNo))
@@ -286,10 +286,10 @@ Public Function InsTCheckPlan(Byval planNo AS String, _
     paramList.Add(MakeParam("@code", SqlDbType.VarChar, 20, code))
     paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
     paramList.Add(MakeParam("@suu", SqlDbType.VarChar, 10, suu))
-    paramList.Add(MakeParam("@yotei_chk_date", SqlDbType.VarChar, 20, yoteiChkDate))
+    paramList.Add(MakeParam("@yotei_chk_date", SqlDbType.date, 3, IIf(yoteiChkDate = "" , DBNull.Value, yoteiChkDate)))
     paramList.Add(MakeParam("@status", SqlDbType.VarChar, 1, status))
-    paramList.Add(MakeParam("@ins_user", SqlDbType.VarChar, 20, insUser))
-    paramList.Add(MakeParam("@ins_date", SqlDbType.VarChar, 20, insDate))
+    paramList.Add(MakeParam("@ins_user", SqlDbType.nvarchar, 20, insUser))
+    paramList.Add(MakeParam("@ins_date", SqlDbType.date, 3, IIf(insDate = "" , DBNull.Value, insDate)))
 
 
     SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray) 
@@ -300,17 +300,17 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' ????情報を削除する
+    ''' 检查计划Infoを削除する
     ''' </summary>
-    '''<param name="planNo_key">??No</param>
-'''<param name="chkNo_key">??No</param>
+    '''<param name="planNo_key">计划No</param>
+'''<param name="chkNo_key">检查No</param>
 '''<param name="makeNo_key">作番</param>
 '''<param name="code_key">コード</param>
-'''<param name="lineId_key">生??</param>
-    ''' <returns>????情報</returns>
+'''<param name="lineId_key">生产线</param>
+    ''' <returns>检查计划Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function DelTCheckPlan(Byval planNo_key AS String, _
@@ -318,7 +318,7 @@ Public Function DelTCheckPlan(Byval planNo_key AS String, _
            Byval makeNo_key AS String, _
            Byval code_key AS String, _
            Byval lineId_key AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            planNo_key, _
            chkNo_key, _
@@ -326,16 +326,16 @@ Public Function DelTCheckPlan(Byval planNo_key AS String, _
            code_key, _
            lineId_key)
     'SQLコメント
-    '--**テーブル：???? : t_check_plan
+    '--**テーブル：检查计划 : t_check_plan
     Dim sb As New StringBuilder
         'SQL文
     sb.AppendLine("DELETE FROM t_check_plan")
     sb.AppendLine("WHERE 1=1")
         If planNo_key<>"" Then
-            sb.AppendLine("AND plan_no=@plan_no_key")   '??No
+            sb.AppendLine("AND plan_no=@plan_no_key")   '计划No
         End If
     If chkNo_key<>"" Then
-            sb.AppendLine("AND chk_no=@chk_no_key")   '??No
+            sb.AppendLine("AND chk_no=@chk_no_key")   '检查No
         End If
     If makeNo_key<>"" Then
             sb.AppendLine("AND make_no=@make_no_key")   '作番
@@ -344,10 +344,10 @@ Public Function DelTCheckPlan(Byval planNo_key AS String, _
             sb.AppendLine("AND code=@code_key")   'コード
         End If
     If lineId_key<>"" Then
-            sb.AppendLine("AND line_id=@line_id_key")   '生??
+            sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
 
-    'バラメタ格納
+    '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@plan_no_key", SqlDbType.VarChar, 20, planNo_key))
     paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
@@ -369,7 +369,7 @@ End Function
         ''' <returns></returns>
         ''' <remarks></remarks>
         Private Function GetIntValue(ByVal v As Object) As Object
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name )
             If v Is DBNull.Value Or v.ToString = "" Then
                 Return DBNull.Value

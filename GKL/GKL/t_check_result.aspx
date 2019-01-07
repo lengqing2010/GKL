@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"  />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>???果</title>
+    <title>检查结果</title>
 
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
@@ -20,13 +20,13 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>???果</div>
+        <div class='title_div'>检查结果</div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
-            <td>??No : &nbsp;</td>
+            <td>检查No : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxChkNo_key" class="jq_chk_no_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
             </td>
@@ -40,7 +40,7 @@
             <td></td>
             </tr>
             <tr>
-            <td>生?? : &nbsp;</td>
+            <td>生产线 : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
@@ -68,16 +68,16 @@
       <table class='ms_title' style="width:2363px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:210px;">
-                  ??No 20
+                  检查No 20
               </td>
               <td style="width:74px;">
                   年 4
               </td>
               <td style="width:210px;">
-                  ??No 20
+                  计划No 20
               </td>
               <td style="width:170px;">
-                  生?? 10
+                  生产线 10
               </td>
               <td style="width:210px;">
                   作番 20
@@ -89,25 +89,25 @@
                   数量 10
               </td>
               <td style="width:170px;">
-                  ??模板?号 10
+                  检查模板编号 10
               </td>
               <td style="width:30px;">
-                  ???果 1
+                  检查结果 1
               </td>
               <td style="width:210px;">
-                  ??者 20
+                  检查者 20
               </td>
               <td style="width:58px;">
-                  ??開始日 3
+                  检查開始日 3
               </td>
               <td style="width:58px;">
-                  ??完了日 3
+                  检查完了日 3
               </td>
               <td style="width:210px;">
-                  父??No 20
+                  父检查No 20
               </td>
               <td style="width:30px;">
-                  状? 1
+                  状态 1
               </td>
               <td style="width:210px;">
                   登録者 20

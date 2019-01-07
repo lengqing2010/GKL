@@ -14,17 +14,17 @@ Public DA AS NEW MTempNameDA
 
     ''' <summary>
     ''' 
-    ''' 模板名称MS情報を検索する
+    ''' Infoを検索する
     ''' </summary>
-    '''<param name="tempId_key">??模板?号</param>
-    ''' <returns>模板名称MS情報</returns>
+    '''<param name="tempId_key">temp_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function SelMTempName(Byval tempId_key AS String) As Data.DataTable
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            tempId_key)
     'SQLコメント
@@ -34,27 +34,27 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 模板名称MS情報を更新する
+    ''' Infoを更新する
     ''' </summary>
-    '''<param name="tempId_key">??模板?号</param>
-'''<param name="tempId">??模板?号</param>
-'''<param name="tempName">模板名称</param>
-    ''' <returns>模板名称MS情報</returns>
+    '''<param name="tempId_key">temp_id</param>
+'''<param name="tempId">temp_id</param>
+'''<param name="tempName">temp_name</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function UpdMTempName(Byval tempId_key AS String, _
            Byval tempId AS String, _
            Byval tempName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            tempId_key, _
            tempId, _
            tempName)
     'SQLコメント
-    '--**テーブル：模板名称MS : m_temp_name
+    '--**テーブル： : m_temp_name
     Return DA.UpdMTempName( _
            tempId_key, _
            tempId, _
@@ -64,24 +64,24 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 模板名称MS情報を登録する
+    ''' Infoを登録する
     ''' </summary>
-    '''<param name="tempId">??模板?号</param>
-'''<param name="tempName">模板名称</param>
-    ''' <returns>模板名称MS情報</returns>
+    '''<param name="tempId">temp_id</param>
+'''<param name="tempName">temp_name</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function InsMTempName(Byval tempId AS String, _
            Byval tempName AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            tempId, _
            tempName)
     'SQLコメント
-    '--**テーブル：模板名称MS : m_temp_name
+    '--**テーブル： : m_temp_name
     Return DA.InsMTempName( _
            tempId, _
            tempName)
@@ -90,21 +90,21 @@ End Function
 
     ''' <summary>
     ''' 
-    ''' 模板名称MS情報を削除する
+    ''' Infoを削除する
     ''' </summary>
-    '''<param name="tempId_key">??模板?号</param>
-    ''' <returns>模板名称MS情報</returns>
+    '''<param name="tempId_key">temp_id</param>
+    ''' <returns>Info</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  李松涛さん 新規作成 </para>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
 Public Function DelMTempName(Byval tempId_key AS String) As Boolean
-    'EMAB障害対応情報の格納処理
+    'EMAB　ＥＲＲ
     EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
            tempId_key)
     'SQLコメント
-    '--**テーブル：模板名称MS : m_temp_name
+    '--**テーブル： : m_temp_name
     Return DA.DelMTempName( _
            tempId_key)
 

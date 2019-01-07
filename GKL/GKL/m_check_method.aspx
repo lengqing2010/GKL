@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"  />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>??方法MS</title>
+    <title>检查方法MS</title>
 
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
@@ -20,53 +20,60 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>??方法MS</div>
+        <div class='title_div'>检查方法MS</div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
-            <td>??方法ID : &nbsp;</td>
+            <td>检查方法ID : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxChkId_key" class="jq_chk_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td></td>
             </tr>
             <tr>
-            <td>??方法名 : &nbsp;</td>
+            <td>检查方法名 : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxChkName_key" class="jq_chk_name_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
             </td>
-            <td></td>
+            <td>
+        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="20" Width="50" />
+                </td>
             </tr>
         </table>
         <br /> <hr />
 
 <!--Button部-->
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" />
         <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
         <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
         <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
  <br /> <hr />
-
+<div style="margin-left:390px;">
+检查方法<br />( 0:input
+1:scan
+2:固定（合/否）*没有公式)
+</div>
 <!--明細Title部-->
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_title' style="width:850px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
-                  ??方法ID 10
+                  检查方法ID 10
               </td>
               <td style="width:210px;">
-                  ??方法名 20
+                  检查方法名 20
               </td>
-              <td style="width:30px;">
-                  ??方法 1
-              </td>
+              <td style="width:30px;" title="0:input
+1:scan
+2:固定（合/否）*没有公式">
+                  检查方法 
+               </td>
               <td style="width:210px;">
-                  ??方公式 80
+                  检查方公式 80
               </td>
               <td style="">
-                  核?方法?明 200
+                  核对方法说明 200
               </td>
           </tr>
       </table>

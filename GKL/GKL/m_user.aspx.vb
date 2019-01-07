@@ -15,9 +15,6 @@ Partial Class m_user
     ''' <remarks></remarks>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         Me.lblMsg.Text = ""
         If Not IsPostBack Then
@@ -34,32 +31,32 @@ Partial Class m_user
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB障害対応情報の格納処理
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Me.tbxUserCd.Attributes.Item("itType") = "varchar"
-       Me.tbxUserCd.Attributes.Item("itLength") = "10"
-       Me.tbxUserCd.Attributes.Item("itName") = "社員CD"
-       Me.tbxLineId.Attributes.Item("itType") = "varchar"
-       Me.tbxLineId.Attributes.Item("itLength") = "10"
-       Me.tbxLineId.Attributes.Item("itName") = "生産ライン"
-       Me.tbxUserName.Attributes.Item("itType") = "nvarchar"
-       Me.tbxUserName.Attributes.Item("itLength") = "10"
-       Me.tbxUserName.Attributes.Item("itName") = "社員名"
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        Me.tbxUserCd.Attributes.Item("itType") = "nvarchar"
+        Me.tbxUserCd.Attributes.Item("itLength") = "10"
+        Me.tbxUserCd.Attributes.Item("itName") = "用户CD"
+        Me.tbxLineId.Attributes.Item("itType") = "nvarchar"
+        Me.tbxLineId.Attributes.Item("itLength") = "10"
+        Me.tbxLineId.Attributes.Item("itName") = "生产线"
+        Me.tbxUserName.Attributes.Item("itType") = "nvarchar"
+        Me.tbxUserName.Attributes.Item("itLength") = "10"
+        Me.tbxUserName.Attributes.Item("itName") = "用户名"
 
     End Sub
 
     ''' <summary>
     ''' 明細項目設定
     ''' </summary>
-    public Sub MsInit()
-      'EMAB障害対応情報の格納処理
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-            '明細設定
-            Dim dt As DataTable = GetMsData()
-            Me.gvMs.DataSource = dt
-            Me.gvMs.DataBind()
+    Public Sub MsInit()
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        '明細設定
+        Dim dt As DataTable = GetMsData()
+        Me.gvMs.DataSource = dt
+        Me.gvMs.DataBind()
 
     End Sub
 
@@ -70,9 +67,6 @@ Partial Class m_user
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSelect_Click(sender As Object, e As System.EventArgs) Handles btnSelect.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         MsInit()
     End Sub
@@ -84,10 +78,10 @@ Partial Class m_user
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB障害対応情報の格納処理
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Return BC.SelMUser(tbxUserCd_key.Text)
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        Return BC.SelMUser(tbxUserCd_key.Text)
     End Function
 
     ''' <summary>
@@ -97,10 +91,10 @@ Partial Class m_user
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB障害対応情報の格納処理
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Return BC.SelMUser(tbxUserCd.Text).Rows.Count > 0
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        Return BC.SelMUser(tbxUserCd.Text).Rows.Count > 0
     End Function
 
     ''' <summary>
@@ -111,9 +105,6 @@ Partial Class m_user
     ''' <remarks></remarks>
     Protected Sub btnUpdate_Click(sender As Object, e As System.EventArgs) Handles btnUpdate.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.UpdMUser(hiduserCd.Text,tbxuserCd.Text, tbxlineId.Text, tbxuserName.Text)
@@ -131,9 +122,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
         'データ存在チェック
             If IsHaveData() Then
@@ -158,9 +146,6 @@ Me.hidOldRowIdx.Text = ""
     ''' <remarks></remarks>
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
 
-        'EMAB障害対応情報の格納処理
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-                               MyMethod.GetCurrentMethod.Name)
 
             Try
        BC.DelMUser(hiduserCd.Text)

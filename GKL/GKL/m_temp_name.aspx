@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"  />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>模板名称MS</title>
+    <title>m_temp_name</title>
 
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
@@ -20,13 +20,13 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>模板名称MS</div>
+        <div class='title_div'>m_temp_name</div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
-            <td>??模板?号 : &nbsp;</td>
+            <td>temp_id : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
@@ -47,10 +47,10 @@
       <table class='ms_title' style="width:385px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
-                  ??模板?号 10
+                  temp_id 10
               </td>
               <td style="">
-                  模板名称 200
+                  temp_name 200
               </td>
           </tr>
       </table>

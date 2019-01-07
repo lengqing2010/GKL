@@ -27,19 +27,19 @@ function AjaxPost(ajaxActionType){
         }
     });
 }
-// 更新
+// 峏怴
 function ajax_update(){
     AjaxPost('update');
 }
-// 削除
+// 嶍彍
 function ajax_delete(){
     AjaxPost('delete');
 }
-// 登録
+// 搊榐
 function ajax_insert(){
     AjaxPost('insert');
 }
-// 検索
+// 専嶕
 function ajax_select(){
     AjaxPost('select');
 }
@@ -50,11 +50,11 @@ function ajax_select(){
     //Dim tbxLineId As String = Request.Form("tbxLineId")
     //Dim tbxPicName As String = Request.Form("tbxPicName")
 
-//検索
+//専嶕
 //       Return BC.SelMPicture(tbxPicId_key ,tbxLineId_key)
-//登録
+//搊榐
 //       Return BC.InsMPicture(tbxPicId ,tbxLineId ,tbxPicName)
-//削除
+//嶍彍
 //       Return BC.DelMPicture(tbxPicId_key ,tbxLineId_key)
-//更新
+//峏怴
 //       Return BC.UpdMPicture(tbxPicId_key ,tbxLineId_key ,tbxPicId ,tbxLineId ,tbxPicName)

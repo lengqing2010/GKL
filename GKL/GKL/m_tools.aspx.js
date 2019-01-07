@@ -28,19 +28,19 @@ function AjaxPost(ajaxActionType){
         }
     });
 }
-// 更新
+// 峏怴
 function ajax_update(){
     AjaxPost('update');
 }
-// 削除
+// 嶍彍
 function ajax_delete(){
     AjaxPost('delete');
 }
-// 登録
+// 搊榐
 function ajax_insert(){
     AjaxPost('insert');
 }
-// 検索
+// 専嶕
 function ajax_select(){
     AjaxPost('select');
 }
@@ -52,11 +52,11 @@ function ajax_select(){
     //Dim tbxProjectName As String = Request.Form("tbxProjectName")
     //Dim tbxToolName As String = Request.Form("tbxToolName")
 
-//検索
+//専嶕
 //       Return BC.SelMTools(tbxToolId_key ,tbxLineId_key)
-//登録
+//搊榐
 //       Return BC.InsMTools(tbxToolId ,tbxLineId ,tbxProjectName ,tbxToolName)
-//削除
+//嶍彍
 //       Return BC.DelMTools(tbxToolId_key ,tbxLineId_key)
-//更新
+//峏怴
 //       Return BC.UpdMTools(tbxToolId_key ,tbxLineId_key ,tbxToolId ,tbxLineId ,tbxProjectName ,tbxToolName)

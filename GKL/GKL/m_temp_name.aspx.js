@@ -25,19 +25,19 @@ function AjaxPost(ajaxActionType){
         }
     });
 }
-// 更新
+// 峏怴
 function ajax_update(){
     AjaxPost('update');
 }
-// 削除
+// 嶍彍
 function ajax_delete(){
     AjaxPost('delete');
 }
-// 登録
+// 搊榐
 function ajax_insert(){
     AjaxPost('insert');
 }
-// 検索
+// 専嶕
 function ajax_select(){
     AjaxPost('select');
 }
@@ -46,11 +46,11 @@ function ajax_select(){
     //Dim tbxTempId As String = Request.Form("tbxTempId")
     //Dim tbxTempName As String = Request.Form("tbxTempName")
 
-//検索
+//専嶕
 //       Return BC.SelMTempName(tbxTempId_key)
-//登録
+//搊榐
 //       Return BC.InsMTempName(tbxTempId ,tbxTempName)
-//削除
+//嶍彍
 //       Return BC.DelMTempName(tbxTempId_key)
-//更新
+//峏怴
 //       Return BC.UpdMTempName(tbxTempId_key ,tbxTempId ,tbxTempName)

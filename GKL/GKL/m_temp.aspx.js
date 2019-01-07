@@ -41,19 +41,19 @@ function AjaxPost(ajaxActionType){
         }
     });
 }
-// 更新
+// 峏怴
 function ajax_update(){
     AjaxPost('update');
 }
-// 削除
+// 嶍彍
 function ajax_delete(){
     AjaxPost('delete');
 }
-// 登録
+// 搊榐
 function ajax_insert(){
     AjaxPost('insert');
 }
-// 検索
+// 専嶕
 function ajax_select(){
     AjaxPost('select');
 }
@@ -78,11 +78,11 @@ function ajax_select(){
     //Dim tbxKj2 As String = Request.Form("tbxKj2")
     //Dim tbxKjExplain As String = Request.Form("tbxKjExplain")
 
-//検索
+//専嶕
 //       Return BC.SelMTemp(tbxLineId_key ,tbxTempId_key ,tbxChkMethodId_key)
-//登録
+//搊榐
 //       Return BC.InsMTemp(tbxLineId ,tbxTempId ,tbxChkMethodId ,tbxProjectId ,tbxProjectName ,tbxPicId ,tbxPicName ,tbxChkKmName ,tbxPicSign ,tbxChkId ,tbxChkName ,tbxToolId ,tbxKj0 ,tbxKj1 ,tbxKj2 ,tbxKjExplain)
-//削除
+//嶍彍
 //       Return BC.DelMTemp(tbxLineId_key ,tbxTempId_key ,tbxChkMethodId_key)
-//更新
+//峏怴
 //       Return BC.UpdMTemp(tbxLineId_key ,tbxTempId_key ,tbxChkMethodId_key ,tbxLineId ,tbxTempId ,tbxChkMethodId ,tbxProjectId ,tbxProjectName ,tbxPicId ,tbxPicName ,tbxChkKmName ,tbxPicSign ,tbxChkId ,tbxChkName ,tbxToolId ,tbxKj0 ,tbxKj1 ,tbxKj2 ,tbxKjExplain)

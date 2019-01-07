@@ -3,10 +3,10 @@ Imports System.Text
 Imports System.IO
 Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
 Imports MyMethod = System.Reflection.MethodBase
-Partial Class m_project
+Partial Class m_user
     Inherits System.Web.UI.Page
 
-   Public BC AS NEW MProjectBC
+   Public BC AS NEW MUserBC
     ''' <summary>
     ''' PAGE LOAD
     ''' </summary>
@@ -19,41 +19,41 @@ Partial Class m_project
         Me.lblMsg.Text = ""
         If Not IsPostBack Then
 
-            '固定項目設定
+            '屌掕崁栚愝掕
             KoteiInit()
 
-            '明細項目設定
+            '柧嵶崁栚愝掕
             MsInit()
         End If
 
     End Sub
     ''' <summary>
-    ''' 固定項目設定
+    ''' 屌掕崁栚愝掕
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB　ＥＲＲ
+      'EMAB忈奞懳墳忣曬偺奿擺張棟
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
-       Me.tbxProjectId.Attributes.Item("itType") = "varchar"
-       Me.tbxProjectId.Attributes.Item("itLength") = "10"
-       Me.tbxProjectId.Attributes.Item("itName") = "工程ID"
-       Me.tbxLineId.Attributes.Item("itType") = "varchar"
+       Me.tbxUserCd.Attributes.Item("itType") = "nvarchar"
+       Me.tbxUserCd.Attributes.Item("itLength") = "10"
+       Me.tbxUserCd.Attributes.Item("itName") = "用户CD"
+       Me.tbxLineId.Attributes.Item("itType") = "nvarchar"
        Me.tbxLineId.Attributes.Item("itLength") = "10"
        Me.tbxLineId.Attributes.Item("itName") = "生产线"
-       Me.tbxProjectName.Attributes.Item("itType") = "nvarchar"
-       Me.tbxProjectName.Attributes.Item("itLength") = "40"
-       Me.tbxProjectName.Attributes.Item("itName") = "工程名"
+       Me.tbxUserName.Attributes.Item("itType") = "nvarchar"
+       Me.tbxUserName.Attributes.Item("itLength") = "10"
+       Me.tbxUserName.Attributes.Item("itName") = "用户名"
 
     End Sub
 
     ''' <summary>
-    ''' 明細項目設定
+    ''' 柧嵶崁栚愝掕
     ''' </summary>
     public Sub MsInit()
-      'EMAB　ＥＲＲ
+      'EMAB忈奞懳墳忣曬偺奿擺張棟
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
-            '明細設定
+            '柧嵶愝掕
             Dim dt As DataTable = GetMsData()
             Me.gvMs.DataSource = dt
             Me.gvMs.DataBind()
@@ -61,7 +61,7 @@ Partial Class m_project
     End Sub
 
     ''' <summary>
-    ''' 検索
+    ''' 専嶕
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -72,33 +72,33 @@ Partial Class m_project
     End Sub
 
     ''' <summary>
-    ''' 明細データ取得
+    ''' 柧嵶僨乕僞庢摼
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB　ＥＲＲ
+      'EMAB忈奞懳墳忣曬偺奿擺張棟
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
-       Return BC.SelMProject(tbxProjectId_key.Text, tbxLineId_key.Text)
+       Return BC.SelMUser(tbxUserCd_key.Text)
     End Function
 
     ''' <summary>
-    ''' データ存在チェック
+    ''' 僨乕僞懚嵼僠僃僢僋
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB　ＥＲＲ
+      'EMAB忈奞懳墳忣曬偺奿擺張棟
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
-       Return BC.SelMProject(tbxProjectId.Text, tbxLineId.Text).Rows.Count > 0
+       Return BC.SelMUser(tbxUserCd.Text).Rows.Count > 0
     End Function
 
     ''' <summary>
-    ''' 更新
+    ''' 峏怴
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -107,7 +107,7 @@ Partial Class m_project
 
 
             Try
-       BC.UpdMProject(hidprojectId.Text, hidlineId.Text,tbxprojectId.Text, tbxlineId.Text, tbxprojectName.Text)
+       BC.UpdMUser(hiduserCd.Text,tbxuserCd.Text, tbxlineId.Text, tbxuserName.Text)
         MsInit()
             Catch ex As Exception
                 Common.ShowMsg(Me.Page, ex.Message)
@@ -116,20 +116,20 @@ Partial Class m_project
 Me.hidOldRowIdx.Text = ""
     End Sub
     ''' <summary>
-    ''' 登録
+    ''' 搊榐
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
 
-        'データ存在チェック
+        '僨乕僞懚嵼僠僃僢僋
             If IsHaveData() Then
-                Common.ShowMsg(Me.Page, "データ存在しました。")
+                Common.ShowMsg(Me.Page, "僨乕僞懚嵼偟傑偟偨丅")
                 Exit Sub
             End If
             Try
-            BC.InsMProject(tbxprojectId.Text, tbxlineId.Text, tbxprojectName.Text)
+            BC.InsMUser(tbxuserCd.Text, tbxlineId.Text, tbxuserName.Text)
                 MsInit()
             Catch ex As Exception
                 Common.ShowMsg(Me.Page, ex.Message)
@@ -139,7 +139,7 @@ Me.hidOldRowIdx.Text = ""
     End Sub
 
     ''' <summary>
-    ''' 削除
+    ''' 嶍彍
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -148,7 +148,7 @@ Me.hidOldRowIdx.Text = ""
 
 
             Try
-       BC.DelMProject(hidprojectId.Text, hidlineId.Text)
+       BC.DelMUser(hiduserCd.Text)
         MsInit()
             Catch ex As Exception
                 Common.ShowMsg(Me.Page, ex.Message)

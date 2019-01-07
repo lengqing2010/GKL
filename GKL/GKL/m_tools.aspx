@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"  />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>治具MS</title>
+    <title>m_tools</title>
 
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
@@ -20,30 +20,32 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>治具MS</div>
+        <div class='title_div'>m_tools</div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
-            <td>治具ID : &nbsp;</td>
+            <td>tool_id : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxToolId_key" class="jq_tool_id_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td></td>
             </tr>
             <tr>
-            <td>生?? : &nbsp;</td>
+            <td>line_id : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
-            <td></td>
+            <td>
+        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="20" Width="50" />
+                </td>
             </tr>
         </table>
         <br /> <hr />
 
 <!--Button部-->
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" />
+        
         <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
         <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
         <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
@@ -54,23 +56,19 @@
       <table class='ms_title' style="width:815px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:210px;">
-                  治具ID 40
+                  tool_id 40
               </td>
               <td style="width:170px;">
-                  生?? 10
+                  line_id 10
               </td>
               <td style="width:210px;">
-                  工程 40
+                  project_name 40
               </td>
               <td style="">
-                  治具?示文本 80
+                  tool_name 80
               </td>
           </tr>
       </table>
-</div>
-
-<!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_input' style="width:815px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:210px;">
@@ -87,6 +85,11 @@
           </td>
           </tr>
       </table>
+</div>
+
+<!--明細Body部-->
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
+
    <asp:GridView CssClass ="jq_ms" Width="815px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
           <asp:TemplateField><ItemTemplate ><%#Eval("tool_id")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_tool_id" /></asp:TemplateField>
