@@ -7,6 +7,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GKL", "http://localhost:606
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
+		ProjectReferences = ""
 		Debug.AspNetCompiler.VirtualPath = "/localhost_60663"
 		Debug.AspNetCompiler.PhysicalPath = "GKL\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60663\"
@@ -25,28 +26,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GKL", "http://localhost:606
 		DefaultWebSiteLanguage = "Visual Basic"
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GKLC", "http://localhost:50658", "{43111264-B637-41AC-AC5D-205FC4E4436F}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_50658"
-		Debug.AspNetCompiler.PhysicalPath = "GKLC\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50658\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_50658"
-		Release.AspNetCompiler.PhysicalPath = "GKLC\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50658\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "GKLC\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GKCS", "GKCS\GKCS\GKCS.vbproj", "{B0AE817C-7162-4D06-AB5C-CFA6497C2528}"
 EndProject
 Global
@@ -59,10 +38,6 @@ Global
 		{7BA42712-BA62-462F-B68C-474C032ECAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BA42712-BA62-462F-B68C-474C032ECAF8}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{7BA42712-BA62-462F-B68C-474C032ECAF8}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{43111264-B637-41AC-AC5D-205FC4E4436F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43111264-B637-41AC-AC5D-205FC4E4436F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43111264-B637-41AC-AC5D-205FC4E4436F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{43111264-B637-41AC-AC5D-205FC4E4436F}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{B0AE817C-7162-4D06-AB5C-CFA6497C2528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B0AE817C-7162-4D06-AB5C-CFA6497C2528}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0AE817C-7162-4D06-AB5C-CFA6497C2528}.Release|Any CPU.ActiveCfg = Release|Any CPU

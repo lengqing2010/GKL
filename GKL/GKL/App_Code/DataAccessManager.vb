@@ -35,7 +35,11 @@ Public NotInheritable Class DataAccessManager
     ''' <remarks></remarks>
     Public Shared ReadOnly Property Connection() As String
         Get
+
+            'PubInit
+            'Return Pubinit.
             Return connStr
+
         End Get
     End Property
 
