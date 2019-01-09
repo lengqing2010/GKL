@@ -32,6 +32,7 @@ Partial Class PicImport
         Me.btnTouroku = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnSel = New System.Windows.Forms.Button()
+        Me.btnDel = New System.Windows.Forms.Button()
         CType(Me.gv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -39,36 +40,38 @@ Partial Class PicImport
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 14)
+        Me.Label1.Location = New System.Drawing.Point(9, 15)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(53, 12)
+        Me.Label1.Size = New System.Drawing.Size(49, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "生产线："
         '
         'tbxLineCd
         '
-        Me.tbxLineCd.Location = New System.Drawing.Point(68, 9)
+        Me.tbxLineCd.Location = New System.Drawing.Point(68, 10)
         Me.tbxLineCd.Name = "tbxLineCd"
-        Me.tbxLineCd.Size = New System.Drawing.Size(100, 21)
+        Me.tbxLineCd.Size = New System.Drawing.Size(100, 20)
         Me.tbxLineCd.TabIndex = 1
         Me.tbxLineCd.Text = "001"
         '
         'gv
         '
+        Me.gv.AllowUserToAddRows = False
+        Me.gv.AllowUserToDeleteRows = False
         Me.gv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gv.Location = New System.Drawing.Point(11, 38)
+        Me.gv.Location = New System.Drawing.Point(11, 41)
         Me.gv.MultiSelect = False
         Me.gv.Name = "gv"
         Me.gv.ReadOnly = True
         Me.gv.RowTemplate.Height = 23
-        Me.gv.Size = New System.Drawing.Size(526, 333)
+        Me.gv.Size = New System.Drawing.Size(526, 361)
         Me.gv.TabIndex = 2
         '
         'btnFolder
         '
-        Me.btnFolder.Location = New System.Drawing.Point(543, 377)
+        Me.btnFolder.Location = New System.Drawing.Point(543, 408)
         Me.btnFolder.Name = "btnFolder"
-        Me.btnFolder.Size = New System.Drawing.Size(75, 23)
+        Me.btnFolder.Size = New System.Drawing.Size(75, 25)
         Me.btnFolder.TabIndex = 3
         Me.btnFolder.Text = "批量上传"
         Me.btnFolder.UseVisualStyleBackColor = True
@@ -76,49 +79,59 @@ Partial Class PicImport
         'lblFolder
         '
         Me.lblFolder.AutoSize = True
-        Me.lblFolder.Location = New System.Drawing.Point(28, 437)
+        Me.lblFolder.Location = New System.Drawing.Point(28, 473)
         Me.lblFolder.Name = "lblFolder"
-        Me.lblFolder.Size = New System.Drawing.Size(0, 12)
+        Me.lblFolder.Size = New System.Drawing.Size(0, 13)
         Me.lblFolder.TabIndex = 0
         '
         'tbxFolder
         '
-        Me.tbxFolder.Location = New System.Drawing.Point(12, 377)
+        Me.tbxFolder.Location = New System.Drawing.Point(12, 408)
         Me.tbxFolder.Name = "tbxFolder"
-        Me.tbxFolder.Size = New System.Drawing.Size(525, 21)
+        Me.tbxFolder.Size = New System.Drawing.Size(525, 20)
         Me.tbxFolder.TabIndex = 4
         '
         'btnTouroku
         '
-        Me.btnTouroku.Location = New System.Drawing.Point(624, 377)
+        Me.btnTouroku.Location = New System.Drawing.Point(624, 408)
         Me.btnTouroku.Name = "btnTouroku"
-        Me.btnTouroku.Size = New System.Drawing.Size(75, 23)
+        Me.btnTouroku.Size = New System.Drawing.Size(75, 25)
         Me.btnTouroku.TabIndex = 5
         Me.btnTouroku.Text = "登录"
         Me.btnTouroku.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(543, 38)
+        Me.PictureBox1.Location = New System.Drawing.Point(543, 41)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(303, 333)
+        Me.PictureBox1.Size = New System.Drawing.Size(303, 361)
         Me.PictureBox1.TabIndex = 6
         Me.PictureBox1.TabStop = False
         '
         'btnSel
         '
-        Me.btnSel.Location = New System.Drawing.Point(188, 9)
+        Me.btnSel.Location = New System.Drawing.Point(188, 10)
         Me.btnSel.Name = "btnSel"
-        Me.btnSel.Size = New System.Drawing.Size(75, 23)
+        Me.btnSel.Size = New System.Drawing.Size(75, 25)
         Me.btnSel.TabIndex = 7
         Me.btnSel.Text = "查询"
         Me.btnSel.UseVisualStyleBackColor = True
         '
+        'btnDel
+        '
+        Me.btnDel.Location = New System.Drawing.Point(289, 10)
+        Me.btnDel.Name = "btnDel"
+        Me.btnDel.Size = New System.Drawing.Size(75, 25)
+        Me.btnDel.TabIndex = 8
+        Me.btnDel.Text = "删除"
+        Me.btnDel.UseVisualStyleBackColor = True
+        '
         'PicImport
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(852, 417)
+        Me.ClientSize = New System.Drawing.Size(852, 452)
+        Me.Controls.Add(Me.btnDel)
         Me.Controls.Add(Me.btnSel)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnTouroku)
@@ -146,5 +159,6 @@ Partial Class PicImport
     Friend WithEvents btnTouroku As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents btnSel As System.Windows.Forms.Button
+    Friend WithEvents btnDel As System.Windows.Forms.Button
 
 End Class

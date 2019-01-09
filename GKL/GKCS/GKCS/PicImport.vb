@@ -15,7 +15,7 @@ Imports System.IO
 Public Class PicImport
 
     Private conn As String = ConfigurationManager.AppSettings("connectionString").ToString()
-    Private picturePath As String = ConfigurationManager.AppSettings("picturePath").ToString()
+    ' Private picturePath As String = ConfigurationManager.AppSettings("picturePath").ToString()
 
     Private CMsSql As New CMsSql
 
@@ -89,7 +89,7 @@ Public Class PicImport
         sb.AppendLine("SELECT")
         sb.AppendLine("pic_id as 图片ID")                                                    'pic_id
         sb.AppendLine(", line_id as 生产线")                                                 'line_id
-        sb.AppendLine(", pic_name as 图片ID")                                                'pic_name
+        sb.AppendLine(", pic_name as 图片名称")                                                'pic_name
         sb.AppendLine("FROM m_picture")
         sb.AppendLine("WHERE 1=1")
         If picId_key <> "" Then
@@ -98,7 +98,7 @@ Public Class PicImport
         If lineId_key <> "" Then
             sb.AppendLine("AND line_id='" & lineId_key & "'")   'line_id
         End If
-
+        sb.AppendLine("ORDER BY line_id,pic_id")
         Dim dt As DataTable = CMsSql.ExecSelect(sb.ToString)
         CMsSql.CloseConn(CMsSql.conn)
         Return dt
@@ -124,10 +124,42 @@ Public Class PicImport
         If lineId_key <> "" Then
             sb.AppendLine("AND line_id='" & lineId_key & "'")   'line_id
         End If
+        sb.AppendLine("ORDER BY line_id,pic_id")
 
         Dim dt As DataTable = CMsSql.ExecSelect(sb.ToString)
         CMsSql.CloseConn(CMsSql.conn)
         Return dt.Rows(0).Item("pic_conn")
+
+    End Function
+
+    Public Function DelMPicture(ByVal picId_key As String, _
+           ByVal lineId_key As String) As Boolean
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               picId_key, _
+               lineId_key)
+        'SQLコメント
+        '--**テーブル： : m_picture
+        Dim sb As New StringBuilder
+        'SQL文
+        sb.AppendLine("DELETE FROM m_picture")
+        sb.AppendLine("WHERE 1=1")
+        If picId_key <> "" Then
+            sb.AppendLine("AND pic_id=@pic_id_key")   'pic_id
+        End If
+        If lineId_key <> "" Then
+            sb.AppendLine("AND line_id=@line_id_key")   'line_id
+        End If
+
+        '僶儔儊僞奿擺
+        Dim paramList As New List(Of SqlParameter)
+        paramList.Add(MakeParam("@pic_id_key", SqlDbType.VarChar, 10, picId_key))
+        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+
+
+        SQLHelper.ExecuteNonQuery(conn, CommandType.Text, sb.ToString(), paramList.ToArray)
+
+        Return True
 
     End Function
 
@@ -296,11 +328,37 @@ Public Class PicImport
     End Sub
 
     Private Sub InitMs()
-        Dim dt As DataTable = GetLineList("", "")
+        Dim dt As DataTable = GetLineList("", Me.tbxLineCd.Text.Trim)
         gv.DataSource = dt
         gv.Columns(2).Width = 200
     End Sub
     Private Sub tbxLineCd_TextChanged(sender As Object, e As EventArgs) Handles tbxLineCd.TextChanged
 
+    End Sub
+
+    Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
+
+        If Me.gv.CurrentRow Is Nothing Then
+            MsgBox("请输选择要删除的行")
+            Exit Sub
+        End If
+
+        Dim picId As String = Me.gv.CurrentRow.Cells(0).Value
+        Dim lineId As String = Me.gv.CurrentRow.Cells(1).Value
+
+        If picId = "" Then
+            MsgBox("请输选择要删除的行")
+
+            Exit Sub
+        End If
+
+        If lineId = "" Then
+            MsgBox("请输选择要删除的行")
+
+            Exit Sub
+        End If
+
+
+        DelMPicture(picId, lineId)
     End Sub
 End Class

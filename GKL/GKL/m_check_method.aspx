@@ -53,8 +53,13 @@
             <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
             <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
             <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
+            <br />
+            如果没有特殊情况，请不要变更已经存在的检测方法。（影响已经存在的检测记录）
+            追加可以。
+             
         </div>
- <br /> <hr />
+
+ <hr />
 <div style="margin-left:390px;">
 检查方法<br />( 0:input
 1:scan
@@ -65,10 +70,10 @@
       <table class='ms_title' style="width:850px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
-                  检查方法ID 10
+                  检查方法ID 
               </td>
               <td style="width:210px;">
-                  检查方法名 20
+                  检查方法名 
               </td>
               <td style="width:30px;" title="0:input
 1:scan
@@ -76,17 +81,13 @@
                   检查方法 
                </td>
               <td style="width:210px;">
-                  检查方公式 80
+                  检查方公式 
               </td>
               <td style="">
-                  核对方法说明 200
+                  核对方法说明 
               </td>
           </tr>
       </table>
-</div>
-
-<!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_input' style="width:850px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
@@ -106,6 +107,12 @@
           </td>
           </tr>
       </table>
+
+</div>
+
+<!--明細Body部-->
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
+
    <asp:GridView CssClass ="jq_ms" Width="850px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
           <asp:TemplateField><ItemTemplate ><%#Eval("chk_id")%></ItemTemplate><ItemStyle Width="170px" HorizontalAlign="Left" CssClass="jq_chk_id" /></asp:TemplateField>

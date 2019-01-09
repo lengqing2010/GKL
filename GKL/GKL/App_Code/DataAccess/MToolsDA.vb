@@ -42,15 +42,16 @@ Public Class MToolsDA
         sb.AppendLine("FROM m_tools")
         sb.AppendLine("WHERE 1=1")
             If toolId_key<>"" Then
-            sb.AppendLine("AND tool_id=@tool_id_key")   '治具ID
+            'sb.AppendLine("AND tool_id=@tool_id_key")   '治具ID
+            sb.AppendLine("AND tool_id like @tool_id_key")   '治具ID
         End If
-    If lineId_key<>"" Then
+        If lineId_key <> "" Then
             sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
 
     '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
-    paramList.Add(MakeParam("@tool_id_key", SqlDbType.VarChar, 40, toolId_key))
+        paramList.Add(MakeParam("@tool_id_key", SqlDbType.VarChar, 42, "%" & toolId_key & "%"))
     paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
 
     Dim dsInfo As New Data.DataSet

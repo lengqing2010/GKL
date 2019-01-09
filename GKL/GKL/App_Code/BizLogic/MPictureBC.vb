@@ -34,7 +34,20 @@ Public Function SelMPicture(Byval picId_key AS String, _
     Return DA.SelMPicture( _
            picId_key, _
            lineId_key)
-End Function
+    End Function
+
+    Public Function GetLineListPic(ByVal picId_key As String, _
+           ByVal lineId_key As String)
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               picId_key, _
+               lineId_key)
+        'SQLコメント
+        Return DA.GetLineListPic( _
+               picId_key, _
+               lineId_key)
+    End Function
+
 
     ''' <summary>
     ''' 

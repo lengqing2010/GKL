@@ -43,16 +43,16 @@ Public Class MCheckMethodDA
         sb.AppendLine("FROM m_check_method")
         sb.AppendLine("WHERE 1=1")
         If chkId_key <> "" Then
-            sb.AppendLine("AND chk_id=@chk_id_key")   '检查方法ID
+            sb.AppendLine("AND chk_id like @chk_id_key")   '检查方法ID
         End If
         If chkName_key <> "" Then
-            sb.AppendLine("AND chk_name=@chk_name_key")   '检查方法名
+            sb.AppendLine("AND chk_name like @chk_name_key")   '检查方法名
         End If
 
         '僶儔儊僞奿擺
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@chk_id_key", SqlDbType.VarChar, 10, chkId_key))
-        paramList.Add(MakeParam("@chk_name_key", SqlDbType.nvarchar, 20, chkName_key))
+        paramList.Add(MakeParam("@chk_id_key", SqlDbType.VarChar, 12, "%" & chkId_key & "%"))
+        paramList.Add(MakeParam("@chk_name_key", SqlDbType.NVarChar, 22, "%" & chkName_key & "%"))
 
         Dim dsInfo As New Data.DataSet
         FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_check_method", paramList.ToArray)

@@ -46,7 +46,7 @@ Public Class MPictureDA
     If lineId_key<>"" Then
             sb.AppendLine("AND line_id=@line_id_key")   'line_id
         End If
-
+        sb.AppendLine("ORDER BY line_id,pic_id")
     '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@pic_id_key", SqlDbType.VarChar, 10, picId_key))
@@ -57,7 +57,33 @@ Public Class MPictureDA
 
     Return dsInfo.Tables("m_picture")
 
-End Function
+    End Function
+
+
+    Public Function GetLineListPic(ByVal picId_key As String, ByVal lineId_key As String)
+
+        '--**テーブル： : m_picture
+        Dim sb As New StringBuilder
+        'SQL文
+        sb.AppendLine("SELECT")
+        sb.AppendLine("pic_id ")                                                    'pic_id
+        sb.AppendLine(", line_id ")                                                 'line_id
+        sb.AppendLine(", pic_name ")                                                'pic_name
+        sb.AppendLine(", pic_conn ")
+        sb.AppendLine("FROM m_picture")
+        sb.AppendLine("WHERE 1=1")
+        If picId_key <> "" Then
+            sb.AppendLine("AND pic_id='" & picId_key & "'")   'pic_id
+        End If
+        If lineId_key <> "" Then
+            sb.AppendLine("AND line_id='" & lineId_key & "'")   'line_id
+        End If
+        sb.AppendLine("ORDER BY line_id,pic_id")
+        Dim dsInfo As New Data.DataSet
+        FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_picture")
+        Return dsInfo.Tables(0).Rows(0).Item("pic_conn")
+
+    End Function
 
     ''' <summary>
     ''' 

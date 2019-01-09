@@ -43,10 +43,11 @@ Public Class MProjectDA
             If projectId_key<>"" Then
             sb.AppendLine("AND project_id=@project_id_key")   '工程ID
         End If
-    If lineId_key<>"" Then
+        If lineId_key <> "" Then
+
             sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
-
+        sb.AppendLine("ORDER BY line_id,project_id")
     '僶儔儊僞奿擺
     Dim paramList As New List(Of SqlParameter)
     paramList.Add(MakeParam("@project_id_key", SqlDbType.VarChar, 10, projectId_key))

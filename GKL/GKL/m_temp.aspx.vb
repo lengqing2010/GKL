@@ -15,7 +15,6 @@ Partial Class m_temp
     ''' <remarks></remarks>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-
         Me.lblMsg.Text = ""
         If Not IsPostBack Then
 
@@ -194,14 +193,14 @@ Me.hidOldRowIdx.Text = ""
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
 
 
-            Try
-       BC.DelMTemp(hidlineId.Text, hidtempId.Text, hidchkMethodId.Text)
-        MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        Try
+            BC.DelMTemp(hidLineId.Text, hidTempId.Text, hidChkMethodId.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
 
 End Class

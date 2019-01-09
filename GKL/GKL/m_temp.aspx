@@ -132,7 +132,7 @@
               <asp:TextBox ID="tbxPicId" class="jq_pic_id_ipt" runat="server" maxLength="10" style="width:64px;"></asp:TextBox>
           </td>
               <td style="width:110px;">
-              <asp:TextBox ID="tbxPicName" class="jq_pic_name_ipt" runat="server" maxLength="200" style="width:104px;"></asp:TextBox>
+              <asp:TextBox ID="tbxPicName" class="jq_pic_name_ipt" runat="server" maxLength="200" style="width:104px; "></asp:TextBox>
           </td>
               <td style="width:110px;">
               <asp:TextBox ID="tbxChkKmName" class="jq_chk_km_name_ipt" runat="server" maxLength="200" style="width:104px;"></asp:TextBox>
@@ -210,5 +210,28 @@
         <asp:TextBox ID="hidOldRowIdx" runat="server" class="jq_hidOldRowIdx" style=" visibility:hidden;"></asp:TextBox>
     </div>
     </form>
+
+    <script language="javascript">
+
+        function disabledIt(obj) {
+            $(obj).attr("readonly", "readonly");
+            $(obj).css({ "background": "#ccc" });
+            $(obj).attr("tabindex", "-1");
+        }
+
+        disabledIt($("#tbxPicName"));
+
+        $("#tbxPicId").dblclick(function () {
+            window.open("m_picture_popup.aspx?line_id=" + $("#tbxLineId").val() + "&pic_id=" + $("#tbxPicId").attr("id") + "&pic_name_id=" + $("#tbxPicName").attr("id"),
+               'newwindow', "height=700,width=1000,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no");
+
+
+        });
+        
+        $("#tbxPicId").change(function () {
+            htmlobj=$.ajax({ url: "AJAX.aspx?pic_id=" + $(this).val() + "&line_id" + $("#tbxLineId").val(), async: false });
+            $("#tbxPicName").val(htmlobj.responseText);
+        });
+    </script>
 </body>
 </html>
