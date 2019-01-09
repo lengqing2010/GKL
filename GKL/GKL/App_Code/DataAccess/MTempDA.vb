@@ -406,6 +406,12 @@ Public Function DelMTemp(Byval lineId_key AS String, _
         '--**テーブル：模板MS : m_temp
         Dim sb As New StringBuilder
         'SQL文
+
+        sb.AppendLine("DELETE FROM m_temp")
+        sb.AppendLine("WHERE line_id=@line_id_key")   '生产线
+        sb.AppendLine("AND temp_id='" & tempId_key_new & "'")   '检查模板编号
+
+
         sb.AppendLine("INSERT INTO [m_temp]")
         sb.AppendLine("SELECT [line_id]")
         sb.AppendLine("      ,'" & tempId_key_new & "'")
@@ -427,7 +433,6 @@ Public Function DelMTemp(Byval lineId_key AS String, _
 
 
         sb.AppendLine("WHERE line_id=@line_id_key")   '生产线
-
         sb.AppendLine("AND temp_id=@temp_id_key")   '检查模板编号
 
 
@@ -436,7 +441,7 @@ Public Function DelMTemp(Byval lineId_key AS String, _
         Dim paramList As New List(Of SqlParameter)
         paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
         paramList.Add(MakeParam("@temp_id_key", SqlDbType.NVarChar, 10, tempId_key))
-        paramList.Add(MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, chkMethodId_key))
+        '；paramList.Add(MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, tempId_key_new))
 
 
         SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)

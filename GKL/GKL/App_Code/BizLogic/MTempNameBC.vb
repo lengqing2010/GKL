@@ -14,101 +14,121 @@ Public DA AS NEW MTempNameDA
 
     ''' <summary>
     ''' 
-    ''' Infoを検索する
+    ''' 模板名称MSInfoを検索する
     ''' </summary>
-    '''<param name="tempId_key">temp_id</param>
-    ''' <returns>Info</returns>
+    '''<param name="lineId_key">生产线</param>
+    '''<param name="tempId_key">检查模板编号</param>
+    ''' <returns>模板名称MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
+    ''' <para>2019/01/09  作成者：李さん 新規作成 </para>
     ''' </history>
 
-Public Function SelMTempName(Byval tempId_key AS String) As Data.DataTable
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           tempId_key)
-    'SQLコメント
-    Return DA.SelMTempName( _
-           tempId_key)
-End Function
+    Public Function SelMTempName(ByVal lineId_key As String, _
+               ByVal tempId_key As String) As Data.DataTable
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               lineId_key, _
+               tempId_key)
+        'SQLコメント
+        Return DA.SelMTempName( _
+               lineId_key, _
+               tempId_key)
+    End Function
 
     ''' <summary>
     ''' 
-    ''' Infoを更新する
+    ''' 模板名称MSInfoを更新する
     ''' </summary>
-    '''<param name="tempId_key">temp_id</param>
-'''<param name="tempId">temp_id</param>
-'''<param name="tempName">temp_name</param>
-    ''' <returns>Info</returns>
+    '''<param name="lineId_key">生产线</param>
+    '''<param name="tempId_key">检查模板编号</param>
+    '''<param name="lineId">生产线</param>
+    '''<param name="tempId">检查模板编号</param>
+    '''<param name="tempName">模板名称</param>
+    ''' <returns>模板名称MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
+    ''' <para>2019/01/09  作成者：李さん 新規作成 </para>
     ''' </history>
 
-Public Function UpdMTempName(Byval tempId_key AS String, _
-           Byval tempId AS String, _
-           Byval tempName AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           tempId_key, _
-           tempId, _
-           tempName)
-    'SQLコメント
-    '--**テーブル： : m_temp_name
-    Return DA.UpdMTempName( _
-           tempId_key, _
-           tempId, _
-           tempName)
+    Public Function UpdMTempName(ByVal lineId_key As String, _
+               ByVal tempId_key As String, _
+               ByVal lineId As String, _
+               ByVal tempId As String, _
+               ByVal tempName As String) As Boolean
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               lineId_key, _
+               tempId_key, _
+               lineId, _
+               tempId, _
+               tempName)
+        'SQLコメント
+        '--**テーブル：模板名称MS : m_temp_name
+        Return DA.UpdMTempName( _
+               lineId_key, _
+               tempId_key, _
+               lineId, _
+               tempId, _
+               tempName)
 
-End Function
+    End Function
 
     ''' <summary>
     ''' 
-    ''' Infoを登録する
+    ''' 模板名称MSInfoを登録する
     ''' </summary>
-    '''<param name="tempId">temp_id</param>
-'''<param name="tempName">temp_name</param>
-    ''' <returns>Info</returns>
+    '''<param name="lineId">生产线</param>
+    '''<param name="tempId">检查模板编号</param>
+    '''<param name="tempName">模板名称</param>
+    ''' <returns>模板名称MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
+    ''' <para>2019/01/09  作成者：李さん 新規作成 </para>
     ''' </history>
 
-Public Function InsMTempName(Byval tempId AS String, _
-           Byval tempName AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           tempId, _
-           tempName)
-    'SQLコメント
-    '--**テーブル： : m_temp_name
-    Return DA.InsMTempName( _
-           tempId, _
-           tempName)
+    Public Function InsMTempName(ByVal lineId As String, _
+               ByVal tempId As String, _
+               ByVal tempName As String) As Boolean
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               lineId, _
+               tempId, _
+               tempName)
+        'SQLコメント
+        '--**テーブル：模板名称MS : m_temp_name
+        Return DA.InsMTempName( _
+               lineId, _
+               tempId, _
+               tempName)
 
-End Function
+    End Function
 
     ''' <summary>
     ''' 
-    ''' Infoを削除する
+    ''' 模板名称MSInfoを削除する
     ''' </summary>
-    '''<param name="tempId_key">temp_id</param>
-    ''' <returns>Info</returns>
+    '''<param name="lineId_key">生产线</param>
+    '''<param name="tempId_key">检查模板编号</param>
+    ''' <returns>模板名称MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>
-    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
+    ''' <para>2019/01/09  作成者：李さん 新規作成 </para>
     ''' </history>
 
-Public Function DelMTempName(Byval tempId_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           tempId_key)
-    'SQLコメント
-    '--**テーブル： : m_temp_name
-    Return DA.DelMTempName( _
-           tempId_key)
+    Public Function DelMTempName(ByVal lineId_key As String, _
+               ByVal tempId_key As String) As Boolean
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               lineId_key, _
+               tempId_key)
+        'SQLコメント
+        '--**テーブル：模板名称MS : m_temp_name
+        Return DA.DelMTempName( _
+               lineId_key, _
+               tempId_key)
 
 
-End Function
+    End Function
 
 End Class

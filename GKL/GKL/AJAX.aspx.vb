@@ -24,6 +24,26 @@ Partial Class AJAX
             If dt.Rows.Count > 0 Then
                 Response.Write(dt.Rows(0).Item("tool_name"))
             End If
+        ElseIf kbn = "chk_tmp" Then
+
+            Dim BC As New MTempBC
+            Dim dt As Data.DataTable = BC.SelMTemp(Request.QueryString("line_id"), Request.QueryString("temp_id"), "")
+            If dt.Rows.Count <= 0 Then
+                Response.Write("1")
+                Response.End()
+            End If
+            dt = BC.SelMTemp(Request.QueryString("line_id"), Request.QueryString("temp_id_new"), "")
+            If dt.Rows.Count > 0 Then
+                Response.Write("2")
+                Response.End()
+            End If
+
+            Dim BC2 As New MTempNameBC
+            Dim dt2 As Data.DataTable = BC2.SelMTempName(Request.QueryString("line_id"), Request.QueryString("temp_id_new"))
+            If dt2.Rows.Count <= 0 Then
+                Response.Write("3")
+                Response.End()
+            End If
 
         End If
 

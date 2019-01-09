@@ -5,7 +5,9 @@ function AjaxPost(ajaxActionType){
         url: 'SaveDataAjax.aspx',
         data: {
             ajaxActionType : ajaxActionType
+            ,tbxLineId_key:$('#tbxLineId_key').val()
             ,tbxTempId_key:$('#tbxTempId_key').val()
+            ,tbxLineId:$('#tbxLineId').val()
             ,tbxTempId:$('#tbxTempId').val()
             ,tbxTempName:$('#tbxTempName').val()
         },
@@ -42,15 +44,17 @@ function ajax_select(){
     AjaxPost('select');
 }
 // Ajax page use
+    //Dim tbxLineId_key As String = Request.Form("tbxLineId_key")
     //Dim tbxTempId_key As String = Request.Form("tbxTempId_key")
+    //Dim tbxLineId As String = Request.Form("tbxLineId")
     //Dim tbxTempId As String = Request.Form("tbxTempId")
     //Dim tbxTempName As String = Request.Form("tbxTempName")
 
 //専嶕
-//       Return BC.SelMTempName(tbxTempId_key)
+//       Return BC.SelMTempName(tbxLineId_key ,tbxTempId_key)
 //搊榐
-//       Return BC.InsMTempName(tbxTempId ,tbxTempName)
+//       Return BC.InsMTempName(tbxLineId ,tbxTempId ,tbxTempName)
 //嶍彍
-//       Return BC.DelMTempName(tbxTempId_key)
+//       Return BC.DelMTempName(tbxLineId_key ,tbxTempId_key)
 //峏怴
-//       Return BC.UpdMTempName(tbxTempId_key ,tbxTempId ,tbxTempName)
+//       Return BC.UpdMTempName(tbxLineId_key ,tbxTempId_key ,tbxLineId ,tbxTempId ,tbxTempName)

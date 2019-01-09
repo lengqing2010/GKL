@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"  />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>m_temp_name</title>
+    <title>模板名称MS</title>
 
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
@@ -20,13 +20,20 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>m_temp_name</div>
+        <div class='title_div'>模板名称MS</div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         <hr />
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
-            <td>temp_id : &nbsp;</td>
+            <td>生产线 : &nbsp;</td>
+            <td>
+              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+            </td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>检查模板编号 : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
@@ -44,13 +51,16 @@
 
 <!--明細Title部-->
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
-      <table class='ms_title' style="width:385px" cellpadding="0" cellspacing="0">
+      <table class='ms_title' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
-                  temp_id 10
+                  生产线 10
+              </td>
+              <td style="width:170px;">
+                  检查模板编号 10
               </td>
               <td style="">
-                  temp_name 200
+                  模板名称 200
               </td>
           </tr>
       </table>
@@ -58,8 +68,11 @@
 
 <!--明細Body部-->
 <div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
-      <table class='ms_input' style="width:385px" cellpadding="0" cellspacing="0">
+      <table class='ms_input' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
+              <td style="width:170px;">
+              <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
+          </td>
               <td style="width:170px;">
               <asp:TextBox ID="tbxTempId" class="jq_temp_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
           </td>
@@ -68,14 +81,16 @@
           </td>
           </tr>
       </table>
-   <asp:GridView CssClass ="jq_ms" Width="385px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
+   <asp:GridView CssClass ="jq_ms" Width="560px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
+          <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="170px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("temp_id")%></ItemTemplate><ItemStyle Width="170px" HorizontalAlign="Left" CssClass="jq_temp_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("temp_name")%></ItemTemplate><ItemStyle  HorizontalAlign="Left" CssClass="jq_temp_name" /></asp:TemplateField>
       </Columns>
    </asp:GridView>
 </div>
 
+        <asp:TextBox ID="hidLineId" runat="server" class="jq_line_id_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidTempId" runat="server" class="jq_temp_id_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidTempName" runat="server" class="jq_temp_name_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidOldRowIdx" runat="server" class="jq_hidOldRowIdx" style=" visibility:hidden;"></asp:TextBox>

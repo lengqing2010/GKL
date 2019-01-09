@@ -34,26 +34,29 @@ Partial Class m_temp_name
       'EMAB　ＥＲＲ
        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
        MyMethod.GetCurrentMethod.Name)
-       Me.tbxTempId.Attributes.Item("itType") = "varchar"
-       Me.tbxTempId.Attributes.Item("itLength") = "10"
-       Me.tbxTempId.Attributes.Item("itName") = "temp_id"
-       Me.tbxTempName.Attributes.Item("itType") = "nvarchar"
-       Me.tbxTempName.Attributes.Item("itLength") = "200"
-       Me.tbxTempName.Attributes.Item("itName") = "temp_name"
+        Me.tbxLineId.Attributes.Item("itType") = "varchar"
+        Me.tbxLineId.Attributes.Item("itLength") = "10"
+        Me.tbxLineId.Attributes.Item("itName") = "生产线"
+        Me.tbxTempId.Attributes.Item("itType") = "varchar"
+        Me.tbxTempId.Attributes.Item("itLength") = "10"
+        Me.tbxTempId.Attributes.Item("itName") = "检查模板编号"
+        Me.tbxTempName.Attributes.Item("itType") = "nvarchar"
+        Me.tbxTempName.Attributes.Item("itLength") = "200"
+        Me.tbxTempName.Attributes.Item("itName") = "模板名称"
 
     End Sub
 
     ''' <summary>
     ''' 明細項目設定
     ''' </summary>
-    public Sub MsInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-            '明細設定
-            Dim dt As DataTable = GetMsData()
-            Me.gvMs.DataSource = dt
-            Me.gvMs.DataBind()
+    Public Sub MsInit()
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        '明細設定
+        Dim dt As DataTable = GetMsData()
+        Me.gvMs.DataSource = dt
+        Me.gvMs.DataBind()
 
     End Sub
 
@@ -75,10 +78,10 @@ Partial Class m_temp_name
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Return BC.SelMTempName(tbxTempId_key.Text)
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        Return BC.SelMTempName(tbxLineId_key.Text, tbxTempId_key.Text)
     End Function
 
     ''' <summary>
@@ -88,10 +91,10 @@ Partial Class m_temp_name
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Return BC.SelMTempName(tbxTempId.Text).Rows.Count > 0
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        Return BC.SelMTempName(tbxLineId.Text, tbxTempId.Text).Rows.Count > 0
     End Function
 
     ''' <summary>
@@ -103,14 +106,14 @@ Partial Class m_temp_name
     Protected Sub btnUpdate_Click(sender As Object, e As System.EventArgs) Handles btnUpdate.Click
 
 
-            Try
-       BC.UpdMTempName(hidtempId.Text,tbxtempId.Text, tbxtempName.Text)
-        MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        Try
+            BC.UpdMTempName(hidlineId.Text, hidtempId.Text, tbxlineId.Text, tbxtempId.Text, tbxtempName.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
     ''' <summary>
     ''' 登録
@@ -121,18 +124,18 @@ Me.hidOldRowIdx.Text = ""
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
 
         'データ存在チェック
-            If IsHaveData() Then
-                Common.ShowMsg(Me.Page, "数据已经存在")
-                Exit Sub
-            End If
-            Try
-            BC.InsMTempName(tbxtempId.Text, tbxtempName.Text)
-                MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        If IsHaveData() Then
+            Common.ShowMsg(Me.Page, "データ存在しました。")
+            Exit Sub
+        End If
+        Try
+            BC.InsMTempName(tbxlineId.Text, tbxtempId.Text, tbxtempName.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
 
     ''' <summary>
@@ -144,14 +147,14 @@ Me.hidOldRowIdx.Text = ""
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
 
 
-            Try
-       BC.DelMTempName(hidtempId.Text)
-        MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        Try
+            BC.DelMTempName(hidlineId.Text, hidtempId.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
 
 End Class

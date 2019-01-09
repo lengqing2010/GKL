@@ -40,17 +40,16 @@
               <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td>
-                <asp:Button ID="btnCopy0" runat="server" Text="新规模板" CssClass="jq_sel" />
+                <input type ="button" value="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" />
+              <%--  <asp:Button ID="btnNewTelement" runat="server" Text="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" CssClass="jq_sel" />--%>
             </td>
             <td>
-                <asp:Button ID="btnCopy" runat="server" Text="复制到" CssClass="jq_sel" />
+                <asp:Button ID="btnCopy" runat="server" Text="复制到" CssClass="jq_sel" OnClientClick="return CheckCopy();" />
             </td>
             <td>
                 新模板ID：
               <asp:TextBox ID="tbxTempId_new" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
-                新模板名称：
-                <asp:TextBox ID="tbxTempName_new" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
-            </td>
+                &nbsp;</td>
             </tr>
             <tr>
             <td>检查项目ID : &nbsp;</td>
@@ -248,7 +247,7 @@
         $("#tbxPicId").change(function () {
             var obj;
             obj = $(this);
-            htmlobj = $.ajax({ url: "AJAX.aspx?kbn=pic&pic_id=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
+            htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=pic&pic_id=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
             if (htmlobj.responseText == "") {
                 alert("图片不存在");
                 setTimeout(function () { obj.focus(); }, 100);
@@ -260,7 +259,7 @@
         $("#tbxChkId").change(function () {
             var obj;
             obj = $(this);
-            htmlobj = $.ajax({ url: "AJAX.aspx?kbn=chk_method&chk_id=" + $(this).val() , async: false });
+            htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=chk_method&chk_id=" + $(this).val(), async: false });
             if (htmlobj.responseText == "") {
                 alert("检查ID不存在");
                 setTimeout(function () { obj.focus(); }, 100);
@@ -272,7 +271,7 @@
         $("#tbxToolId").change(function () {
             var obj;
             obj = $(this);
-            htmlobj = $.ajax({ url: "AJAX.aspx?kbn=tool&tool_id=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
+            htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=tool&tool_id=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
             if (htmlobj.responseText == "") {
                 alert("治具不存在");
                 setTimeout(function () { obj.focus(); }, 100);
@@ -280,6 +279,29 @@
                 $("#tbxKjExplain").val(htmlobj.responseText);
             }
         });
+
+        function CheckCopy() {
+            var obj;
+            obj = $(this);
+            htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=chk_tmp&temp_id=" + $("#tbxTempId_key").val() + "&line_id=" + $("#tbxLineId").val() + "&temp_id_new=" + $("#tbxTempId_new").val(), async: false });
+            if (htmlobj.responseText == "") {
+                return true;
+            } else if (htmlobj.responseText == "1") {
+                alert("复制源不存在");
+                return false;
+            } else if (htmlobj.responseText == "2") {
+                if (confirm("新模板已经存在，要覆盖吗?")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if (htmlobj.responseText == "3") {
+                alert("新模板名称未登录");
+                return false;
+
+            }
+
+        }
 
     </script>
 </body>

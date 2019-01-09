@@ -247,4 +247,17 @@ Public DA AS NEW MTempDA
 
     End Function
 
+
+    Public Function CopyTemp(ByVal lineId_key As String, _
+                        ByVal tempId_key As String, _
+                        ByVal tempId_key_new As String) As Boolean
+
+        Return DA.CopyTemp( _
+              lineId_key, _
+              tempId_key, _
+              tempId_key_new)
+
+    End Function
+
+
 End Class
