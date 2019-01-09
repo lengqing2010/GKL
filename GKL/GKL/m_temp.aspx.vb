@@ -203,4 +203,7 @@ Me.hidOldRowIdx.Text = ""
         Me.hidOldRowIdx.Text = ""
     End Sub
 
+    Protected Sub btnCopy_Click(sender As Object, e As EventArgs) Handles btnCopy.Click
+
+    End Sub
 End Class

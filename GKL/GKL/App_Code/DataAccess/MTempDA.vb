@@ -390,7 +390,61 @@ Public Function DelMTemp(Byval lineId_key AS String, _
 
     Return True 
 
-End Function
+    End Function
+
+
+
+    Public Function CopyTemp(ByVal lineId_key As String, _
+                            ByVal tempId_key As String, _
+                            ByVal tempId_key_new As String) As Boolean
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               lineId_key, _
+               tempId_key, _
+               tempId_key_new)
+        'SQLコメント
+        '--**テーブル：模板MS : m_temp
+        Dim sb As New StringBuilder
+        'SQL文
+        sb.AppendLine("INSERT INTO [m_temp]")
+        sb.AppendLine("SELECT [line_id]")
+        sb.AppendLine("      ,'" & tempId_key_new & "'")
+        sb.AppendLine("      ,[chk_method_id]")
+        sb.AppendLine("      ,[project_id]")
+        sb.AppendLine("      ,[project_name]")
+        sb.AppendLine("      ,[pic_id]")
+        sb.AppendLine("      ,[pic_name]")
+        sb.AppendLine("      ,[chk_km_name]")
+        sb.AppendLine("      ,[pic_sign]")
+        sb.AppendLine("      ,[chk_id]")
+        sb.AppendLine("      ,[chk_name]")
+        sb.AppendLine("      ,[tool_id]")
+        sb.AppendLine("      ,[kj_0]")
+        sb.AppendLine("      ,[kj_1]")
+        sb.AppendLine("      ,[kj_2]")
+        sb.AppendLine("      ,[kj_explain]")
+        sb.AppendLine("  FROM [m_temp]")
+
+
+        sb.AppendLine("WHERE line_id=@line_id_key")   '生产线
+
+        sb.AppendLine("AND temp_id=@temp_id_key")   '检查模板编号
+
+
+
+        '僶儔儊僞奿擺
+        Dim paramList As New List(Of SqlParameter)
+        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(MakeParam("@temp_id_key", SqlDbType.NVarChar, 10, tempId_key))
+        paramList.Add(MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, chkMethodId_key))
+
+
+        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+
+        Return True
+
+    End Function
+
 
         ''' <summary>
         ''' GetIntValue

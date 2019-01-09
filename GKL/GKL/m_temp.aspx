@@ -30,21 +30,36 @@
             <td>
               <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
+            <td>&nbsp;</td>
             <td></td>
+            <td>&nbsp;</td>
             </tr>
             <tr>
             <td>检查模板编号 : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
-            <td></td>
+            <td>
+                <asp:Button ID="btnCopy0" runat="server" Text="新规模板" CssClass="jq_sel" />
+            </td>
+            <td>
+                <asp:Button ID="btnCopy" runat="server" Text="复制到" CssClass="jq_sel" />
+            </td>
+            <td>
+                新模板ID：
+              <asp:TextBox ID="tbxTempId_new" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+                新模板名称：
+                <asp:TextBox ID="tbxTempName_new" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+            </td>
             </tr>
             <tr>
             <td>检查项目ID : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxChkMethodId_key" class="jq_chk_method_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
+            <td>&nbsp;</td>
             <td></td>
+            <td>&nbsp;</td>
             </tr>
         </table>
         <br /> <hr />
@@ -57,7 +72,7 @@
  <br /> <hr />
 
 <!--明細Title部-->
-<div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
+<%--<div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">--%>
       <table class='ms_title' style="width:1505px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:70px;">
@@ -164,10 +179,10 @@
           </tr>
       </table>
 
-</div>
+<%--</div>--%>
 
 <!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
+<%--<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">--%>
 
    <asp:GridView CssClass ="jq_ms" Width="1505px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
@@ -189,7 +204,7 @@
           <asp:TemplateField><ItemTemplate ><%#Eval("kj_explain")%></ItemTemplate><ItemStyle  HorizontalAlign="Left" CssClass="jq_kj_explain" /></asp:TemplateField>
       </Columns>
    </asp:GridView>
-</div>
+<%--</div>--%>
 
         <asp:TextBox ID="hidLineId" runat="server" class="jq_line_id_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidTempId" runat="server" class="jq_temp_id_ipt" style=" visibility:hidden;"></asp:TextBox>
@@ -219,7 +234,9 @@
             $(obj).attr("tabindex", "-1");
         }
 
+        //图片Disable
         disabledIt($("#tbxPicName"));
+        disabledIt($("#tbxChkName"));
 
         $("#tbxPicId").dblclick(function () {
             window.open("m_picture_popup.aspx?line_id=" + $("#tbxLineId").val() + "&pic_id=" + $("#tbxPicId").attr("id") + "&pic_name_id=" + $("#tbxPicName").attr("id"),
@@ -227,11 +244,43 @@
 
 
         });
-        
+        //图片ID 变更时
         $("#tbxPicId").change(function () {
-            htmlobj=$.ajax({ url: "AJAX.aspx?pic_id=" + $(this).val() + "&line_id" + $("#tbxLineId").val(), async: false });
-            $("#tbxPicName").val(htmlobj.responseText);
+            var obj;
+            obj = $(this);
+            htmlobj = $.ajax({ url: "AJAX.aspx?kbn=pic&pic_id=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
+            if (htmlobj.responseText == "") {
+                alert("图片不存在");
+                setTimeout(function () { obj.focus(); }, 100);
+            } else {
+                $("#tbxPicName").val(htmlobj.responseText);
+            }
         });
+
+        $("#tbxChkId").change(function () {
+            var obj;
+            obj = $(this);
+            htmlobj = $.ajax({ url: "AJAX.aspx?kbn=chk_method&chk_id=" + $(this).val() , async: false });
+            if (htmlobj.responseText == "") {
+                alert("检查ID不存在");
+                setTimeout(function () { obj.focus(); }, 100);
+            } else {
+                $("#tbxChkName").val(htmlobj.responseText);
+            }
+        });
+
+        $("#tbxToolId").change(function () {
+            var obj;
+            obj = $(this);
+            htmlobj = $.ajax({ url: "AJAX.aspx?kbn=tool&tool_id=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
+            if (htmlobj.responseText == "") {
+                alert("治具不存在");
+                setTimeout(function () { obj.focus(); }, 100);
+            } else {
+                $("#tbxKjExplain").val(htmlobj.responseText);
+            }
+        });
+
     </script>
 </body>
 </html>
