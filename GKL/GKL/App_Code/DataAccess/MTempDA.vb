@@ -469,4 +469,74 @@ Public Function DelMTemp(Byval lineId_key AS String, _
     
         End Function
 
+
+
+
+    Public Function SelMTempChk(ByVal lineId_key As String, _
+           ByVal tempId_key As String) As Data.DataTable
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+           lineId_key, _
+           tempId_key)
+        'SQLコメント
+        '--**テーブル：模板MS : m_temp
+        Dim sb As New StringBuilder
+        'SQL文
+        sb.AppendLine("SELECT")
+        sb.AppendLine("case when m_project.project_id IS null then N'工程不存在'  else '' end as 工程检查")
+        sb.AppendLine(",case when m_temp_name.line_id IS null then N'工程名不存在'  else '' end as 工程名检查")
+        sb.AppendLine(",case when m_tools.line_id IS null and m_temp.tool_id IS not null then N'治具不存在' else '' end as 治具检查")
+        sb.AppendLine(",case when m_picture.line_id IS null and m_temp.pic_id IS not null then N'图片不存在' else '' end as 图片检查")
+        sb.AppendLine(",case when m_check_method.chk_id IS null then N'检查规则不存在'  else '' end as 检查规则检查")
+        sb.AppendLine("	, m_temp.line_id")
+        sb.AppendLine("	, m_temp.temp_id")
+        sb.AppendLine("	, m_temp.chk_method_id")
+        sb.AppendLine("	, m_temp.project_id")
+        sb.AppendLine("	, m_temp.project_name")
+        sb.AppendLine("	, m_temp.pic_id")
+        sb.AppendLine("	, m_temp.pic_name")
+        sb.AppendLine("	, m_temp.chk_km_name")
+        sb.AppendLine("	, m_temp.pic_sign")
+        sb.AppendLine("	, m_temp.chk_id")
+        sb.AppendLine("	, m_temp.chk_name")
+        sb.AppendLine("	, m_temp.tool_id")
+        sb.AppendLine("	, m_temp.kj_0")
+        sb.AppendLine("	, m_temp.kj_1")
+        sb.AppendLine("	, m_temp.kj_2")
+        sb.AppendLine("	, m_temp.kj_explain")
+        sb.AppendLine("FROM m_temp ")
+        sb.AppendLine("LEFT JOIN m_project ")
+        sb.AppendLine("	ON m_temp.project_id = m_project.project_id ")
+        sb.AppendLine("	AND m_temp.line_id = m_project.line_id ")
+        sb.AppendLine("LEFT JOIN m_temp_name ")
+        sb.AppendLine("	ON m_temp.line_id = m_temp_name.line_id ")
+        sb.AppendLine("	AND m_temp.temp_id = m_temp_name.temp_id ")
+        sb.AppendLine("LEFT JOIN m_tools ")
+        sb.AppendLine("	ON m_temp.tool_id = m_tools.tool_id ")
+        sb.AppendLine("	AND m_temp.line_id = m_tools.line_id ")
+        sb.AppendLine("LEFT JOIN m_check_method ")
+        sb.AppendLine("	ON m_temp.chk_id = m_check_method.chk_id")
+        sb.AppendLine("LEFT JOIN m_picture ")
+        sb.AppendLine("	ON m_temp.pic_id = m_picture.pic_id ")
+        sb.AppendLine("	AND m_temp.line_id = m_picture.line_id ")
+
+        sb.AppendLine("WHERE 1=1")
+        If lineId_key <> "" Then
+            sb.AppendLine("AND m_temp.line_id=@line_id_key")   '生产线
+        End If
+        If tempId_key <> "" Then
+            sb.AppendLine("AND m_temp.temp_id=@temp_id_key")   '检查模板编号
+        End If
+
+        '僶儔儊僞奿擺
+        Dim paramList As New List(Of SqlParameter)
+        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(MakeParam("@temp_id_key", SqlDbType.NVarChar, 10, tempId_key))
+
+        Dim dsInfo As New Data.DataSet
+        FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_temp", paramList.ToArray)
+
+        Return dsInfo.Tables("m_temp")
+
+    End Function
 End Class

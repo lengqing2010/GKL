@@ -253,11 +253,19 @@ Public DA AS NEW MTempDA
                         ByVal tempId_key_new As String) As Boolean
 
         Return DA.CopyTemp( _
-              lineId_key, _
-              tempId_key, _
-              tempId_key_new)
+                          lineId_key, _
+                          tempId_key, _
+                          tempId_key_new)
 
     End Function
 
+    Public Function SelMTempChk(ByVal lineId_key As String, _
+       ByVal tempId_key As String) As Data.DataTable
+
+        Return DA.SelMTempChk( _
+                      lineId_key, _
+                      tempId_key)
+
+    End Function
 
 End Class
