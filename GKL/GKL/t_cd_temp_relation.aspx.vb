@@ -22,8 +22,6 @@ Partial Class t_cd_temp_relation
             '固定項目設定
             KoteiInit()
 
-            '明細項目設定
-            MsInit()
         End If
 
     End Sub
@@ -68,6 +66,16 @@ Partial Class t_cd_temp_relation
     ''' <remarks></remarks>
     Protected Sub btnSelect_Click(sender As Object, e As System.EventArgs) Handles btnSelect.Click
 
+        If tbxLineId_key.Text.Trim = "" AndAlso tbxTempId_key.Text.Trim = "" Then
+            Common.ShowMsg(Me.Page, "生产线/模板ID 至少输入一个")
+            Exit Sub
+        End If
+
+        'If tbxTempId_key.Text.Trim = "" Then
+        '    Common.ShowMsg(Me.Page, "请输入模板ID")
+        '    Exit Sub
+        'End If
+
         MsInit()
     End Sub
 
@@ -79,9 +87,10 @@ Partial Class t_cd_temp_relation
     Private Function GetMsData() As Data.DataTable
 
       'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Return BC.SelTCdTempRelation(tbxLineId_key.Text, tbxCode_key.Text, tbxTempId_key.Text)
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+
+        Return BC.SelTCdTempRelation(tbxLineId_key.Text, tbxCode_key.Text, tbxTempId_key.Text)
     End Function
 
     ''' <summary>
@@ -157,4 +166,163 @@ Me.hidOldRowIdx.Text = ""
 Me.hidOldRowIdx.Text = ""
     End Sub
 
+
+
+    Protected Sub Upload()
+        If GetUploadFileContent.PostedFile.InputStream.Length < 1 Then
+            'Msg.Text = "请选择文件"
+
+            Common.ShowMsg(Me.Page, "请选择文件")
+            Exit Sub
+
+            Return
+        End If
+
+        Dim FileName As String = GetUploadFileContent.FileName
+        Dim FilePath As String = GetUploadFileContent.PostedFile.FileName
+
+        'If FileName.ToLower().IndexOf(".htm") = -1 Then
+        '    'Msg.Text = "请选择要求的类型的文件"
+        '    Return
+        'End If
+
+        Dim dt As New DataTable
+        dt.Columns.Add("line_id")
+        dt.Columns.Add("code")
+        dt.Columns.Add("temp_id")
+
+        Dim arr() As String
+
+        Dim FileLen As Integer = GetUploadFileContent.PostedFile.ContentLength
+        Dim input As Byte() = New Byte(FileLen - 1) {}
+        Dim UpLoadStream As System.IO.Stream = GetUploadFileContent.PostedFile.InputStream
+        UpLoadStream.Read(input, 0, FileLen)
+        UpLoadStream.Position = 0
+        Dim sr As System.IO.StreamReader = New System.IO.StreamReader(UpLoadStream, System.Text.Encoding.[Default])
+        'Msg.Text = "您上传的文件内容是：<br/><br/>" & sr.ReadToEnd()
+
+        arr = sr.ReadToEnd.Split(vbNewLine)
+
+
+        sr.Close()
+        UpLoadStream.Close()
+        UpLoadStream = Nothing
+        sr = Nothing
+
+        Dim str As String
+
+        For Each str In arr
+            If str.Trim <> "" Then
+
+                Dim dr As DataRow
+                dr = dt.NewRow
+
+                dr.Item(0) = str.Split(",")(0).Replace(vbCr, "").Replace(vbLf, "")
+                dr.Item(1) = str.Split(",")(1).Replace(vbCr, "").Replace(vbLf, "")
+                dr.Item(2) = str.Split(",")(2).Replace(vbCr, "").Replace(vbLf, "")
+
+                dt.Rows.Add(dr)
+
+
+            End If
+        Next
+
+        Try
+
+
+
+            If dt.Rows.Count > 0 Then
+
+                '戻りデータセット
+                Dim dsInfo As New Data.DataSet
+
+                Using conn As New SqlClient.SqlConnection(DataAccessManager.Connection)
+                    conn.Open()
+
+                    Dim sql As String
+                    sql = "TRUNCATE TABLE t_cd_temp_relation_junbi"
+                    Dim SqlCommand As System.Data.SqlClient.SqlCommand = New System.Data.SqlClient.SqlCommand(sql.ToString, conn)
+                    SqlCommand.CommandTimeout = 0
+                    SqlCommand.ExecuteNonQuery()
+
+
+
+                    Dim bCopy As New SqlClient.SqlBulkCopy(DataAccessManager.Connection)
+                    bCopy.BulkCopyTimeout = 30
+                    bCopy.DestinationTableName = "t_cd_temp_relation_junbi"
+                    bCopy.WriteToServer(dt)
+                    Common.ShowMsg(Me.Page, "导入的数据" & dt.Rows.Count & "件")
+
+
+
+                    Dim sb2 As New StringBuilder
+                    With sb2
+                        .AppendLine("SELECT Distinct temp_id")
+                        .AppendLine("FROM t_cd_temp_relation_junbi ")
+                        .AppendLine("WHERE temp_id not in (select temp_id from m_temp_name)")
+                    End With
+
+                    Dim dataAdatpter As System.Data.SqlClient.SqlDataAdapter = Nothing
+                    Dim command As New System.Data.SqlClient.SqlCommand
+                    command = New System.Data.SqlClient.SqlCommand(sb2.ToString(), conn)
+                    command.CommandTimeout = 320
+                    '実行
+
+                    dataAdatpter = New System.Data.SqlClient.SqlDataAdapter(command)
+                    dataAdatpter.Fill(dsInfo)
+                    If dsInfo.Tables(0).Rows.Count > 0 Then
+                    Else
+                        Dim sb As New StringBuilder
+                        With sb
+                            .AppendLine("DELETE")
+                            .AppendLine("FROM t_cd_temp_relation ")
+                            .AppendLine("WHERE  ")
+                            .AppendLine("EXISTS (")
+                            .AppendLine("               SELECT 1")
+                            .AppendLine("               FROM   t_cd_temp_relation_junbi t")
+                            .AppendLine("               WHERE  t_cd_temp_relation.line_id = t.line_id")
+                            .AppendLine("                      AND t_cd_temp_relation.code = t.code")
+                            .AppendLine("                      AND t_cd_temp_relation.temp_id = t.temp_id")
+                            .AppendLine("           )")
+                            .AppendLine("")
+                            .AppendLine("INSERT INTO t_cd_temp_relation SELECT * FROM t_cd_temp_relation_junbi")
+                        End With
+                        SqlCommand.Dispose()
+                        Dim SqlCommand2 As System.Data.SqlClient.SqlCommand = New System.Data.SqlClient.SqlCommand(sql.ToString, conn)
+                        SqlCommand2.CommandTimeout = 0
+                        SqlCommand2.ExecuteNonQuery()
+                        SqlCommand2.Dispose()
+                    End If
+                End Using
+
+                If dsInfo.Tables(0).Rows.Count > 0 Then
+
+                    Dim sbMsg As New StringBuilder
+
+                    For i As Integer = 0 To dsInfo.Tables(0).Rows.Count - 1
+                        If i > 0 Then
+                            sbMsg.Append(",")
+                        End If
+                        sbMsg.Append(dsInfo.Tables(0).Rows(i).Item(0).ToString)
+                    Next
+
+                    Common.ShowMsg(Me.Page, "模板不存在" & sbMsg.ToString)
+                    Exit Sub
+                End If
+
+            Else
+                Common.ShowMsg(Me.Page, "没有导入的数据")
+                Exit Sub
+            End If
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+        End Try
+
+
+    End Sub
+
+
+    Protected Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
+        Upload()
+    End Sub
 End Class

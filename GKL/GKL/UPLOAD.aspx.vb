@@ -35,7 +35,7 @@ Partial Class UPLOAD
         UpLoadStream = Nothing
         sr = Nothing
     End Sub
-    End Sub
+
 End Class
 
 

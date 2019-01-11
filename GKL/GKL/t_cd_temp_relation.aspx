@@ -26,24 +26,26 @@
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
-            <td>line_id : &nbsp;</td>
+            <td>生产线 : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td></td>
             </tr>
             <tr>
-            <td>code : &nbsp;</td>
+            <td>模板CD : &nbsp;</td>
             <td>
-              <asp:TextBox ID="tbxCode_key" class="jq_code_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
-            </td>
+                <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+
+                         </td>
             <td></td>
             </tr>
             <tr>
-            <td>temp_id : &nbsp;</td>
+            <td>商品CD : &nbsp;</td>
             <td>
-              <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
-            </td>
+                 <asp:TextBox ID="tbxCode_key" class="jq_code_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
+
+                          </td>
             <td></td>
             </tr>
         </table>
@@ -61,13 +63,13 @@
       <table class='ms_title' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:70px;">
-                  line_id 10
+                  生产线
               </td>
               <td style="width:210px;">
-                  code 20
+                  商品CD
               </td>
               <td style="">
-                  temp_id 10
+                  模板CD
               </td>
           </tr>
       </table>
@@ -78,7 +80,7 @@
       <table class='ms_input' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:70px;">
-              <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
+              <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:64px;background-color: #FFAA00;"></asp:TextBox>
           </td>
               <td style="width:210px;">
               <asp:TextBox ID="tbxCode" class="jq_code_ipt" runat="server" maxLength="20" style="width:204px;background-color: #FFAA00;"></asp:TextBox>
@@ -95,8 +97,11 @@
           <asp:TemplateField><ItemTemplate ><%#Eval("temp_id")%></ItemTemplate><ItemStyle  HorizontalAlign="Left" CssClass="jq_temp_id" /></asp:TemplateField>
       </Columns>
    </asp:GridView>
-</div>
+      <br />
 
+</div>
+<asp:FileUpload ID="GetUploadFileContent" runat="server" />
+<asp:Button ID="btnUpload" runat="server" Text="导入" />
         <asp:TextBox ID="hidLineId" runat="server" class="jq_line_id_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidCode" runat="server" class="jq_code_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidTempId" runat="server" class="jq_temp_id_ipt" style=" visibility:hidden;"></asp:TextBox>
