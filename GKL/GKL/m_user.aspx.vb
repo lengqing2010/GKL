@@ -49,14 +49,38 @@ Partial Class m_user
     ''' <summary>
     ''' 明細項目設定
     ''' </summary>
-    Public Sub MsInit()
+    Public Sub MsInit(Optional ByVal pageIdx As Integer = 1)
         'EMAB　ＥＲＲ
         EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
         MyMethod.GetCurrentMethod.Name)
         '明細設定
-        Dim dt As DataTable = GetMsData()
-        Me.gvMs.DataSource = dt
+        'Dim dt As DataTable = GetMsData()
+        'Me.gvMs.DataSource = dt
+        'Me.gvMs.DataBind()
+
+
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        '明細設定
+
+        Dim dtMs, dtPageIdx As DataTable
+        Common.GetPageData(GetMsData(), pageIdx, dtMs, dtPageIdx)
+
+        Me.gvMs.DataSource = dtMs
         Me.gvMs.DataBind()
+
+        ddlPageIdx.DataValueField = "idx"
+        ddlPageIdx.DataTextField = "idx"
+        Me.ddlPageIdx.DataSource = dtPageIdx
+        Me.ddlPageIdx.DataBind()
+
+        lblAllPageText.Text = ddlPageIdx.Items.Count
+
+        If ddlPageIdx.Items.Count > pageIdx Then
+            ddlPageIdx.SelectedIndex = pageIdx - 1
+        End If
+
 
     End Sub
 
@@ -164,5 +188,9 @@ Me.hidOldRowIdx.Text = ""
 
     Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Server.Transfer("Default.aspx")
+    End Sub
+
+    Protected Sub ddlPageIdx_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlPageIdx.SelectedIndexChanged
+        MsInit(Me.ddlPageIdx.SelectedValue)
     End Sub
 End Class

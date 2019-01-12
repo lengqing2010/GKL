@@ -18,4 +18,27 @@ Partial Class _Default
     Protected Sub lbCheckMethod_Click(sender As Object, e As EventArgs) Handles lbCheckMethod.Click
         Server.Transfer("m_check_method.aspx")
     End Sub
+
+    Protected Sub lbRelation_Click(sender As Object, e As EventArgs) Handles lbRelation.Click
+        Server.Transfer("t_cd_temp_relation.aspx")
+    End Sub
+
+    Protected Sub lbPlan_Click(sender As Object, e As EventArgs) Handles lbPlan.Click
+        Server.Transfer("t_check_plan.aspx")
+    End Sub
+
+    Protected Sub lbTemp_Click(sender As Object, e As EventArgs) Handles lbTemp.Click
+        Server.Transfer("m_temp.aspx")
+    End Sub
+
+    Protected Sub lbPic_Click(sender As Object, e As EventArgs) Handles lbPic.Click
+
+    End Sub
+
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If Not IsPostBack Then
+
+            Me.lbPic.Attributes.Item("HREF") = ConfigurationManager.AppSettings("PicPath").ToString()
+        End If
+    End Sub
 End Class

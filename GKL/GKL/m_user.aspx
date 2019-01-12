@@ -20,11 +20,12 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>用户MS
+        <div class='title_div'>
+            <%Response.Write(Common.SetTitle("用户MS"))%>
             <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
         </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
-        <hr />
+
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
@@ -33,17 +34,24 @@
               <asp:TextBox ID="tbxUserCd_key" class="jq_user_cd_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td>
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="20" Width="50"/>
-                </td>
+                <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="24" Width="50"/>
+            </td>
             </tr>
         </table>
-        <br /> <hr />
 
 <!--Button部-->
-        <div style="width:520px; text-align:right;">
+        <div style="width:520px; text-align:right;margin-bottom:14px;">
             <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
             <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
             <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            第
+            <asp:DropDownList ID="ddlPageIdx" runat="server" AutoPostBack="true" Width="60px">
+            </asp:DropDownList>
+            /
+            <asp:Label ID="lblAllPageText" runat="server" Text="0"></asp:Label>
+            页
         </div>
 
 <!--明細Title部-->
@@ -76,7 +84,7 @@
 </div>
 
 <!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:540px; margin-top :0px; border-collapse :collapse ;">
 
    <asp:GridView CssClass ="jq_ms" Width="520px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>

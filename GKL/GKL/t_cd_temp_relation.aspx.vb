@@ -3,10 +3,12 @@ Imports System.Text
 Imports System.IO
 Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
 Imports MyMethod = System.Reflection.MethodBase
+Imports System.Data.SqlClient
+
 Partial Class t_cd_temp_relation
     Inherits System.Web.UI.Page
 
-   Public BC AS NEW TCdTempRelationBC
+    Public BC As New TCdTempRelationBC
     ''' <summary>
     ''' PAGE LOAD
     ''' </summary>
@@ -28,34 +30,47 @@ Partial Class t_cd_temp_relation
     ''' <summary>
     ''' 固定項目設定
     ''' </summary>
-    public Sub KoteiInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Me.tbxLineId.Attributes.Item("itType") = "varchar"
-       Me.tbxLineId.Attributes.Item("itLength") = "10"
-       Me.tbxLineId.Attributes.Item("itName") = "line_id"
-       Me.tbxCode.Attributes.Item("itType") = "varchar"
-       Me.tbxCode.Attributes.Item("itLength") = "20"
-       Me.tbxCode.Attributes.Item("itName") = "code"
-       Me.tbxTempId.Attributes.Item("itType") = "varchar"
-       Me.tbxTempId.Attributes.Item("itLength") = "10"
-       Me.tbxTempId.Attributes.Item("itName") = "temp_id"
+    Public Sub KoteiInit()
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        Me.tbxLineId.Attributes.Item("itType") = "varchar"
+        Me.tbxLineId.Attributes.Item("itLength") = "10"
+        Me.tbxLineId.Attributes.Item("itName") = "line_id"
+        Me.tbxCode.Attributes.Item("itType") = "varchar"
+        Me.tbxCode.Attributes.Item("itLength") = "20"
+        Me.tbxCode.Attributes.Item("itName") = "code"
+        Me.tbxTempId.Attributes.Item("itType") = "varchar"
+        Me.tbxTempId.Attributes.Item("itLength") = "10"
+        Me.tbxTempId.Attributes.Item("itName") = "temp_id"
 
     End Sub
 
     ''' <summary>
     ''' 明細項目設定
     ''' </summary>
-    public Sub MsInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-            '明細設定
-            Dim dt As DataTable = GetMsData()
-            Me.gvMs.DataSource = dt
-            Me.gvMs.DataBind()
+    Public Sub MsInit(Optional ByVal pageIdx As Integer = 1)
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        '明細設定
 
+        Dim dtMs, dtPageIdx As DataTable
+        Common.GetPageData(GetMsData(), pageIdx, dtMs, dtPageIdx)
+
+        Me.gvMs.DataSource = dtMs
+        Me.gvMs.DataBind()
+
+        ddlPageIdx.DataValueField = "idx"
+        ddlPageIdx.DataTextField = "idx"
+        Me.ddlPageIdx.DataSource = dtPageIdx
+        Me.ddlPageIdx.DataBind()
+
+        lblAllPageText.Text = ddlPageIdx.Items.Count
+
+        If ddlPageIdx.Items.Count > pageIdx Then
+            ddlPageIdx.SelectedIndex = pageIdx - 1
+        End If
     End Sub
 
     ''' <summary>
@@ -86,7 +101,7 @@ Partial Class t_cd_temp_relation
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB　ＥＲＲ
+        'EMAB　ＥＲＲ
         EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
         MyMethod.GetCurrentMethod.Name)
 
@@ -100,10 +115,10 @@ Partial Class t_cd_temp_relation
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Return BC.SelTCdTempRelation(tbxLineId.Text, tbxCode.Text, tbxTempId.Text).Rows.Count > 0
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
+        MyMethod.GetCurrentMethod.Name)
+        Return BC.SelTCdTempRelation(tbxLineId.Text, tbxCode.Text, tbxTempId.Text).Rows.Count > 0
     End Function
 
     ''' <summary>
@@ -115,14 +130,14 @@ Partial Class t_cd_temp_relation
     Protected Sub btnUpdate_Click(sender As Object, e As System.EventArgs) Handles btnUpdate.Click
 
 
-            Try
-       BC.UpdTCdTempRelation(hidlineId.Text, hidcode.Text, hidtempId.Text,tbxlineId.Text, tbxcode.Text, tbxtempId.Text)
-        MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        Try
+            BC.UpdTCdTempRelation(hidLineId.Text, hidCode.Text, hidTempId.Text, tbxLineId.Text, tbxCode.Text, tbxTempId.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
     ''' <summary>
     ''' 登録
@@ -133,18 +148,18 @@ Me.hidOldRowIdx.Text = ""
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
 
         'データ存在チェック
-            If IsHaveData() Then
-                Common.ShowMsg(Me.Page, "数据已经存在")
-                Exit Sub
-            End If
-            Try
-            BC.InsTCdTempRelation(tbxlineId.Text, tbxcode.Text, tbxtempId.Text)
-                MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        If IsHaveData() Then
+            Common.ShowMsg(Me.Page, "数据已经存在")
+            Exit Sub
+        End If
+        Try
+            BC.InsTCdTempRelation(tbxLineId.Text, tbxCode.Text, tbxTempId.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
 
     ''' <summary>
@@ -156,14 +171,14 @@ Me.hidOldRowIdx.Text = ""
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
 
 
-            Try
-       BC.DelTCdTempRelation(hidlineId.Text, hidcode.Text, hidtempId.Text)
-        MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        Try
+            BC.DelTCdTempRelation(hidLineId.Text, hidCode.Text, hidTempId.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
 
 
@@ -237,37 +252,39 @@ Me.hidOldRowIdx.Text = ""
                 Dim dsInfo As New Data.DataSet
 
                 Using conn As New SqlClient.SqlConnection(DataAccessManager.Connection)
+
                     conn.Open()
 
+                    'Dim sqlTransaction As SqlTransaction = conn.BeginTransaction()
+
                     Dim sql As String
-                    sql = "TRUNCATE TABLE t_cd_temp_relation_junbi"
-                    Dim SqlCommand As System.Data.SqlClient.SqlCommand = New System.Data.SqlClient.SqlCommand(sql.ToString, conn)
+                    'sql = "TRUNCATE TABLE #t_cd_temp_relation_junbi"
+                    sql = "SELECT * INTO #t_cd_temp_relation_junbi FROM t_cd_temp_relation WHERE 1<>1"
+                    Dim SqlCommand As System.Data.SqlClient.SqlCommand = conn.CreateCommand()
+                    SqlCommand.CommandText = sql
                     SqlCommand.CommandTimeout = 0
+                    'SqlCommand.Transaction = sqlTransaction
                     SqlCommand.ExecuteNonQuery()
 
 
 
-                    Dim bCopy As New SqlClient.SqlBulkCopy(DataAccessManager.Connection)
+                    Dim bCopy As New SqlClient.SqlBulkCopy(conn)
                     bCopy.BulkCopyTimeout = 30
-                    bCopy.DestinationTableName = "t_cd_temp_relation_junbi"
+                    bCopy.DestinationTableName = "#t_cd_temp_relation_junbi"
                     bCopy.WriteToServer(dt)
-                    Common.ShowMsg(Me.Page, "导入的数据" & dt.Rows.Count & "件")
-
-
 
                     Dim sb2 As New StringBuilder
                     With sb2
                         .AppendLine("SELECT Distinct temp_id")
-                        .AppendLine("FROM t_cd_temp_relation_junbi ")
+                        .AppendLine("FROM #t_cd_temp_relation_junbi ")
                         .AppendLine("WHERE temp_id not in (select temp_id from m_temp_name)")
                     End With
 
                     Dim dataAdatpter As System.Data.SqlClient.SqlDataAdapter = Nothing
-                    Dim command As New System.Data.SqlClient.SqlCommand
+                    Dim command As System.Data.SqlClient.SqlCommand = conn.CreateCommand()
                     command = New System.Data.SqlClient.SqlCommand(sb2.ToString(), conn)
                     command.CommandTimeout = 320
                     '実行
-
                     dataAdatpter = New System.Data.SqlClient.SqlDataAdapter(command)
                     dataAdatpter.Fill(dsInfo)
                     If dsInfo.Tables(0).Rows.Count > 0 Then
@@ -279,20 +296,25 @@ Me.hidOldRowIdx.Text = ""
                             .AppendLine("WHERE  ")
                             .AppendLine("EXISTS (")
                             .AppendLine("               SELECT 1")
-                            .AppendLine("               FROM   t_cd_temp_relation_junbi t")
+                            .AppendLine("               FROM   #t_cd_temp_relation_junbi t")
                             .AppendLine("               WHERE  t_cd_temp_relation.line_id = t.line_id")
                             .AppendLine("                      AND t_cd_temp_relation.code = t.code")
                             .AppendLine("                      AND t_cd_temp_relation.temp_id = t.temp_id")
                             .AppendLine("           )")
                             .AppendLine("")
-                            .AppendLine("INSERT INTO t_cd_temp_relation SELECT * FROM t_cd_temp_relation_junbi")
+                            .AppendLine("INSERT INTO t_cd_temp_relation SELECT * FROM #t_cd_temp_relation_junbi")
                         End With
                         SqlCommand.Dispose()
-                        Dim SqlCommand2 As System.Data.SqlClient.SqlCommand = New System.Data.SqlClient.SqlCommand(sql.ToString, conn)
+                        Dim SqlCommand2 As System.Data.SqlClient.SqlCommand = conn.CreateCommand()
+                        SqlCommand2.CommandText = sb.ToString
+                        'SqlCommand2.Transaction = sqlTransaction
                         SqlCommand2.CommandTimeout = 0
                         SqlCommand2.ExecuteNonQuery()
                         SqlCommand2.Dispose()
                     End If
+
+                    'sqlTransaction.Commit()
+
                 End Using
 
                 If dsInfo.Tables(0).Rows.Count > 0 Then
@@ -308,6 +330,8 @@ Me.hidOldRowIdx.Text = ""
 
                     Common.ShowMsg(Me.Page, "模板不存在" & sbMsg.ToString)
                     Exit Sub
+                Else
+                    Common.ShowMsg(Me.Page, "导入的数据" & dt.Rows.Count & "件")
                 End If
 
             Else
@@ -324,5 +348,13 @@ Me.hidOldRowIdx.Text = ""
 
     Protected Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
         Upload()
+    End Sub
+
+    Protected Sub ddlPageIdx_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlPageIdx.SelectedIndexChanged
+        MsInit(Me.ddlPageIdx.SelectedValue)
+    End Sub
+
+    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Server.Transfer("Default.aspx")
     End Sub
 End Class

@@ -21,11 +21,11 @@
 <form id="form1" runat="server">
     <div>
 
-        <div class='title_div'>检查方法MS
+        <div class='title_div'> <%Response.Write(Common.SetTitle("检查方法MS"))%>
             <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
         </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
-        <hr />
+        
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
@@ -45,7 +45,7 @@
                 </td>
             </tr>
         </table>
-        <br /> <hr />
+        <br /> 
 
 <!--Button部-->
         <div style="width:820px; text-align:right;">
@@ -59,7 +59,7 @@
              
         </div>
 
- <hr />
+ 
 <div style="margin-left:390px;">
 检查方法<br />( 0:input
 1:scan
@@ -111,7 +111,7 @@
 </div>
 
 <!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:870px; margin-top :0px; border-collapse :collapse ;">
 
    <asp:GridView CssClass ="jq_ms" Width="850px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>

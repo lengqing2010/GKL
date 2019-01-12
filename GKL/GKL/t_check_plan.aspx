@@ -20,11 +20,21 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>检查计划</div>
+        <div class='title_div'><%Response.Write(Common.SetTitle("检查计划"))%>
+            <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" /></div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
-        <hr />
+        
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
+
+            <tr>
+            <td>预订检查日 : &nbsp;</td>
+            <td>
+              <asp:TextBox ID="tbxCheckDate_key" class="jq_CheckDate_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
+            </td>
+            <td></td>
+            </tr>
+
             <tr>
             <td>计划No : &nbsp;</td>
             <td>
@@ -58,108 +68,125 @@
             <td>
               <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
-            <td></td>
+            <td>
+            <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" height="24"/>
+                </td>
             </tr>
         </table>
-        <br /> <hr />
+        <br /> 
 
 <!--Button部-->
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" />
-        <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
-        <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
-        <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
- <br /> <hr />
+        <div style="width:560px; text-align:right;">
+
+    <!--Button部-->
+            <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
+            <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
+            <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            第
+            <asp:DropDownList ID="ddlPageIdx" runat="server" AutoPostBack="true" Width="60px">
+            </asp:DropDownList>
+            /
+            <asp:Label ID="lblAllPageText" runat="server" Text="0"></asp:Label>
+            页
+        </div>
+ <br /> 
 
 <!--明細Title部-->
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
-      <table class='ms_title' style="width:1581px" cellpadding="0" cellspacing="0">
+      <table class='ms_title' style="width:1000px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:210px;">
-                  计划No 20
+              <td style="width:50px;">
+                  计划No</td>
+              <td style="width:110px;">
+                  检查No
               </td>
-              <td style="width:210px;">
-                  检查No 20
+              <td style="width:90px;">
+                  作番
               </td>
-              <td style="width:210px;">
-                  作番 20
+              <td style="width:90px;">
+                  コード
               </td>
-              <td style="width:210px;">
-                  コード 20
+              <td style="width:90px;">
+                  生产线
               </td>
-              <td style="width:170px;">
-                  生产线 10
+              <td style="width:90px;">
+                  数量
               </td>
-              <td style="width:170px;">
-                  数量 10
-              </td>
-              <td style="width:58px;">
-                  预订检查日 3
+              <td style="width:68px;">
+                  预订检查日
               </td>
               <td style="width:30px;">
-                  状态 1
+                  状态
               </td>
-              <td style="width:210px;">
-                  登録者 20
+              <td style="width:60px;">
+                  向先
               </td>
               <td style="">
-                  登録日 3
+                  备注
               </td>
+          </tr>
+      </table>
+      <table class='ms_input' style="width:1000px" cellpadding="0" cellspacing="0">
+          <tr>
+              <td style="width:50px;">
+              <asp:TextBox ID="tbxPlanNo" class="jq_plan_no_ipt" runat="server" maxLength="20" style="width:44px;background-color: #FFAA00;"></asp:TextBox>
+          </td>
+              <td style="width:110px;">
+              <asp:TextBox ID="tbxChkNo" class="jq_chk_no_ipt" runat="server" maxLength="20" style="width:104px;background-color: #FFAA00;"></asp:TextBox>
+          </td>
+              <td style="width:90px;">
+              <asp:TextBox ID="tbxMakeNo" class="jq_make_no_ipt" runat="server" maxLength="20" style="width:84px;background-color: #FFAA00;"></asp:TextBox>
+          </td>
+              <td style="width:90px;">
+              <asp:TextBox ID="tbxCode" class="jq_code_ipt" runat="server" maxLength="20" style="width:84px;background-color: #FFAA00;"></asp:TextBox>
+          </td>
+              <td style="width:90px;">
+              <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:84px;background-color: #FFAA00;"></asp:TextBox>
+          </td>
+              <td style="width:90px;">
+              <asp:TextBox ID="tbxSuu" class="jq_suu_ipt" runat="server" maxLength="10" style="width:84px;"></asp:TextBox>
+          </td>
+              <td style="width:68px;">
+              <asp:TextBox ID="tbxYoteiChkDate" class="jq_yotei_chk_date_ipt" runat="server" maxLength="10" style="width:62px;"></asp:TextBox>
+          </td>
+              <td style="width:30px;">
+              <asp:TextBox ID="tbxStatus" class="jq_status_ipt" runat="server" maxLength="1" style="width:24px;" ToolTip="默认0， 请不要随意修改"></asp:TextBox>
+          </td>
+              <td style="width:60px;">
+              <asp:TextBox ID="tbxInsUser" class="jq_ins_user_ipt" runat="server" maxLength="20" style="width:54px;"></asp:TextBox>
+          </td>
+              <td style="">
+              <asp:TextBox ID="tbxInsDate" class="jq_ins_date_ipt" runat="server" maxLength="200" style="width:248px;"></asp:TextBox>
+          </td>
           </tr>
       </table>
 </div>
 
 <!--明細Body部-->
 <div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
-      <table class='ms_input' style="width:1581px" cellpadding="0" cellspacing="0">
-          <tr>
-              <td style="width:210px;">
-              <asp:TextBox ID="tbxPlanNo" class="jq_plan_no_ipt" runat="server" maxLength="20" style="width:204px;background-color: #FFAA00;"></asp:TextBox>
-          </td>
-              <td style="width:210px;">
-              <asp:TextBox ID="tbxChkNo" class="jq_chk_no_ipt" runat="server" maxLength="20" style="width:204px;background-color: #FFAA00;"></asp:TextBox>
-          </td>
-              <td style="width:210px;">
-              <asp:TextBox ID="tbxMakeNo" class="jq_make_no_ipt" runat="server" maxLength="20" style="width:204px;background-color: #FFAA00;"></asp:TextBox>
-          </td>
-              <td style="width:210px;">
-              <asp:TextBox ID="tbxCode" class="jq_code_ipt" runat="server" maxLength="20" style="width:204px;background-color: #FFAA00;"></asp:TextBox>
-          </td>
-              <td style="width:170px;">
-              <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
-          </td>
-              <td style="width:170px;">
-              <asp:TextBox ID="tbxSuu" class="jq_suu_ipt" runat="server" maxLength="10" style="width:164px;"></asp:TextBox>
-          </td>
-              <td style="width:58px;">
-              <asp:TextBox ID="tbxYoteiChkDate" class="jq_yotei_chk_date_ipt" runat="server" maxLength="3" style="width:52px;"></asp:TextBox>
-          </td>
-              <td style="width:30px;">
-              <asp:TextBox ID="tbxStatus" class="jq_status_ipt" runat="server" maxLength="1" style="width:24px;"></asp:TextBox>
-          </td>
-              <td style="width:210px;">
-              <asp:TextBox ID="tbxInsUser" class="jq_ins_user_ipt" runat="server" maxLength="20" style="width:204px;"></asp:TextBox>
-          </td>
-              <td style="">
-              <asp:TextBox ID="tbxInsDate" class="jq_ins_date_ipt" runat="server" maxLength="3" style="width:48px;"></asp:TextBox>
-          </td>
-          </tr>
-      </table>
-   <asp:GridView CssClass ="jq_ms" Width="1581px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
+
+   <asp:GridView CssClass ="jq_ms" Width="1000px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
-          <asp:TemplateField><ItemTemplate ><%#Eval("plan_no")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_plan_no" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_no")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_chk_no" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("make_no")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_make_no" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("code")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_code" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="170px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("suu")%></ItemTemplate><ItemStyle Width="170px" HorizontalAlign="Left" CssClass="jq_suu" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("yotei_chk_date")%></ItemTemplate><ItemStyle Width="58px" HorizontalAlign="Left" CssClass="jq_yotei_chk_date" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("plan_no")%></ItemTemplate><ItemStyle Width="50px" HorizontalAlign="Left" CssClass="jq_plan_no" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_no")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_chk_no" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("make_no")%></ItemTemplate><ItemStyle Width="90px" HorizontalAlign="Left" CssClass="jq_make_no" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("code")%></ItemTemplate><ItemStyle Width="90px" HorizontalAlign="Left" CssClass="jq_code" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="90px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("suu")%></ItemTemplate><ItemStyle Width="90px" HorizontalAlign="Left" CssClass="jq_suu" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("yotei_chk_date")%></ItemTemplate><ItemStyle Width="68px" HorizontalAlign="Left" CssClass="jq_yotei_chk_date" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("status")%></ItemTemplate><ItemStyle Width="30px" HorizontalAlign="Left" CssClass="jq_status" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("ins_user")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_ins_user" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("ins_date")%></ItemTemplate><ItemStyle  HorizontalAlign="Left" CssClass="jq_ins_date" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("xiangxian")%></ItemTemplate><ItemStyle Width="60px" HorizontalAlign="Left" CssClass="jq_ins_user" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("mark")%></ItemTemplate><ItemStyle  HorizontalAlign="Left" CssClass="jq_ins_date" /></asp:TemplateField>
       </Columns>
    </asp:GridView>
 </div>
+        <br />
 
+        <div style="width:560px; text-align:right;">
+            <asp:FileUpload ID="GetUploadFileContent" runat="server" Width="500" />
+            <asp:Button ID="btnUpload" runat="server" Text="导入" />
+        </div>
         <asp:TextBox ID="hidPlanNo" runat="server" class="jq_plan_no_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidChkNo" runat="server" class="jq_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidMakeNo" runat="server" class="jq_make_no_ipt" style=" visibility:hidden;"></asp:TextBox>
@@ -173,5 +200,32 @@
         <asp:TextBox ID="hidOldRowIdx" runat="server" class="jq_hidOldRowIdx" style=" visibility:hidden;"></asp:TextBox>
     </div>
     </form>
+
+        <script language="javascript">
+            $(".jq_upd,.jq_ins").click(function (e) {
+                if (!GetDateFormat($("#tbxYoteiChkDate")[0]) {
+                    alert("日期形式错误！");
+
+                    e.stopPropagation()
+                    e.preventDefault();
+                    this.focus();
+                    return false;
+                }
+                if (!chkHankakuSuuji($("#tbxSuu")[0].value) {
+                    alert("请输入数字！");
+
+                    e.stopPropagation()
+                    e.preventDefault();
+                    this.focus();
+                    return false;
+                }
+                
+
+                
+            });
+
+
+
+    </script>
 </body>
 </html>

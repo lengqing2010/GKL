@@ -20,9 +20,10 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>模板MS</div>
+        <div class='title_div'><%Response.Write(Common.SetTitle("模板MS"))%><asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
+            </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
-        <hr />
+        
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
@@ -40,11 +41,11 @@
               <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td>
-                <input type ="button" value="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" />
+                <input type ="button" value="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" style="height:24px;width:80px;"  />
               <%--  <asp:Button ID="btnNewTelement" runat="server" Text="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" CssClass="jq_sel" />--%>
             </td>
             <td>
-                <asp:Button ID="btnCopy" runat="server" Text="复制到" CssClass="jq_sel" OnClientClick="return CheckCopy();" />
+                <asp:Button ID="btnCopy" runat="server" Text="复制到" CssClass="jq_sel" OnClientClick="return CheckCopy();" Height="24px" />
             </td>
             <td>
                 新模板ID：
@@ -61,15 +62,15 @@
             <td>&nbsp;</td>
             </tr>
         </table>
-        <br /> <hr />
+        <br /> 
 
 <!--Button部-->
         <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" />
         <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
         <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
         <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
-        <input type ="button" value="检查模板" OnClick="CheckTemp(); return false;" />
- <br /> <hr />
+        <input type ="button" value="检查模板" OnClick="CheckTemp(); return false;" style="width:80px;" />
+ <br /> 
 
 <!--明細Title部-->
 <%--<div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">--%>

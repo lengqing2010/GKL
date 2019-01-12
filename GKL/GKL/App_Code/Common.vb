@@ -13,4 +13,40 @@ Public Class Common
         page.ClientScript.RegisterStartupScript(page.GetType(), "ShowMessage", csScript.ToString, True)
 
     End Sub
+
+    Public Shared Function GetPageData(ByVal inDt As Data.DataTable, ByVal pageIdx As Integer, ByRef outDt As Data.DataTable, ByRef pageListDt As Data.DataTable) As Data.DataTable
+
+        Dim onePageRowCnt As Integer = 100
+        Dim mxPageIdx As Integer = Math.Ceiling(inDt.Rows.Count / onePageRowCnt)
+
+        Dim dt As Data.DataTable = inDt.Clone
+        For i = (pageIdx - 1) * onePageRowCnt To (pageIdx) * onePageRowCnt - 1
+            If i < inDt.Rows.Count Then
+                dt.Rows.Add(inDt.Rows(i).ItemArray)
+            End If
+
+        Next
+        outDt = dt
+
+        Dim dt2 As New Data.DataTable
+        dt2.Columns.Add("idx")
+        For i As Integer = 1 To mxPageIdx
+            Dim dr As Data.DataRow = dt2.NewRow
+            dr.Item(0) = i.ToString
+            dt2.Rows.Add(dr)
+        Next
+        pageListDt = dt2
+
+    End Function
+
+    Public Shared Function SetTitle(ByVal txt As String) As String
+
+        Dim str As String
+        str = "检查系统 <" & txt & ">"
+        Return str
+
+    End Function
+
+
+
 End Class

@@ -20,12 +20,12 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>治具MS
+        <div class='title_div'> <%Response.Write(Common.SetTitle("治具MS"))%>
             <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
         </div>
 
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
-        <hr />
+        
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
@@ -46,7 +46,7 @@
             </tr>
 
         </table>
-        <br /> <hr />
+        <br /> 
 
 <!--Button部-->
         <div style="width:820px; text-align:right;">
@@ -55,7 +55,7 @@
             <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
             <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
         </div>
- <br /> <hr />
+ <br /> 
 
 <!--明細Title部-->
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
@@ -78,7 +78,7 @@
 </div>
 
 <!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:835px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_input' style="width:815px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:210px;">

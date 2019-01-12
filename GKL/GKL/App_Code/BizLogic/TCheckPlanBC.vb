@@ -27,26 +27,28 @@ Public DA AS NEW TCheckPlanDA
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
-Public Function SelTCheckPlan(Byval planNo_key AS String, _
-           Byval chkNo_key AS String, _
-           Byval makeNo_key AS String, _
-           Byval code_key AS String, _
-           Byval lineId_key AS String) As Data.DataTable
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           planNo_key, _
-           chkNo_key, _
-           makeNo_key, _
-           code_key, _
-           lineId_key)
-    'SQLコメント
-    Return DA.SelTCheckPlan( _
-           planNo_key, _
-           chkNo_key, _
-           makeNo_key, _
-           code_key, _
-           lineId_key)
-End Function
+    Public Function SelTCheckPlan(ByVal planNo_key As String, _
+               ByVal chkNo_key As String, _
+               ByVal makeNo_key As String, _
+               ByVal code_key As String, _
+               ByVal lineId_key As String, _
+               ByVal tbxCheckDate_key As String) As Data.DataTable
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               planNo_key, _
+               chkNo_key, _
+               makeNo_key, _
+               code_key, _
+               lineId_key)
+        'SQLコメント
+        Return DA.SelTCheckPlan( _
+               planNo_key, _
+               chkNo_key, _
+               makeNo_key, _
+               code_key, _
+               lineId_key, _
+               tbxCheckDate_key)
+    End Function
 
     ''' <summary>
     ''' 

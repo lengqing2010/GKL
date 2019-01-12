@@ -266,31 +266,40 @@ var SelectRow;
 
 $(document).ready(function () {
 
-    $("input").blur(function () {
+    $("input").blur(function (e) {
         var itType = ($(this).attr("itType"));
         var itLength = ($(this).attr("itLength"));
         var itName = ($(this).attr("itName"));
         var v = $(this).val();
-
+        var myObj;
+        myObj = $(this)[0];
         if (v == '') { return true;}
 
         if (itType == "int" || itType == "smallint" || itType == "tinyint" || itType == "bigint" || itType == "bigint") {
-
             if (itLength != '') {
                 if (v.length > parseInt(itLength, 10)) {
                     alert(itName + 'は' + itLength + '桁以内で入力してください。');
-                    $(this)[0].select()
+                    setTimeout(function () { myObj.select(); }, 10);
                     return false;
                 }
             }
             if (!(isHalfNumber(v))) {
                 alert(itName + 'は' + itLength + '桁半角数字で入力してください。');
-                $(this)[0].select()
+                setTimeout(function () { myObj.select(); }, 10);
+
+               // e.stopPropagation()
+               // e.preventDefault();
                 return false;
             }
         }
 
-
+        if (itType == "date") {
+            if (!GetDateFormat(this)) {
+                alert("日期形式错误！");
+                setTimeout(function () { myObj.select(); }, 10);
+                return false;
+            }
+         }
          
         if (itType == "decimal" || itType == "numeric" || itType == "float" || itType == "money") {
             var argIntKetasu ;
@@ -306,34 +315,30 @@ $(document).ready(function () {
                 if (itLength != '') {
                     if (v.length - 1 > argIntKetasu + argDecimalKetasu) {
                         alert(itName + 'は' + itLength + '桁以内で入力してください。');
-                        $(this)[0].select()
+                        setTimeout(function () { myObj.select(); }, 10);
                         return false;
                     }
                 }
 
                 if(!isMinusDecimal(v,argIntKetasu,argDecimalKetasu)){
                     alert(itName + 'は整数' + argIntKetasu + '桁小数' + argDecimalKetasu + '桁で入力してください。');
-                    $(this)[0].select()
+                    setTimeout(function () { myObj.select(); }, 10);
                     return false;
                 }
             } else {
                 if (itLength != '') {
                     if (v.length > parseInt(itLength, 10)) {
                         alert(itName + 'は' + itLength + '桁以内で入力してください。');
-                        $(this)[0].select()
+                        setTimeout(function () { myObj.select(); }, 10);
                         return false;
                     }
                 }
                 if (!(isHalfNumber(v))) {
                     alert(itName + 'は' + itLength + '桁半角数字で入力してください。');
-                    $(this)[0].select()
+                    setTimeout(function () { myObj.select(); }, 10);
                     return false;
                 }
             }
-
-
-
-
         }
 
 
@@ -675,11 +680,11 @@ var SelectRow;
 $(document).ready(function () {
 
     //Page post 後、行選択
-    if ($(".jq_hidOldRowIdx").val() != '') {
-        var oldIdx = parseInt($(".jq_hidOldRowIdx").val(), 10);
-        SelectRow = $($(".jq_ms").find("tr")[oldIdx]);
-        SelectRow.css("background", "#ffff66");
-    }
+    //if ($(".jq_hidOldRowIdx").val() != '') {
+    //    var oldIdx = parseInt($(".jq_hidOldRowIdx").val(), 10);
+    //    SelectRow = $($(".jq_ms").find("tr")[oldIdx]);
+    //    SelectRow.css("background", "#ffff66");
+    //}
     
     /*===============================================================*/
     /*行選択                                 
