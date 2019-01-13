@@ -13,7 +13,7 @@
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
     <script language="javascript" type="text/javascript" src="./JidouTemp.js"></script>
-    <script language="javascript" type="text/javascript" src="./m_user.aspx.js"></script>
+    <script language="javascript" type="text/javascript" src="./CheckItiran.aspx.js"></script>
 
     <!--CSS-->
     <link href="tmp.css" rel="stylesheet" type="text/css" />
@@ -35,6 +35,9 @@
             <td>
                 <asp:TextBox ID="tbxCheckUser" class="jq_make_no_key" runat="server" style="width:100px;background-color: #FFAA00;" ></asp:TextBox>
             </td>
+            <td>
+                <asp:Label ID="lblUserName" runat="server" Width="80px"></asp:Label>
+                </td>
             <td>作番 : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxMakeNo_key" class="jq_make_no_ipt" runat="server" style="width:100px;background-color: #FFAA00;" ></asp:TextBox>
@@ -44,13 +47,14 @@
             <td>
                 <asp:TextBox ID="tbxCode_key" class="jq_code_ipt" runat="server" maxLength="20" style="width:180px;background-color: #FFAA00;"></asp:TextBox></td>
             <td>
-            <asp:Button ID="btnInsert" runat="server" Text="新规检查" CssClass="jq_ins" height="24" Width="100" />
+            <asp:Button ID="btnInsert" runat="server" Text="新规检查" CssClass="jq_ins" height="24" Width="100" OnClick="btnInsert_Click" />
                 </td>
             </tr>
             <tr>
             <td>检查日：</td>
             <td><asp:TextBox ID="tbxDate_key" class="" runat="server" maxLength="20" style="width:100px;background-color: #FFAA00;"></asp:TextBox></td>
             <td colspan="2">未入力时 7日内</td>
+            <td>&nbsp;</td>
             <td></td>
             <td>
         <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" OnClick="btnSelect_Click" height="24"/>
@@ -125,7 +129,7 @@
           <asp:TemplateField><ItemTemplate ><%#Eval("make_no")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_make_no" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("code")%></ItemTemplate><ItemStyle Width="160px" HorizontalAlign="Left" CssClass="jq_code" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("suu")%></ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Left" CssClass="jq_suu" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_times")%></ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Left" CssClass="jq_temp_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_times")%></ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Left" CssClass="jq_chk_times" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("temp_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_temp_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("chk_result")%></ItemTemplate><ItemStyle Width="30px" HorizontalAlign="Left" CssClass="jq_chk_result" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("chk_user")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_chk_user" /></asp:TemplateField>
@@ -154,6 +158,7 @@
 <asp:TextBox ID="hidInsDate" runat="server" class="jq_ins_date_ipt" style=" visibility:hidden;"></asp:TextBox>
 <asp:TextBox ID="hidOldRowIdx" runat="server" class="jq_hidOldRowIdx" style=" visibility:hidden;"></asp:TextBox>
 
+<asp:TextBox ID="hidchk_times" runat="server" class="jq_chk_times_ipt" style=" visibility:hidden;"></asp:TextBox>
 
     </form>
 </body>

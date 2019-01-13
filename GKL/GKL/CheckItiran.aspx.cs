@@ -134,4 +134,19 @@ public partial class CheckItiran : System.Web.UI.Page
  {
      MsInit(Convert.ToInt32(ddlPageIdx.SelectedValue));
  }
+ protected void btnInsert_Click(object sender, EventArgs e)
+ {
+     //string chk_no = this.hidChkNo.Text;
+     //string make_no = this.hidMakeNo.Text;
+     //string code = this.hidCode.Text;
+     //string suu = this.hidSuu.Text;
+
+
+     string chk_no ;
+     string make_no = this.tbxMakeNo_key.Text;
+     string code = this.tbxCode_key.Text;
+     string suu = this.hidSuu.Text;
+
+
+ }
 }
