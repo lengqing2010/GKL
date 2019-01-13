@@ -431,4 +431,103 @@ End Function
     
         End Function
 
+
+
+
+    Public Function SelTCheckResult(ByVal lineId_key As String, ByVal startDate As String, ByVal endDate As String) As Data.DataTable
+
+        'SQLコメント
+        '--**テーブル：检查结果 : t_check_result
+        Dim sb As New StringBuilder
+        'SQL文
+        sb.AppendLine("SELECT * FROM (")
+        sb.AppendLine("SELECT ")
+        sb.AppendLine("	t_check_plan.[chk_no]")
+        sb.AppendLine("	,substring( [yotei_chk_date],1,4) as nen")
+        sb.AppendLine("	,ISNULL(t_check_result.[chk_times],0) [chk_times]")
+        sb.AppendLine("	,t_check_plan.[plan_no]")
+        sb.AppendLine("      ,t_check_plan.[line_id] as [line_id]")
+        sb.AppendLine("      ,t_check_plan.[make_no]")
+        sb.AppendLine("      ,t_check_plan.[code] as [code]")
+        sb.AppendLine("      ,t_check_plan.[suu]")
+        sb.AppendLine("      ,t_cd_temp_relation.temp_id ")
+        sb.AppendLine("      ,ISNULL(t_check_result.chk_result,'') chk_result")
+        sb.AppendLine("      ,ISNULL(t_check_result.chk_user,'') chk_user")
+        sb.AppendLine("      ,ISNULL(t_check_result.chk_start_date,NULL) chk_start_date")
+        sb.AppendLine("      ,ISNULL(t_check_result.chk_end_date,NULL) chk_end_date")
+        sb.AppendLine("      ,ISNULL(t_check_result.parent_chk_no,'') parent_chk_no")
+        'sb.AppendLine("      ,ISNULL(t_check_result.[status],'') [status]")
+        sb.AppendLine("      ,CASE WHEN ISNULL(t_check_result.[status],'0') = '0' THEN N'待检查'")
+        sb.AppendLine("		WHEN ISNULL(t_check_result.[status],'1') = '1' THEN N'临时保存'")
+        sb.AppendLine("		WHEN ISNULL(t_check_result.[status],'1') = '2' THEN N'完了'   ")
+        sb.AppendLine("		WHEN ISNULL(t_check_result.[status],'1') = '9' THEN N'删除'")
+        sb.AppendLine("	   ELSE")
+        sb.AppendLine("		''")
+        sb.AppendLine("	   END  [status]")
+        sb.AppendLine("      ,ISNULL(t_check_result.ins_user,'') ins_user")
+        sb.AppendLine("      ,ISNULL(t_check_result.ins_date,NULL) AS ins_date")
+
+        sb.AppendLine("      ,ISNULL(t_check_plan.yotei_chk_date,NULL) AS yotei_chk_date")
+
+        sb.AppendLine("  FROM t_check_plan")
+        sb.AppendLine("  LEFT JOIN t_cd_temp_relation ")
+        sb.AppendLine("	  ON t_check_plan.line_id = t_cd_temp_relation.line_id ")
+        sb.AppendLine("	  AND t_check_plan.code = t_cd_temp_relation.code ")
+        sb.AppendLine("  LEFT JOIN t_check_result")
+        sb.AppendLine("		ON t_check_plan.plan_no = t_check_result.plan_no ")
+        sb.AppendLine("		AND t_check_plan.[chk_no] = t_check_result.[chk_no] ")
+
+        sb.AppendLine("  WHERE 1=1")
+        sb.AppendLine("  AND t_check_plan.line_id= '" & lineId_key & "'")
+        sb.AppendLine("  AND t_check_plan.yotei_chk_date >= '" & startDate & "'")
+        sb.AppendLine("  AND t_check_plan.yotei_chk_date <= '" & endDate & "'")
+
+
+        sb.AppendLine("UNION ALL")
+        sb.AppendLine("  SELECT ")
+        sb.AppendLine("		t_check_result.[chk_no]")
+        sb.AppendLine("      ,t_check_result.[nen]")
+        sb.AppendLine("      ,t_check_result.[chk_times]")
+        sb.AppendLine("      ,t_check_result.[plan_no]")
+        sb.AppendLine("      ,t_check_result.[line_id]")
+        sb.AppendLine("      ,t_check_result.[make_no]")
+        sb.AppendLine("      ,t_check_result.[code]")
+        sb.AppendLine("      ,t_check_result.[suu]")
+        sb.AppendLine("      ,t_check_result.[temp_id]")
+        sb.AppendLine("      ,t_check_result.[chk_result]")
+        sb.AppendLine("      ,t_check_result.[chk_user]")
+        sb.AppendLine("      ,t_check_result.[chk_start_date]")
+        sb.AppendLine("      ,t_check_result.[chk_end_date]")
+        sb.AppendLine("      ,t_check_result.[parent_chk_no]")
+        'sb.AppendLine("      ,t_check_result.[status]")
+        sb.AppendLine("      ,CASE WHEN ISNULL(t_check_result.[status],'0') = '0' THEN N'待检查'")
+        sb.AppendLine("		WHEN ISNULL(t_check_result.[status],'1') = '1' THEN N'临时保存'")
+        sb.AppendLine("		WHEN ISNULL(t_check_result.[status],'1') = '2' THEN N'完了'   ")
+        sb.AppendLine("		WHEN ISNULL(t_check_result.[status],'1') = '9' THEN N'删除'")
+        sb.AppendLine("	   ELSE")
+        sb.AppendLine("		''")
+        sb.AppendLine("	   END  [status]")
+
+        sb.AppendLine("      ,t_check_result.[ins_user]")
+        sb.AppendLine("      ,t_check_result.[ins_date]")
+        sb.AppendLine("      ,ISNULL(NULL,NULL) AS yotei_chk_date")
+        sb.AppendLine("   FROM t_check_result")
+        sb.AppendLine("  LEFT JOIN t_check_plan")
+        sb.AppendLine("		ON t_check_plan.plan_no = t_check_result.plan_no ")
+        sb.AppendLine("		AND t_check_plan.[chk_no] = t_check_result.[chk_no] ")
+        sb.AppendLine("  WHERE t_check_plan.chk_no is null")
+
+        sb.AppendLine("  AND t_check_result.line_id= '" & lineId_key & "'")
+        sb.AppendLine("  AND t_check_result.chk_start_date >= '" & startDate & "'")
+        sb.AppendLine("  AND t_check_result.chk_start_date <= '" & endDate & "'")
+        sb.AppendLine(") a")
+        sb.AppendLine("  ORDER BY yotei_chk_date DESC")
+
+        Dim dsInfo As New Data.DataSet
+        FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "t_check_result")
+
+        Return dsInfo.Tables("t_check_result")
+
+    End Function
+
 End Class

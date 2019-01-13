@@ -195,23 +195,23 @@
    </asp:GridView>
 </div>
 
-        <asp:TextBox ID="hidChkNo" runat="server" class="jq_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidNen" runat="server" class="jq_nen_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidPlanNo" runat="server" class="jq_plan_no_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidLineId" runat="server" class="jq_line_id_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidMakeNo" runat="server" class="jq_make_no_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidCode" runat="server" class="jq_code_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidSuu" runat="server" class="jq_suu_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidTempId" runat="server" class="jq_temp_id_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidChkResult" runat="server" class="jq_chk_result_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidChkUser" runat="server" class="jq_chk_user_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidChkStartDate" runat="server" class="jq_chk_start_date_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidChkEndDate" runat="server" class="jq_chk_end_date_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidParentChkNo" runat="server" class="jq_parent_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidStatus" runat="server" class="jq_status_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidInsUser" runat="server" class="jq_ins_user_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidInsDate" runat="server" class="jq_ins_date_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidOldRowIdx" runat="server" class="jq_hidOldRowIdx" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidChkNo" runat="server" class="jq_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidNen" runat="server" class="jq_nen_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidPlanNo" runat="server" class="jq_plan_no_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidLineId" runat="server" class="jq_line_id_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidMakeNo" runat="server" class="jq_make_no_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidCode" runat="server" class="jq_code_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidSuu" runat="server" class="jq_suu_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidTempId" runat="server" class="jq_temp_id_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidChkResult" runat="server" class="jq_chk_result_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidChkUser" runat="server" class="jq_chk_user_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidChkStartDate" runat="server" class="jq_chk_start_date_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidChkEndDate" runat="server" class="jq_chk_end_date_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidParentChkNo" runat="server" class="jq_parent_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidStatus" runat="server" class="jq_status_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidInsUser" runat="server" class="jq_ins_user_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidInsDate" runat="server" class="jq_ins_date_ipt" style=" visibility:hidden;"></asp:TextBox>
+<asp:TextBox ID="hidOldRowIdx" runat="server" class="jq_hidOldRowIdx" style=" visibility:hidden;"></asp:TextBox>
     </div>
     </form>
 </body>

@@ -41,4 +41,8 @@ Partial Class _Default
             Me.lbPic.Attributes.Item("HREF") = ConfigurationManager.AppSettings("PicPath").ToString()
         End If
     End Sub
+
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        Server.Transfer("CheckItiran.aspx")
+    End Sub
 End Class

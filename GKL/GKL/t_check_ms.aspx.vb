@@ -71,7 +71,7 @@ Partial Class t_check_ms
        Me.tbxInsUser.Attributes.Item("itLength") = "20"
        Me.tbxInsUser.Attributes.Item("itName") = "登録者"
        Me.tbxInsDate.Attributes.Item("itType") = "date"
-       Me.tbxInsDate.Attributes.Item("itLength") = "3"
+        Me.tbxInsDate.Attributes.Item("itLength") = "20"
        Me.tbxInsDate.Attributes.Item("itName") = "登録日"
 
     End Sub

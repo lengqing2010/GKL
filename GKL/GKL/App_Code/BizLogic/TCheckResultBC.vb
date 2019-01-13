@@ -257,6 +257,14 @@ Public Function DelTCheckResult(Byval chkNo_key AS String, _
            makeNo_key)
 
 
-End Function
+    End Function
+
+    Public Function SelTCheckResult(ByVal lineId_key As String, ByVal startDate As String, ByVal endDate As String) As Data.DataTable
+        Return DA.SelTCheckResult( _
+       lineId_key, _
+       startDate, _
+       endDate)
+
+    End Function
 
 End Class
