@@ -112,10 +112,44 @@ public partial class CheckItiran : System.Web.UI.Page
          //dr.Item[0] = i.ToString();
          dt2.Rows.Add(dr);
      }
-     
 
      gvMs.DataSource = dt;
      gvMs.DataBind();
+
+     string chk_no;
+     string old_chk_no;
+     chk_no = "";
+     old_chk_no = "";
+     System.Drawing.Color tmpColor = System.Drawing.Color.Blue;
+
+     for (i = 0; i <= dt.Rows.Count -1; i++)
+     {
+         string[] sArray = dt.Rows[i]["chk_no"].ToString().Split('_');
+         chk_no = sArray[0] + "_" + sArray[1];
+
+         if (chk_no != old_chk_no)
+         {
+             if (tmpColor == System.Drawing.Color.Black)
+             {
+                 tmpColor = System.Drawing.Color.Blue;
+             }
+             else
+             {
+                 tmpColor = System.Drawing.Color.Black;
+             }
+
+             old_chk_no = chk_no;
+         }
+         gvMs.Rows[i].ForeColor = tmpColor;
+         //gvMs.Rows[i].Cells[0].ForeColor  = tmpColor;
+         //gvMs.Rows[i].Cells[1].ForeColor = tmpColor;
+         //gvMs.Rows[i].Cells[2].ForeColor = tmpColor; 
+
+     }
+
+
+
+
 
      ddlPageIdx.DataValueField = "idx";
      ddlPageIdx.DataTextField = "idx";
@@ -219,4 +253,16 @@ public partial class CheckItiran : System.Web.UI.Page
                 return;
      }
  }
+ protected void btnDelete_Click(object sender, EventArgs e)
+ {
+     string chk_no = hidChkNo.Text.Trim();
+     string line_id = this.tbxLineId_key.Text;
+     string user = this.tbxCheckUser.Text.Trim();
+
+     TCheckResultBC BC = new TCheckResultBC();
+     BC.DeleteCheckResult(chk_no, line_id, user);
+
+     
+ }
+
 }

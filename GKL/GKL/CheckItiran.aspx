@@ -73,7 +73,7 @@
     <!--Button部-->
             <asp:Button ID="btnUpdate" runat="server" Text="继续检查" CssClass="jq_upd"  Width="100" />
             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" Width="100"/>
+            <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" Width="100" OnClick="btnDelete_Click"/>
             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
             第
             <asp:DropDownList ID="ddlPageIdx" runat="server" AutoPostBack="true" Width="60px" OnSelectedIndexChanged="ddlPageIdx_SelectedIndexChanged">

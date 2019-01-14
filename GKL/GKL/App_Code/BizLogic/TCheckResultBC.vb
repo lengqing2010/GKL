@@ -271,4 +271,13 @@ Public Function DelTCheckResult(Byval chkNo_key AS String, _
 
     End Function
 
+    Public Function DeleteCheckResult(ByVal chkNo_key As String, _
+       ByVal lineId_key As String, _
+       ByVal insUser As String) As Boolean
+
+        Return DA.DeleteCheckResult(chkNo_key, _
+                                    lineId_key, _
+                                    insUser)
+    End Function
+
 End Class

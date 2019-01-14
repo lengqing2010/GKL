@@ -71,10 +71,17 @@ $(document).ready(function () {
 
     //图片Disable
     disabledIt($("#lblUserName"));
-    //图片ID 变更时
+
+
+    //检查者No
     $("#tbxCheckUser").blur(function () {
         var obj;
         obj = $(this);
+
+        if ($(this).val() == "") {
+            return false;
+        }
+
         htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=user&user_cd=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
         if (htmlobj.responseText == "") {
             alert("用户不存在");
@@ -84,5 +91,36 @@ $(document).ready(function () {
             $("#tbxLineId_key").val(htmlobj.responseText.split(",")[1]);
         }
     });
+
+    $("#tbxCheckUser,#tbxMakeNo_key,#tbxCode_key").focus(function (e) {
+        $(this)[0].select();
+    });
+
+    $("#tbxCheckUser").keydown(function (e) {
+        if (e.keyCode == 13) {
+            $("#tbxMakeNo_key")[0].select();
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    //作番 : 
+    $("#tbxMakeNo_key").keydown(function (e) {
+        if (e.keyCode == 13) {
+            $("#tbxCode_key")[0].select();
+            e.preventDefault();
+            return false;
+        }
+    });
+    $("#tbxCode_key").keydown(function (e) {
+        if (e.keyCode == 13) {
+            $("#btnInsert")[0].focus();
+            e.preventDefault();
+            return false;
+        }
+    });
+
+
+
 });
 
