@@ -36,7 +36,8 @@
                 <asp:TextBox ID="tbxCheckUser" class="jq_make_no_key" runat="server" style="width:100px;background-color: #FFAA00;" ></asp:TextBox>
             </td>
             <td>
-                <asp:Label ID="lblUserName" runat="server" Width="80px"></asp:Label>
+<%--                <asp:Label ID="lblUserName" runat="server" Width="80px"></asp:Label>--%>
+                <asp:TextBox ID="lblUserName" class="" runat="server" style="width:100px;background-color: #FFAA00;" ></asp:TextBox>
                 </td>
             <td>作番 : &nbsp;</td>
             <td>
@@ -85,7 +86,7 @@
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_title' style="width:1000px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:110px;">
+              <td style="width:130px;">
                   检查No
               </td>
               <td style="width:110px;">
@@ -125,7 +126,7 @@
 
    <asp:GridView CssClass ="jq_ms" Width="1000px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_no")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_chk_no" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_no")%></ItemTemplate><ItemStyle Width="130px" HorizontalAlign="Left" CssClass="jq_chk_no" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("make_no")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_make_no" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("code")%></ItemTemplate><ItemStyle Width="160px" HorizontalAlign="Left" CssClass="jq_code" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("suu")%></ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Left" CssClass="jq_suu" /></asp:TemplateField>
@@ -159,6 +160,11 @@
 <asp:TextBox ID="hidOldRowIdx" runat="server" class="jq_hidOldRowIdx" style=" visibility:hidden;"></asp:TextBox>
 
 <asp:TextBox ID="hidchk_times" runat="server" class="jq_chk_times_ipt" style=" visibility:hidden;"></asp:TextBox>
+
+            <script language="javascript">
+
+              </script>
+
 
     </form>
 </body>

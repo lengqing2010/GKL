@@ -168,7 +168,7 @@ Me.hidOldRowIdx.Text = ""
                 Exit Sub
             End If
             Try
-            BC.InsTCheckResult(tbxchkNo.Text, tbxnen.Text, tbxplanNo.Text, tbxlineId.Text, tbxmakeNo.Text, tbxcode.Text, tbxsuu.Text, tbxtempId.Text, tbxchkResult.Text, tbxchkUser.Text, tbxchkStartDate.Text, tbxchkEndDate.Text, tbxparentChkNo.Text, tbxstatus.Text, tbxinsUser.Text, tbxinsDate.Text)
+            BC.InsTCheckResult(tbxChkNo.Text, tbxNen.Text, 0, tbxPlanNo.Text, tbxLineId.Text, tbxMakeNo.Text, tbxCode.Text, tbxSuu.Text, tbxTempId.Text, tbxChkResult.Text, tbxChkUser.Text, "", tbxChkStartDate.Text, tbxChkEndDate.Text, tbxParentChkNo.Text, tbxStatus.Text, tbxInsUser.Text, tbxInsDate.Text)
                 MsInit()
             Catch ex As Exception
                 Common.ShowMsg(Me.Page, ex.Message)

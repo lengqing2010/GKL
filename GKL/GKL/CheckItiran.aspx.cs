@@ -62,7 +62,7 @@ public partial class CheckItiran : System.Web.UI.Page
          endTime = startTime;
      }
      
-     return BC.SelTCheckResult(this.tbxLineId_key.Text, startTime, endTime);
+     return BC.SelTCheckResult(this.tbxLineId_key.Text, startTime, endTime,"","");
 
   
 
@@ -134,6 +134,12 @@ public partial class CheckItiran : System.Web.UI.Page
  {
      MsInit(Convert.ToInt32(ddlPageIdx.SelectedValue));
  }
+
+    /// <summary>
+    /// 新规检查
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
  protected void btnInsert_Click(object sender, EventArgs e)
  {
      //string chk_no = this.hidChkNo.Text;
@@ -146,7 +152,71 @@ public partial class CheckItiran : System.Web.UI.Page
      string make_no = this.tbxMakeNo_key.Text;
      string code = this.tbxCode_key.Text;
      string suu = this.hidSuu.Text;
+     string line_id = this.tbxLineId_key .Text;
+
+     TCheckResultBC BC = new TCheckResultBC();
+     System.Data.DataTable dt = BC.SelTCheckResult(this.tbxLineId_key.Text, "", "", make_no, code);
+
+   
+
+     Int32 i,mxChkTimes,chkTimes,idx;
+     mxChkTimes = 0;
+     idx = 0;
+
+     string yotei_chk_date;
+     DataRow[] drs;
+
+     string tmp_chk_no;
+
+     ///sp = chr("_");
+
+     if (dt.Rows.Count >0){
+         yotei_chk_date=dt.Rows[0]["yotei_chk_date"].ToString();
+         drs = dt.Select("yotei_chk_date='" + yotei_chk_date + "'");
+         for (i = 0; i <= drs.Length - 1; i++)
+         {
+             chkTimes = Convert.ToInt32(dt.Rows[i]["chk_times"].ToString());
+             if (mxChkTimes < chkTimes)
+             {
+                 mxChkTimes = chkTimes;
+                 idx = i;
+             }
+         }
+
+         if (drs[idx]["temp_id"].ToString().Trim() == "")
+         {
+             Common.ShowMsg(this.Page, "检查模板不存在");
+             return;
+         }
+
+         string[] sArray=drs[idx]["chk_no"].ToString().Split('_') ;
+
+         tmp_chk_no = sArray[0] + "_" + sArray[1] + "_" + (mxChkTimes + 1).ToString();
+
+         BC.InsTCheckResult(tmp_chk_no
+                          , System.DateTime.Now.Year.ToString()
+                          , (mxChkTimes+1).ToString() 
+                          , drs[idx]["plan_no"].ToString()
+                          , drs[idx]["line_id"].ToString()
+                          , drs[idx]["make_no"].ToString()
+                          , drs[idx]["code"].ToString()
+                          , drs[idx]["suu"].ToString()
+                          , drs[idx]["temp_id"].ToString()
+                          , drs[idx]["chk_result"].ToString()
+                          , this.tbxCheckUser.Text.Trim()
+                          , drs[idx]["yotei_chk_date"].ToString()
+                          , System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
+                          , ""
+                          , ""
+                          , "0"
+                          , this.tbxCheckUser.Text.Trim()
+                          , System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")    
+                          );
 
 
+     } else {
+         Common.ShowMsg(this.Page, "检查计划数据不存在;");
+                return;
+     }
  }
 }

@@ -168,61 +168,65 @@ End Function
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
-Public Function InsTCheckResult(Byval chkNo AS String, _
-           Byval nen AS String, _
-           Byval planNo AS String, _
-           Byval lineId AS String, _
-           Byval makeNo AS String, _
-           Byval code AS String, _
-           Byval suu AS String, _
-           Byval tempId AS String, _
-           Byval chkResult AS String, _
-           Byval chkUser AS String, _
-           Byval chkStartDate AS String, _
-           Byval chkEndDate AS String, _
-           Byval parentChkNo AS String, _
-           Byval status AS String, _
-           Byval insUser AS String, _
-           Byval insDate AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkNo, _
-           nen, _
-           planNo, _
-           lineId, _
-           makeNo, _
-           code, _
-           suu, _
-           tempId, _
-           chkResult, _
-           chkUser, _
-           chkStartDate, _
-           chkEndDate, _
-           parentChkNo, _
-           status, _
-           insUser, _
-           insDate)
-    'SQLコメント
-    '--**テーブル：检查结果 : t_check_result
-    Return DA.InsTCheckResult( _
-           chkNo, _
-           nen, _
-           planNo, _
-           lineId, _
-           makeNo, _
-           code, _
-           suu, _
-           tempId, _
-           chkResult, _
-           chkUser, _
-           chkStartDate, _
-           chkEndDate, _
-           parentChkNo, _
-           status, _
-           insUser, _
-           insDate)
+    Public Function InsTCheckResult(ByVal chkNo As String, _
+               ByVal nen As String, _
+               ByVal chk_times As String, _
+               ByVal planNo As String, _
+               ByVal lineId As String, _
+               ByVal makeNo As String, _
+               ByVal code As String, _
+               ByVal suu As String, _
+               ByVal tempId As String, _
+               ByVal chkResult As String, _
+               ByVal chkUser As String, _
+               ByVal chkYoteiDate As String, _
+               ByVal chkStartDate As String, _
+               ByVal chkEndDate As String, _
+               ByVal parentChkNo As String, _
+               ByVal status As String, _
+               ByVal insUser As String, _
+               ByVal insDate As String) As Boolean
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               chkNo, _
+               nen, _
+               planNo, _
+               lineId, _
+               makeNo, _
+               code, _
+               suu, _
+               tempId, _
+               chkResult, _
+               chkUser, _
+               chkStartDate, _
+               chkEndDate, _
+               parentChkNo, _
+               status, _
+               insUser, _
+               insDate)
+        'SQLコメント
+        '--**テーブル：检查结果 : t_check_result
+        Return DA.InsTCheckResult( _
+               chkNo, _
+               nen, _
+               chk_times, _
+               planNo, _
+               lineId, _
+               makeNo, _
+               code, _
+               suu, _
+               tempId, _
+               chkResult, _
+               chkUser, _
+               chkYoteiDate, _
+               chkStartDate, _
+               chkEndDate, _
+               parentChkNo, _
+               status, _
+               insUser, _
+               insDate)
 
-End Function
+    End Function
 
     ''' <summary>
     ''' 
@@ -259,11 +263,11 @@ Public Function DelTCheckResult(Byval chkNo_key AS String, _
 
     End Function
 
-    Public Function SelTCheckResult(ByVal lineId_key As String, ByVal startDate As String, ByVal endDate As String) As Data.DataTable
+    Public Function SelTCheckResult(ByVal lineId_key As String, ByVal startDate As String, ByVal endDate As String, ByVal make_no As String, ByVal code As String) As Data.DataTable
         Return DA.SelTCheckResult( _
-       lineId_key, _
-       startDate, _
-       endDate)
+                                   lineId_key, _
+                                   startDate, _
+                                   endDate, make_no, code)
 
     End Function
 

@@ -60,6 +60,17 @@ function ajax_select() {
 //       Return BC.UpdMPicture(tbxPicId_key ,tbxLineId_key ,tbxPicId ,tbxLineId ,tbxPicName)
 
 $(document).ready(function () {
+
+
+
+    function disabledIt(obj) {
+        $(obj).attr("readonly", "readonly");
+        $(obj).css({ "background": "#ccc" });
+        $(obj).attr("tabindex", "-1");
+    }
+
+    //图片Disable
+    disabledIt($("#lblUserName"));
     //图片ID 变更时
     $("#tbxCheckUser").blur(function () {
         var obj;
@@ -69,7 +80,7 @@ $(document).ready(function () {
             alert("用户不存在");
             setTimeout(function () { obj.focus(); }, 100);
         } else {
-            $("#lblUserName").text(htmlobj.responseText.split(",")[0]);
+            $("#lblUserName").val(htmlobj.responseText.split(",")[0]);
             $("#tbxLineId_key").val(htmlobj.responseText.split(",")[1]);
         }
     });
