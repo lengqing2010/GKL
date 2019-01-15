@@ -188,6 +188,12 @@ public partial class CheckItiran : System.Web.UI.Page
      string suu = this.hidSuu.Text;
      string line_id = this.tbxLineId_key .Text;
 
+     Context.Items["make_no"] = make_no;
+     Context.Items["code"] = code;
+     Context.Items["line_id"] = line_id;
+     Context.Items["user"] = this.tbxCheckUser.Text.Trim();
+
+
      TCheckResultBC BC = new TCheckResultBC();
      System.Data.DataTable dt = BC.SelTCheckResult(this.tbxLineId_key.Text, "", "", make_no, code);
 
@@ -247,6 +253,7 @@ public partial class CheckItiran : System.Web.UI.Page
                           , System.DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")    
                           );
 
+         Context.Items["chk_no"] = tmp_chk_no;
 
      } else {
          Common.ShowMsg(this.Page, "检查计划数据不存在;");
