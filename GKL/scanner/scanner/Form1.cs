@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
-
+using System.Threading;
 
 namespace scanner
 {
@@ -83,6 +83,10 @@ namespace scanner
                 barcode = barcode.Replace("\r", "");
                 this.textBox_TestTxt.Text = "";
                 this.textBox_TestTxt.Text = barcode;
+                //SendKeys.SendWait(119);
+                Thread.Sleep(100);
+                SendKeys.SendWait("{F8}");
+                Thread.Sleep(500);
                 SendKeys.SendWait(barcode);
                 SendKeys.SendWait("{ENTER}");
                

@@ -375,6 +375,7 @@ End Function
             .AppendLine("       t_check_ms.ins_user, ")
             .AppendLine("       t_check_ms.ins_date, ")
             .AppendLine("       m_temp.project_name, ")
+            .AppendLine("       m_temp.pic_id, ")
             .AppendLine("       m_temp.pic_name, ")
             .AppendLine("       m_temp.chk_km_name, ")
             .AppendLine("       m_temp.chk_name, ")

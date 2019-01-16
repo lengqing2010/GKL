@@ -88,7 +88,11 @@ $(document).ready(function () {
     var chk_method_id;
     var chk_method;
     var chk_formula;
+    var pic_id;
+    var acText;
 
+    var ScanText;
+    ScanText = document.getElementById("ScanText");
 
     $(".jq_ms tr").each(function () {
 
@@ -123,6 +127,22 @@ $(document).ready(function () {
         chk_method_id = thisRow.attr("chk_method_id");
         chk_method = thisRow.attr("chk_method");
         chk_formula = thisRow.attr("chk_formula");
+        pic_id = thisRow.attr("pic_id");
+
+        if (pic_id == "") {
+            $(".JQ_IMG").hide();
+        } else {
+            $(".JQ_IMG").show(300);
+            $(".JQ_IMG").attr("src", "Img.aspx?pic_id=" + pic_id + "&line_id=" + $("#lblLine_id").text());
+        }
+        
+        $(".JQ_IMG").mousedown(function () {
+            $(this).css('width', '100%');
+        });
+        $(".JQ_IMG").mouseup(function () {
+            $(this).css('width', '');
+        });
+       
 
         TextFocusStyle($(this));
 
@@ -139,8 +159,30 @@ $(document).ready(function () {
 
     });
 
-    $(".jq_in1").keydown(function () {
+    $(".keyboard").find("td").click(function () {
+        alert($(this).text());
 
+    });
+
+    $(ScanText).keydown(function () {
+        if (event.keyCode == 13) {
+            try{
+                acText.val(ScanText.value);
+                ScanText.value = "";
+                if (GetChkMethodStr(chk_formula, $(this))) {
+                    SetResult(true, $(acText));
+                } else {
+                    SetResult(false, $(acText));
+                }
+            }catch(e){
+
+            }
+            event.keyCode = 0;
+            return false;
+        }        
+    });
+
+    $(".jq_in1").keydown(function () {
         var obj;
         obj = $(this);
 
@@ -155,19 +197,9 @@ $(document).ready(function () {
 
         } else if (chk_method == "1") { //SCAN
             if (event.keyCode == 119) {
-                RemoveReadOnly($(this)[0]);
-                $(this)[0].select();
-
-                
-            } else if (event.keyCode == 13) {
-
-                SetReadOnly($(this)[0]);
-                $(this)[0].select();
-                if (GetChkMethodStr(chk_formula,$(this))) {
-                    SetResult(true,$(this));
-                } else {                    
-                    SetResult(false,$(this));
-                }
+                ScanText.value = "";
+                ScanText.focus();
+                acText = $(this);
             }
 
         } else if (chk_method == "2") { //固定
@@ -193,7 +225,34 @@ $(document).ready(function () {
     }
 
     function SetNextFocus(jq_e) {
-        jq_e.parent().parent().next().find(".jq_in1").focus();
+
+        var thisRow;
+        thisRow = jq_e.parent().parent().next();
+
+        var nextIn1;
+        nextIn1 = thisRow.find(".jq_in1")[0];
+
+        var obj;
+        obj = $(this);
+
+        chk_id = thisRow.attr("chk_id");
+        kj_0 = thisRow.attr("kj_0");
+        kj_1 = thisRow.attr("kj_1");
+        kj_2 = thisRow.attr("kj_2");
+        chk_method_id = thisRow.attr("chk_method_id");
+        chk_method = thisRow.attr("chk_method");
+        chk_formula = thisRow.attr("chk_formula");
+
+
+        if (chk_method != "0") {        //INPUT
+            RemoveReadOnly($(nextIn1));
+            nextIn1.focus();
+            SetReadOnly($(nextIn1));
+
+        } else {
+            $(nextIn1).focus();
+        }
+        
     }
 
 

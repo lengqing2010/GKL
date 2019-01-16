@@ -16,12 +16,14 @@
 
     <!--CSS-->
     <link href="tmp_chk.css" rel="stylesheet" type="text/css" />
-</head>
+    </head>
 <body>
 <form id="form1" runat="server">
     <div>
         <div class='title_div'>检查明細</div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
+
+        <asp:Label ID="lblLine_id" runat="server" Text="001" ></asp:Label>
         
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
@@ -29,16 +31,11 @@
             <td>检查No : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxChkNo_key" class="jq_chk_no_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
+                <input type="text" id="ScanText" /><input type="button" />
             </td>
             <td></td>
             </tr>
         </table>
-        <br /> 
-
-<!--Button部-->
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" />
- <br /> 
-
 <!--明細Title部-->
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1000px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_title' style="width:1000px" cellpadding="0" cellspacing="0">
@@ -100,6 +97,46 @@
       </Columns>
    </asp:GridView>
 </div>
+<table style="width:1000px;">
+    <td >
+
+        <img id="gvMs_ctl02_imgLook" class="JQ_IMG" src="" style="border-width:0px;">
+    </td>
+    <td style="width:250px; vertical-align:top; text-align:center; ">
+
+
+        <table class="keyboard">
+            <tr>
+                <td style="width:60px;">7</td>
+                <td style="width:60px;">8</td>
+                <td style="width:60px;">9</td>
+                <td rowspan="2">删除</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td rowspan="2" >回车</td>
+            </tr>
+            <tr>
+                <td colspan="2">0</td>
+                <td>.</td>
+            </tr>
+            <tr>
+                <td colspan="2">NG</td>
+                <td colspan="2">OK</td>
+            </tr>
+        </table>
+
+
+    </td>
+</table>
+        
 
         <asp:TextBox ID="hidChkNo" runat="server" class="jq_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidChkMethodId" runat="server" class="jq_chk_method_id_ipt" style=" visibility:hidden;"></asp:TextBox>

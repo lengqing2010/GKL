@@ -47,8 +47,8 @@ public partial class t_check_ms : System.Web.UI.Page
             this.gvMs.Rows[i].Attributes.Add("kj_2", dt.Rows[i]["kj_2_Expr"].ToString());
             this.gvMs.Rows[i].Attributes.Add("chk_method_id", dt.Rows[i]["chk_method_id"].ToString());
             this.gvMs.Rows[i].Attributes.Add("chk_method", dt.Rows[i]["chk_method"].ToString());
-
             this.gvMs.Rows[i].Attributes.Add("chk_formula", dt.Rows[i]["chk_formula"].ToString());
+            this.gvMs.Rows[i].Attributes.Add("pic_id", dt.Rows[i]["pic_id"].ToString());
         }
 
         MergeGridViewCell.MergeRow(this.gvMs, 0, 1);
