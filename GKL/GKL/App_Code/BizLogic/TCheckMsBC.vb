@@ -187,16 +187,22 @@ End Function
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
-Public Function DelTCheckMs(Byval chkNo_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkNo_key)
-    'SQLコメント
-    '--**テーブル：检查结果 : t_check_ms
-    Return DA.DelTCheckMs( _
-           chkNo_key)
+    Public Function DelTCheckMs(ByVal chkNo_key As String) As Boolean
+        'EMAB　ＥＲＲ
+        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
+               chkNo_key)
+        'SQLコメント
+        '--**テーブル：检查结果 : t_check_ms
+        Return DA.DelTCheckMs( _
+               chkNo_key)
 
 
-End Function
+    End Function
+
+    Public Function SelTCheckMs(ByVal chkNo_key As String, ByVal line_id As String) As Data.DataTable
+        Return DA.SelTCheckMs(chkNo_key, line_id)
+    End Function
+
+
 
 End Class

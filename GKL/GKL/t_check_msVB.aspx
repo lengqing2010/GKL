@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="t_check_ms.aspx.cs" Inherits="t_check_ms" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="t_check_msVB.aspx.vb" Inherits="t_check_ms" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -11,11 +11,11 @@
 
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
-<%--    <script language="javascript" type="text/javascript" src="./JidouTemp.js"></script>--%>
+    <script language="javascript" type="text/javascript" src="./JidouTemp.js"></script>
     <script language="javascript" type="text/javascript" src="./t_check_ms.aspx.js"></script>
 
     <!--CSS-->
-    <link href="tmp_chk.css" rel="stylesheet" type="text/css" />
+    <link href="tmp.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <form id="form1" runat="server">
@@ -40,31 +40,31 @@
  <br /> 
 
 <!--明細Title部-->
-<div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1000px; margin-top :0px; border-collapse :collapse ;">
-      <table class='ms_title' style="width:1000px" cellpadding="0" cellspacing="0">
+<div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
+      <table class='ms_title' style="width:2418px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:80px;">
+              <td style="width:210px;">
                   工程名
               </td>
-              <td style="width:100px;">
+              <td style="width:70px;">
                   检查项目
               </td>
               <td style="width:30px;">
                   图片标记
               </td>
-              <td style="width:110px;">
+              <td style="width:210px;">
                   检查方法
               </td>
-              <td style="width:180px;">
+              <td style="width:210px;">
                   基准説明
               </td>
-              <td style="width:160px;">
+              <td style="width:210px;">
                   输入值
               </td>
-              <td style="width:40px;">
+              <td style="width:210px;">
                   结果
               </td>
-              <td style="">
+              <td style="width:210px;">
                   备考
               </td>
           </tr>
@@ -74,29 +74,16 @@
 <!--明細Body部-->
 <div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
      
-   <asp:GridView CssClass ="jq_ms" Width="1000px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
+   <asp:GridView CssClass ="jq_ms" Width="2418px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
-          <asp:BoundField DataField="project_name" HeaderText="" ControlStyle-Width="80px" ItemStyle-Width="80px" />
-          <asp:BoundField DataField="chk_km_name" HeaderText=""  ControlStyle-Width="100px" ItemStyle-Width="100px" />
-         <%-- <asp:TemplateField><ItemTemplate ><%#Eval("project_name")%></ItemTemplate><ItemStyle Width="80px" HorizontalAlign="Left" CssClass="jq_chk_no" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_km_name")%></ItemTemplate><ItemStyle Width="100px" HorizontalAlign="Left" CssClass="jq_chk_method_id" /></asp:TemplateField>
-     --%>
-          <asp:TemplateField><ItemTemplate ><%#Eval("pic_sign")%></ItemTemplate><ItemStyle Width="30px" HorizontalAlign="Left" CssClass="jq_chk_flg" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_name")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_in_1" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("verify_method_explain")%></ItemTemplate><ItemStyle Width="180px" HorizontalAlign="Left" CssClass="jq_in_2" /></asp:TemplateField>
-          <asp:TemplateField>
-              <ItemTemplate >
-                  <asp:TextBox ID="tbxIn1" runat="server" Text='<%#Eval("in_1")%>' CssClass="jq_in1" Width="98%"></asp:TextBox>                  
-              </ItemTemplate>              
-          <ItemStyle Width="160px" HorizontalAlign="Left" CssClass="jq_chk_result" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate >
-
-              <asp:TextBox ID="tbxresult" runat="server" Text='<%#Eval("chk_result")%>' CssClass="jq_result" Width="92%"></asp:TextBox>
-                             </ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Left" CssClass="jq_mark" /></asp:TemplateField>
-          <asp:TemplateField>
-              <ItemTemplate >
-                <asp:TextBox ID="tbxMark" runat="server" Text='<%#Eval("mark")%>' CssClass="jq_mark" Width="98%"></asp:TextBox>
-              </ItemTemplate><ItemStyle HorizontalAlign="Left" CssClass="jq_kj_0" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("project_name")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_chk_no" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_km_name")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_chk_method_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_flg")%></ItemTemplate><ItemStyle Width="30px" HorizontalAlign="Left" CssClass="jq_chk_flg" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("pic_sign")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_in_1" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_name")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_in_2" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("in_1")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_chk_result" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_result")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_mark" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("mark")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_kj_0" /></asp:TemplateField>
       </Columns>
    </asp:GridView>
 </div>
