@@ -8,10 +8,10 @@ Partial Class Img
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             Dim bt As Byte()
-   
-                bt = DirectCast(MPictureBC.GetLineListPic(Request.QueryString("pic_id"), Request.QueryString("line_id")), Byte())
-                Response.BinaryWrite(bt)
-      
+
+            bt = DirectCast(MPictureBC.GetLineListPic(Request.QueryString("pic_id"), Request.QueryString("line_id")), Byte())
+            Response.BinaryWrite(bt)
+
             Response.End()
         Catch ex As Exception
         End Try

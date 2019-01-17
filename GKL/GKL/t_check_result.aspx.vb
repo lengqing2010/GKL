@@ -163,18 +163,22 @@ Me.hidOldRowIdx.Text = ""
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
 
         'データ存在チェック
-            If IsHaveData() Then
-                Common.ShowMsg(Me.Page, "数据已经存在")
-                Exit Sub
-            End If
-            Try
+        If IsHaveData() Then
+            Common.ShowMsg(Me.Page, "数据已经存在")
+            Exit Sub
+        End If
+        Try
             BC.InsTCheckResult(tbxChkNo.Text, tbxNen.Text, 0, tbxPlanNo.Text, tbxLineId.Text, tbxMakeNo.Text, tbxCode.Text, tbxSuu.Text, tbxTempId.Text, tbxChkResult.Text, tbxChkUser.Text, "", tbxChkStartDate.Text, tbxChkEndDate.Text, tbxParentChkNo.Text, tbxStatus.Text, tbxInsUser.Text, tbxInsDate.Text)
-                MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+            MsInit()
+
+
+
+
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
 
     ''' <summary>

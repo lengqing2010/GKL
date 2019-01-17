@@ -26,6 +26,28 @@ public partial class CheckItiran : System.Web.UI.Page
 
 
             }
+
+            if (Context.Items["line_id"] != null)
+            {
+                this.tbxLineId_key.Text = Context.Items["line_id"].ToString();
+                this.tbxCheckUser.Text = Context.Items["user"].ToString();
+                this.lblUserName.Text = Context.Items["user_name"].ToString();
+                this.tbxDate_key.Text = Context.Items["chk_date"].ToString();
+
+                MsInit(1);
+                this.tbxMakeNo_key.Focus();
+            }
+            else
+            {
+                this.tbxCheckUser.Focus();
+            }
+
+
+
+
+
+
+
         }
 
         ;
@@ -186,8 +208,8 @@ public partial class CheckItiran : System.Web.UI.Page
      string make_no = this.tbxMakeNo_key.Text;
      string code = this.tbxCode_key.Text;
      string suu = this.hidSuu.Text;
-     string line_id = this.tbxLineId_key .Text;
-
+     string line_id = this.tbxLineId_key.Text;
+     Context.Items["chk_date"] = this.tbxDate_key.Text.Trim();
      Context.Items["make_no"] = make_no;
      Context.Items["code"] = code;
      Context.Items["line_id"] = line_id;
@@ -254,6 +276,7 @@ public partial class CheckItiran : System.Web.UI.Page
                           );
 
          Context.Items["chk_no"] = tmp_chk_no;
+         Server.Transfer("t_check_ms.aspx");
 
      } else {
          Common.ShowMsg(this.Page, "检查计划数据不存在;");
@@ -268,8 +291,40 @@ public partial class CheckItiran : System.Web.UI.Page
 
      TCheckResultBC BC = new TCheckResultBC();
      BC.DeleteCheckResult(chk_no, line_id, user);
+     MsInit(1);
 
      
  }
 
+ protected void btnUpdate_Click(object sender, EventArgs e)
+ {
+     string chk_no;
+     string make_no = this.tbxMakeNo_key.Text;
+     string code = this.tbxCode_key.Text;
+     string suu = this.hidSuu.Text;
+     string line_id = this.tbxLineId_key.Text;
+     Context.Items["chk_date"] = this.tbxDate_key.Text.Trim();
+
+     Context.Items["chk_no"] = hidChkNo.Text.Trim();
+
+     Context.Items["user_name"] = this.lblUserName.Text ;
+
+     Context.Items["make_no"] = make_no;
+     Context.Items["code"] = code;
+     Context.Items["line_id"] = line_id;
+     Context.Items["user"] = this.tbxCheckUser.Text.Trim();
+     Server.Transfer("t_check_ms.aspx");
+ }
+ protected void btnComlete_Click(object sender, EventArgs e)
+ {
+     string chk_no;
+     string make_no = this.tbxMakeNo_key.Text;
+     string code = this.tbxCode_key.Text;
+     string suu = this.hidSuu.Text;
+     string line_id = this.tbxLineId_key.Text;
+
+     TCheckMsBC BC = new TCheckMsBC();
+     BC.UpdTCheckResultMS(hidChkNo.Text.Trim(), line_id);
+     MsInit(1);
+ }
 }

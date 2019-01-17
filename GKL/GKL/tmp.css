@@ -84,12 +84,12 @@ label.checkbox {
 
 input, textarea {
     /*border: 2px solid #e2e2e2;*/
-    background: #fff;
+    /*background: #fff;
     color: #333;
     font-size: .85em;
     margin: 0px;
     width: 300px;
-    text-shadow: 0px 1px 1px rgba(0,0,0,0.3);
+    text-shadow: 0px 1px 1px*/ rgba(0,0,0,0.3);
 }
 
     textarea {
@@ -111,7 +111,7 @@ input, textarea {
     input[type="button"],
     input[type="reset"],
     button {
-        border: 1px solid #787878;
+        /*border: 1px solid #787878;
         cursor: pointer;
         font-weight: 600;
         padding: 2px;
@@ -121,35 +121,35 @@ input, textarea {
         margin-right: 6px;
         border-radius:6px;
         text-decoration:none;
-	    background:#ccc;
+	    background:red;
 	    color:#000;
 	    -webkit-transition:all linear 0.30s;
 	    -moz-transition:all linear 0.30s;
 	    transition:all linear 0.30s;
-        padding-left:6px; padding-right:6px;
+        padding-left:6px; padding-right:6px;*/
 
     }
 
     input[type="button"]:hover {
-        background-color: #fff;
-        color:#000;
+        /*background-color: #fff;
+        color:#000;*/
     }
     input[type="submit"]:hover {
-        background-color: #fff;
-        color:#000;
+        /*background-color: #fff;
+        color:#000;*/
     }
     button:hover {
-        background-color: #fff;
-        color:#000;
+        /*background-color: #fff;
+        color:#000;*/
     }
 
 
     td input[type="submit"],
     td input[type="button"],
     td button {
-        font-size: 1em;
+        /*font-size: 1em;
         padding: 0px;
-        margin-right: 4px;
+        margin-right:4px;*/ 
     }
 
 .error {
@@ -206,7 +206,7 @@ td {
     padding:2px;
     height:14px;
   
-    border-bottom: solid 1px #000;
+    /*border-bottom: solid 1px #000;*/
   
 }
 .jyouken_panel td{
@@ -333,9 +333,10 @@ td {
 .jq_back{
   
     margin-left:100px;
-    background-color:red;
+    /*background-color:red;*/
     font-size:12px;
-    border:none;
+    width:100px;
+    /*border:none;*/
 
 }
 

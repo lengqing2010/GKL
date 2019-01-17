@@ -389,6 +389,7 @@ End Function
         sb.AppendLine("Select ")
         sb.AppendLine("	@chk_no chk_no")
         sb.AppendLine("	,chk_method_id")
+        sb.AppendLine("	,@line_id")
         sb.AppendLine("	,'0' chk_flg")
         sb.AppendLine("	,'' in_1")
         sb.AppendLine("	,'' in_2")
@@ -580,13 +581,17 @@ End Function
         sb.AppendLine("      ,t_check_result.[code]")
         sb.AppendLine("      ,t_check_result.[suu]")
         sb.AppendLine("      ,t_check_result.[temp_id]")
-        sb.AppendLine("      ,t_check_result.[chk_result]")
+        sb.AppendLine("      ,CASE WHEN t_check_result.[chk_result] = '1' THEN 'OK' WHEN t_check_result.[chk_result] = '9' THEN 'NG' ELSE '' END chk_result")
+
+
+
+
         sb.AppendLine("      ,t_check_result.[chk_user]")
         sb.AppendLine("      ,t_check_result.[chk_start_date]")
         sb.AppendLine("      ,t_check_result.[chk_end_date]")
         sb.AppendLine("      ,t_check_result.[parent_chk_no]")
         'sb.AppendLine("      ,t_check_result.[status]")
-        sb.AppendLine("      ,CASE WHEN ISNULL(t_check_result.[status],'0') = '0' THEN N'待检查'")
+        sb.AppendLine("      ,CASE WHEN ISNULL(t_check_result.[status],'0') = '0' THEN N'检查中'")
         sb.AppendLine("		WHEN ISNULL(t_check_result.[status],'1') = '1' THEN N'临时保存'")
         sb.AppendLine("		WHEN ISNULL(t_check_result.[status],'1') = '2' THEN N'完了'   ")
         sb.AppendLine("		WHEN ISNULL(t_check_result.[status],'1') = '9' THEN N'删除'")

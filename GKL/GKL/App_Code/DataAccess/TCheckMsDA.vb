@@ -395,6 +395,7 @@ End Function
             .AppendLine("FROM   t_check_ms ")
             .AppendLine("       LEFT JOIN m_temp ")
             .AppendLine("               ON t_check_ms.chk_method_id = m_temp.chk_method_id ")
+            .AppendLine("               AND t_check_ms.line_id = m_temp.line_id ")
             .AppendLine("       LEFT JOIN m_check_method ")
             .AppendLine("               ON m_temp.chk_id = m_check_method.chk_id ")
             .AppendLine("       LEFT JOIN m_tools ")
@@ -413,4 +414,140 @@ End Function
 
     End Function
 
+
+
+
+
+
+
+    Public Function UpdTCheckMs(ByVal chkNo_key As String, _
+               ByVal in1 As String, _
+               ByVal chkResult As String, _
+               ByVal mark As String, _
+               ByVal kj0 As String, _
+               ByVal kj1 As String, _
+               ByVal kj2 As String, _
+               ByVal insUser As String, _
+               ByVal line_id As String, _
+               ByVal chk_method_id As String) As Boolean
+
+        'SQLコメント
+        '--**テーブル：检查结果 : t_check_ms
+        Dim sb As New StringBuilder
+        'SQL文
+        sb.AppendLine("UPDATE t_check_ms")
+        sb.AppendLine("SET")
+        sb.AppendLine(" in_1=@in_1")                                                  '入力値1
+        sb.AppendLine(", chk_result=@chk_result")   '检查结果
+        sb.AppendLine(", mark=@mark")                                                  '备考
+        sb.AppendLine(", kj_0=@kj_0")                                                  '基准
+        sb.AppendLine(", kj_1=@kj_1")                                                  '工差1
+        sb.AppendLine(", kj_2=@kj_2")                                                  '工差2
+        sb.AppendLine(", ins_user=@ins_user")   '登録者
+        sb.AppendLine(", ins_date=getdate()")   '登録日
+        sb.AppendLine("FROM t_check_ms")
+        sb.AppendLine("WHERE chk_no=@chk_no_key")   '检查No
+        sb.AppendLine("	 AND  chk_method_id = '" & chk_method_id & "'")
+        sb.AppendLine("	 AND  line_id = '" & line_id & "'")
+
+
+        '僶儔儊僞奿擺
+        Dim paramList As New List(Of SqlParameter)
+        paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
+        paramList.Add(MakeParam("@in_1", SqlDbType.VarChar, 20, in1))
+        paramList.Add(MakeParam("@chk_result", SqlDbType.VarChar, 20, chkResult))
+        paramList.Add(MakeParam("@mark", SqlDbType.NVarChar, 200, mark))
+        paramList.Add(MakeParam("@kj_0", SqlDbType.NVarChar, 100, kj0))
+        paramList.Add(MakeParam("@kj_1", SqlDbType.VarChar, 20, kj1))
+        paramList.Add(MakeParam("@kj_2", SqlDbType.VarChar, 20, kj2))
+        paramList.Add(MakeParam("@ins_user", SqlDbType.VarChar, 20, insUser))
+
+
+
+        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+
+        Return True
+
+    End Function
+
+
+
+
+    Public Function UpdTCheckResultMS(ByVal chkNo_key As String, _
+               ByVal line_id As String) As Boolean
+
+        'SQLコメント
+        '--**テーブル：检查结果 : t_check_ms
+        Dim sb As New StringBuilder
+        'SQL文
+        With sb
+            .AppendLine("DECLARE @chk_no VARCHAR(20) ")
+            .AppendLine("DECLARE @line_id VARCHAR(20) ")
+            .AppendLine("")
+            .AppendLine("SET @chk_no = '" & chkNo_key & "' ")
+            .AppendLine("SET @line_id = '" & line_id & "' ")
+            .AppendLine("")
+            .AppendLine("IF EXISTS(SELECT * ")
+            .AppendLine("          FROM   t_check_ms ")
+            .AppendLine("          WHERE  chk_no = @chk_no ")
+            .AppendLine("                 AND line_id = @line_id ")
+            .AppendLine("                 AND (ISNULL(chk_result,'') = 'NG' OR ISNULL(chk_result,'') = ''))")
+            .AppendLine("  BEGIN ")
+            .AppendLine("      UPDATE [t_check_result] ")
+            .AppendLine("      SET    [chk_result] = '9',status = '2' ")
+            .AppendLine("      WHERE  chk_no = @chk_no ")
+            .AppendLine("             AND line_id = @line_id ")
+            .AppendLine("  END ")
+            .AppendLine("ELSE ")
+            .AppendLine("  BEGIN ")
+            .AppendLine("      UPDATE [t_check_result] ")
+            .AppendLine("      SET    [chk_result] = '1',status = '2' ")
+            .AppendLine("      WHERE  chk_no = @chk_no ")
+            .AppendLine("             AND line_id = @line_id ")
+            .AppendLine("  END ")
+        End With
+
+
+
+
+
+        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString())
+
+        Return True
+
+    End Function
+
+
+
+
+    Public Function UpdTCheckResultMSWanliao(ByVal chkNo_key As String, _
+               ByVal line_id As String) As Boolean
+
+        'SQLコメント
+        '--**テーブル：检查结果 : t_check_ms
+        Dim sb As New StringBuilder
+        'SQL文
+        With sb
+            .AppendLine("DECLARE @chk_no VARCHAR(20) ")
+            .AppendLine("DECLARE @line_id VARCHAR(20) ")
+            .AppendLine("")
+            .AppendLine("SET @chk_no = '" & chkNo_key & "' ")
+            .AppendLine("SET @line_id = '" & line_id & "' ")
+
+            .AppendLine("      UPDATE [t_check_result] ")
+            .AppendLine("      SET    status = '2' ")
+            .AppendLine("      WHERE  chk_no = @chk_no ")
+            .AppendLine("             AND line_id = @line_id ")
+
+        End With
+
+
+
+
+
+        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString())
+
+        Return True
+
+    End Function
 End Class

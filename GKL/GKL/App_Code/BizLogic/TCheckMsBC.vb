@@ -204,5 +204,40 @@ End Function
     End Function
 
 
+    Public Function UpdTCheckMs(ByVal chkNo_key As String, _
+               ByVal in1 As String, _
+               ByVal chkResult As String, _
+               ByVal mark As String, _
+               ByVal kj0 As String, _
+               ByVal kj1 As String, _
+               ByVal kj2 As String, _
+               ByVal insUser As String, _
+               ByVal line_id As String, ByVal chk_method_id As String) As Boolean
+        Return DA.UpdTCheckMs(chkNo_key, _
+                               in1, _
+                               chkResult, _
+                               mark, _
+                               kj0, _
+                               kj1, _
+                               kj2, _
+                               insUser, _
+                               line_id, chk_method_id)
+    End Function
+
+
+    Public Function UpdTCheckResultMS(ByVal chkNo_key As String, _
+           ByVal line_id As String) As Boolean
+
+        DA.UpdTCheckResultMS(chkNo_key, line_id)
+
+    End Function
+
+
+
+    Public Function UpdTCheckResultMSWanliao(ByVal chkNo_key As String, _
+               ByVal line_id As String) As Boolean
+
+        DA.UpdTCheckResultMSWanliao(chkNo_key, line_id)
+    End Function
 
 End Class

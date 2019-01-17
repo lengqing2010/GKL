@@ -20,20 +20,38 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div'>检查明細</div>
+        <div class='title_div'>
+            <table style=" border:none; width:1000px">
+                <tr>
+                    <td style=" border:none; width:150px;">检查明細</td>
+                    <td style=" border:none;">
+                        <div style="font-size:12px; border:none;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;作番：<asp:Label ID="lblMake_no" runat="server" Text="001" ></asp:Label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;CODE：<asp:Label ID="lblCode" runat="server" Text="001" ></asp:Label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;检查者：<asp:Label ID="lblUser" runat="server" Text="001" ></asp:Label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;（生产线：<asp:Label ID="lblLine_id" runat="server" Text="001" ></asp:Label>）
+                            &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnComplete" runat="server" Text="完了" CssClass="jq_sel"  height="24" OnClick="btnComplete_Click"/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnModoru" runat="server" Text="返回" CssClass="jq_sel"  height="24" OnClick="btnModoru_Click"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
 
-        <asp:Label ID="lblLine_id" runat="server" Text="001" ></asp:Label>
+       
         
 <!--条件部-->
-        <table class='jyouken_panel' cellpadding="0" cellspacing="0">
+        <table class='jyouken_panel' style="width:1000px" cellpadding="0" cellspacing="0">
             <tr>
-            <td>检查No : &nbsp;</td>
-            <td>
-              <asp:TextBox ID="tbxChkNo_key" class="jq_chk_no_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
-                <input type="text" id="ScanText" /><input type="button" />
-            </td>
             <td></td>
+            <td>
+
+                
+            </td>
+            <td style="text-align:right;"><asp:Label ID="lblSou" runat="server" Text="" Width="200px" ></asp:Label></td>
             </tr>
         </table>
 <!--明細Title部-->
@@ -69,7 +87,7 @@
 </div>
 
 <!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:auto ; height:294px;margin-left:0px; width:1024px; margin-top :0px; border-collapse :collapse ;">
      
    <asp:GridView CssClass ="jq_ms" Width="1000px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
@@ -136,7 +154,7 @@
 
     </td>
 </table>
-        
+<input type="text" id="ScanText" />
 
         <asp:TextBox ID="hidChkNo" runat="server" class="jq_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidChkMethodId" runat="server" class="jq_chk_method_id_ipt" style=" visibility:hidden;"></asp:TextBox>
@@ -149,9 +167,13 @@
         <asp:TextBox ID="hidKj1" runat="server" class="jq_kj_1_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidKj2" runat="server" class="jq_kj_2_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidKjExplain" runat="server" class="jq_kj_explain_ipt" style=" visibility:hidden;"></asp:TextBox>
-        <asp:TextBox ID="hidInsUser" runat="server" class="jq_ins_user_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidInsDate" runat="server" class="jq_ins_date_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidOldRowIdx" runat="server" class="jq_hidOldRowIdx" style=" visibility:hidden;"></asp:TextBox>
+
+
+        <asp:TextBox ID="hidLineId" runat="server" class="jq_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
+        <asp:TextBox ID="hidInsUser" runat="server" class="jq_ins_user_ipt" style=" visibility:hidden;"></asp:TextBox>
+   
     </div>
     </form>
 </body>

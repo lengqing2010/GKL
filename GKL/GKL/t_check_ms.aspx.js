@@ -1,85 +1,4 @@
-﻿// Do Ajax function
-function AjaxPost(ajaxActionType){
-    $.ajax({
-        type: 'POST',
-        url: 'SaveDataAjax.aspx',
-        data: {
-            ajaxActionType : ajaxActionType
-            ,tbxChkNo_key:$('#tbxChkNo_key').val()
-            ,tbxChkNo:$('#tbxChkNo').val()
-            ,tbxChkMethodId:$('#tbxChkMethodId').val()
-            ,tbxChkFlg:$('#tbxChkFlg').val()
-            ,tbxIn1:$('#tbxIn1').val()
-            ,tbxIn2:$('#tbxIn2').val()
-            ,tbxChkResult:$('#tbxChkResult').val()
-            ,tbxMark:$('#tbxMark').val()
-            ,tbxKj0:$('#tbxKj0').val()
-            ,tbxKj1:$('#tbxKj1').val()
-            ,tbxKj2:$('#tbxKj2').val()
-            ,tbxKjExplain:$('#tbxKjExplain').val()
-            ,tbxInsUser:$('#tbxInsUser').val()
-            ,tbxInsDate:$('#tbxInsDate').val()
-        },
-        datatype: 'html',//'xml', 'html', 'script', 'json', 'jsonp', 'text'.
-        beforeSend: function () {
-        },
-        //when success
-        success: function (data) {
-        },
-        //when complete
-        complete: function (XMLHttpRequest, textStatus) {
-            //alert(XMLHttpRequest.responseText);
-            alert(textStatus);
-        },
-        //when error
-        error: function () {
-        }
-    });
-}
-// 峏怴
-function ajax_update(){
-    AjaxPost('update');
-}
-// 嶍彍
-function ajax_delete(){
-    AjaxPost('delete');
-}
-// 搊榐
-function ajax_insert(){
-    AjaxPost('insert');
-}
-// 専嶕
-function ajax_select(){
-    AjaxPost('select');
-}
-// Ajax page use
-    //Dim tbxChkNo_key As String = Request.Form("tbxChkNo_key")
-    //Dim tbxChkNo As String = Request.Form("tbxChkNo")
-    //Dim tbxChkMethodId As String = Request.Form("tbxChkMethodId")
-    //Dim tbxChkFlg As String = Request.Form("tbxChkFlg")
-    //Dim tbxIn1 As String = Request.Form("tbxIn1")
-    //Dim tbxIn2 As String = Request.Form("tbxIn2")
-    //Dim tbxChkResult As String = Request.Form("tbxChkResult")
-    //Dim tbxMark As String = Request.Form("tbxMark")
-    //Dim tbxKj0 As String = Request.Form("tbxKj0")
-    //Dim tbxKj1 As String = Request.Form("tbxKj1")
-    //Dim tbxKj2 As String = Request.Form("tbxKj2")
-    //Dim tbxKjExplain As String = Request.Form("tbxKjExplain")
-    //Dim tbxInsUser As String = Request.Form("tbxInsUser")
-    //Dim tbxInsDate As String = Request.Form("tbxInsDate")
-
-//専嶕
-//       Return BC.SelTCheckMs(tbxChkNo_key)
-//搊榐
-//       Return BC.InsTCheckMs(tbxChkNo ,tbxChkMethodId ,tbxChkFlg ,tbxIn1 ,tbxIn2 ,tbxChkResult ,tbxMark ,tbxKj0 ,tbxKj1 ,tbxKj2 ,tbxKjExplain ,tbxInsUser ,tbxInsDate)
-//嶍彍
-//       Return BC.DelTCheckMs(tbxChkNo_key)
-//峏怴
-//       Return BC.UpdTCheckMs(tbxChkNo_key ,tbxChkNo ,tbxChkMethodId ,tbxChkFlg ,tbxIn1 ,tbxIn2 ,tbxChkResult ,tbxMark ,tbxKj0 ,tbxKj1 ,tbxKj2 ,tbxKjExplain ,tbxInsUser ,tbxInsDate)
-
-
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     var chk_id;
     var kj_0;
@@ -93,7 +12,7 @@ $(document).ready(function () {
 
     var ScanText;
     ScanText = document.getElementById("ScanText");
-
+    check_setume_txt();
     $(".jq_ms tr").each(function () {
 
         chk_method = $(this).attr("chk_method");
@@ -111,7 +30,78 @@ $(document).ready(function () {
             $(this).find(".jq_in1").attr("readonly", "readonly");
         }
 
+        var resultCell;
+        resultCell = $(this).find(".jq_result");
+        if (resultCell.val() == "OK") {
+            resultCell.css('background-color', 'green');
+        } else if (resultCell.val() == "NG") {
+            resultCell.css('background-color', 'red');
+        }
+
     });
+
+    function check_setume_txt() {
+        var okSuu;
+        var NGSuu;
+        var allSuu;
+        okSuu = 0;
+        allSuu = 0;
+        NGSuu = 0;
+        $(".jq_result").each(function () {
+            if ($(this).val() == "OK") {
+                okSuu++;
+            } else if ($(this).val() == "NG") {
+                NGSuu++;
+            } else {
+               // kuhakuSuu++;
+            }
+            allSuu++;
+        });
+        $("#lblSou").text("NG：" + NGSuu + "， OK：" + okSuu + " ，全部：" + allSuu);
+
+        if (allSuu == okSuu) {
+            $("#lblSou").css('color', 'green');
+        } else {
+            $("#lblSou").css('color', 'red');
+        }
+    }
+
+
+
+
+    function AjaxPostMsUpd(in1,chkResult,mark) {
+        $.ajax({
+            type: 'POST',
+            url: 'AJAX.aspx?kbn=chk_ms_upd',
+            async: true, //true:yibu
+            data: {
+                chkNo_key:$("#hidChkNo").val()
+                ,in1:in1
+                ,chkResult:chkResult
+                ,mark:mark
+                ,kj0:kj_0
+                ,kj1:kj_1
+                ,kj2:kj_2
+                , insUser: $("#hidInsUser").val()
+                , line_id: $("#hidLineId").val()
+                , chk_method_id: chk_method_id
+            },
+            datatype: 'html',//'xml', 'html', 'script', 'json', 'jsonp', 'text'.
+            beforeSend: function () {
+            },
+            //when success
+            success: function (data) {
+            },
+            //when complete
+            complete: function (XMLHttpRequest, textStatus) {
+                //alert(XMLHttpRequest.responseText);
+                //alert(textStatus);
+            },
+            //when error
+            error: function () {
+            }
+        });
+    }
 
     //入力値１
     $(".jq_in1").focus(function () {
@@ -119,6 +109,7 @@ $(document).ready(function () {
         thisRow = $(this).parent().parent();
         var obj;
         obj = $(this);
+        acText = $(this);
 
         chk_id = thisRow.attr("chk_id");
         kj_0 = thisRow.attr("kj_0");
@@ -159,8 +150,60 @@ $(document).ready(function () {
 
     });
 
-    $(".keyboard").find("td").click(function () {
-        alert($(this).text());
+    $(".keyboard").find("td").mouseup(function () {
+        var thisRow;
+        thisRow = $(acText).parent().parent();
+        var obj;
+        obj = $(acText);
+        var jq_e;
+        jq_e = $(acText);
+        var ky;
+        ky = $(this).text();
+
+        chk_id = thisRow.attr("chk_id");
+        kj_0 = thisRow.attr("kj_0");
+        kj_1 = thisRow.attr("kj_1");
+        kj_2 = thisRow.attr("kj_2");
+        chk_method_id = thisRow.attr("chk_method_id");
+        chk_method = thisRow.attr("chk_method");
+        chk_formula = thisRow.attr("chk_formula");
+        pic_id = thisRow.attr("pic_id");
+
+        var tbxMark;
+        tbxMark = $(acText).parent().parent().find("#tbxMark").val();
+        var resultCell;
+        resultCell = $(acText).parent().parent().find(".jq_result");
+
+        if (ky == "OK" || ky == "NG") {
+            if (ky == "OK") {
+                resultCell.css('background-color', 'green');
+            } else {
+                resultCell.css('background-color', 'red');
+            }
+            resultCell.val(ky);
+            AjaxPostMsUpd(jq_e.val(), ky, tbxMark);
+            SetNextFocus(jq_e);
+        } else if (ky == "回车") {
+            if (chk_method != "2") {
+                if (GetChkMethodStr(chk_formula, $(acText))) {
+                    SetResult(true, $(acText));
+                } else {
+                    SetResult(false, $(acText));
+                }
+            }
+
+        } else if (ky == "删除") {
+            $(acText).val("");
+
+        } else {
+            $(acText).val($(acText).val() + ky + '');
+            $(acText).focus();
+
+        }
+
+
+        check_setume_txt();
+
 
     });
 
@@ -200,6 +243,7 @@ $(document).ready(function () {
                 ScanText.value = "";
                 ScanText.focus();
                 acText = $(this);
+                check_setume_txt();
             }
 
         } else if (chk_method == "2") { //固定
@@ -212,12 +256,23 @@ $(document).ready(function () {
     });
 
     function SetResult(rlt, jq_e) {
+
+        var tbxMark;
+        tbxMark = jq_e.parent().parent().find("#tbxMark").val();
+
+        var resultCell;
+        resultCell = jq_e.parent().parent().find(".jq_result");
+
         if (rlt) {
-            jq_e.parent().parent().find(".jq_result").css('background-color', 'green');
-            jq_e.parent().parent().find(".jq_result").val("OK");
+            resultCell.css('background-color', 'green');
+            resultCell.val("OK");
+            AjaxPostMsUpd(jq_e.val(), "OK", tbxMark);
+            
         } else {
-            jq_e.parent().parent().find(".jq_result").css('background-color', 'red');
-            jq_e.parent().parent().find(".jq_result").val("NG");
+            resultCell.css('background-color', 'red');
+            resultCell.val("NG");
+            AjaxPostMsUpd(jq_e.val(), "NG", tbxMark);
+
         }
 
         SetNextFocus(jq_e);
@@ -246,7 +301,12 @@ $(document).ready(function () {
 
         if (chk_method != "0") {        //INPUT
             RemoveReadOnly($(nextIn1));
-            nextIn1.focus();
+            try{
+                nextIn1.focus();
+            } catch (e) {
+
+            }
+            
             SetReadOnly($(nextIn1));
 
         } else {

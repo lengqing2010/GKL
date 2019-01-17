@@ -14,8 +14,25 @@ public partial class t_check_ms : System.Web.UI.Page
                 this.lblMsg.Text = "";
         if (!IsPostBack ){
 
-            ViewState["chk_no"] = "190112_049010465_1";
-            ViewState["line_id"] = "SRM1312A";
+            ViewState["make_no"] = Context.Items["make_no"];
+            ViewState["code"] = Context.Items["code"] ;
+            ViewState["line_id"] = Context.Items["line_id"];
+            ViewState["user"] = Context.Items["user"] ;
+            ViewState["chk_no"] = Context.Items["chk_no"];
+            ViewState["user_name"] = Context.Items["user_name"];
+            ViewState["chk_date"] = Context.Items["chk_date"];
+            this.lblMake_no.Text = ViewState["make_no"].ToString();
+            this.lblCode.Text = ViewState["code"].ToString();
+            this.lblUser.Text = ViewState["user"].ToString();
+            this.lblLine_id.Text = ViewState["line_id"].ToString() + "  " + ViewState["user_name"].ToString();
+
+            //ViewState["chk_no"] = "190112_049010465_1";
+            //ViewState["line_id"] = "SRM1312A";
+            //ViewState["CheckUser"] = "3003000";
+            this.hidChkNo.Text = ViewState["chk_no"].ToString();
+            this.hidLineId.Text = ViewState["line_id"].ToString();
+            this.hidInsUser.Text = ViewState["user"].ToString();
+
 
             //'固定項目設定
             KoteiInit();
@@ -56,8 +73,33 @@ public partial class t_check_ms : System.Web.UI.Page
     }
 
     DataTable GetMsData(){
-        TCheckMsDA BC = new TCheckMsDA();
+        TCheckMsBC BC = new TCheckMsBC();
         return BC.SelTCheckMs(ViewState["chk_no"].ToString(), ViewState["line_id"].ToString());
+    }
+    protected void btnComplete_Click(object sender, EventArgs e)
+    {
+        TCheckMsBC BC = new TCheckMsBC();
+        BC.UpdTCheckResultMS(ViewState["chk_no"].ToString(), ViewState["line_id"].ToString());
+
+        Context.Items["make_no"] = ViewState["make_no"];
+        Context.Items["code"] = ViewState["code"];
+        Context.Items["line_id"] = ViewState["line_id"];
+        Context.Items["user"] = ViewState["user"];
+        Context.Items["chk_no"] = ViewState["chk_no"];
+        Context.Items["user_name"] = ViewState["user_name"];
+        Context.Items["chk_date"] = ViewState["chk_date"];
+        Server.Transfer("CheckItiran.aspx");
+    }
+    protected void btnModoru_Click(object sender, EventArgs e)
+    {
+        Context.Items["make_no"] = ViewState["make_no"];
+        Context.Items["code"] = ViewState["code"];
+        Context.Items["line_id"] = ViewState["line_id"];
+        Context.Items["user"] = ViewState["user"];
+        Context.Items["chk_no"] = ViewState["chk_no"];
+        Context.Items["user_name"] = ViewState["user_name"];
+        Context.Items["chk_date"] = ViewState["chk_date"];
+        Server.Transfer("CheckItiran.aspx");
     }
 }
 

@@ -48,7 +48,7 @@
             <td>
                 <asp:TextBox ID="tbxCode_key" class="jq_code_ipt" runat="server" maxLength="20" style="width:180px;background-color: #FFAA00;"></asp:TextBox></td>
             <td>
-            <asp:Button ID="btnInsert" runat="server" Text="新规检查" CssClass="jq_ins" height="24" Width="100" OnClick="btnInsert_Click" />
+                <asp:Button ID="btnInsert" runat="server" Text="新规检查" CssClass="jq_ins" height="24" Width="100" OnClick="btnInsert_Click" />
                 </td>
             </tr>
             <tr>
@@ -58,7 +58,7 @@
             <td>&nbsp;</td>
             <td></td>
             <td>
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" OnClick="btnSelect_Click" height="24"/>
+        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" OnClick="btnSelect_Click" height="24" Width="60"/>
 
                 </td>
             <td>&nbsp;</td>
@@ -71,8 +71,9 @@
         <div style="width:1000px; text-align:right;">
 
     <!--Button部-->
-            <asp:Button ID="btnUpdate" runat="server" Text="继续检查" CssClass="jq_upd"  Width="100" />
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnUpdate" runat="server" Text="继续检查" CssClass="jq_upd"  Width="100" OnClick="btnUpdate_Click" />
+            &nbsp;<asp:Button ID="btnComlete" runat="server" Text="强制完了" CssClass="" height="24" Width="100" OnClick="btnComlete_Click"  />
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" Width="100" OnClick="btnDelete_Click"/>
             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
             第

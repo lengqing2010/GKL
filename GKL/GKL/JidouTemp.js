@@ -738,7 +738,7 @@ $(document).ready(function () {
         $(".jq_title_div").scrollLeft($(".jq_ms_div").scrollLeft());
     });
 
-    $(".jq_del,.jq_upd").click(function () {
+    $(".jq_del,.jq_upd,#btnComlete").click(function () {
         if (SelectRow == null) {
             alert("请选择行～！");
             var e = event ? event : window.event;

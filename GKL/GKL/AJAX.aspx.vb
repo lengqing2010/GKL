@@ -51,6 +51,28 @@ Partial Class AJAX
                 Response.Write(dt.Rows(0).Item("user_name") & "," & dt.Rows(0).Item("line_id"))
                 Response.End()
             End If
+        ElseIf kbn = "chk_ms_upd" Then
+
+            Dim chkNo_key As String = Request.Form("chkNo_key")
+            Dim in1 As String = Request.Form("in1")
+            Dim chkResult As String = Request.Form("chkResult")
+            Dim mark As String = Request.Form("mark")
+            Dim kj0 As String = Request.Form("kj0")
+            Dim kj1 As String = Request.Form("kj1")
+            Dim kj2 As String = Request.Form("kj2")
+            Dim insUser As String = Request.Form("insUser")
+            Dim line_id As String = Request.Form("line_id")
+            Dim chk_method_id As String = Request.Form("chk_method_id")
+            Dim BC As New TCheckMsBC
+            BC.UpdTCheckMs(chkNo_key, _
+                               in1, _
+                               chkResult, _
+                               mark, _
+                               kj0, _
+                               kj1, _
+                               kj2, _
+                               insUser, _
+                               line_id, chk_method_id)
         End If
 
 
