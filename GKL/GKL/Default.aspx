@@ -59,7 +59,7 @@
 
             <tr>
 
-                <td style="vertical-align:top; padding:10px 20px 10px 20px; width:150px">
+                <td style="vertical-align:top; padding:10px 20px 10px 20px; width:200px">
                     <asp:LinkButton ID="lbUser" runat="server">用户MS</asp:LinkButton><br />
                     <asp:LinkButton ID="lbProject" runat="server">工程MS</asp:LinkButton><br />
                     <asp:LinkButton ID="lbTools" runat="server">治具MS</asp:LinkButton><br />

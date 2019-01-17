@@ -23,6 +23,8 @@ Partial Class m_tools
 
             '明細項目設定
             MsInit()
+            tbxLineId_key.Attributes.Item("onkeydown") = "if(event.keyCode==13){event.keyCode=10;return false}"
+            tbxToolId.Attributes.Item("onkeydown") = "if(event.keyCode==13){event.keyCode=10;return false}"
         End If
 
     End Sub

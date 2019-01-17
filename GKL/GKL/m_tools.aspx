@@ -42,7 +42,7 @@
             <td>
               <asp:TextBox ID="tbxToolId_key" class="jq_tool_id_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
             </td>
-            <td><asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="20" Width="50"/></td>
+            <td><asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="24" Width="50"/></td>
             </tr>
 
         </table>
