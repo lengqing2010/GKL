@@ -1,7 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -26,10 +23,7 @@ Public DA AS NEW MPictureDA
 
 Public Function SelMPicture(Byval picId_key AS String, _
            Byval lineId_key AS String) As Data.DataTable
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           picId_key, _
-           lineId_key)
+
     'SQLコメント
     Return DA.SelMPicture( _
            picId_key, _
@@ -37,12 +31,8 @@ Public Function SelMPicture(Byval picId_key AS String, _
     End Function
 
     Public Function GetLineListPic(ByVal picId_key As String, _
-           ByVal lineId_key As String)
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               picId_key, _
-               lineId_key)
-        'SQLコメント
+           ByVal lineId_key As String) As Object
+  
         Return DA.GetLineListPic( _
                picId_key, _
                lineId_key)
@@ -69,13 +59,7 @@ Public Function UpdMPicture(Byval picId_key AS String, _
            Byval picId AS String, _
            Byval lineId AS String, _
            Byval picName AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           picId_key, _
-           lineId_key, _
-           picId, _
-           lineId, _
-           picName)
+
     'SQLコメント
     '--**テーブル： : m_picture
     Return DA.UpdMPicture( _
@@ -103,11 +87,7 @@ End Function
 Public Function InsMPicture(Byval picId AS String, _
            Byval lineId AS String, _
            Byval picName AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           picId, _
-           lineId, _
-           picName)
+
     'SQLコメント
     '--**テーブル： : m_picture
     Return DA.InsMPicture( _
@@ -131,10 +111,7 @@ End Function
 
 Public Function DelMPicture(Byval picId_key AS String, _
            Byval lineId_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           picId_key, _
-           lineId_key)
+
     'SQLコメント
     '--**テーブル： : m_picture
     Return DA.DelMPicture( _

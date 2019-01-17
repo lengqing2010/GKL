@@ -1,7 +1,7 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
+
+
+
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -10,16 +10,16 @@ Imports System.Configuration.ConfigurationSettings
 Imports System.Collections.Generic
 
 Public Class TCheckPlanDA
-
+    Public SqlHelperNew As New SqlHelperNew
     ''' <summary>
     ''' 
     ''' 检查计划Infoを検索する
     ''' </summary>
     '''<param name="planNo_key">计划No</param>
-'''<param name="chkNo_key">检查No</param>
-'''<param name="makeNo_key">作番</param>
-'''<param name="code_key">コード</param>
-'''<param name="lineId_key">生产线</param>
+    '''<param name="chkNo_key">检查No</param>
+    '''<param name="makeNo_key">作番</param>
+    '''<param name="code_key">コード</param>
+    '''<param name="lineId_key">生产线</param>
     ''' <returns>检查计划Info</returns>
     ''' <remarks></remarks>
     ''' <history>
@@ -32,13 +32,7 @@ Public Class TCheckPlanDA
            ByVal code_key As String, _
            ByVal lineId_key As String, _
            ByVal tbxCheckDate_key As String) As Data.DataTable
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-           planNo_key, _
-           chkNo_key, _
-           makeNo_key, _
-           code_key, _
-           lineId_key)
+
         'SQLコメント
         '--**テーブル：检查计划 : t_check_plan
         Dim sb As New StringBuilder
@@ -77,16 +71,16 @@ Public Class TCheckPlanDA
             sb.AppendLine("AND yotei_chk_date='" & tbxCheckDate_key & "'")   '生产线
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@plan_no_key", SqlDbType.VarChar, 20, planNo_key))
-        paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
-        paramList.Add(MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
-        paramList.Add(MakeParam("@code_key", SqlDbType.VarChar, 20, code_key))
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@plan_no_key", SqlDbType.VarChar, 20, planNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@code_key", SqlDbType.VarChar, 20, code_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
 
         Dim dsInfo As New Data.DataSet
-        FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "t_check_plan", paramList.ToArray)
+        SqlHelperNew.FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "t_check_plan", paramList.ToArray)
 
         Return dsInfo.Tables("t_check_plan")
 
@@ -132,23 +126,7 @@ Public Class TCheckPlanDA
                ByVal status As String, _
                ByVal insUser As String, _
                ByVal insDate As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               planNo_key, _
-               chkNo_key, _
-               makeNo_key, _
-               code_key, _
-               lineId_key, _
-               planNo, _
-               chkNo, _
-               makeNo, _
-               code, _
-               lineId, _
-               suu, _
-               yoteiChkDate, _
-               status, _
-               insUser, _
-               insDate)
+
         'SQLコメント
         '--**テーブル：检查计划 : t_check_plan
         Dim sb As New StringBuilder
@@ -184,27 +162,27 @@ Public Class TCheckPlanDA
             sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@plan_no_key", SqlDbType.VarChar, 20, planNo_key))
-        paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
-        paramList.Add(MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
-        paramList.Add(MakeParam("@code_key", SqlDbType.VarChar, 20, code_key))
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@plan_no_key", SqlDbType.VarChar, 20, planNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@code_key", SqlDbType.VarChar, 20, code_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
 
-        paramList.Add(MakeParam("@plan_no", SqlDbType.VarChar, 20, planNo))
-        paramList.Add(MakeParam("@chk_no", SqlDbType.VarChar, 20, chkNo))
-        paramList.Add(MakeParam("@make_no", SqlDbType.VarChar, 20, makeNo))
-        paramList.Add(MakeParam("@code", SqlDbType.VarChar, 20, code))
-        paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
-        paramList.Add(MakeParam("@suu", SqlDbType.VarChar, 10, suu))
-        paramList.Add(MakeParam("@yotei_chk_date", SqlDbType.VarChar, 20, IIf(yoteiChkDate = "", DBNull.Value, CDate(yoteiChkDate).ToString("yyyy/MM/dd"))))
-        paramList.Add(MakeParam("@status", SqlDbType.VarChar, 1, status))
-        paramList.Add(MakeParam("@xiangxian", SqlDbType.NVarChar, 20, insUser))
-        paramList.Add(MakeParam("@mark", SqlDbType.NVarChar, 500, IIf(insDate = "", DBNull.Value, insDate)))
+        paramList.Add(SqlHelperNew.MakeParam("@plan_no", SqlDbType.VarChar, 20, planNo))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no", SqlDbType.VarChar, 20, chkNo))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no", SqlDbType.VarChar, 20, makeNo))
+        paramList.Add(SqlHelperNew.MakeParam("@code", SqlDbType.VarChar, 20, code))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
+        paramList.Add(SqlHelperNew.MakeParam("@suu", SqlDbType.VarChar, 10, suu))
+        paramList.Add(SqlHelperNew.MakeParam("@yotei_chk_date", SqlDbType.VarChar, 20, IIf(yoteiChkDate = "", DBNull.Value, CDate(yoteiChkDate).ToString("yyyy/MM/dd"))))
+        paramList.Add(SqlHelperNew.MakeParam("@status", SqlDbType.VarChar, 1, status))
+        paramList.Add(SqlHelperNew.MakeParam("@xiangxian", SqlDbType.NVarChar, 20, insUser))
+        paramList.Add(SqlHelperNew.MakeParam("@mark", SqlDbType.NVarChar, 500, IIf(insDate = "", DBNull.Value, insDate)))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -240,18 +218,7 @@ Public Class TCheckPlanDA
                ByVal status As String, _
                ByVal insUser As String, _
                ByVal insDate As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               planNo, _
-               chkNo, _
-               makeNo, _
-               code, _
-               lineId, _
-               suu, _
-               yoteiChkDate, _
-               status, _
-               insUser, _
-               insDate)
+
         'SQLコメント
         '--**テーブル：检查计划 : t_check_plan
         Dim sb As New StringBuilder
@@ -283,21 +250,21 @@ Public Class TCheckPlanDA
         sb.AppendLine(", @mark")                                                   '登録日
 
         sb.AppendLine(")")
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@plan_no", SqlDbType.VarChar, 20, planNo))
-        paramList.Add(MakeParam("@chk_no", SqlDbType.VarChar, 20, chkNo))
-        paramList.Add(MakeParam("@make_no", SqlDbType.VarChar, 20, makeNo))
-        paramList.Add(MakeParam("@code", SqlDbType.VarChar, 20, code))
-        paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
-        paramList.Add(MakeParam("@suu", SqlDbType.VarChar, 10, suu))
-        paramList.Add(MakeParam("@yotei_chk_date", SqlDbType.VarChar, 20, IIf(yoteiChkDate = "", DBNull.Value, CDate(yoteiChkDate).ToString("yyyy/MM/dd"))))
-        paramList.Add(MakeParam("@status", SqlDbType.VarChar, 1, status))
-        paramList.Add(MakeParam("@xiangxian", SqlDbType.NVarChar, 20, insUser))
-        paramList.Add(MakeParam("@mark", SqlDbType.NVarChar, 500, IIf(insDate = "", DBNull.Value, insDate)))
+        paramList.Add(SqlHelperNew.MakeParam("@plan_no", SqlDbType.VarChar, 20, planNo))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no", SqlDbType.VarChar, 20, chkNo))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no", SqlDbType.VarChar, 20, makeNo))
+        paramList.Add(SqlHelperNew.MakeParam("@code", SqlDbType.VarChar, 20, code))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
+        paramList.Add(SqlHelperNew.MakeParam("@suu", SqlDbType.VarChar, 10, suu))
+        paramList.Add(SqlHelperNew.MakeParam("@yotei_chk_date", SqlDbType.VarChar, 20, IIf(yoteiChkDate = "", DBNull.Value, CDate(yoteiChkDate).ToString("yyyy/MM/dd"))))
+        paramList.Add(SqlHelperNew.MakeParam("@status", SqlDbType.VarChar, 1, status))
+        paramList.Add(SqlHelperNew.MakeParam("@xiangxian", SqlDbType.NVarChar, 20, insUser))
+        paramList.Add(SqlHelperNew.MakeParam("@mark", SqlDbType.NVarChar, 500, IIf(insDate = "", DBNull.Value, insDate)))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -323,13 +290,7 @@ Public Class TCheckPlanDA
                ByVal makeNo_key As String, _
                ByVal code_key As String, _
                ByVal lineId_key As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               planNo_key, _
-               chkNo_key, _
-               makeNo_key, _
-               code_key, _
-               lineId_key)
+
         'SQLコメント
         '--**テーブル：检查计划 : t_check_plan
         Dim sb As New StringBuilder
@@ -352,16 +313,16 @@ Public Class TCheckPlanDA
             sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@plan_no_key", SqlDbType.VarChar, 20, planNo_key))
-        paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
-        paramList.Add(MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
-        paramList.Add(MakeParam("@code_key", SqlDbType.VarChar, 20, code_key))
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@plan_no_key", SqlDbType.VarChar, 20, planNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@code_key", SqlDbType.VarChar, 20, code_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -374,8 +335,7 @@ Public Class TCheckPlanDA
     ''' <returns></returns>
     ''' <remarks></remarks>
     Private Function GetIntValue(ByVal v As Object) As Object
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name)
+
         If v Is DBNull.Value Or v.ToString = "" Then
             Return DBNull.Value
 

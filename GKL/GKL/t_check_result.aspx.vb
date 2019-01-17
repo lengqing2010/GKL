@@ -1,8 +1,7 @@
 ﻿Imports System.Data
 Imports System.Text
 Imports System.IO
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
+
 Partial Class t_check_result
     Inherits System.Web.UI.Page
 
@@ -31,9 +30,7 @@ Partial Class t_check_result
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+
        Me.tbxChkNo.Attributes.Item("itType") = "varchar"
        Me.tbxChkNo.Attributes.Item("itLength") = "20"
        Me.tbxChkNo.Attributes.Item("itName") = "检查No"
@@ -90,12 +87,12 @@ Partial Class t_check_result
     ''' </summary>
     public Sub MsInit()
       'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-            '明細設定
-            Dim dt As DataTable = GetMsData()
-            Me.gvMs.DataSource = dt
-            Me.gvMs.DataBind()
+
+
+        '明細設定
+        Dim dt As DataTable = GetMsData()
+        Me.gvMs.DataSource = dt
+        Me.gvMs.DataBind()
 
     End Sub
 
@@ -117,10 +114,10 @@ Partial Class t_check_result
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Return BC.SelTCheckResult(tbxChkNo_key.Text, tbxNen_key.Text, tbxLineId_key.Text, tbxMakeNo_key.Text)
+        'EMAB　ＥＲＲ
+
+
+        Return BC.SelTCheckResult(tbxChkNo_key.Text, tbxNen_key.Text, tbxLineId_key.Text, tbxMakeNo_key.Text)
     End Function
 
     ''' <summary>
@@ -130,10 +127,10 @@ Partial Class t_check_result
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Return BC.SelTCheckResult(tbxChkNo.Text, tbxNen.Text, tbxLineId.Text, tbxMakeNo.Text).Rows.Count > 0
+        'EMAB　ＥＲＲ
+
+
+        Return BC.SelTCheckResult(tbxChkNo.Text, tbxNen.Text, tbxLineId.Text, tbxMakeNo.Text).Rows.Count > 0
     End Function
 
     ''' <summary>

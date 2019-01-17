@@ -1,7 +1,7 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
+
+
+
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -10,7 +10,7 @@ Imports System.Configuration.ConfigurationSettings
 Imports System.Collections.Generic
 
 Public Class MCheckMethodDA
-
+    Public SqlHelperNew As New SqlHelperNew
     ''' <summary>
     ''' 
     ''' 检查方法MSInfoを検索する
@@ -25,10 +25,7 @@ Public Class MCheckMethodDA
 
     Public Function SelMCheckMethod(ByVal chkId_key As String, _
            ByVal chkName_key As String) As Data.DataTable
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-           chkId_key, _
-           chkName_key)
+
         'SQLコメント
         '--**テーブル：检查方法MS : m_check_method
         Dim sb As New StringBuilder
@@ -49,13 +46,13 @@ Public Class MCheckMethodDA
             sb.AppendLine("AND chk_name like @chk_name_key")   '检查方法名
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@chk_id_key", SqlDbType.VarChar, 12, "%" & chkId_key & "%"))
-        paramList.Add(MakeParam("@chk_name_key", SqlDbType.NVarChar, 22, "%" & chkName_key & "%"))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_id_key", SqlDbType.VarChar, 12, "%" & chkId_key & "%"))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_name_key", SqlDbType.NVarChar, 22, "%" & chkName_key & "%"))
 
         Dim dsInfo As New Data.DataSet
-        FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_check_method", paramList.ToArray)
+        SqlHelperNew.FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_check_method", paramList.ToArray)
 
         Return dsInfo.Tables("m_check_method")
 
@@ -85,15 +82,7 @@ Public Class MCheckMethodDA
                ByVal chkMethod As String, _
                ByVal chkFormula As String, _
                ByVal verifyMethodExplain As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               chkId_key, _
-               chkName_key, _
-               chkId, _
-               chkName, _
-               chkMethod, _
-               chkFormula, _
-               verifyMethodExplain)
+
         'SQLコメント
         '--**テーブル：检查方法MS : m_check_method
         Dim sb As New StringBuilder
@@ -115,19 +104,19 @@ Public Class MCheckMethodDA
             sb.AppendLine("AND chk_name=@chk_name_key")   '检查方法名
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@chk_id_key", SqlDbType.VarChar, 10, chkId_key))
-        paramList.Add(MakeParam("@chk_name_key", SqlDbType.nvarchar, 20, chkName_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_id_key", SqlDbType.VarChar, 10, chkId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_name_key", SqlDbType.nvarchar, 20, chkName_key))
 
-        paramList.Add(MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
-        paramList.Add(MakeParam("@chk_name", SqlDbType.nvarchar, 20, chkName))
-        paramList.Add(MakeParam("@chk_method", SqlDbType.nvarchar, 1, chkMethod))
-        paramList.Add(MakeParam("@chk_formula", SqlDbType.nvarchar, 80, chkFormula))
-        paramList.Add(MakeParam("@verify_method_explain", SqlDbType.nvarchar, 200, verifyMethodExplain))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_name", SqlDbType.nvarchar, 20, chkName))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_method", SqlDbType.nvarchar, 1, chkMethod))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_formula", SqlDbType.nvarchar, 80, chkFormula))
+        paramList.Add(SqlHelperNew.MakeParam("@verify_method_explain", SqlDbType.nvarchar, 200, verifyMethodExplain))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -153,13 +142,7 @@ Public Class MCheckMethodDA
                ByVal chkMethod As String, _
                ByVal chkFormula As String, _
                ByVal verifyMethodExplain As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               chkId, _
-               chkName, _
-               chkMethod, _
-               chkFormula, _
-               verifyMethodExplain)
+
         'SQLコメント
         '--**テーブル：检查方法MS : m_check_method
         Dim sb As New StringBuilder
@@ -181,16 +164,16 @@ Public Class MCheckMethodDA
         sb.AppendLine(", @verify_method_explain")   '核对方法说明
 
         sb.AppendLine(")")
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
-        paramList.Add(MakeParam("@chk_name", SqlDbType.nvarchar, 20, chkName))
-        paramList.Add(MakeParam("@chk_method", SqlDbType.nvarchar, 1, chkMethod))
-        paramList.Add(MakeParam("@chk_formula", SqlDbType.nvarchar, 80, chkFormula))
-        paramList.Add(MakeParam("@verify_method_explain", SqlDbType.nvarchar, 200, verifyMethodExplain))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_name", SqlDbType.nvarchar, 20, chkName))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_method", SqlDbType.nvarchar, 1, chkMethod))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_formula", SqlDbType.nvarchar, 80, chkFormula))
+        paramList.Add(SqlHelperNew.MakeParam("@verify_method_explain", SqlDbType.nvarchar, 200, verifyMethodExplain))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -210,11 +193,7 @@ Public Class MCheckMethodDA
 
     Public Function DelMCheckMethod(ByVal chkId_key As String, _
                ByVal chkName_key As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               chkId_key, _
-               chkName_key)
-        'SQLコメント
+
         '--**テーブル：检查方法MS : m_check_method
         Dim sb As New StringBuilder
         'SQL文
@@ -227,13 +206,13 @@ Public Class MCheckMethodDA
             sb.AppendLine("AND chk_name=@chk_name_key")   '检查方法名
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@chk_id_key", SqlDbType.VarChar, 10, chkId_key))
-        paramList.Add(MakeParam("@chk_name_key", SqlDbType.nvarchar, 20, chkName_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_id_key", SqlDbType.VarChar, 10, chkId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_name_key", SqlDbType.nvarchar, 20, chkName_key))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -246,8 +225,7 @@ Public Class MCheckMethodDA
     ''' <returns></returns>
     ''' <remarks></remarks>
     Private Function GetIntValue(ByVal v As Object) As Object
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name)
+
         If v Is DBNull.Value Or v.ToString = "" Then
             Return DBNull.Value
 

@@ -1,8 +1,7 @@
 ﻿Imports System.Data
 Imports System.Text
 Imports System.IO
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
+
 Partial Class t_check_ms
     Inherits System.Web.UI.Page
 
@@ -35,8 +34,8 @@ Partial Class t_check_ms
     ''' </summary>
     public Sub KoteiInit()
       'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+       
+       
 
     End Sub
 
@@ -45,8 +44,8 @@ Partial Class t_check_ms
     ''' </summary>
     public Sub MsInit()
       'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+       
+       
             '明細設定
             Dim dt As DataTable = GetMsData()
             Me.gvMs.DataSource = dt
@@ -73,8 +72,8 @@ Partial Class t_check_ms
     Private Function GetMsData() As Data.DataTable
 
       'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+       
+       
         Return BC.SelTCheckMs(ViewState("chk_no"), ViewState("line_id"))
     End Function
 
@@ -86,8 +85,8 @@ Partial Class t_check_ms
     Private Function IsHaveData() As Boolean
 
       'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+       
+       
         Return BC.SelTCheckMs(ViewState("chk_no"), ViewState("line_id")).Rows.Count > 0
     End Function
 

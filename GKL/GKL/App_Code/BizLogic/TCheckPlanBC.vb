@@ -1,7 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -33,13 +30,7 @@ Public DA AS NEW TCheckPlanDA
                ByVal code_key As String, _
                ByVal lineId_key As String, _
                ByVal tbxCheckDate_key As String) As Data.DataTable
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               planNo_key, _
-               chkNo_key, _
-               makeNo_key, _
-               code_key, _
-               lineId_key)
+       
         'SQLコメント
         Return DA.SelTCheckPlan( _
                planNo_key, _
@@ -90,23 +81,7 @@ Public Function UpdTCheckPlan(Byval planNo_key AS String, _
            Byval status AS String, _
            Byval insUser AS String, _
            Byval insDate AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           planNo_key, _
-           chkNo_key, _
-           makeNo_key, _
-           code_key, _
-           lineId_key, _
-           planNo, _
-           chkNo, _
-           makeNo, _
-           code, _
-           lineId, _
-           suu, _
-           yoteiChkDate, _
-           status, _
-           insUser, _
-           insDate)
+   
     'SQLコメント
     '--**テーブル：检查计划 : t_check_plan
     Return DA.UpdTCheckPlan( _
@@ -158,18 +133,7 @@ Public Function InsTCheckPlan(Byval planNo AS String, _
            Byval status AS String, _
            Byval insUser AS String, _
            Byval insDate AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           planNo, _
-           chkNo, _
-           makeNo, _
-           code, _
-           lineId, _
-           suu, _
-           yoteiChkDate, _
-           status, _
-           insUser, _
-           insDate)
+  
     'SQLコメント
     '--**テーブル：检查计划 : t_check_plan
     Return DA.InsTCheckPlan( _
@@ -206,13 +170,7 @@ Public Function DelTCheckPlan(Byval planNo_key AS String, _
            Byval makeNo_key AS String, _
            Byval code_key AS String, _
            Byval lineId_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           planNo_key, _
-           chkNo_key, _
-           makeNo_key, _
-           code_key, _
-           lineId_key)
+  
     'SQLコメント
     '--**テーブル：检查计划 : t_check_plan
     Return DA.DelTCheckPlan( _

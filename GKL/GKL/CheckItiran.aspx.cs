@@ -204,7 +204,7 @@ public partial class CheckItiran : System.Web.UI.Page
      //string suu = this.hidSuu.Text;
 
 
-     string chk_no ;
+
      string make_no = this.tbxMakeNo_key.Text;
      string code = this.tbxCode_key.Text;
      string suu = this.hidSuu.Text;
@@ -298,7 +298,7 @@ public partial class CheckItiran : System.Web.UI.Page
 
  protected void btnUpdate_Click(object sender, EventArgs e)
  {
-     string chk_no;
+
      string make_no = this.tbxMakeNo_key.Text;
      string code = this.tbxCode_key.Text;
      string suu = this.hidSuu.Text;
@@ -317,7 +317,7 @@ public partial class CheckItiran : System.Web.UI.Page
  }
  protected void btnComlete_Click(object sender, EventArgs e)
  {
-     string chk_no;
+
      string make_no = this.tbxMakeNo_key.Text;
      string code = this.tbxCode_key.Text;
      string suu = this.hidSuu.Text;

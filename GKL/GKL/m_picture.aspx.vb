@@ -1,8 +1,7 @@
 ﻿Imports System.Data
 Imports System.Text
 Imports System.IO
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
+
 Partial Class m_picture
     Inherits System.Web.UI.Page
 
@@ -31,9 +30,7 @@ Partial Class m_picture
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+
        Me.tbxPicId.Attributes.Item("itType") = "varchar"
        Me.tbxPicId.Attributes.Item("itLength") = "10"
        Me.tbxPicId.Attributes.Item("itName") = "pic_id"
@@ -50,9 +47,7 @@ Partial Class m_picture
     ''' 明細項目設定
     ''' </summary>
     public Sub MsInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+
             '明細設定
             Dim dt As DataTable = GetMsData()
             Me.gvMs.DataSource = dt
@@ -78,9 +73,7 @@ Partial Class m_picture
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+
        Return BC.SelMPicture(tbxPicId_key.Text, tbxLineId_key.Text)
     End Function
 
@@ -91,9 +84,7 @@ Partial Class m_picture
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+
        Return BC.SelMPicture(tbxPicId.Text, tbxLineId.Text).Rows.Count > 0
     End Function
 

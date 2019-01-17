@@ -1,8 +1,6 @@
 ﻿Imports System.Data
 Imports System.Text
 Imports System.IO
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
 Imports System.Data.SqlClient
 
 Partial Class t_cd_temp_relation
@@ -31,9 +29,7 @@ Partial Class t_cd_temp_relation
     ''' 固定項目設定
     ''' </summary>
     Public Sub KoteiInit()
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
+
         Me.tbxLineId.Attributes.Item("itType") = "varchar"
         Me.tbxLineId.Attributes.Item("itLength") = "10"
         Me.tbxLineId.Attributes.Item("itName") = "line_id"
@@ -50,12 +46,11 @@ Partial Class t_cd_temp_relation
     ''' 明細項目設定
     ''' </summary>
     Public Sub MsInit(Optional ByVal pageIdx As Integer = 1)
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
+
         '明細設定
 
-        Dim dtMs, dtPageIdx As DataTable
+        Dim dtMs As New DataTable
+        Dim dtPageIdx As New DataTable
         Common.GetPageData(GetMsData(), pageIdx, dtMs, dtPageIdx)
 
         Me.gvMs.DataSource = dtMs
@@ -101,9 +96,6 @@ Partial Class t_cd_temp_relation
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
 
         Return BC.SelTCdTempRelation(tbxLineId_key.Text, tbxCode_key.Text, tbxTempId_key.Text)
     End Function
@@ -115,9 +107,7 @@ Partial Class t_cd_temp_relation
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
+
         Return BC.SelTCdTempRelation(tbxLineId.Text, tbxCode.Text, tbxTempId.Text).Rows.Count > 0
     End Function
 

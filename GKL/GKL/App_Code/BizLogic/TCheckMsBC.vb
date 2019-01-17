@@ -1,7 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -24,9 +21,7 @@ Public DA AS NEW TCheckMsDA
     ''' </history>
 
 Public Function SelTCheckMs(Byval chkNo_key AS String) As Data.DataTable
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkNo_key)
+
     'SQLコメント
     Return DA.SelTCheckMs( _
            chkNo_key)
@@ -70,22 +65,7 @@ Public Function UpdTCheckMs(Byval chkNo_key AS String, _
            Byval kjExplain AS String, _
            Byval insUser AS String, _
            Byval insDate AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkNo_key, _
-           chkNo, _
-           chkMethodId, _
-           chkFlg, _
-           in1, _
-           in2, _
-           chkResult, _
-           mark, _
-           kj0, _
-           kj1, _
-           kj2, _
-           kjExplain, _
-           insUser, _
-           insDate)
+   
     'SQLコメント
     '--**テーブル：检查结果 : t_check_ms
     Return DA.UpdTCheckMs( _
@@ -142,21 +122,7 @@ Public Function InsTCheckMs(Byval chkNo AS String, _
            Byval kjExplain AS String, _
            Byval insUser AS String, _
            Byval insDate AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkNo, _
-           chkMethodId, _
-           chkFlg, _
-           in1, _
-           in2, _
-           chkResult, _
-           mark, _
-           kj0, _
-           kj1, _
-           kj2, _
-           kjExplain, _
-           insUser, _
-           insDate)
+    
     'SQLコメント
     '--**テーブル：检查结果 : t_check_ms
     Return DA.InsTCheckMs( _
@@ -188,9 +154,7 @@ End Function
     ''' </history>
 
     Public Function DelTCheckMs(ByVal chkNo_key As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               chkNo_key)
+       
         'SQLコメント
         '--**テーブル：检查结果 : t_check_ms
         Return DA.DelTCheckMs( _
@@ -230,6 +194,8 @@ End Function
 
         DA.UpdTCheckResultMS(chkNo_key, line_id)
 
+        Return True
+
     End Function
 
 
@@ -238,6 +204,9 @@ End Function
                ByVal line_id As String) As Boolean
 
         DA.UpdTCheckResultMSWanliao(chkNo_key, line_id)
+
+        Return True
+
     End Function
 
 End Class

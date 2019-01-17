@@ -36,7 +36,7 @@ Public Class Common
             dt2.Rows.Add(dr)
         Next
         pageListDt = dt2
-
+        Return Nothing
     End Function
 
     Public Shared Function SetTitle(ByVal txt As String) As String

@@ -1,7 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -26,10 +23,7 @@ Public DA AS NEW MProjectDA
 
 Public Function SelMProject(Byval projectId_key AS String, _
            Byval lineId_key AS String) As Data.DataTable
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           projectId_key, _
-           lineId_key)
+
     'SQLコメント
     Return DA.SelMProject( _
            projectId_key, _
@@ -56,13 +50,7 @@ Public Function UpdMProject(Byval projectId_key AS String, _
            Byval projectId AS String, _
            Byval lineId AS String, _
            Byval projectName AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           projectId_key, _
-           lineId_key, _
-           projectId, _
-           lineId, _
-           projectName)
+
     'SQLコメント
     '--**テーブル：工程MS : m_project
     Return DA.UpdMProject( _
@@ -90,11 +78,7 @@ End Function
 Public Function InsMProject(Byval projectId AS String, _
            Byval lineId AS String, _
            Byval projectName AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           projectId, _
-           lineId, _
-           projectName)
+
     'SQLコメント
     '--**テーブル：工程MS : m_project
     Return DA.InsMProject( _
@@ -118,11 +102,7 @@ End Function
 
 Public Function DelMProject(Byval projectId_key AS String, _
            Byval lineId_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           projectId_key, _
-           lineId_key)
-    'SQLコメント
+
     '--**テーブル：工程MS : m_project
     Return DA.DelMProject( _
            projectId_key, _

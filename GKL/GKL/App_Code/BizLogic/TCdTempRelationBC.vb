@@ -1,7 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -28,11 +25,7 @@ Public DA AS NEW TCdTempRelationDA
 Public Function SelTCdTempRelation(Byval lineId_key AS String, _
            Byval code_key AS String, _
            Byval tempId_key AS String) As Data.DataTable
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           lineId_key, _
-           code_key, _
-           tempId_key)
+
     'SQLコメント
     Return DA.SelTCdTempRelation( _
            lineId_key, _
@@ -62,14 +55,7 @@ Public Function UpdTCdTempRelation(Byval lineId_key AS String, _
            Byval lineId AS String, _
            Byval code AS String, _
            Byval tempId AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           lineId_key, _
-           code_key, _
-           tempId_key, _
-           lineId, _
-           code, _
-           tempId)
+
     'SQLコメント
     '--**テーブル： : t_cd_temp_relation
     Return DA.UpdTCdTempRelation( _
@@ -98,11 +84,7 @@ End Function
 Public Function InsTCdTempRelation(Byval lineId AS String, _
            Byval code AS String, _
            Byval tempId AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           lineId, _
-           code, _
-           tempId)
+
     'SQLコメント
     '--**テーブル： : t_cd_temp_relation
     Return DA.InsTCdTempRelation( _
@@ -128,11 +110,7 @@ End Function
 Public Function DelTCdTempRelation(Byval lineId_key AS String, _
            Byval code_key AS String, _
            Byval tempId_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           lineId_key, _
-           code_key, _
-           tempId_key)
+
     'SQLコメント
     '--**テーブル： : t_cd_temp_relation
     Return DA.DelTCdTempRelation( _

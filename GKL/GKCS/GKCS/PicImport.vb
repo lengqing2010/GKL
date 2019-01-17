@@ -1,10 +1,7 @@
 ﻿Imports System.Configuration
 Imports System.Text
 
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Configuration.ConfigurationSettings
@@ -16,6 +13,8 @@ Public Class PicImport
 
     Private conn As String = ConfigurationManager.AppSettings("connectionString").ToString()
     ' Private picturePath As String = ConfigurationManager.AppSettings("picturePath").ToString()
+
+    Dim SqlHelperNew As New SqlHelperNew
 
     Private CMsSql As New CMsSql
 
@@ -65,14 +64,14 @@ Public Class PicImport
         sb.AppendLine(", @pic_name")                                                   'pic_name
         sb.AppendLine(", @picCon")
         sb.AppendLine(")")
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@pic_id", SqlDbType.VarChar, 10, picId))
-        paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
-        paramList.Add(MakeParam("@pic_name", SqlDbType.NVarChar, 200, picName))
-        paramList.Add(MakeParam("@picCon", SqlDbType.VarBinary, -1, picCon))
+        paramList.Add(SqlHelperNew.MakeParam("@pic_id", SqlDbType.VarChar, 10, picId))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
+        paramList.Add(SqlHelperNew.MakeParam("@pic_name", SqlDbType.NVarChar, 200, picName))
+        paramList.Add(SqlHelperNew.MakeParam("@picCon", SqlDbType.VarBinary, -1, picCon))
 
-        SQLHelper.ExecuteNonQuery(conn, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(conn, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -134,10 +133,7 @@ Public Class PicImport
 
     Public Function DelMPicture(ByVal picId_key As String, _
            ByVal lineId_key As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               picId_key, _
-               lineId_key)
+ 
         'SQLコメント
         '--**テーブル： : m_picture
         Dim sb As New StringBuilder
@@ -151,13 +147,13 @@ Public Class PicImport
             sb.AppendLine("AND line_id=@line_id_key")   'line_id
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@pic_id_key", SqlDbType.VarChar, 10, picId_key))
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@pic_id_key", SqlDbType.VarChar, 10, picId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
 
 
-        SQLHelper.ExecuteNonQuery(conn, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(conn, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -174,7 +170,7 @@ Public Class PicImport
 
         If strDirect <> "" Then
             Dim mFileInfo As System.IO.FileInfo
-            Dim mDir As System.IO.DirectoryInfo
+            'Dim mDir As System.IO.DirectoryInfo
             Dim mDirInfo As New System.IO.DirectoryInfo(strDirect)
             Try
                 Dim dic As New Dictionary(Of String, String)
@@ -269,7 +265,7 @@ Public Class PicImport
     Private Sub GetAllFiles(ByVal strDirect As String)  '搜索所有目录下的文件
         If Not (strDirect Is Nothing) Then
             Dim mFileInfo As System.IO.FileInfo
-            Dim mDir As System.IO.DirectoryInfo
+            ' Dim mDir As System.IO.DirectoryInfo
             Dim mDirInfo As New System.IO.DirectoryInfo(strDirect)
             Try
                 For Each mFileInfo In mDirInfo.GetFiles("*.*")

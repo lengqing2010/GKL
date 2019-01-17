@@ -1,7 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -28,11 +25,7 @@ Public DA AS NEW MTempDA
     Public Function SelMTemp(ByVal lineId_key As String, _
                ByVal tempId_key As String, _
                ByVal chkMethodId_key As String) As Data.DataTable
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId_key, _
-               tempId_key, _
-               chkMethodId_key)
+
         'SQLコメント
         Return DA.SelMTemp( _
                lineId_key, _
@@ -89,26 +82,7 @@ Public DA AS NEW MTempDA
                ByVal kj2 As String, _
                ByVal kjExplain As String) As Boolean
         'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId_key, _
-               tempId_key, _
-               chkMethodId_key, _
-               lineId, _
-               tempId, _
-               chkMethodId, _
-               projectId, _
-               projectName, _
-               picId, _
-               picName, _
-               chkKmName, _
-               picSign, _
-               chkId, _
-               chkName, _
-               toolId, _
-               kj0, _
-               kj1, _
-               kj2, _
-               kjExplain)
+
         'SQLコメント
         '--**テーブル：模板MS : m_temp
         Return DA.UpdMTemp( _
@@ -176,24 +150,7 @@ Public DA AS NEW MTempDA
                ByVal kj1 As String, _
                ByVal kj2 As String, _
                ByVal kjExplain As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId, _
-               tempId, _
-               chkMethodId, _
-               projectId, _
-               projectName, _
-               picId, _
-               picName, _
-               chkKmName, _
-               picSign, _
-               chkId, _
-               chkName, _
-               toolId, _
-               kj0, _
-               kj1, _
-               kj2, _
-               kjExplain)
+        
         'SQLコメント
         '--**テーブル：模板MS : m_temp
         Return DA.InsMTemp( _
@@ -232,11 +189,7 @@ Public DA AS NEW MTempDA
     Public Function DelMTemp(ByVal lineId_key As String, _
                ByVal tempId_key As String, _
                ByVal chkMethodId_key As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId_key, _
-               tempId_key, _
-               chkMethodId_key)
+     
         'SQLコメント
         '--**テーブル：模板MS : m_temp
         Return DA.DelMTemp( _

@@ -1,8 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
-Imports System.Text
+﻿Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Transactions
@@ -30,12 +26,7 @@ Public Function SelTCheckResult(Byval chkNo_key AS String, _
            Byval nen_key AS String, _
            Byval lineId_key AS String, _
            Byval makeNo_key AS String) As Data.DataTable
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkNo_key, _
-           nen_key, _
-           lineId_key, _
-           makeNo_key)
+
     'SQLコメント
     Return DA.SelTCheckResult( _
            chkNo_key, _
@@ -94,28 +85,7 @@ Public Function UpdTCheckResult(Byval chkNo_key AS String, _
            Byval status AS String, _
            Byval insUser AS String, _
            Byval insDate AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkNo_key, _
-           nen_key, _
-           lineId_key, _
-           makeNo_key, _
-           chkNo, _
-           nen, _
-           planNo, _
-           lineId, _
-           makeNo, _
-           code, _
-           suu, _
-           tempId, _
-           chkResult, _
-           chkUser, _
-           chkStartDate, _
-           chkEndDate, _
-           parentChkNo, _
-           status, _
-           insUser, _
-           insDate)
+   
     'SQLコメント
     '--**テーブル：检查结果 : t_check_result
     Return DA.UpdTCheckResult( _
@@ -186,25 +156,7 @@ End Function
                ByVal status As String, _
                ByVal insUser As String, _
                ByVal insDate As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               chkNo, _
-               nen, _
-               planNo, _
-               lineId, _
-               makeNo, _
-               code, _
-               suu, _
-               tempId, _
-               chkResult, _
-               chkUser, _
-               chkStartDate, _
-               chkEndDate, _
-               parentChkNo, _
-               status, _
-               insUser, _
-               insDate)
-        'SQLコメント
+       
         '--**テーブル：检查结果 : t_check_result
         Return DA.InsTCheckResult( _
                chkNo, _
@@ -246,12 +198,7 @@ Public Function DelTCheckResult(Byval chkNo_key AS String, _
            Byval nen_key AS String, _
            Byval lineId_key AS String, _
            Byval makeNo_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkNo_key, _
-           nen_key, _
-           lineId_key, _
-           makeNo_key)
+    
     'SQLコメント
     '--**テーブル：检查结果 : t_check_result
     Return DA.DelTCheckResult( _

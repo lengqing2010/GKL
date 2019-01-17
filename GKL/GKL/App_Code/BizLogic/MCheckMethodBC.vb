@@ -1,8 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
-Imports System.Text
+﻿Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Transactions
@@ -26,10 +22,7 @@ Public DA AS NEW MCheckMethodDA
 
 Public Function SelMCheckMethod(Byval chkId_key AS String, _
            Byval chkName_key AS String) As Data.DataTable
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkId_key, _
-           chkName_key)
+
     'SQLコメント
     Return DA.SelMCheckMethod( _
            chkId_key, _
@@ -60,15 +53,7 @@ Public Function UpdMCheckMethod(Byval chkId_key AS String, _
            Byval chkMethod AS String, _
            Byval chkFormula AS String, _
            Byval verifyMethodExplain AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkId_key, _
-           chkName_key, _
-           chkId, _
-           chkName, _
-           chkMethod, _
-           chkFormula, _
-           verifyMethodExplain)
+
     'SQLコメント
     '--**テーブル：检查方法MS : m_check_method
     Return DA.UpdMCheckMethod( _
@@ -102,13 +87,7 @@ Public Function InsMCheckMethod(Byval chkId AS String, _
            Byval chkMethod AS String, _
            Byval chkFormula AS String, _
            Byval verifyMethodExplain AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkId, _
-           chkName, _
-           chkMethod, _
-           chkFormula, _
-           verifyMethodExplain)
+
     'SQLコメント
     '--**テーブル：检查方法MS : m_check_method
     Return DA.InsMCheckMethod( _
@@ -134,10 +113,7 @@ End Function
 
 Public Function DelMCheckMethod(Byval chkId_key AS String, _
            Byval chkName_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkId_key, _
-           chkName_key)
+
     'SQLコメント
     '--**テーブル：检查方法MS : m_check_method
     Return DA.DelMCheckMethod( _

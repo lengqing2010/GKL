@@ -1,12 +1,10 @@
 ﻿Imports System.Data
 Imports System.Text
 Imports System.IO
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
 Partial Class m_picture
     Inherits System.Web.UI.Page
 
-   Public BC AS NEW MPictureBC
+    Public BC As New MPictureBC
     ''' <summary>
     ''' PAGE LOAD
     ''' </summary>
@@ -36,23 +34,23 @@ Partial Class m_picture
     ''' <summary>
     ''' 固定項目設定
     ''' </summary>
-    public Sub KoteiInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+    Public Sub KoteiInit()
+        'EMAB　ＥＲＲ
+
+
 
     End Sub
 
     ''' <summary>
     ''' 明細項目設定
     ''' </summary>
-    public Sub MsInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-            '明細設定
-            Dim dt As DataTable = GetMsData()
-            Me.gvMs.DataSource = dt
+    Public Sub MsInit()
+        'EMAB　ＥＲＲ
+
+
+        '明細設定
+        Dim dt As DataTable = GetMsData()
+        Me.gvMs.DataSource = dt
         Me.gvMs.DataBind()
 
         For i As Integer = 0 To dt.Rows.Count - 1
@@ -77,9 +75,9 @@ Partial Class m_picture
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+        'EMAB　ＥＲＲ
+
+
         Return BC.SelMPicture("", ViewState("line").ToString)
     End Function
 

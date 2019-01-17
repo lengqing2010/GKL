@@ -1,7 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -26,10 +23,7 @@ Public DA AS NEW MTempNameDA
 
     Public Function SelMTempName(ByVal lineId_key As String, _
                ByVal tempId_key As String) As Data.DataTable
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId_key, _
-               tempId_key)
+   
         'SQLコメント
         Return DA.SelMTempName( _
                lineId_key, _
@@ -56,13 +50,7 @@ Public DA AS NEW MTempNameDA
                ByVal lineId As String, _
                ByVal tempId As String, _
                ByVal tempName As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId_key, _
-               tempId_key, _
-               lineId, _
-               tempId, _
-               tempName)
+
         'SQLコメント
         '--**テーブル：模板名称MS : m_temp_name
         Return DA.UpdMTempName( _
@@ -90,11 +78,7 @@ Public DA AS NEW MTempNameDA
     Public Function InsMTempName(ByVal lineId As String, _
                ByVal tempId As String, _
                ByVal tempName As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId, _
-               tempId, _
-               tempName)
+
         'SQLコメント
         '--**テーブル：模板名称MS : m_temp_name
         Return DA.InsMTempName( _
@@ -118,10 +102,7 @@ Public DA AS NEW MTempNameDA
 
     Public Function DelMTempName(ByVal lineId_key As String, _
                ByVal tempId_key As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId_key, _
-               tempId_key)
+
         'SQLコメント
         '--**テーブル：模板名称MS : m_temp_name
         Return DA.DelMTempName( _

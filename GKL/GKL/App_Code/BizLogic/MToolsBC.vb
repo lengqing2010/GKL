@@ -1,7 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -26,10 +23,7 @@ Public DA AS NEW MToolsDA
 
 Public Function SelMTools(Byval toolId_key AS String, _
            Byval lineId_key AS String) As Data.DataTable
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           toolId_key, _
-           lineId_key)
+
     'SQLコメント
     Return DA.SelMTools( _
            toolId_key, _
@@ -58,14 +52,7 @@ Public Function UpdMTools(Byval toolId_key AS String, _
            Byval lineId AS String, _
            Byval projectName AS String, _
            Byval toolName AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           toolId_key, _
-           lineId_key, _
-           toolId, _
-           lineId, _
-           projectName, _
-           toolName)
+
     'SQLコメント
     '--**テーブル：治具MS : m_tools
     Return DA.UpdMTools( _
@@ -96,12 +83,7 @@ Public Function InsMTools(Byval toolId AS String, _
            Byval lineId AS String, _
            Byval projectName AS String, _
            Byval toolName AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           toolId, _
-           lineId, _
-           projectName, _
-           toolName)
+
     'SQLコメント
     '--**テーブル：治具MS : m_tools
     Return DA.InsMTools( _
@@ -126,10 +108,7 @@ End Function
 
 Public Function DelMTools(Byval toolId_key AS String, _
            Byval lineId_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           toolId_key, _
-           lineId_key)
+
     'SQLコメント
     '--**テーブル：治具MS : m_tools
     Return DA.DelMTools( _

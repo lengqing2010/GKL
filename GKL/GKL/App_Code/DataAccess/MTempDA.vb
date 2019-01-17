@@ -1,7 +1,4 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -10,6 +7,8 @@ Imports System.Configuration.ConfigurationSettings
 Imports System.Collections.Generic
 
 Public Class MTempDA
+
+    Public SqlHelperNew As New SqlHelperNew
 
     ''' <summary>
     ''' 
@@ -27,11 +26,7 @@ Public Class MTempDA
     Public Function SelMTemp(ByVal lineId_key As String, _
            ByVal tempId_key As String, _
            ByVal chkMethodId_key As String) As Data.DataTable
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-           lineId_key, _
-           tempId_key, _
-           chkMethodId_key)
+
         'SQLコメント
         '--**テーブル：模板MS : m_temp
         Dim sb As New StringBuilder
@@ -66,14 +61,14 @@ Public Class MTempDA
             sb.AppendLine("AND chk_method_id=@chk_method_id_key")   '检查项目ID
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
-        paramList.Add(MakeParam("@temp_id_key", SqlDbType.nvarchar, 10, tempId_key))
-        paramList.Add(MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, chkMethodId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@temp_id_key", SqlDbType.nvarchar, 10, tempId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, chkMethodId_key))
 
         Dim dsInfo As New Data.DataSet
-        FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_temp", paramList.ToArray)
+        SqlHelperNew.FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_temp", paramList.ToArray)
 
         Return dsInfo.Tables("m_temp")
 
@@ -127,27 +122,7 @@ Public Class MTempDA
                ByVal kj1 As String, _
                ByVal kj2 As String, _
                ByVal kjExplain As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId_key, _
-               tempId_key, _
-               chkMethodId_key, _
-               lineId, _
-               tempId, _
-               chkMethodId, _
-               projectId, _
-               projectName, _
-               picId, _
-               picName, _
-               chkKmName, _
-               picSign, _
-               chkId, _
-               chkName, _
-               toolId, _
-               kj0, _
-               kj1, _
-               kj2, _
-               kjExplain)
+
         'SQLコメント
         '--**テーブル：模板MS : m_temp
         Dim sb As New StringBuilder
@@ -183,31 +158,31 @@ Public Class MTempDA
             sb.AppendLine("AND chk_method_id=@chk_method_id_key")   '检查项目ID
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
-        paramList.Add(MakeParam("@temp_id_key", SqlDbType.nvarchar, 10, tempId_key))
-        paramList.Add(MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, chkMethodId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@temp_id_key", SqlDbType.nvarchar, 10, tempId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, chkMethodId_key))
 
-        paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
-        paramList.Add(MakeParam("@temp_id", SqlDbType.nvarchar, 10, tempId))
-        paramList.Add(MakeParam("@chk_method_id", SqlDbType.VarChar, 10, chkMethodId))
-        paramList.Add(MakeParam("@project_id", SqlDbType.VarChar, 10, projectId))
-        paramList.Add(MakeParam("@project_name", SqlDbType.NVarChar, 40, projectName))
-        paramList.Add(MakeParam("@pic_id", SqlDbType.VarChar, 10, picId))
-        paramList.Add(MakeParam("@pic_name", SqlDbType.NVarChar, 200, picName))
-        paramList.Add(MakeParam("@chk_km_name", SqlDbType.NVarChar, 200, chkKmName))
-        paramList.Add(MakeParam("@pic_sign", SqlDbType.VarChar, 10, picSign))
-        paramList.Add(MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
-        paramList.Add(MakeParam("@chk_name", SqlDbType.NVarChar, 20, chkName))
-        paramList.Add(MakeParam("@tool_id", SqlDbType.VarChar, 40, toolId))
-        paramList.Add(MakeParam("@kj_0", SqlDbType.VarChar, 100, kj0))
-        paramList.Add(MakeParam("@kj_1", SqlDbType.VarChar, 20, kj1))
-        paramList.Add(MakeParam("@kj_2", SqlDbType.VarChar, 20, kj2))
-        paramList.Add(MakeParam("@kj_explain", SqlDbType.nvarchar, 200, kjExplain))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
+        paramList.Add(SqlHelperNew.MakeParam("@temp_id", SqlDbType.nvarchar, 10, tempId))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_method_id", SqlDbType.VarChar, 10, chkMethodId))
+        paramList.Add(SqlHelperNew.MakeParam("@project_id", SqlDbType.VarChar, 10, projectId))
+        paramList.Add(SqlHelperNew.MakeParam("@project_name", SqlDbType.NVarChar, 40, projectName))
+        paramList.Add(SqlHelperNew.MakeParam("@pic_id", SqlDbType.VarChar, 10, picId))
+        paramList.Add(SqlHelperNew.MakeParam("@pic_name", SqlDbType.NVarChar, 200, picName))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_km_name", SqlDbType.NVarChar, 200, chkKmName))
+        paramList.Add(SqlHelperNew.MakeParam("@pic_sign", SqlDbType.VarChar, 10, picSign))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_name", SqlDbType.NVarChar, 20, chkName))
+        paramList.Add(SqlHelperNew.MakeParam("@tool_id", SqlDbType.VarChar, 40, toolId))
+        paramList.Add(SqlHelperNew.MakeParam("@kj_0", SqlDbType.VarChar, 100, kj0))
+        paramList.Add(SqlHelperNew.MakeParam("@kj_1", SqlDbType.VarChar, 20, kj1))
+        paramList.Add(SqlHelperNew.MakeParam("@kj_2", SqlDbType.VarChar, 20, kj2))
+        paramList.Add(SqlHelperNew.MakeParam("@kj_explain", SqlDbType.nvarchar, 200, kjExplain))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -255,24 +230,7 @@ Public Class MTempDA
                ByVal kj1 As String, _
                ByVal kj2 As String, _
                ByVal kjExplain As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId, _
-               tempId, _
-               chkMethodId, _
-               projectId, _
-               projectName, _
-               picId, _
-               picName, _
-               chkKmName, _
-               picSign, _
-               chkId, _
-               chkName, _
-               toolId, _
-               kj0, _
-               kj1, _
-               kj2, _
-               kjExplain)
+
         'SQLコメント
         '--**テーブル：模板MS : m_temp
         Dim sb As New StringBuilder
@@ -316,27 +274,27 @@ Public Class MTempDA
         sb.AppendLine(", @kj_explain")                                                 '基准説明
 
         sb.AppendLine(")")
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
-        paramList.Add(MakeParam("@temp_id", SqlDbType.nvarchar, 10, tempId))
-        paramList.Add(MakeParam("@chk_method_id", SqlDbType.VarChar, 10, chkMethodId))
-        paramList.Add(MakeParam("@project_id", SqlDbType.VarChar, 10, projectId))
-        paramList.Add(MakeParam("@project_name", SqlDbType.NVarChar, 40, projectName))
-        paramList.Add(MakeParam("@pic_id", SqlDbType.VarChar, 10, picId))
-        paramList.Add(MakeParam("@pic_name", SqlDbType.NVarChar, 200, picName))
-        paramList.Add(MakeParam("@chk_km_name", SqlDbType.NVarChar, 200, chkKmName))
-        paramList.Add(MakeParam("@pic_sign", SqlDbType.VarChar, 10, picSign))
-        paramList.Add(MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
-        paramList.Add(MakeParam("@chk_name", SqlDbType.NVarChar, 20, chkName))
-        paramList.Add(MakeParam("@tool_id", SqlDbType.VarChar, 40, toolId))
-        paramList.Add(MakeParam("@kj_0", SqlDbType.VarChar, 100, kj0))
-        paramList.Add(MakeParam("@kj_1", SqlDbType.VarChar, 20, kj1))
-        paramList.Add(MakeParam("@kj_2", SqlDbType.VarChar, 20, kj2))
-        paramList.Add(MakeParam("@kj_explain", SqlDbType.NVarChar, 200, kjExplain))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
+        paramList.Add(SqlHelperNew.MakeParam("@temp_id", SqlDbType.nvarchar, 10, tempId))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_method_id", SqlDbType.VarChar, 10, chkMethodId))
+        paramList.Add(SqlHelperNew.MakeParam("@project_id", SqlDbType.VarChar, 10, projectId))
+        paramList.Add(SqlHelperNew.MakeParam("@project_name", SqlDbType.NVarChar, 40, projectName))
+        paramList.Add(SqlHelperNew.MakeParam("@pic_id", SqlDbType.VarChar, 10, picId))
+        paramList.Add(SqlHelperNew.MakeParam("@pic_name", SqlDbType.NVarChar, 200, picName))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_km_name", SqlDbType.NVarChar, 200, chkKmName))
+        paramList.Add(SqlHelperNew.MakeParam("@pic_sign", SqlDbType.VarChar, 10, picSign))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_name", SqlDbType.NVarChar, 20, chkName))
+        paramList.Add(SqlHelperNew.MakeParam("@tool_id", SqlDbType.VarChar, 40, toolId))
+        paramList.Add(SqlHelperNew.MakeParam("@kj_0", SqlDbType.VarChar, 100, kj0))
+        paramList.Add(SqlHelperNew.MakeParam("@kj_1", SqlDbType.VarChar, 20, kj1))
+        paramList.Add(SqlHelperNew.MakeParam("@kj_2", SqlDbType.VarChar, 20, kj2))
+        paramList.Add(SqlHelperNew.MakeParam("@kj_explain", SqlDbType.NVarChar, 200, kjExplain))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -355,40 +313,36 @@ Public Class MTempDA
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
-Public Function DelMTemp(Byval lineId_key AS String, _
-           Byval tempId_key AS String, _
-           Byval chkMethodId_key AS String) As Boolean
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           lineId_key, _
-           tempId_key, _
-           chkMethodId_key)
-    'SQLコメント
-    '--**テーブル：模板MS : m_temp
-    Dim sb As New StringBuilder
+    Public Function DelMTemp(ByVal lineId_key As String, _
+               ByVal tempId_key As String, _
+               ByVal chkMethodId_key As String) As Boolean
+
+        'SQLコメント
+        '--**テーブル：模板MS : m_temp
+        Dim sb As New StringBuilder
         'SQL文
-    sb.AppendLine("DELETE FROM m_temp")
-    sb.AppendLine("WHERE 1=1")
-        If lineId_key<>"" Then
+        sb.AppendLine("DELETE FROM m_temp")
+        sb.AppendLine("WHERE 1=1")
+        If lineId_key <> "" Then
             sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
-    If tempId_key<>"" Then
+        If tempId_key <> "" Then
             sb.AppendLine("AND temp_id=@temp_id_key")   '检查模板编号
         End If
-    If chkMethodId_key<>"" Then
+        If chkMethodId_key <> "" Then
             sb.AppendLine("AND chk_method_id=@chk_method_id_key")   '检查项目ID
         End If
 
-    '僶儔儊僞奿擺
-    Dim paramList As New List(Of SqlParameter)
-    paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
-    paramList.Add(MakeParam("@temp_id_key", SqlDbType.nvarchar, 10, tempId_key))
-    paramList.Add(MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, chkMethodId_key))
+        'PARAM
+        Dim paramList As New List(Of SqlParameter)
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@temp_id_key", SqlDbType.nvarchar, 10, tempId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, chkMethodId_key))
 
 
-    SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray) 
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
-    Return True 
+        Return True
 
     End Function
 
@@ -397,11 +351,7 @@ Public Function DelMTemp(Byval lineId_key AS String, _
     Public Function CopyTemp(ByVal lineId_key As String, _
                             ByVal tempId_key As String, _
                             ByVal tempId_key_new As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               lineId_key, _
-               tempId_key, _
-               tempId_key_new)
+
         'SQLコメント
         '--**テーブル：模板MS : m_temp
         Dim sb As New StringBuilder
@@ -437,47 +387,43 @@ Public Function DelMTemp(Byval lineId_key AS String, _
 
 
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
-        paramList.Add(MakeParam("@temp_id_key", SqlDbType.NVarChar, 10, tempId_key))
-        '；paramList.Add(MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, tempId_key_new))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@temp_id_key", SqlDbType.NVarChar, 10, tempId_key))
+        '；paramList.Add(SqlHelperNew.MakeParam("@chk_method_id_key", SqlDbType.VarChar, 10, tempId_key_new))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
     End Function
 
 
-        ''' <summary>
-        ''' GetIntValue
-        ''' </summary>
-        ''' <param name="v"></param>
-        ''' <returns></returns>
-        ''' <remarks></remarks>
-        Private Function GetIntValue(ByVal v As Object) As Object
-    'EMAB　ＥＲＲ
-    EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name )
-            If v Is DBNull.Value Or v.ToString = "" Then
-                Return DBNull.Value
-    
-            Else
-                Return Convert.ToInt32(v)
-            End If
-    
-        End Function
+    ''' <summary>
+    ''' GetIntValue
+    ''' </summary>
+    ''' <param name="v"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function GetIntValue(ByVal v As Object) As Object
+
+        If v Is DBNull.Value Or v.ToString = "" Then
+            Return DBNull.Value
+
+        Else
+            Return Convert.ToInt32(v)
+        End If
+
+    End Function
 
 
 
 
     Public Function SelMTempChk(ByVal lineId_key As String, _
            ByVal tempId_key As String) As Data.DataTable
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-           lineId_key, _
-           tempId_key)
+
         'SQLコメント
         '--**テーブル：模板MS : m_temp
         Dim sb As New StringBuilder
@@ -528,13 +474,13 @@ Public Function DelMTemp(Byval lineId_key AS String, _
             sb.AppendLine("AND m_temp.temp_id=@temp_id_key")   '检查模板编号
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
-        paramList.Add(MakeParam("@temp_id_key", SqlDbType.NVarChar, 10, tempId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@temp_id_key", SqlDbType.NVarChar, 10, tempId_key))
 
         Dim dsInfo As New Data.DataSet
-        FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_temp", paramList.ToArray)
+        SqlHelperNew.FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_temp", paramList.ToArray)
 
         Return dsInfo.Tables("m_temp")
 

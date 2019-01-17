@@ -1,7 +1,7 @@
 ﻿Imports System.Data
 Imports System.Text
 Imports System.IO
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
+
 Imports MyMethod = System.Reflection.MethodBase
 Partial Class m_user
     Inherits System.Web.UI.Page
@@ -15,8 +15,8 @@ Partial Class m_user
     ''' <remarks></remarks>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-
         Me.lblMsg.Text = ""
+
         If Not IsPostBack Then
 
             '固定項目設定
@@ -24,16 +24,16 @@ Partial Class m_user
 
             '明細項目設定
             MsInit()
+
         End If
 
     End Sub
+
     ''' <summary>
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
+       
         Me.tbxUserCd.Attributes.Item("itType") = "nvarchar"
         Me.tbxUserCd.Attributes.Item("itLength") = "10"
         Me.tbxUserCd.Attributes.Item("itName") = "用户CD"
@@ -50,21 +50,10 @@ Partial Class m_user
     ''' 明細項目設定
     ''' </summary>
     Public Sub MsInit(Optional ByVal pageIdx As Integer = 1)
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
-        '明細設定
-        'Dim dt As DataTable = GetMsData()
-        'Me.gvMs.DataSource = dt
-        'Me.gvMs.DataBind()
 
+        Dim dtMs As DataTable = New Data.DataTable
+        Dim dtPageIdx As DataTable = New Data.DataTable
 
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
-        '明細設定
-
-        Dim dtMs, dtPageIdx As DataTable
         Common.GetPageData(GetMsData(), pageIdx, dtMs, dtPageIdx)
 
         Me.gvMs.DataSource = dtMs
@@ -91,7 +80,6 @@ Partial Class m_user
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSelect_Click(sender As Object, e As System.EventArgs) Handles btnSelect.Click
-
         MsInit()
     End Sub
 
@@ -101,10 +89,6 @@ Partial Class m_user
     ''' <returns></returns>
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
-
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
         Return BC.SelMUser(tbxUserCd_key.Text)
     End Function
 
@@ -114,10 +98,6 @@ Partial Class m_user
     ''' <returns></returns>
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
-
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
         Return BC.SelMUser(tbxUserCd.Text).Rows.Count > 0
     End Function
 
@@ -128,17 +108,16 @@ Partial Class m_user
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnUpdate_Click(sender As Object, e As System.EventArgs) Handles btnUpdate.Click
-
-
-            Try
-       BC.UpdMUser(hiduserCd.Text,tbxuserCd.Text, tbxlineId.Text, tbxuserName.Text)
-        MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        Try
+            BC.UpdMUser(hidUserCd.Text, tbxUserCd.Text, tbxLineId.Text, tbxUserName.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
+
     ''' <summary>
     ''' 登録
     ''' </summary>
@@ -146,25 +125,28 @@ Me.hidOldRowIdx.Text = ""
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnInsert_Click(sender As Object, e As System.EventArgs) Handles btnInsert.Click
+
         If tbxLineId.Text = "" Then
             Common.ShowMsg(Me.Page, "数据没有输入")
             Exit Sub
-
         End If
 
         'データ存在チェック
-            If IsHaveData() Then
+        If IsHaveData() Then
             Common.ShowMsg(Me.Page, "数据已经存在")
-                Exit Sub
-            End If
-            Try
-            BC.InsMUser(tbxuserCd.Text, tbxlineId.Text, tbxuserName.Text)
-                MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+            Exit Sub
+        End If
+
+        Try
+            BC.InsMUser(tbxUserCd.Text, tbxLineId.Text, tbxUserName.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+
+        Me.hidOldRowIdx.Text = ""
+
     End Sub
 
     ''' <summary>
@@ -174,22 +156,32 @@ Me.hidOldRowIdx.Text = ""
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
-
-
-            Try
-       BC.DelMUser(hiduserCd.Text)
-        MsInit()
-            Catch ex As Exception
-                Common.ShowMsg(Me.Page, ex.Message)
-                Exit Sub
-            End Try
-Me.hidOldRowIdx.Text = ""
+        Try
+            BC.DelMUser(hidUserCd.Text)
+            MsInit()
+        Catch ex As Exception
+            Common.ShowMsg(Me.Page, ex.Message)
+            Exit Sub
+        End Try
+        Me.hidOldRowIdx.Text = ""
     End Sub
 
+    ''' <summary>
+    ''' 返回
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Server.Transfer("Default.aspx")
     End Sub
 
+    ''' <summary>
+    ''' 翻页
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Protected Sub ddlPageIdx_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlPageIdx.SelectedIndexChanged
         MsInit(Me.ddlPageIdx.SelectedValue)
     End Sub

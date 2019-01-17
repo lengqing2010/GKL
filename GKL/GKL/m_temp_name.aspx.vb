@@ -1,8 +1,7 @@
 ﻿Imports System.Data
 Imports System.Text
 Imports System.IO
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
+
 Partial Class m_temp_name
     Inherits System.Web.UI.Page
 
@@ -31,9 +30,7 @@ Partial Class m_temp_name
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+
         Me.tbxLineId.Attributes.Item("itType") = "varchar"
         Me.tbxLineId.Attributes.Item("itLength") = "10"
         Me.tbxLineId.Attributes.Item("itName") = "生产线"
@@ -50,9 +47,7 @@ Partial Class m_temp_name
     ''' 明細項目設定
     ''' </summary>
     Public Sub MsInit()
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
+
         '明細設定
         Dim dt As DataTable = GetMsData()
         Me.gvMs.DataSource = dt
@@ -78,9 +73,7 @@ Partial Class m_temp_name
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
+
         Return BC.SelMTempName(tbxLineId_key.Text, tbxTempId_key.Text)
     End Function
 
@@ -91,9 +84,6 @@ Partial Class m_temp_name
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
         Return BC.SelMTempName(tbxLineId.Text, tbxTempId.Text).Rows.Count > 0
     End Function
 

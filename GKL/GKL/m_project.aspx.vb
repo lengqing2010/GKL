@@ -1,8 +1,7 @@
 ﻿Imports System.Data
 Imports System.Text
 Imports System.IO
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
+
 Partial Class m_project
     Inherits System.Web.UI.Page
 
@@ -32,31 +31,31 @@ Partial Class m_project
     ''' </summary>
     public Sub KoteiInit()
       'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-       Me.tbxProjectId.Attributes.Item("itType") = "varchar"
-       Me.tbxProjectId.Attributes.Item("itLength") = "10"
-       Me.tbxProjectId.Attributes.Item("itName") = "工程ID"
-       Me.tbxLineId.Attributes.Item("itType") = "varchar"
-       Me.tbxLineId.Attributes.Item("itLength") = "10"
-       Me.tbxLineId.Attributes.Item("itName") = "生产线"
-       Me.tbxProjectName.Attributes.Item("itType") = "nvarchar"
-       Me.tbxProjectName.Attributes.Item("itLength") = "40"
-       Me.tbxProjectName.Attributes.Item("itName") = "工程名"
+
+
+        Me.tbxProjectId.Attributes.Item("itType") = "varchar"
+        Me.tbxProjectId.Attributes.Item("itLength") = "10"
+        Me.tbxProjectId.Attributes.Item("itName") = "工程ID"
+        Me.tbxLineId.Attributes.Item("itType") = "varchar"
+        Me.tbxLineId.Attributes.Item("itLength") = "10"
+        Me.tbxLineId.Attributes.Item("itName") = "生产线"
+        Me.tbxProjectName.Attributes.Item("itType") = "nvarchar"
+        Me.tbxProjectName.Attributes.Item("itLength") = "40"
+        Me.tbxProjectName.Attributes.Item("itName") = "工程名"
 
     End Sub
 
     ''' <summary>
     ''' 明細項目設定
     ''' </summary>
-    public Sub MsInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
-            '明細設定
-            Dim dt As DataTable = GetMsData()
-            Me.gvMs.DataSource = dt
-            Me.gvMs.DataBind()
+    Public Sub MsInit()
+        'EMAB　ＥＲＲ
+
+
+        '明細設定
+        Dim dt As DataTable = GetMsData()
+        Me.gvMs.DataSource = dt
+        Me.gvMs.DataBind()
 
     End Sub
 
@@ -78,9 +77,7 @@ Partial Class m_project
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+
        Return BC.SelMProject(tbxProjectId_key.Text, tbxLineId_key.Text)
     End Function
 
@@ -91,9 +88,7 @@ Partial Class m_project
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+
        Return BC.SelMProject(tbxProjectId.Text, tbxLineId.Text).Rows.Count > 0
     End Function
 

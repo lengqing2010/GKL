@@ -1,7 +1,7 @@
 ﻿Imports System.Data
 Imports System.Text
 Imports System.IO
-Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
+
 Imports MyMethod = System.Reflection.MethodBase
 Partial Class t_check_plan
     Inherits System.Web.UI.Page
@@ -31,9 +31,7 @@ Partial Class t_check_plan
     ''' 固定項目設定
     ''' </summary>
     public Sub KoteiInit()
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
+
        Me.tbxPlanNo.Attributes.Item("itType") = "varchar"
        Me.tbxPlanNo.Attributes.Item("itLength") = "20"
        Me.tbxPlanNo.Attributes.Item("itName") = "计划No"
@@ -71,27 +69,13 @@ Partial Class t_check_plan
 
     End Sub
 
-    ''' <summary>
-    ''' 明細項目設定
-    ''' </summary>
-    'public Sub MsInit()
-    '  'EMAB　ＥＲＲ
-    '   EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-    '   MyMethod.GetCurrentMethod.Name)
-    '        '明細設定
-    '        Dim dt As DataTable = GetMsData()
-    '        Me.gvMs.DataSource = dt
-    '        Me.gvMs.DataBind()
-
-    'End Sub
 
     Public Sub MsInit(Optional ByVal pageIdx As Integer = 1)
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-        MyMethod.GetCurrentMethod.Name)
+
         '明細設定
 
-        Dim dtMs, dtPageIdx As DataTable
+        Dim dtMs As New DataTable
+        Dim dtPageIdx As New DataTable
         Common.GetPageData(GetMsData(), pageIdx, dtMs, dtPageIdx)
 
         Me.gvMs.DataSource = dtMs
@@ -128,9 +112,6 @@ Partial Class t_check_plan
     ''' <remarks></remarks>
     Private Function GetMsData() As Data.DataTable
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
         Return BC.SelTCheckPlan(tbxPlanNo_key.Text, tbxChkNo_key.Text, tbxMakeNo_key.Text, tbxCode_key.Text, tbxLineId_key.Text, Me.tbxCheckDate_key.Text)
     End Function
 
@@ -141,9 +122,6 @@ Partial Class t_check_plan
     ''' <remarks></remarks>
     Private Function IsHaveData() As Boolean
 
-      'EMAB　ＥＲＲ
-       EMAB.AddMethodEntrance(Request.ApplicationPath & "." & MyClass.GetType.BaseType.FullName & "." & _
-       MyMethod.GetCurrentMethod.Name)
         Return BC.SelTCheckPlan(tbxPlanNo.Text, tbxChkNo.Text, tbxMakeNo.Text, tbxCode.Text, tbxLineId.Text, Me.tbxCheckDate_key.Text).Rows.Count > 0
     End Function
 

@@ -1,7 +1,7 @@
-﻿Imports EMAB = Itis.ApplicationBlocks.ExceptionManagement.UnTrappedExceptionManager
-Imports MyMethod = System.Reflection.MethodBase
-Imports Itis.ApplicationBlocks.Data.SQLHelper
-Imports Itis.ApplicationBlocks.Data
+﻿
+
+
+
 Imports System.Text
 Imports System.Data
 Imports System.Data.SqlClient
@@ -10,31 +10,26 @@ Imports System.Configuration.ConfigurationSettings
 Imports System.Collections.Generic
 
 Public Class TCheckResultDA
-
+    Public SqlHelperNew As New SqlHelperNew
     ''' <summary>
     ''' 
     ''' 检查结果Infoを検索する
     ''' </summary>
     '''<param name="chkNo_key">检查No</param>
-'''<param name="nen_key">年</param>
-'''<param name="lineId_key">生产线</param>
-'''<param name="makeNo_key">作番</param>
+    '''<param name="nen_key">年</param>
+    '''<param name="lineId_key">生产线</param>
+    '''<param name="makeNo_key">作番</param>
     ''' <returns>检查结果Info</returns>
     ''' <remarks></remarks>
     ''' <history>
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
-    Public Function SelTCheckResult(Byval chkNo_key AS String, _
-           Byval nen_key AS String, _
-           Byval lineId_key AS String, _
-           Byval makeNo_key AS String) As Data.DataTable
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name , _
-           chkNo_key, _
-           nen_key, _
-           lineId_key, _
-           makeNo_key)
+    Public Function SelTCheckResult(ByVal chkNo_key As String, _
+           ByVal nen_key As String, _
+           ByVal lineId_key As String, _
+           ByVal makeNo_key As String) As Data.DataTable
+
         'SQLコメント
         '--**テーブル：检查结果 : t_check_result
         Dim sb As New StringBuilder
@@ -59,57 +54,57 @@ Public Class TCheckResultDA
 
         sb.AppendLine("FROM t_check_result")
         sb.AppendLine("WHERE 1=1")
-            If chkNo_key<>"" Then
+        If chkNo_key <> "" Then
             sb.AppendLine("AND chk_no=@chk_no_key")   '检查No
         End If
-    If nen_key<>"" Then
+        If nen_key <> "" Then
             sb.AppendLine("AND nen=@nen_key")   '年
         End If
-    If lineId_key<>"" Then
+        If lineId_key <> "" Then
             sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
-    If makeNo_key<>"" Then
+        If makeNo_key <> "" Then
             sb.AppendLine("AND make_no=@make_no_key")   '作番
         End If
 
-    '僶儔儊僞奿擺
-    Dim paramList As New List(Of SqlParameter)
-    paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
-    paramList.Add(MakeParam("@nen_key", SqlDbType.VarChar, 4, nen_key))
-    paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
-    paramList.Add(MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
+        'PARAM
+        Dim paramList As New List(Of SqlParameter)
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@nen_key", SqlDbType.VarChar, 4, nen_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
 
-    Dim dsInfo As New Data.DataSet
-    FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "t_check_result", paramList.ToArray)
+        Dim dsInfo As New Data.DataSet
+        SqlHelperNew.FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "t_check_result", paramList.ToArray)
 
-    Return dsInfo.Tables("t_check_result")
+        Return dsInfo.Tables("t_check_result")
 
-End Function
+    End Function
 
     ''' <summary>
     ''' 
     ''' 检查结果Infoを更新する
     ''' </summary>
     '''<param name="chkNo_key">检查No</param>
-'''<param name="nen_key">年</param>
-'''<param name="lineId_key">生产线</param>
-'''<param name="makeNo_key">作番</param>
-'''<param name="chkNo">检查No</param>
-'''<param name="nen">年</param>
-'''<param name="planNo">计划No</param>
-'''<param name="lineId">生产线</param>
-'''<param name="makeNo">作番</param>
-'''<param name="code">コード</param>
-'''<param name="suu">数量</param>
-'''<param name="tempId">检查模板编号</param>
-'''<param name="chkResult">检查结果</param>
-'''<param name="chkUser">检查者</param>
-'''<param name="chkStartDate">检查開始日</param>
-'''<param name="chkEndDate">检查完了日</param>
-'''<param name="parentChkNo">父检查No</param>
-'''<param name="status">状态</param>
-'''<param name="insUser">登録者</param>
-'''<param name="insDate">登録日</param>
+    '''<param name="nen_key">年</param>
+    '''<param name="lineId_key">生产线</param>
+    '''<param name="makeNo_key">作番</param>
+    '''<param name="chkNo">检查No</param>
+    '''<param name="nen">年</param>
+    '''<param name="planNo">计划No</param>
+    '''<param name="lineId">生产线</param>
+    '''<param name="makeNo">作番</param>
+    '''<param name="code">コード</param>
+    '''<param name="suu">数量</param>
+    '''<param name="tempId">检查模板编号</param>
+    '''<param name="chkResult">检查结果</param>
+    '''<param name="chkUser">检查者</param>
+    '''<param name="chkStartDate">检查開始日</param>
+    '''<param name="chkEndDate">检查完了日</param>
+    '''<param name="parentChkNo">父检查No</param>
+    '''<param name="status">状态</param>
+    '''<param name="insUser">登録者</param>
+    '''<param name="insDate">登録日</param>
     ''' <returns>检查结果Info</returns>
     ''' <remarks></remarks>
     ''' <history>
@@ -136,28 +131,7 @@ End Function
                ByVal status As String, _
                ByVal insUser As String, _
                ByVal insDate As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               chkNo_key, _
-               nen_key, _
-               lineId_key, _
-               makeNo_key, _
-               chkNo, _
-               nen, _
-               planNo, _
-               lineId, _
-               makeNo, _
-               code, _
-               suu, _
-               tempId, _
-               chkResult, _
-               chkUser, _
-               chkStartDate, _
-               chkEndDate, _
-               parentChkNo, _
-               status, _
-               insUser, _
-               insDate)
+
         'SQLコメント
         '--**テーブル：检查结果 : t_check_result
         Dim sb As New StringBuilder
@@ -196,32 +170,32 @@ End Function
         '    sb.AppendLine("AND make_no=@make_no_key")   '作番
         'End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
-        paramList.Add(MakeParam("@nen_key", SqlDbType.VarChar, 4, nen_key))
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
-        paramList.Add(MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@nen_key", SqlDbType.VarChar, 4, nen_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
 
-        paramList.Add(MakeParam("@chk_no", SqlDbType.VarChar, 20, chkNo))
-        paramList.Add(MakeParam("@nen", SqlDbType.VarChar, 4, nen))
-        paramList.Add(MakeParam("@plan_no", SqlDbType.VarChar, 20, planNo))
-        paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
-        paramList.Add(MakeParam("@make_no", SqlDbType.VarChar, 20, makeNo))
-        paramList.Add(MakeParam("@code", SqlDbType.VarChar, 20, code))
-        paramList.Add(MakeParam("@suu", SqlDbType.VarChar, 10, suu))
-        paramList.Add(MakeParam("@temp_id", SqlDbType.VarChar, 10, tempId))
-        paramList.Add(MakeParam("@chk_result", SqlDbType.VarChar, 1, chkResult))
-        paramList.Add(MakeParam("@chk_user", SqlDbType.NVarChar, 20, chkUser))
-        paramList.Add(MakeParam("@chk_start_date", SqlDbType.Date, 3, IIf(chkStartDate = "", DBNull.Value, chkStartDate)))
-        paramList.Add(MakeParam("@chk_end_date", SqlDbType.Date, 3, IIf(chkEndDate = "", DBNull.Value, chkEndDate)))
-        paramList.Add(MakeParam("@parent_chk_no", SqlDbType.VarChar, 20, parentChkNo))
-        paramList.Add(MakeParam("@status", SqlDbType.VarChar, 1, status))
-        paramList.Add(MakeParam("@ins_user", SqlDbType.NVarChar, 20, insUser))
-        paramList.Add(MakeParam("@ins_date", SqlDbType.Date, 3, IIf(insDate = "", DBNull.Value, insDate)))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no", SqlDbType.VarChar, 20, chkNo))
+        paramList.Add(SqlHelperNew.MakeParam("@nen", SqlDbType.VarChar, 4, nen))
+        paramList.Add(SqlHelperNew.MakeParam("@plan_no", SqlDbType.VarChar, 20, planNo))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no", SqlDbType.VarChar, 20, makeNo))
+        paramList.Add(SqlHelperNew.MakeParam("@code", SqlDbType.VarChar, 20, code))
+        paramList.Add(SqlHelperNew.MakeParam("@suu", SqlDbType.VarChar, 10, suu))
+        paramList.Add(SqlHelperNew.MakeParam("@temp_id", SqlDbType.VarChar, 10, tempId))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_result", SqlDbType.VarChar, 1, chkResult))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_user", SqlDbType.NVarChar, 20, chkUser))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_start_date", SqlDbType.Date, 3, IIf(chkStartDate = "", DBNull.Value, chkStartDate)))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_end_date", SqlDbType.Date, 3, IIf(chkEndDate = "", DBNull.Value, chkEndDate)))
+        paramList.Add(SqlHelperNew.MakeParam("@parent_chk_no", SqlDbType.VarChar, 20, parentChkNo))
+        paramList.Add(SqlHelperNew.MakeParam("@status", SqlDbType.VarChar, 1, status))
+        paramList.Add(SqlHelperNew.MakeParam("@ins_user", SqlDbType.NVarChar, 20, insUser))
+        paramList.Add(SqlHelperNew.MakeParam("@ins_date", SqlDbType.Date, 3, IIf(insDate = "", DBNull.Value, insDate)))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -249,12 +223,12 @@ End Function
 
 
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -304,24 +278,7 @@ End Function
                ByVal status As String, _
                ByVal insUser As String, _
                ByVal insDate As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               chkNo, _
-               nen, _
-               planNo, _
-               lineId, _
-               makeNo, _
-               code, _
-               suu, _
-               tempId, _
-               chkResult, _
-               chkUser, _
-               chkStartDate, _
-               chkEndDate, _
-               parentChkNo, _
-               status, _
-               insUser, _
-               insDate)
+
         'SQLコメント
         '--**テーブル：检查结果 : t_check_result
         Dim sb As New StringBuilder
@@ -406,27 +363,27 @@ End Function
         sb.AppendLine("AND line_id=@line_id")
 
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@chk_no", SqlDbType.VarChar, 20, chkNo))
-        paramList.Add(MakeParam("@nen", SqlDbType.VarChar, 4, nen))
-        paramList.Add(MakeParam("@plan_no", SqlDbType.VarChar, 20, planNo))
-        paramList.Add(MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
-        paramList.Add(MakeParam("@make_no", SqlDbType.VarChar, 20, makeNo))
-        paramList.Add(MakeParam("@code", SqlDbType.VarChar, 20, code))
-        paramList.Add(MakeParam("@suu", SqlDbType.VarChar, 10, suu))
-        paramList.Add(MakeParam("@temp_id", SqlDbType.VarChar, 10, tempId))
-        paramList.Add(MakeParam("@chk_result", SqlDbType.VarChar, 1, chkResult))
-        paramList.Add(MakeParam("@chk_user", SqlDbType.NVarChar, 20, chkUser))
-        paramList.Add(MakeParam("@chk_start_date", SqlDbType.Date, 3, IIf(chkStartDate = "", DBNull.Value, chkStartDate)))
-        paramList.Add(MakeParam("@chk_end_date", SqlDbType.Date, 3, IIf(chkEndDate = "", DBNull.Value, chkEndDate)))
-        paramList.Add(MakeParam("@parent_chk_no", SqlDbType.VarChar, 20, parentChkNo))
-        paramList.Add(MakeParam("@status", SqlDbType.VarChar, 1, status))
-        paramList.Add(MakeParam("@ins_user", SqlDbType.NVarChar, 20, insUser))
-        paramList.Add(MakeParam("@ins_date", SqlDbType.Date, 3, IIf(insDate = "", DBNull.Value, insDate)))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no", SqlDbType.VarChar, 20, chkNo))
+        paramList.Add(SqlHelperNew.MakeParam("@nen", SqlDbType.VarChar, 4, nen))
+        paramList.Add(SqlHelperNew.MakeParam("@plan_no", SqlDbType.VarChar, 20, planNo))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id", SqlDbType.VarChar, 10, lineId))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no", SqlDbType.VarChar, 20, makeNo))
+        paramList.Add(SqlHelperNew.MakeParam("@code", SqlDbType.VarChar, 20, code))
+        paramList.Add(SqlHelperNew.MakeParam("@suu", SqlDbType.VarChar, 10, suu))
+        paramList.Add(SqlHelperNew.MakeParam("@temp_id", SqlDbType.VarChar, 10, tempId))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_result", SqlDbType.VarChar, 1, chkResult))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_user", SqlDbType.NVarChar, 20, chkUser))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_start_date", SqlDbType.Date, 3, IIf(chkStartDate = "", DBNull.Value, chkStartDate)))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_end_date", SqlDbType.Date, 3, IIf(chkEndDate = "", DBNull.Value, chkEndDate)))
+        paramList.Add(SqlHelperNew.MakeParam("@parent_chk_no", SqlDbType.VarChar, 20, parentChkNo))
+        paramList.Add(SqlHelperNew.MakeParam("@status", SqlDbType.VarChar, 1, status))
+        paramList.Add(SqlHelperNew.MakeParam("@ins_user", SqlDbType.NVarChar, 20, insUser))
+        paramList.Add(SqlHelperNew.MakeParam("@ins_date", SqlDbType.Date, 3, IIf(insDate = "", DBNull.Value, insDate)))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -450,12 +407,7 @@ End Function
                ByVal nen_key As String, _
                ByVal lineId_key As String, _
                ByVal makeNo_key As String) As Boolean
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name, _
-               chkNo_key, _
-               nen_key, _
-               lineId_key, _
-               makeNo_key)
+
         'SQLコメント
         '--**テーブル：检查结果 : t_check_result
         Dim sb As New StringBuilder
@@ -475,15 +427,15 @@ End Function
             sb.AppendLine("AND make_no=@make_no_key")   '作番
         End If
 
-        '僶儔儊僞奿擺
+        'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
-        paramList.Add(MakeParam("@nen_key", SqlDbType.VarChar, 4, nen_key))
-        paramList.Add(MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
-        paramList.Add(MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_no_key", SqlDbType.VarChar, 20, chkNo_key))
+        paramList.Add(SqlHelperNew.MakeParam("@nen_key", SqlDbType.VarChar, 4, nen_key))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+        paramList.Add(SqlHelperNew.MakeParam("@make_no_key", SqlDbType.VarChar, 20, makeNo_key))
 
 
-        SQLHelper.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
+        SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
 
         Return True
 
@@ -496,8 +448,7 @@ End Function
     ''' <returns></returns>
     ''' <remarks></remarks>
     Private Function GetIntValue(ByVal v As Object) As Object
-        'EMAB　ＥＲＲ
-        EMAB.AddMethodEntrance(MyClass.GetType.FullName & "." & MyMethod.GetCurrentMethod.Name)
+
         If v Is DBNull.Value Or v.ToString = "" Then
             Return DBNull.Value
 
@@ -625,7 +576,7 @@ End Function
         sb.AppendLine("  ORDER BY yotei_chk_date DESC, chk_no,chk_times")
 
         Dim dsInfo As New Data.DataSet
-        FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "t_check_result")
+        SqlHelperNew.FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "t_check_result")
 
         Return dsInfo.Tables("t_check_result")
 
