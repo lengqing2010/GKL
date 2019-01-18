@@ -214,6 +214,7 @@ public partial class CheckItiran : System.Web.UI.Page
      Context.Items["code"] = code;
      Context.Items["line_id"] = line_id;
      Context.Items["user"] = this.tbxCheckUser.Text.Trim();
+     Context.Items["user_name"] = this.lblUserName.Text;
 
 
      TCheckResultBC BC = new TCheckResultBC();

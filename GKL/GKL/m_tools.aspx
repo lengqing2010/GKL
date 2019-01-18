@@ -75,10 +75,6 @@
               </td>
           </tr>
       </table>
-</div>
-
-<!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:835px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_input' style="width:815px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:210px;">
@@ -95,6 +91,11 @@
           </td>
           </tr>
       </table>
+</div>
+
+<!--明細Body部-->
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:835px; margin-top :0px; border-collapse :collapse ;">
+
    <asp:GridView CssClass ="jq_ms" Width="815px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
           <asp:TemplateField><ItemTemplate ><%#Eval("tool_id")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_tool_id" /></asp:TemplateField>

@@ -215,11 +215,11 @@ Me.hidOldRowIdx.Text = ""
 
     Protected Sub btnCopy_Click(sender As Object, e As EventArgs) Handles btnCopy.Click
 
-        If Me.tbxLineId.Text.Trim = "" Then
+        If Me.tbxLineId_key.Text.Trim = "" Then
             Common.ShowMsg(Me.Page, "请输入生产线")
             Exit Sub
         End If
-        If Me.tbxTempId.Text.Trim = "" Then
+        If Me.tbxTempId_key.Text.Trim = "" Then
             Common.ShowMsg(Me.Page, "请输模板编号")
             Exit Sub
         End If
@@ -229,7 +229,7 @@ Me.hidOldRowIdx.Text = ""
         End If
 
         Try
-            BC.CopyTemp(tbxLineId.Text.Trim, Me.tbxTempId.Text.Trim, Me.tbxTempId_new.Text.Trim)
+            BC.CopyTemp(tbxLineId_key.Text.Trim, Me.tbxTempId_key.Text.Trim, Me.tbxTempId_new.Text.Trim)
         Catch ex As Exception
             Common.ShowMsg(Me.Page, ex.Message)
             Exit Sub

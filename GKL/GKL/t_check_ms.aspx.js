@@ -170,7 +170,7 @@
         pic_id = thisRow.attr("pic_id");
 
         var tbxMark;
-        tbxMark = $(acText).parent().parent().find("#tbxMark").val();
+        tbxMark = $(acText).parent().parent().find(".jq_mark").val();
         var resultCell;
         resultCell = $(acText).parent().parent().find(".jq_result");
 
@@ -258,7 +258,7 @@
     function SetResult(rlt, jq_e) {
 
         var tbxMark;
-        tbxMark = jq_e.parent().parent().find("#tbxMark").val();
+        tbxMark = jq_e.parent().parent().find(".jq_mark").val();
 
         var resultCell;
         resultCell = jq_e.parent().parent().find(".jq_result");
