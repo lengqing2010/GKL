@@ -12,6 +12,8 @@
     <div>
     
         <asp:GridView ID="gv" runat="server">
+            <HeaderStyle BackColor="#6699FF" Font-Size="12px" />
+            <RowStyle Font-Size="12px" />
         </asp:GridView>
     
     </div>

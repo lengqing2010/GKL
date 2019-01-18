@@ -38,7 +38,11 @@ Partial Class _Default
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
 
-            Me.lbPic.Attributes.Item("HREF") = ConfigurationManager.AppSettings("PicPath").ToString()
+            'Me.lbPic.Attributes.Item("HREF") = ConfigurationManager.AppSettings("PicPath").ToString()
+
+            Me.lbPic.Attributes.Item("onclick") = "window.open('AppDownLoad.aspx', 'newwindow', 'height=100, width=600, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');return false;"
+
+
         End If
     End Sub
 

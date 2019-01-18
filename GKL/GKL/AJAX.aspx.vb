@@ -73,6 +73,14 @@ Partial Class AJAX
                                kj2, _
                                insUser, _
                                line_id, chk_method_id)
+        ElseIf kbn = "lines" Then
+            Response.Write(Common.LineIds)
+
+        ElseIf kbn = "tempsIds" Then
+
+            Dim line_id As String = Request.QueryString("line_id")
+            Response.Write(Common.TempIds(line_id))
+
         End If
 
 

@@ -74,6 +74,33 @@ Public Class MTempDA
 
     End Function
 
+
+    Public Function SelTempIds(ByVal lineId_key As String) As Data.DataTable
+
+        'SQLコメント
+        '--**テーブル：模板MS : m_temp
+        Dim sb As New StringBuilder
+        'SQL文
+        sb.AppendLine("SELECT")
+
+        sb.AppendLine("Distinct temp_id")                                                 '检查模板编号
+
+
+        sb.AppendLine("FROM m_temp")
+        sb.AppendLine("WHERE 1=1")
+        sb.AppendLine("AND line_id=@line_id_key")   '生产线
+      
+        'PARAM
+        Dim paramList As New List(Of SqlParameter)
+        paramList.Add(SqlHelperNew.MakeParam("@line_id_key", SqlDbType.VarChar, 10, lineId_key))
+
+        Dim dsInfo As New Data.DataSet
+        SqlHelperNew.FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_temp", paramList.ToArray)
+
+        Return dsInfo.Tables("m_temp")
+
+    End Function
+
     ''' <summary>
     ''' 
     ''' 模板MSInfoを更新する
@@ -431,25 +458,25 @@ Public Class MTempDA
         sb.AppendLine("SELECT")
         sb.AppendLine("case when m_project.project_id IS null then N'工程不存在'  else '' end as 工程检查")
         sb.AppendLine(",case when m_temp_name.line_id IS null then N'工程名不存在'  else '' end as 工程名检查")
-        sb.AppendLine(",case when m_tools.line_id IS null and m_temp.tool_id IS not null then N'治具不存在' else '' end as 治具检查")
-        sb.AppendLine(",case when m_picture.line_id IS null and m_temp.pic_id IS not null then N'图片不存在' else '' end as 图片检查")
+        sb.AppendLine(",case when m_tools.line_id IS null and ISNULL(m_temp.tool_id,'') <>'' then N'治具不存在' else '' end as 治具检查")
+        sb.AppendLine(",case when m_picture.line_id IS null and ISNULL(m_temp.pic_id,'') <>'' then N'图片不存在' else '' end as 图片检查")
         sb.AppendLine(",case when m_check_method.chk_id IS null then N'检查规则不存在'  else '' end as 检查规则检查")
         sb.AppendLine("	, m_temp.line_id")
         sb.AppendLine("	, m_temp.temp_id")
         sb.AppendLine("	, m_temp.chk_method_id")
         sb.AppendLine("	, m_temp.project_id")
-        sb.AppendLine("	, m_temp.project_name")
+        'sb.AppendLine("	, m_temp.project_name")
         sb.AppendLine("	, m_temp.pic_id")
-        sb.AppendLine("	, m_temp.pic_name")
-        sb.AppendLine("	, m_temp.chk_km_name")
-        sb.AppendLine("	, m_temp.pic_sign")
+        'sb.AppendLine("	, m_temp.pic_name")
+        'sb.AppendLine("	, m_temp.chk_km_name")
+        'sb.AppendLine("	, m_temp.pic_sign")
         sb.AppendLine("	, m_temp.chk_id")
-        sb.AppendLine("	, m_temp.chk_name")
+        'sb.AppendLine("	, m_temp.chk_name")
         sb.AppendLine("	, m_temp.tool_id")
-        sb.AppendLine("	, m_temp.kj_0")
-        sb.AppendLine("	, m_temp.kj_1")
-        sb.AppendLine("	, m_temp.kj_2")
-        sb.AppendLine("	, m_temp.kj_explain")
+        'sb.AppendLine("	, m_temp.kj_0")
+        'sb.AppendLine("	, m_temp.kj_1")
+        'sb.AppendLine("	, m_temp.kj_2")
+        'sb.AppendLine("	, m_temp.kj_explain")
         sb.AppendLine("FROM m_temp ")
         sb.AppendLine("LEFT JOIN m_project ")
         sb.AppendLine("	ON m_temp.project_id = m_project.project_id ")

@@ -27,10 +27,7 @@
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
-            <td>生产线 : </td>
-            <td>
-              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:80px;background-color: #fff;" Text="SRM1312A" ></asp:TextBox>
-                </td>
+
             <td>检查者No</td>
             <td>
                 <asp:TextBox ID="tbxCheckUser" class="jq_make_no_key" runat="server" style="width:100px;background-color: #FFAA00;" ></asp:TextBox>
@@ -39,6 +36,11 @@
 <%--                <asp:Label ID="lblUserName" runat="server" Width="80px"></asp:Label>--%>
                 <asp:TextBox ID="lblUserName" class="" runat="server" style="width:100px;background-color: #FFAA00;" ></asp:TextBox>
                 </td>
+            <td>生产线 : </td>
+            <td>
+              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:80px;background-color: #fff;" Text="SRM1312A" ></asp:TextBox>
+                </td>
+
             <td>作番 : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxMakeNo_key" class="jq_make_no_ipt" runat="server" style="width:100px;background-color: #FFAA00;" ></asp:TextBox>

@@ -45,7 +45,7 @@ Public Class MToolsDA
         If lineId_key <> "" Then
             sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
-
+        sb.AppendLine("ORDER BY line_id")
         'PARAM
         Dim paramList As New List(Of SqlParameter)
         paramList.Add(SqlHelperNew.MakeParam("@tool_id_key", SqlDbType.VarChar, 42, "%" & toolId_key & "%"))

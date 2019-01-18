@@ -30,15 +30,16 @@
             <tr>
             <td>生产线 : &nbsp;</td>
             <td>
-              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+                      <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
+              <datalist id="line_id_list" runat="server"></datalist>
             </td>
             <td></td>
             </tr>
             <tr>
             <td>模板CD : &nbsp;</td>
             <td>
-                <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
-
+                <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="temp_ids"></asp:TextBox>
+              <datalist id="temp_ids" runat="server"></datalist>
                          </td>
             <td></td>
             </tr>

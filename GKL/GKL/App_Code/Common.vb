@@ -47,6 +47,22 @@ Public Class Common
 
     End Function
 
+    Public Shared Function LineIds() As String
+        Dim dt As Data.DataTable = (New MUserBC).SelLineIds()
+        Dim sb As New StringBuilder
+        For i As Integer = 0 To dt.Rows.Count - 1
+            sb.AppendLine("<option value=""" & dt.Rows(i).Item(0).ToString & """></option>")
+        Next
+        Return sb.ToString
+    End Function
 
+    Public Shared Function TempIds(ByVal line_id As String) As String
+        Dim dt As Data.DataTable = (New MTempBC).SelTempIds(line_id)
+        Dim sb As New StringBuilder
+        For i As Integer = 0 To dt.Rows.Count - 1
+            sb.AppendLine("<option value=""" & dt.Rows(i).Item(0).ToString & """></option>")
+        Next
+        Return sb.ToString
+    End Function
 
 End Class

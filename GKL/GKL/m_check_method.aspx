@@ -41,7 +41,7 @@
               <asp:TextBox ID="tbxChkName_key" class="jq_chk_name_key" runat="server" style="width:200px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td>
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="20" Width="50" />
+        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="24" Width="50" />
                 </td>
             </tr>
         </table>
@@ -67,9 +67,9 @@
 </div>
 <!--明細Title部-->
 <div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">
-      <table class='ms_title' style="width:850px" cellpadding="0" cellspacing="0">
+      <table class='ms_title' style="width:950px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:170px;">
+              <td style="width:100px;">
                   检查方法ID 
               </td>
               <td style="width:210px;">
@@ -80,7 +80,7 @@
 2:固定（合/否）*没有公式">
                   检查方法 
                </td>
-              <td style="width:210px;">
+              <td style="width:300px;">
                   检查方公式 
               </td>
               <td style="">
@@ -88,10 +88,10 @@
               </td>
           </tr>
       </table>
-      <table class='ms_input' style="width:850px" cellpadding="0" cellspacing="0">
+      <table class='ms_input' style="width:950px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:170px;">
-              <asp:TextBox ID="tbxChkId" class="jq_chk_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
+              <td style="width:100px;">
+              <asp:TextBox ID="tbxChkId" class="jq_chk_id_ipt" runat="server" maxLength="10" style="width:94px;background-color: #FFAA00;"></asp:TextBox>
           </td>
               <td style="width:210px;">
               <asp:TextBox ID="tbxChkName" class="jq_chk_name_ipt" runat="server" maxLength="20" style="width:204px;background-color: #FFAA00;"></asp:TextBox>
@@ -100,10 +100,10 @@
               <asp:TextBox ID="tbxChkMethod" class="jq_chk_method_ipt" runat="server" maxLength="1" style="width:24px;"></asp:TextBox>
           </td>
               <td style="width:210px;">
-              <asp:TextBox ID="tbxChkFormula" class="jq_chk_formula_ipt" runat="server" maxLength="80" style="width:204px;"></asp:TextBox>
+              <asp:TextBox ID="tbxChkFormula" class="jq_chk_formula_ipt" runat="server" maxLength="200" style="width:294px;"></asp:TextBox>
           </td>
               <td style="">
-              <asp:TextBox ID="tbxVerifyMethodExplain" class="jq_verify_method_explain_ipt" runat="server" maxLength="200" style="width:200px;"></asp:TextBox>
+              <asp:TextBox ID="tbxVerifyMethodExplain" class="jq_verify_method_explain_ipt" runat="server" maxLength="200" style="width:250px;"></asp:TextBox>
           </td>
           </tr>
       </table>
@@ -111,14 +111,14 @@
 </div>
 
 <!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:870px; margin-top :0px; border-collapse :collapse ;">
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:970px; margin-top :0px; border-collapse :collapse ;">
 
-   <asp:GridView CssClass ="jq_ms" Width="850px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
+   <asp:GridView CssClass ="jq_ms" Width="950px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_id")%></ItemTemplate><ItemStyle Width="170px" HorizontalAlign="Left" CssClass="jq_chk_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_id")%></ItemTemplate><ItemStyle Width="100px" HorizontalAlign="Left" CssClass="jq_chk_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("chk_name")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_chk_name" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("chk_method")%></ItemTemplate><ItemStyle Width="30px" HorizontalAlign="Left" CssClass="jq_chk_method" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_formula")%></ItemTemplate><ItemStyle Width="210px" HorizontalAlign="Left" CssClass="jq_chk_formula" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_formula")%></ItemTemplate><ItemStyle Width="300px" HorizontalAlign="Left" CssClass="jq_chk_formula" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("verify_method_explain")%></ItemTemplate><ItemStyle  HorizontalAlign="Left" CssClass="jq_verify_method_explain" /></asp:TemplateField>
       </Columns>
    </asp:GridView>

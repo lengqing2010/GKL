@@ -33,6 +33,11 @@ Public DA AS NEW MTempDA
                chkMethodId_key)
     End Function
 
+    Public Function SelTempIds(ByVal lineId_key As String) As Data.DataTable
+        Return DA.SelTempIds(lineId_key)
+
+    End Function
+
     ''' <summary>
     ''' 
     ''' 模板MSInfoを更新する

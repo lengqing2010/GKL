@@ -52,6 +52,12 @@ Partial Class t_check_plan
        Me.tbxSuu.Attributes.Item("itLength") = "10"
         Me.tbxSuu.Attributes.Item("itName") = "数量"
 
+
+        Me.tbxCheckDate_key.Attributes.Item("itType") = "date"
+        Me.tbxCheckDate_key.Attributes.Item("itLength") = "10"
+        Me.tbxCheckDate_key.Attributes.Item("itName") = "预订检查日"
+
+
        Me.tbxYoteiChkDate.Attributes.Item("itType") = "date"
         Me.tbxYoteiChkDate.Attributes.Item("itLength") = "10"
         Me.tbxYoteiChkDate.Attributes.Item("itName") = "预订检查日"

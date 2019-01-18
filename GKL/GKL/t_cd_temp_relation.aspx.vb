@@ -329,6 +329,7 @@ Partial Class t_cd_temp_relation
                 Exit Sub
             End If
         Catch ex As Exception
+            Me.lblMsg.Text = ex.Message
             Common.ShowMsg(Me.Page, ex.Message)
         End Try
 

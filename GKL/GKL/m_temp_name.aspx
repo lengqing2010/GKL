@@ -54,13 +54,13 @@
       <table class='ms_title' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
-                  生产线 10
+                  生产线 
               </td>
               <td style="width:170px;">
-                  检查模板编号 10
+                  检查模板编号 
               </td>
               <td style="">
-                  模板名称 200
+                  模板名称 
               </td>
           </tr>
       </table>

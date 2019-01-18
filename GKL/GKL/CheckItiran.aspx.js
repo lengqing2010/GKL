@@ -22,7 +22,7 @@
         $(obj).attr("tabindex", "-1");
     }
 
-    disabledIt($("#tbxLineId_key"));
+    //disabledIt($("#tbxLineId_key"));
     
     //图片Disable
     disabledIt($("#lblUserName"));

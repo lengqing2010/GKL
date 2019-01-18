@@ -52,6 +52,38 @@ Public Class MUserDA
 
     End Function
 
+
+    ''' <summary>
+    ''' 
+    ''' 用户MSInfoを検索する
+    ''' </summary>
+    '''<param name="userCd_key">用户CD</param>
+    ''' <returns>用户MSInfo</returns>
+    ''' <remarks></remarks>
+    ''' <history>
+    ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
+    ''' </history>
+
+    Public Function SelLineIds() As Data.DataTable
+
+        'SQLコメント
+        '--**テーブル：用户MS : m_user
+        Dim sb As New StringBuilder
+        'SQL文
+        sb.AppendLine("SELECT")
+
+        sb.AppendLine("distinct line_id")                                                 '生产线
+        '用户名
+        sb.AppendLine("FROM m_user")
+
+        Dim dsInfo As New Data.DataSet
+
+        SqlHelperNew.FillDataset(DataAccessManager.Connection, CommandType.Text, sb.ToString(), dsInfo, "m_user")
+
+        Return dsInfo.Tables(0)
+
+    End Function
+
     ''' <summary>
     ''' 
     ''' 用户MSInfoを更新する

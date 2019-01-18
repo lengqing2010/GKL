@@ -29,7 +29,9 @@
             <tr>
             <td>生产线 : &nbsp;</td>
             <td>
-              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
+              <datalist id="line_id_list" runat="server"></datalist>
+    
             </td>
             <td>&nbsp;</td>
             <td></td>
@@ -38,7 +40,8 @@
             <tr>
             <td>检查模板编号 : &nbsp;</td>
             <td>
-              <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+              <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="temp_ids"></asp:TextBox>
+              <datalist id="temp_ids" runat="server"></datalist>
             </td>
             <td>
                 <input type ="button" value="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" style="height:24px;width:80px;"  />
@@ -77,52 +80,52 @@
       <table class='ms_title' style="width:1505px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:70px;">
-                  生产线 10
+                  生产线
               </td>
               <td style="width:70px;">
-                  检查模板编号 10
+                  检查模板编号
               </td>
               <td style="width:70px;">
-                  检查项目ID 10
+                  检查项目ID 
               </td>
               <td style="width:70px;">
-                  工程ID 10
+                  工程ID 
               </td>
               <td style="width:110px;">
-                  工程名 40
+                  工程名 
               </td>
               <td style="width:70px;">
-                  图片ID 10
+                  图片ID
               </td>
               <td style="width:110px;">
-                  图片名称 200
+                  图片名称
               </td>
               <td style="width:110px;">
-                  检查项目 200
+                  检查项目
               </td>
               <td style="width:20px;">
                   图片标记
               </td>
               <td style="width:70px;">
-                  检查方法ID 10
+                  检查方法ID
               </td>
               <td style="width:110px;">
-                  检查方法名 20
+                  检查方法名
               </td>
               <td style="width:80px;">
-                  治具ID 40
+                  治具ID
               </td>
               <td style="width:80px;">
-                  基准 100
+                  基准
               </td>
               <td style="width:80px;">
-                  工差1 20
+                  工差1
               </td>
               <td style="width:80px;">
-                  工差2 20
+                  工差2 
               </td>
               <td style="">
-                  基准説明 200
+                  基准説明 
               </td>
           </tr>
       </table>
@@ -245,6 +248,22 @@
 
 
         });
+
+        $("#tbxChkId").dblclick(function () {
+            window.open("m_check_method_popup.aspx?line_id=" + $("#tbxLineId").val() + "&method_id=" + $("#tbxChkId").attr("id") + "&method_name_id=" + $("#tbxChkName").attr("id"),
+               'newwindow', "height=700,width=1000,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no");
+
+
+        });
+
+
+        $("#tbxToolId").dblclick(function () {
+            window.open("m_tools_popup.aspx?line_id=" + $("#tbxLineId").val() + "&tool_id=" + $("#tbxToolId").attr("id") + "&tool_name_id=" + $("#tbxKjExplain").attr("id"),
+               'newwindow', "height=700,width=1000,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no");
+
+
+        });
+
         //图片ID 变更时
         $("#tbxPicId").change(function () {
             var obj;

@@ -28,6 +28,10 @@ Public Class MUserBC
 
     End Function
 
+    Public Function SelLineIds() As Data.DataTable
+        Return DA.SelLineIds(）
+    End Function
+
     ''' <summary>
     ''' 
     ''' 用户MSInfoを更新する

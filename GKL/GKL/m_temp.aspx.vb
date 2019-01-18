@@ -20,8 +20,12 @@ Partial Class m_temp
             '固定項目設定
             KoteiInit()
 
+            'line_id_list.InnerHtml = Common.LineIds
+      
+
             '明細項目設定
-            MsInit()
+            'MsInit()
+
         End If
 
     End Sub
@@ -106,6 +110,13 @@ Partial Class m_temp
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Protected Sub btnSelect_Click(sender As Object, e As System.EventArgs) Handles btnSelect.Click
+
+        If Me.tbxLineId_key.Text = "" Then
+            Common.ShowMsg(Me.Page, "生产线必须输入")
+            Exit Sub
+
+        End If
+
 
         MsInit()
     End Sub
