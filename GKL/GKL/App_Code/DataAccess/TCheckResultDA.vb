@@ -221,7 +221,12 @@ Public Class TCheckResultDA
         sb.AppendLine("AND chk_no=@chk_no_key")   '检查No
         sb.AppendLine("AND line_id=@line_id_key")   '生产线
 
-
+        'SQL文
+        sb.AppendLine("DELETE ")
+        sb.AppendLine("FROM t_check_ms")
+        sb.AppendLine("WHERE 1=1")
+        sb.AppendLine("AND chk_no=@chk_no_key")   '检查No
+        sb.AppendLine("AND line_id=@line_id_key")   '生产线
 
         'PARAM
         Dim paramList As New List(Of SqlParameter)

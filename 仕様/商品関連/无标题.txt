@@ -1,0 +1,22 @@
+parseFloat({in1})>(parseFloat({kj0})-parseFloat({kj1})) && parseFloat({in1})<(parseFloat({kj0})+parseFloat({kj2}))
+
+'{in1}' like '{kj1}'
+
+
+"parseFloat(2035)>=(parseFloat(2035)-parseFloat(0.5)) && parseFloat(2035)<=(parseFloat(2035)+parseFloat(0.5))"
+
+(/{kj1}/gi).test('{in1}')
+
+MZA%968
+
+MZA1968
+
+
+eval('MZA1968' like 'MZA%968')
+
+
+(/123.*?/gi).test('123')
+
+(/123.*?/gi).test('1234')
+
+(/{kj1}/gi).test('{in1}')

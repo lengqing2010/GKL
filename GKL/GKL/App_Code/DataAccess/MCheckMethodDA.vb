@@ -112,7 +112,7 @@ Public Class MCheckMethodDA
         paramList.Add(SqlHelperNew.MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
         paramList.Add(SqlHelperNew.MakeParam("@chk_name", SqlDbType.nvarchar, 20, chkName))
         paramList.Add(SqlHelperNew.MakeParam("@chk_method", SqlDbType.nvarchar, 1, chkMethod))
-        paramList.Add(SqlHelperNew.MakeParam("@chk_formula", SqlDbType.nvarchar, 80, chkFormula))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_formula", SqlDbType.NVarChar, 200, chkFormula))
         paramList.Add(SqlHelperNew.MakeParam("@verify_method_explain", SqlDbType.nvarchar, 200, verifyMethodExplain))
 
 
@@ -169,7 +169,7 @@ Public Class MCheckMethodDA
         paramList.Add(SqlHelperNew.MakeParam("@chk_id", SqlDbType.VarChar, 10, chkId))
         paramList.Add(SqlHelperNew.MakeParam("@chk_name", SqlDbType.nvarchar, 20, chkName))
         paramList.Add(SqlHelperNew.MakeParam("@chk_method", SqlDbType.nvarchar, 1, chkMethod))
-        paramList.Add(SqlHelperNew.MakeParam("@chk_formula", SqlDbType.nvarchar, 80, chkFormula))
+        paramList.Add(SqlHelperNew.MakeParam("@chk_formula", SqlDbType.NVarChar, 200, chkFormula))
         paramList.Add(SqlHelperNew.MakeParam("@verify_method_explain", SqlDbType.nvarchar, 200, verifyMethodExplain))
 
 
