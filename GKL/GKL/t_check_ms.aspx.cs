@@ -24,7 +24,8 @@ public partial class t_check_ms : System.Web.UI.Page
             this.lblMake_no.Text = ViewState["make_no"].ToString();
             this.lblCode.Text = ViewState["code"].ToString();
             this.lblUser.Text = ViewState["user"].ToString();
-            this.lblLine_id.Text = ViewState["line_id"].ToString() + "  " + ViewState["user_name"].ToString();
+            this.lblLine_id.Text = ViewState["line_id"].ToString() + "  " ;
+            this.lblUserName.Text = ViewState["user_name"].ToString();
             this.hidLineIdKey.Text = ViewState["line_id"].ToString().Trim();
             //ViewState["chk_no"] = "190112_049010465_1";
             //ViewState["line_id"] = "SRM1312A";

@@ -29,6 +29,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;作番：<asp:Label ID="lblMake_no" runat="server" Text="001" ></asp:Label>
                             &nbsp;&nbsp;&nbsp;&nbsp;CODE：<asp:Label ID="lblCode" runat="server" Text="001" ></asp:Label>
                             &nbsp;&nbsp;&nbsp;&nbsp;检查者：<asp:Label ID="lblUser" runat="server" Text="001" ></asp:Label>
+                            &nbsp;&nbsp;<asp:Label ID="lblUserName" runat="server" Text="001" ></asp:Label>
                             &nbsp;&nbsp;&nbsp;&nbsp;（生产线：<asp:Label ID="lblLine_id" runat="server" Text="001" ></asp:Label>）
                             &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnComplete" runat="server" Text="完了" CssClass="jq_sel"  height="24" OnClick="btnComplete_Click"/>
                             &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnModoru" runat="server" Text="返回" CssClass="jq_sel"  height="24" OnClick="btnModoru_Click"/>
@@ -154,7 +155,7 @@
 
     </td>
 </table>
-<input type="text" id="ScanText" />
+<input type="text" id="SC" />
 
         <asp:TextBox ID="hidChkNo" runat="server" class="jq_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidChkMethodId" runat="server" class="jq_chk_method_id_ipt" style=" visibility:hidden;"></asp:TextBox>

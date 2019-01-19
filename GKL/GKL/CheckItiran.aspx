@@ -125,11 +125,11 @@
 </div>
 
 <!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:494px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
 
    <asp:GridView CssClass ="jq_ms" Width="1000px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_no")%></ItemTemplate><ItemStyle Width="130px" HorizontalAlign="Left" CssClass="jq_chk_no" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_no")%></ItemTemplate><ItemStyle Width="130px" Height="40px" HorizontalAlign="Left" CssClass="jq_chk_no" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("make_no")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_make_no" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("code")%></ItemTemplate><ItemStyle Width="160px" HorizontalAlign="Left" CssClass="jq_code" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("suu")%></ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Center" CssClass="jq_suu" /></asp:TemplateField>

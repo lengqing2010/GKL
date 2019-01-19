@@ -372,12 +372,13 @@ td {
     width:250px;
     height:300px;
 }
-.keyboard td{
-    text-align:center;
-    vertical-align:middle;
-    font-size:26px;
-    cursor:pointer;
-}
+    .keyboard td {
+        text-align: center;
+        vertical-align: middle;
+        font-size: 26px;
+        cursor: pointer;
+        background-color: #5CACEE;
+    }
 
 
 .keyboard td:hover {

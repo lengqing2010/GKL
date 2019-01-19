@@ -1,5 +1,19 @@
 ﻿$(document).ready(function () {
 
+
+
+    $(".jq_ms tr").each(function () {
+
+        chk_method = $(this).attr("chk_method");
+
+        if ($(this).find("td")[6].innerText == "NG") {
+            $($(this).find("td")[6]).css('background-color', 'red');
+        } else if ($(this).find("td")[6].innerText == "OK") {
+            $($(this).find("td")[6]).css('background-color', 'green');
+        }
+    });
+
+
     $('.jq_upd')[0].disabled = true;
     $('.jq_del')[0].disabled = true;
     $('#btnComlete')[0].disabled = true;
