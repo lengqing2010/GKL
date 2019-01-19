@@ -376,4 +376,22 @@ td {
     text-align:center;
     vertical-align:middle;
     font-size:26px;
+    cursor:pointer;
+}
+
+
+.keyboard td:hover {
+    background-color: darkorange;
+    color: #000;
+}
+
+.jq_in1{
+    border-width:2px;
+    border-style:double;
+}
+
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+    -webkit-transition-delay: 99999s;
+    -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
 }

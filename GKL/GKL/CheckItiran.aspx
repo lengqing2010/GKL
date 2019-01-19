@@ -132,12 +132,12 @@
           <asp:TemplateField><ItemTemplate ><%#Eval("chk_no")%></ItemTemplate><ItemStyle Width="130px" HorizontalAlign="Left" CssClass="jq_chk_no" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("make_no")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_make_no" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("code")%></ItemTemplate><ItemStyle Width="160px" HorizontalAlign="Left" CssClass="jq_code" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("suu")%></ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Left" CssClass="jq_suu" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_times")%></ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Left" CssClass="jq_chk_times" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("temp_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_temp_id" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_result")%></ItemTemplate><ItemStyle Width="30px" HorizontalAlign="Left" CssClass="jq_chk_result" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_user")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_chk_user" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("yotei_chk_date")%></ItemTemplate><ItemStyle Width="68px" HorizontalAlign="Left" CssClass="jq_chk_start_date" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("suu")%></ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Center" CssClass="jq_suu" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_times")%></ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Center" CssClass="jq_chk_times" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("temp_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Center" CssClass="jq_temp_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_result")%></ItemTemplate><ItemStyle Width="30px" HorizontalAlign="Center" CssClass="jq_chk_result" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_user")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Center" CssClass="jq_chk_user" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("yotei_chk_date")%></ItemTemplate><ItemStyle Width="68px" HorizontalAlign="Center" CssClass="jq_chk_start_date" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("status")%></ItemTemplate><ItemStyle  HorizontalAlign="Left" CssClass="jq_status" /></asp:TemplateField>
 
       </Columns>

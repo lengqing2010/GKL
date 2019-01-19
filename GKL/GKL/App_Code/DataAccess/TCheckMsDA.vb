@@ -355,9 +355,15 @@ Public Class TCheckMsDA
             .AppendLine("		ISNULL(m_tools.tool_name,m_check_method.verify_method_explain ) verify_method_explain")
             .AppendLine("")
             .AppendLine("FROM   t_check_ms ")
+            .AppendLine("		INNER JOIN t_check_result ")
+            .AppendLine("			ON t_check_ms.line_id = t_check_result.line_id")
+            .AppendLine("			AND t_check_ms.chk_no = t_check_result.chk_no")
+
             .AppendLine("       LEFT JOIN m_temp ")
             .AppendLine("               ON t_check_ms.chk_method_id = m_temp.chk_method_id ")
             .AppendLine("               AND t_check_ms.line_id = m_temp.line_id ")
+            .AppendLine("               AND t_check_result.temp_id = m_temp.temp_id ")
+
             .AppendLine("       LEFT JOIN m_check_method ")
             .AppendLine("               ON m_temp.chk_id = m_check_method.chk_id ")
             .AppendLine("       LEFT JOIN m_tools ")

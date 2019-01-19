@@ -1,5 +1,9 @@
 ﻿$(document).ready(function () {
 
+    $('.jq_upd')[0].disabled = true;
+    $('.jq_del')[0].disabled = true;
+    $('#btnComlete')[0].disabled = true;
+
     $(".jq_ms tr").click(function () {
         //
         if ($(this)[0].innerText.indexOf("待检查") == -1) {

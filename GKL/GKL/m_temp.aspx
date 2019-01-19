@@ -48,7 +48,7 @@
               <%--  <asp:Button ID="btnNewTelement" runat="server" Text="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" CssClass="jq_sel" />--%>
             </td>
             <td>
-                <asp:Button ID="btnCopy" runat="server" Text="复制到" CssClass="jq_sel" OnClientClick="return CheckCopy();" Height="24px" />
+                <asp:Button ID="btnCopy" runat="server" Text="复制到" CssClass="jq_sel"  style="height:24px;width:80px;"/>
             </td>
             <td>
                 新模板ID：
@@ -60,19 +60,35 @@
             <td>
               <asp:TextBox ID="tbxChkMethodId_key" class="jq_chk_method_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
-            <td>&nbsp;</td>
+            <td>
+        <asp:Button ID="btnSelect" runat="server" Text="検索" style="height:24px;width:80px;" CssClass="jq_sel" />
+                </td>
             <td></td>
             <td>&nbsp;</td>
             </tr>
         </table>
-        <br /> 
+<table>
 
+    <tr>
+
+        <td style="width:1020px;border:none;">
 <!--Button部-->
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" />
         <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
         <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
         <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
-        <input type ="button" value="检查模板" OnClick="CheckTemp(); return false;" style="width:80px;" />
+        <input type ="button" id="btnChkTemp" value="检查模板" OnClick="CheckTemp(); return false;" style="width:80px;" />
+        </td>
+        <td style="border:none;">
+        .{1} 匹配任意字符 1次<br />
+        .{2} 匹配任意字符 2次<br />
+        .{0,}匹配任意字符 0到多次<br />
+        .{1,}匹配任意字符 0到多次<br />
+        .{0,1}匹配任意字符 0到1次<br />
+
+        </td>
+    </tr>
+</table>
+
  <br /> 
 
 <!--明細Title部-->
@@ -232,101 +248,6 @@
 
     <script language="javascript">
 
-        function disabledIt(obj) {
-            $(obj).attr("readonly", "readonly");
-            $(obj).css({ "background": "#ccc" });
-            $(obj).attr("tabindex", "-1");
-        }
-
-        //图片Disable
-        disabledIt($("#tbxPicName"));
-        disabledIt($("#tbxChkName"));
-
-        $("#tbxPicId").dblclick(function () {
-            window.open("m_picture_popup.aspx?line_id=" + $("#tbxLineId").val() + "&pic_id=" + $("#tbxPicId").attr("id") + "&pic_name_id=" + $("#tbxPicName").attr("id"),
-               'newwindow', "height=700,width=1000,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no");
-
-
-        });
-
-        $("#tbxChkId").dblclick(function () {
-            window.open("m_check_method_popup.aspx?line_id=" + $("#tbxLineId").val() + "&method_id=" + $("#tbxChkId").attr("id") + "&method_name_id=" + $("#tbxChkName").attr("id"),
-               'newwindow', "height=700,width=1000,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no");
-
-
-        });
-
-
-        $("#tbxToolId").dblclick(function () {
-            window.open("m_tools_popup.aspx?line_id=" + $("#tbxLineId").val() + "&tool_id=" + $("#tbxToolId").attr("id") + "&tool_name_id=" + $("#tbxKjExplain").attr("id"),
-               'newwindow', "height=700,width=1000,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no");
-
-
-        });
-
-        //图片ID 变更时
-        $("#tbxPicId").change(function () {
-            var obj;
-            obj = $(this);
-            htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=pic&pic_id=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
-            if (htmlobj.responseText == "") {
-                alert("图片不存在");
-                setTimeout(function () { obj.focus(); }, 100);
-            } else {
-                $("#tbxPicName").val(htmlobj.responseText);
-            }
-        });
-
-        $("#tbxChkId").change(function () {
-            var obj;
-            obj = $(this);
-            htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=chk_method&chk_id=" + $(this).val(), async: false });
-            if (htmlobj.responseText == "") {
-                alert("检查ID不存在");
-                setTimeout(function () { obj.focus(); }, 100);
-            } else {
-                $("#tbxChkName").val(htmlobj.responseText);
-            }
-        });
-
-        $("#tbxToolId").change(function () {
-            var obj;
-            obj = $(this);
-            htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=tool&tool_id=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
-            if (htmlobj.responseText == "") {
-                alert("治具不存在");
-                setTimeout(function () { obj.focus(); }, 100);
-            } else {
-                $("#tbxKjExplain").val(htmlobj.responseText);
-            }
-        });
-
-        function CheckCopy() {
-            var obj;
-            obj = $(this);
-            htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=chk_tmp&temp_id=" + $("#tbxTempId_key").val() + "&line_id=" + $("#tbxLineId").val() + "&temp_id_new=" + $("#tbxTempId_new").val(), async: false });
-            if (htmlobj.responseText == "") {
-                return true;
-            } else if (htmlobj.responseText == "1") {
-                alert("复制源不存在");
-                return false;
-            } else if (htmlobj.responseText == "2") {
-                if (confirm("新模板已经存在，要覆盖吗?")) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else if (htmlobj.responseText == "3") {
-                alert("新模板名称未登录");
-                return false;
-
-            }
-
-        }
-
-        function CheckTemp() {
-            window.open("ChkTemp.aspx?a=" + new Date() + "&temp_id=" + $("#tbxTempId_key").val() + "&line_id=" + $("#tbxLineId").val());
-        }
 
     </script>
 </body>

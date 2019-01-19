@@ -23,7 +23,7 @@ Partial Class t_check_plan
             KoteiInit()
 
             '明細項目設定
-            MsInit()
+            'MsInit()
         End If
 
     End Sub

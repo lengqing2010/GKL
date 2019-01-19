@@ -101,16 +101,16 @@
           <asp:TemplateField><ItemTemplate ><%#Eval("verify_method_explain")%></ItemTemplate><ItemStyle Width="180px" HorizontalAlign="Left" CssClass="jq_in_2" /></asp:TemplateField>
           <asp:TemplateField>
               <ItemTemplate >
-                  <asp:TextBox ID="tbxIn1" runat="server" Text='<%#Eval("in_1")%>' CssClass="jq_in1" Width="98%"></asp:TextBox>                  
+                  <asp:TextBox ID="tbxIn1" runat="server" Text='<%#Eval("in_1")%>' CssClass="jq_in1" Width="98%" AutoCompleteType="Disabled"></asp:TextBox>                  
               </ItemTemplate>              
           <ItemStyle Width="160px" HorizontalAlign="Left" CssClass="jq_chk_result" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate >
 
-              <asp:TextBox ID="tbxresult" runat="server" Text='<%#Eval("chk_result")%>' CssClass="jq_result" Width="92%"></asp:TextBox>
-                             </ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Left" CssClass="jq_mark" /></asp:TemplateField>
+              <asp:TextBox ID="tbxresult" runat="server" Text='<%#Eval("chk_result")%>' CssClass="jq_result" TabIndex="-1" Width="92%"></asp:TextBox>
+                             </ItemTemplate><ItemStyle Width="40px" HorizontalAlign="Left"  /></asp:TemplateField>
           <asp:TemplateField>
               <ItemTemplate >
-                <asp:TextBox ID="tbxMark" runat="server" Text='<%#Eval("mark")%>' CssClass="jq_mark" Width="98%"></asp:TextBox>
+                <asp:TextBox ID="tbxMark" runat="server" Text='<%#Eval("mark")%>' CssClass="jq_mark" Width="98%" AutoCompleteType="Disabled"></asp:TextBox>
               </ItemTemplate><ItemStyle HorizontalAlign="Left" CssClass="jq_kj_0" /></asp:TemplateField>
       </Columns>
    </asp:GridView>
@@ -173,6 +173,7 @@
 
         <asp:TextBox ID="hidLineId" runat="server" class="jq_chk_no_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidInsUser" runat="server" class="jq_ins_user_ipt" style=" visibility:hidden;"></asp:TextBox>
+     <asp:TextBox ID="hidLineIdKey" runat="server" class="jq_ins_user_ipt" style=" visibility:hidden;"></asp:TextBox>
    
     </div>
     </form>
