@@ -286,7 +286,7 @@
     function check_setume_txt() {
         var okSuu = $(".jq_result:[value='NG']").length;
         var ngSuu = $(".jq_result:[value='OK']").length;
-        $("#lblSou").text("NG:" + ngSuu + "  OK:" + okSuu + "  全部:" + (okSuu + ngSuu));
+        $("#lblSou").text("NG:" + ngSuu + "  OK:" + okSuu + "  全部:" + $(".jq_result").length);
     }
 
     //更新检查明细
