@@ -16,11 +16,11 @@
     <script language="javascript" type="text/javascript" src="./CheckItiran.aspx.js"></script>
 
     <!--CSS-->
-    <link href="tmp.css" rel="stylesheet" type="text/css" />
+    <link href="tmp_chk.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class='title_div'>
+        <div class='title_div' style="width:1000px; background-color:green;">
             <%Response.Write(Common.SetTitle("检查一览"));%>
             <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" OnClick="btnBack_Click" />
         </div>
