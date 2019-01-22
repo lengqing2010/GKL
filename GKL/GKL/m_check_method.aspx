@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="m_check_method.aspx.vb" Inherits="m_check_method" %>
+<%@ Register Src="~/UserCtrl/Links.ascx" TagPrefix="uc1" TagName="Links" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -22,7 +23,9 @@
     <div>
 
         <div class='title_div'> <%Response.Write(Common.SetTitle("检查方法MS"))%>
-            <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
+        </div>
+        <div  class="links_div">
+            <uc1:Links runat="server" ID="Links" />
         </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         

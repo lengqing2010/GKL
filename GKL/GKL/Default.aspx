@@ -16,11 +16,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class='title_div'> <%Response.Write(Common.SetTitle("ＭＥＮＵ"))%>
-         
+        <div class='title_div'> 
+           
+            
+
+         <%Response.Write(Common.SetTitle("ＭＥＮＵ"))%>   
+
         </div>
-        <div style="font-size:24px; margin-left:20px; height:400px;">
-      <table  class='jyouken_panel' cellpadding="0" cellspacing="0" style="font-size:24px;">
+        <div class="jq_ms_div" style="font-size:24px; margin-left:20px; height:400px;">
+            <table  class='jyouken_panel' cellpadding="0" cellspacing="0" style="font-size:24px;">
 
             <tr>
 
@@ -59,7 +63,7 @@
 
             <tr>
 
-                <td style="vertical-align:top; padding:10px 20px 10px 20px; width:200px">
+                <td style="vertical-align:top; padding:10px 20px 10px 20px; width:200px; line-height:40px;">
                     <asp:LinkButton ID="lbUser" runat="server">用户MS</asp:LinkButton><br />
                     <asp:LinkButton ID="lbProject" runat="server">工程MS</asp:LinkButton><br />
                     <asp:LinkButton ID="lbTools" runat="server">治具MS</asp:LinkButton><br />
@@ -74,7 +78,7 @@
 
                 </td>
 
-                <td style="vertical-align:top;padding:10px 20px 10px 20px; width:150px">
+                <td style="vertical-align:top;padding:10px 20px 10px 20px; width:150px; line-height:40px;">
                     <asp:LinkButton ID="lbTemp" runat="server">模板MS</asp:LinkButton><br />
                     <asp:LinkButton ID="lbRelation" runat="server">关联商品与模板</asp:LinkButton><br />
                     <asp:LinkButton ID="lbPlan" runat="server">检查计划</asp:LinkButton><br />
@@ -86,7 +90,7 @@
 
                 </td>
 
-                <td style="vertical-align:top;padding:10px 20px 10px 20px; width:150px">
+                <td style="vertical-align:top;padding:10px 20px 10px 20px; width:150px; line-height:40px;">
                     <asp:LinkButton ID="LinkButton1" runat="server">检查一览</asp:LinkButton><br /></td>
 
                 <td style="vertical-align:top;padding:10px 20px 10px 20px; width:10px">
@@ -101,10 +105,6 @@
         </table>
 
         </div>
-  
-    <div>
-
-    </div>
     </form>
 </body>
 </html>

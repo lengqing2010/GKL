@@ -84,7 +84,7 @@ label.checkbox {
 
 input, textarea {
     /*border: 2px solid #e2e2e2;*/
-    background: #fff;
+    /*background: #fff;*/
     color: #333;
     font-size: .85em;
     margin: 0px;
@@ -98,7 +98,7 @@ input, textarea {
     }
 
     input:focus, textarea:focus {
-        border: 1px solid #7ac0da;
+       
     }
 
     input[type="checkbox"] {
@@ -111,35 +111,22 @@ input, textarea {
     input[type="button"],
     input[type="reset"],
     button {
-        border: 1px solid #787878;
-        cursor: pointer;
-        font-weight: 600;
-        padding: 2px;
-        height:24px;
-        width:50px;
-        padding: 4px;
-        margin-right: 6px;
-        border-radius:6px;
-        text-decoration:none;
-	    background:#ccc;
-	    color:#000;
-	    -webkit-transition:all linear 0.30s;
-	    -moz-transition:all linear 0.30s;
-	    transition:all linear 0.30s;
-        padding-left:6px; padding-right:6px;
+      
+
+
 
     }
 
     input[type="button"]:hover {
-        background-color: #fff;
+        /*background-color: #fff;*/
         color:#000;
     }
     input[type="submit"]:hover {
-        background-color: #fff;
+        /*background-color: #fff;*/
         color:#000;
     }
     button:hover {
-        background-color: #fff;
+        /*background-color: #fff;*/
         color:#000;
     }
 
@@ -147,9 +134,9 @@ input, textarea {
     td input[type="submit"],
     td input[type="button"],
     td button {
-        font-size: 1em;
+        /*font-size: 1em;
         padding: 0px;
-        margin-right: 4px;
+        margin-right: 4px;*/
     }
 
 .error {
@@ -205,8 +192,7 @@ td {
     margin:0 auto 0 auto;
     padding:2px;
     height:14px;
-  
-    border-bottom: solid 1px #000;
+
   
 }
 .jyouken_panel td{
@@ -322,17 +308,23 @@ td {
 
 
 
-.title_div{
-    font-size:20px;
-    width:100%;
-    height:30px;
-    background-color: #fff;
-    border:solid 1px #000;
-    padding:4px;
-    color:#000;
-    border-left:none;
-    border-bottom:solid 8px #1953de;
-    margin-bottom:4px;
+
+.title_div {
+    background-color: #99ccff;
+    font-size: 30px;
+    width: 100%;
+    height: 40px;
+    border: solid 1px #000;
+    padding: 4px;
+    color: #000;
+
+
+    /*background:url("IMG/bg.jpg");*/
+    text-shadow: 1px -1px #999, 2px -2px #ccc;
+    font-weight: bold;
+    border-bottom: solid 8px #eee;
+    margin-bottom: 4px;
+
 }
 
 .jq_back{

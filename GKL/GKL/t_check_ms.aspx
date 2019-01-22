@@ -20,7 +20,7 @@
 <body>
 <form id="form1" runat="server">
     <div>
-        <div class='title_div' style="width:1000px; background-color:green;">
+        <div class='title_div' style="width:1000px; ">
             <table style=" border:none; width:1000px">
                 <tr>
                     <td style=" border:none; width:150px;">检查明細</td>

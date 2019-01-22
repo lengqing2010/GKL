@@ -151,7 +151,4 @@ Me.hidOldRowIdx.Text = ""
 Me.hidOldRowIdx.Text = ""
     End Sub
 
-    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        Server.Transfer("Default.aspx")
-    End Sub
 End Class

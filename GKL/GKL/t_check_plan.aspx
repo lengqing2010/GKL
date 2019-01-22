@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="t_check_plan.aspx.vb" Inherits="t_check_plan" %>
-
+<%@ Register Src="~/UserCtrl/Links.ascx" TagPrefix="uc1" TagName="Links" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,7 +21,12 @@
 <form id="form1" runat="server">
     <div>
         <div class='title_div'><%Response.Write(Common.SetTitle("检查计划"))%>
-            <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" /></div>
+        </div>
+        <div  class="links_div">
+            <uc1:Links runat="server" ID="Links" />
+        </div>
+
+
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         
 <!--条件部-->

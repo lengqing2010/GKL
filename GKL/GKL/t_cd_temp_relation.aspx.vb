@@ -345,7 +345,4 @@ Partial Class t_cd_temp_relation
         MsInit(Me.ddlPageIdx.SelectedValue)
     End Sub
 
-    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        Server.Transfer("Default.aspx")
-    End Sub
 End Class

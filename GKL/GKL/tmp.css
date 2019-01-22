@@ -1,10 +1,11 @@
 ﻿html {
-    background-color: #eee;
     margin: 0;
     padding: 0px;
+
 }
 
 body {
+    margin:0px auto 0px auto;
     background-color: #fff;
     color: #333;
     font-size: .85em;
@@ -12,6 +13,7 @@ body {
     text-shadow: 0px 1px 1px rgba(0,0,0,0.3);
     margin: 0;
     padding: 0;
+    /*background:url("IMG/bg_body.jpg") no-repeat;*/   
 }
 
 
@@ -243,6 +245,7 @@ td {
 
 .jq_ms tr{
     cursor:pointer;
+    background-color:#fff;
 }
 .jq_ms td{
     border: black 1px solid;
@@ -317,17 +320,41 @@ td {
 
 
 
-.title_div{
-    font-size:20px;
-    width:100%;
-    height:30px;
-    background-color: #fff;
-    border:solid 1px #000;
-    padding:4px;
-    color:#000;
-    border-left:none;
-    border-bottom:solid 8px #1953de;
-    margin-bottom:4px;
+.title_div {
+    background-color: #99ccff;
+    font-size: 30px;
+    width: 100%;
+    height: 40px;
+    border: solid 1px #000;
+    padding: 4px;
+    color: #000;
+
+
+    /*background:url("IMG/bg.jpg");*/
+    text-shadow: 1px -1px #999, 2px -2px #ccc;
+    font-weight: bold;
+    border-bottom: solid 8px #eee;
+    margin-bottom: 4px;
+
+}
+
+.links_div {
+    width: 100%;
+
+    text-align:right;
+    font-size:16px;
+
+}
+
+.links_div td {
+
+    border:none;
+    padding:2px 4px 2px 4px;
+    border-right:dashed ;
+    border-right-width:1px;
+    border-bottom: solid 8px #eee;
+    margin-bottom: 4px;
+
 }
 
 .jq_back{
@@ -356,4 +383,9 @@ td {
 }
 .jq_ms_div{
         padding-left:4px;
+        background-color:#fff;
 }
+
+
+
+

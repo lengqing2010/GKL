@@ -14,9 +14,13 @@
     });
 
 
-    $('.jq_upd')[0].disabled = true;
-    $('.jq_del')[0].disabled = true;
-    $('#btnComlete')[0].disabled = true;
+    //$('.jq_upd')[0].disabled = true;
+    //$('.jq_del')[0].disabled = true;
+    //$('#btnComlete')[0].disabled = true;
+
+    disabledIt($('.jq_upd')[0]);
+    disabledIt($('.jq_del')[0]);
+    disabledIt($('#btnComlete')[0]);
 
     $(".jq_ms tr").click(function () {
         //
@@ -25,20 +29,39 @@
             $('.jq_del').removeAttr("disabled");
             $('#btnComlete').removeAttr("disabled");
 
+            disabledIt($('.jq_upd')[0]);
+            disabledIt($('.jq_del')[0]);
+            disabledIt($('#btnComlete')[0]);
+
         } else {
-            $('.jq_upd')[0].disabled = true;
-            $('.jq_del')[0].disabled = true;
-            $('#btnComlete')[0].disabled = true;
+
+            UndisabledIt($('.jq_upd')[0]);
+            UndisabledIt($('.jq_del')[0]);
+            UndisabledIt($('#btnComlete')[0]);
+
+            //$('.jq_upd')[0].disabled = true;
+            //$('.jq_del')[0].disabled = true;
+            //$('#btnComlete')[0].disabled = true;
 
         }
   
     })
 
     function disabledIt(obj) {
+        $(obj).attr("disabled", "disabled");
         $(obj).attr("readonly", "readonly");
         $(obj).css({ "background": "#ccc" });
         $(obj).attr("tabindex", "-1");
     }
+
+    function UndisabledIt(obj) {
+        obj.removeAttr("disabled");
+        obj.removeAttr("readonly");
+
+        $(obj).css({ "background": "#ccc" });
+        //$(obj).attr("tabindex", "-1");
+    }
+
 
     //disabledIt($("#tbxLineId_key"));
     

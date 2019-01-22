@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="m_project.aspx.vb" Inherits="m_project" %>
+<%@ Register Src="~/UserCtrl/Links.ascx" TagPrefix="uc1" TagName="Links" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -21,9 +22,11 @@
 <form id="form1" runat="server">
     <div>
         <div class='title_div'> <%Response.Write(Common.SetTitle("工程MS"))%>
-            <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
+   
         </div>
-
+        <div  class="links_div">
+            <uc1:Links runat="server" ID="Links" />
+        </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         
 <!--条件部-->
@@ -32,7 +35,8 @@
             <td>工程ID : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxProjectId_key" class="jq_project_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
-            </td>
+           
+                 </td>
             <td>
 
             </td>
@@ -40,7 +44,9 @@
             <tr>
             <td>生产线 : &nbsp;</td>
             <td>
-              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+             
+                              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
+              <datalist id="line_id_list" runat="server"></datalist>
             </td>
             <td>
         <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" Height="24" Width="50" />

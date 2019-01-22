@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="t_cd_temp_relation.aspx.vb" Inherits="t_cd_temp_relation" %>
+<%@ Register Src="~/UserCtrl/Links.ascx" TagPrefix="uc1" TagName="Links" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -21,7 +22,9 @@
 <form id="form1" runat="server">
     <div>
         <div class='title_div'><%Response.Write(Common.SetTitle("关联商品与模板"))%>
-            <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" />
+        </div>
+        <div  class="links_div">
+            <uc1:Links runat="server" ID="Links" />
         </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
         
