@@ -442,7 +442,7 @@ Public Class TCheckMsDA
 
 
     Public Function UpdTCheckResultMS(ByVal chkNo_key As String, _
-               ByVal line_id As String) As Boolean
+               ByVal line_id As String, ByVal insUser As String) As Boolean
 
         'SQLコメント
         '--**テーブル：检查结果 : t_check_ms
@@ -462,14 +462,14 @@ Public Class TCheckMsDA
             .AppendLine("                 AND (ISNULL(chk_result,'') = 'NG' OR ISNULL(chk_result,'') = ''))")
             .AppendLine("  BEGIN ")
             .AppendLine("      UPDATE [t_check_result] ")
-            .AppendLine("      SET    [chk_result] = '9',status = '2' ")
+            .AppendLine("      SET    [chk_result] = '9',status = '2', chk_user = '" & insUser & "' ")
             .AppendLine("      WHERE  chk_no = @chk_no ")
             .AppendLine("             AND line_id = @line_id ")
             .AppendLine("  END ")
             .AppendLine("ELSE ")
             .AppendLine("  BEGIN ")
             .AppendLine("      UPDATE [t_check_result] ")
-            .AppendLine("      SET    [chk_result] = '1',status = '2' ")
+            .AppendLine("      SET    [chk_result] = '1',status = '2', chk_user = '" & insUser & "' ")
             .AppendLine("      WHERE  chk_no = @chk_no ")
             .AppendLine("             AND line_id = @line_id ")
             .AppendLine("  END ")

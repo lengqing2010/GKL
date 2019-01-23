@@ -1,390 +1,343 @@
 ﻿html {
-    background-color: #eee;
-    margin: 0;
-    padding: 0px;
+	background-color: #eee
+}
+
+body,html {
+	margin: 0;
+	padding: 0
 }
 
 body {
-    background-color: #fff;
-    color: #333;
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    text-shadow: 0px 1px 1px rgba(0,0,0,0.3);
-    margin: 0;
-    padding: 0;
+	background-color: #fff;
+	font-size: .85em;
+	font-family: Segoe UI,Verdana,Helvetica,Sans-Serif;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3)
 }
 
-
-
-
+a,body {
+	color: #333
+}
 
 a {
-    color: #333;
-    outline: none;
-    padding-left: 3px;
-    padding-right: 3px;
-    text-decoration: underline;
+	outline: 0;
+	padding-left: 3px;
+	padding-right: 3px;
+	text-decoration: underline
 }
 
-a:link, a:visited,
-a:active, a:hover {
-    color: #333;
+a:active,a:hover,a:link,a:visited {
+	color: #333
 }
 
 a:hover {
-    background-color: #c7d1d6;
+	background-color: #c7d1d6
 }
 
-header, footer, hgroup,
-nav, section {
-    display: block;
+footer,header,hgroup,nav,section {
+	display: block
 }
 
-h1, h2, h3,
-h4, h5, h6 {
-    color: #000;
-    margin-bottom: 0;
-    padding-bottom: 0;
+h1,h2,h3,h4,h5,h6 {
+	color: #000;
+	margin-bottom: 0;
+	padding-bottom: 0
 }
 
 h1 {
-    font-size: 2em;
+	font-size: 2em
 }
 
 h2 {
-    font-size: 1.75em;
+	font-size: 1.75em
 }
 
 h3 {
-    font-size: 1.2em;
+	font-size: 1.2em
 }
 
 h4 {
-    font-size: 1.1em;
+	font-size: 1.1em
 }
 
-h5, h6 {
-    font-size: 1em;
+h5,h6 {
+	font-size: 1em
 }
 
-    h5 a:link, h5 a:visited, h5 a:active {
-        padding: 0;
-        text-decoration: none;
-    }
+h5 a:active,h5 a:link,h5 a:visited {
+	padding: 0;
+	text-decoration: none
+}
 
 label {
-    display: block;
-    font-size: 1.2em;
-    font-weight: 600;
+	display: block;
+	font-size: 1.2em;
+	font-weight: 600
 }
 
 label.checkbox {
-    display: inline;
+	display: inline
 }
 
-input, textarea {
-    /*border: 2px solid #e2e2e2;*/
-    /*background: #fff;*/
-    color: #333;
-    font-size: .85em;
-    margin: 0px;
-    width: 300px;
-    text-shadow: 0px 1px 1px rgba(0,0,0,0.3);
+input,textarea {
+	color: #333;
+	font-size: .85em;
+	margin: 0;
+	width: 300px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3)
 }
 
-    textarea {
-        font-family: inherit;
-        width: 500px;
-    }
+textarea {
+	font-family: inherit;
+	width: 500px
+}
 
-    input:focus, textarea:focus {
-       
-    }
+input[type=checkbox] {
+	background: transparent;
+	border: inherit;
+	width: auto
+}
 
-    input[type="checkbox"] {
-        background: transparent;
-        border: inherit;
-        width: auto;
-    }
-
-    input[type="submit"],
-    input[type="button"],
-    input[type="reset"],
-    button {
-      
-
-
-
-    }
-
-    input[type="button"]:hover {
-        /*background-color: #fff;*/
-        color:#000;
-    }
-    input[type="submit"]:hover {
-        /*background-color: #fff;*/
-        color:#000;
-    }
-    button:hover {
-        /*background-color: #fff;*/
-        color:#000;
-    }
-
-
-    td input[type="submit"],
-    td input[type="button"],
-    td button {
-        /*font-size: 1em;
-        padding: 0px;
-        margin-right: 4px;*/
-    }
+button:hover,input[type=button]:hover,input[type=submit]:hover {
+	color: #000
+}
 
 .error {
-    color: #e80c4d;
+	color: #e80c4d
 }
 
-/* styles for validation helpers */
 .field-validation-error {
-    color: #e80c4d;
-    font-weight: bold;
+	color: #e80c4d;
+	font-weight: 700
 }
 
 .field-validation-valid {
-    display: none;
+	display: none
 }
 
 input.input-validation-error {
-    border: 1px solid #e80c4d;
+	border: 1px solid #e80c4d
 }
 
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
+input[type=checkbox].input-validation-error,table {
+	border: 0 none
 }
 
-
-/* tables
-----------------------------------------------------------*/
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
-
-    border: 0 none;
+	border-collapse: collapse;
+	border-spacing: 0
 }
-
 
 td {
-    border: black 1px solid;
-    font-size: .85em;
-    text-shadow: 0px 1px 1px rgba(0,0,0,0.4);
+	border: 1px solid #000;
+	font-size: .85em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.4)
 }
 
 .jyouken_panel th {
-    border: black 1px solid;
-    background-color:#99ccff;
-    height:16px;
-    text-align:left;
-    border:none;
-    font-size:10px;
+	border: 1px solid #000;
+	background-color: #9cf;
+	height: 1pc;
+	text-align: left;
+	border: none;
+	font-size: 10px
 }
 
-.jyouken_panel td input{
-    font-size: 10px;
-    margin:0 auto 0 auto;
-    padding:2px;
-    height:14px;
+.jyouken_panel td input {
+	font-size: 10px;
+	margin: 0 auto;
+	padding: 2px;
+	height: 14px
+}
 
-  
+.jyouken_panel td {
+	padding-left: 4px;
+	border: none
 }
-.jyouken_panel td{
-     padding-left:4px;
-     border:none;
-}
+
 .ms_input {
-    margin-top:-1px;
+	margin-top: -1px
 }
-.ms_input tr{
-    height:20px;
+
+.ms_input tr {
+	height: 20px
 }
 
 .ms_input td {
-    padding:1px;
-}
-.ms_input input{
-    border: black 2px inset ;
-    font-size: 11px;
-    margin:0 auto 0 auto;
-    height:16px;
-    padding:2px;
+	padding: 1px
 }
 
-
-.ms_title td{
-    background-color: #99ccff;
-    border: black 1px solid;
-    font-size: .85em;
-    text-align:center;
-    height:30px;
-    padding:2px;
+.ms_input input {
+	border: 2px inset #000;
+	font-size: 11px;
+	margin: 0 auto;
+	height: 1pc;
+	padding: 2px
 }
 
-.jq_ms tr{
-    cursor:pointer;
+.ms_title td {
+	background-color: #9cf;
+	border: 1px solid #000;
+	font-size: .85em;
+	text-align: center;
+	height: 30px;
+	padding: 2px
 }
-.jq_ms td{
-    border: black 1px solid;
-    font-size: 13px;
-    padding:2px 2px 0px 2px;
-    height:35px;
+
+.jq_ms tr {
+	cursor: pointer
 }
+
+.jq_ms td {
+	padding: 2px 2px 0
+}
+
 .jq_ms input{
-    border: black 1px solid;
-    font-size: 13px;
-    height:35px;
-    width:98%;
+	border: 1px solid #000;
+	font-size: 13px;
+	height: 30px
 }
 
-
-.jq_ms_2 tr{
-
-}
-.jq_ms_2 td{
-    border: black 1px solid;
-    font-size: 9px;
-    padding:0px;
-    height:10px;
-    line-height:10px;
-}
-.jq_ms_2 th{
-    background-color: #99ccff;
-    border: black 1px solid;
-    font-size: 10px;
-    padding:0px;
-    height:10px;
-    text-align:center;
+.jq_ms td {
+	border: 1px solid #000;
+	font-size: 13px;
+	height: 36px
 }
 
-
-
-
-
-.datagrid-mask{
-    position:absolute;
-    left:0;
-    top:0;
-    text-align:center;
-    vertical-align:middle;
-    font-size:40px;
-    line-height:800px;
-    z-index:10000;
-    background-color:#ccc;
-    opacity:0.4;
-    filter:alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+.jq_ms input {
+	width: 98%
 }
 
-
-.btn_hid{
-    height:15px; 
-    width:110px;
-    vertical-align:middle; 
-    padding:1px;
-    float:right;
-    font-size:8px;
-    border-radius:16px;
-    background-color:#ccc;
+.jq_ms_2 td {
+	font-size: 9px;
+	line-height: 10px
 }
-.btn_main{
-    height:22px;    
-    width: 90px;  
-    border: 1px solid #787878;
-    cursor: pointer;
-    font-size: 11px;
+
+.jq_ms_2 td,.jq_ms_2 th {
+	border: 1px solid #000;
+	padding: 0;
+	height: 10px
+}
+
+.jq_ms_2 th {
+	background-color: #9cf;
+	font-size: 10px;
+	text-align: center
+}
+
+.datagrid-mask {
+	position: absolute;
+	left: 0;
+	top: 0;
+	text-align: center;
+	font-size: 40px;
+	line-height: 50pc;
+	z-index: 10000;
+	opacity: .4;
+	filter: alpha(opacity=40)
+}
+
+.btn_hid,.datagrid-mask {
+	vertical-align: middle;
+	background-color: #ccc
+}
+
+.btn_hid {
+	height: 15px;
+	width: 110px;
+	padding: 1px;
+	float: right;
+	font-size: 8px;
+	border-radius: 1pc
+}
+
+.btn_main {
+	height: 22px;
+	width: 90px;
+	border: 1px solid #787878;
+	cursor: pointer;
+	font-size: 11px
 }
 
 .btn_main:hover {
-    background-color: #fff;
-    color:#000;
+	background-color: #fff;
+	color: #000
 }
-
-
-
-
 
 .title_div {
-    background-color: #99ccff;
-    font-size: 30px;
-    width: 100%;
-    height: 40px;
-    border: solid 1px #000;
-    padding: 4px;
-    color: #000;
-
-
-    /*background:url("IMG/bg.jpg");*/
-    text-shadow: 1px -1px #999, 2px -2px #ccc;
-    font-weight: bold;
-    border-bottom: solid 8px #eee;
-    margin-bottom: 4px;
-
+	background-color: #9cf;
+	font-size: 30px;
+	width: 100%;
+	height: 40px;
+	border: 1px solid #000;
+	padding: 4px;
+	color: #000;
+	text-shadow: 1px -1px #999,2px -2px #ccc;
+	font-weight: 700;
+	border-bottom: 8px solid #eee;
+	margin-bottom: 4px
 }
 
-.jq_back{
-  
-    margin-left:100px;
-    background-color:red;
-    font-size:12px;
+.jq_back {
+	font-size: 9pt;
+    float:right;
+    width:100px;
+    height:24px;
+	
+}
+
+.jyouken_panel {
+	border-bottom: 8px solid #ccedf6;
+	margin-bottom: 18px
+}
+
+.jyouken_panel,.jyouken_panel td {
+	padding-bottom: 4px
+}
+
+.jq_ms_div,.jq_title_div {
+	padding-left: 4px
+}
+
+.jq_result {
+	font-size: 1pc;
+	text-align: center;
     border:none;
+    width:100%;
+    margin:0;
 
 }
 
-.jyouken_panel{
-        border-bottom:solid 8px #ccedf6;
-        margin-bottom:18px;
-        padding-bottom:4px
+.keyboard {
+	width: 250px;
+	height: 300px
 }
 
-.jyouken_panel td{
-
-        padding-bottom:4px
-}
-.jq_title_div{
-    padding-left:4px;
-
-}
-.jq_ms_div{
-        padding-left:4px;
+.keyboard input{
+	width: 100%;
+	height: 100%;
 }
 
 
-.jq_result{
-    font-size:16px;
-    text-align:center;
+.keyboard td {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 26px;
+	cursor: pointer;
+	background-color: #5cacee
 }
-
-.keyboard{
-    width:250px;
-    height:300px;
-}
-    .keyboard td {
-        text-align: center;
-        vertical-align: middle;
-        font-size: 26px;
-        cursor: pointer;
-        background-color: #5CACEE;
-    }
-
 
 .keyboard td:hover {
-    background-color: darkorange;
-    color: #000;
+	background-color: #ff8c00;
+	color: #000
 }
 
-.jq_in1{
-    border-width:2px;
-    border-style:double;
+.jq_in1 {
+	border-width: 2px;
+	border-style: double
 }
 
-
-input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
-    -webkit-transition-delay: 99999s;
-    -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+input:-webkit-autofill,input:-webkit-autofill:active,input:-webkit-autofill:focus,input:-webkit-autofill:hover {
+	-webkit-transition-delay: 99999s;
+	-webkit-transition: color 99999s ease-out,background-color 99999s ease-out
 }
+

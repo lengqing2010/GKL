@@ -61,6 +61,7 @@
     //统计检查明细结果
     check_setume_txt();
 
+
     //行设置
     $(".jq_result").attr("readonly", "readonly");
     $(".jq_ms tr").each(function () {
@@ -142,19 +143,11 @@
             , thisRow.find(".jq_mark").val());
     });
 
-    $(".keyboard").find("td").click(function () {
-        var obj;
-        obj = $(this);
-        obj.css('background-color', '#ccc');
-        setTimeout(function () {
-            obj.css('background-color', '#5CACEE');
-        }, 200);
-    });
     
     //小键盘
-    $(".keyboard").find("td").mouseup(function () {
+    $(".keyboard").find("input").click(function () {
 
-        var ky = $(this).text();
+        var ky = $(this).val();
 
         if (ky == "OK" || ky == "NG") {
             if (ky == "OK") {
@@ -176,10 +169,17 @@
             }
 
         } else if (ky == "删除") {
-            $(acText).val("");
+            if (chk_method == "0") {
+                $(acText).val("");
+                
+            }
+            $(acText).focus();
 
         } else {
-            $(acText).val($(acText).val() + ky + '');
+            if (chk_method == "0") {
+                $(acText).val($(acText).val() + ky + '');
+                
+            }
             $(acText).focus();
 
         }
@@ -256,13 +256,10 @@
                 return false;
             }
         } catch (e) {
-            alert(e.message);
+            //alert(e.message);
             return false;
         }
     }
-
-
-
 
 
     function ChkInput(jq_e) {
@@ -284,9 +281,17 @@
 
     //统计检查明细结果
     function check_setume_txt() {
-        var okSuu = $(".jq_result:[value='NG']").length;
-        var ngSuu = $(".jq_result:[value='OK']").length;
-        $("#lblSou").text("NG:" + ngSuu + "  OK:" + okSuu + "  全部:" + $(".jq_result").length);
+        var ngSuu = $(".jq_result:[value='NG']").length;
+        var okSuu = $(".jq_result:[value='OK']").length;
+        var nullSuu = $(".jq_result:[value='']").length;
+
+        $("#lblSou").text("【NG】:" + ngSuu + " --【OK】:" + okSuu + " --【未チェック】:" + nullSuu + " --【全部】:" + $(".jq_result").length);
+
+        if (okSuu == $(".jq_result").length) {
+            $("#lblSou").css('color', 'green');
+        } else {
+            $("#lblSou").css('color', 'red');
+        }
     }
 
     //更新检查明细
@@ -329,6 +334,12 @@
             event.keyCode = 10;
             return false;
         }
+    });
+
+
+    $(".jq_in1").each(function () {
+        $(this)[0].focus();
+        return false;
     });
 
 });

@@ -80,7 +80,7 @@ public partial class t_check_ms : System.Web.UI.Page
     protected void btnComplete_Click(object sender, EventArgs e)
     {
         TCheckMsBC BC = new TCheckMsBC();
-        BC.UpdTCheckResultMS(ViewState["chk_no"].ToString(), ViewState["line_id"].ToString());
+        BC.UpdTCheckResultMS(ViewState["chk_no"].ToString(), ViewState["line_id"].ToString(), ViewState["user"].ToString());
 
         Context.Items["make_no"] = ViewState["make_no"];
         Context.Items["code"] = ViewState["code"];

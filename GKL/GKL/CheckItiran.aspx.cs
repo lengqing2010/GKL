@@ -325,7 +325,7 @@ public partial class CheckItiran : System.Web.UI.Page
      string line_id = this.tbxLineId_key.Text;
 
      TCheckMsBC BC = new TCheckMsBC();
-     BC.UpdTCheckResultMS(hidChkNo.Text.Trim(), line_id);
+     BC.UpdTCheckResultMS(hidChkNo.Text.Trim(), line_id, this.tbxCheckUser.Text.Trim());
      MsInit(1);
  }
 }

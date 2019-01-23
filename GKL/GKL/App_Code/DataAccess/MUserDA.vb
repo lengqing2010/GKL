@@ -57,7 +57,6 @@ Public Class MUserDA
     ''' 
     ''' 用户MSInfoを検索する
     ''' </summary>
-    '''<param name="userCd_key">用户CD</param>
     ''' <returns>用户MSInfo</returns>
     ''' <remarks></remarks>
     ''' <history>

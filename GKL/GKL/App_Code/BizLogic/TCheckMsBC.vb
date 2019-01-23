@@ -190,9 +190,9 @@ End Function
 
 
     Public Function UpdTCheckResultMS(ByVal chkNo_key As String, _
-           ByVal line_id As String) As Boolean
+           ByVal line_id As String, ByVal insUser As String) As Boolean
 
-        DA.UpdTCheckResultMS(chkNo_key, line_id)
+        DA.UpdTCheckResultMS(chkNo_key, line_id, insUser)
 
         Return True
 

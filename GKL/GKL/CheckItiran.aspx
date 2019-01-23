@@ -23,7 +23,8 @@
         <div class='title_div' style="width:1000px;">
             <%Response.Write(Common.SetTitle("检查一览"));%>
             <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" OnClick="btnBack_Click" />
-        </div>
+        </div>        
+
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
@@ -34,7 +35,7 @@
             </td>
             <td>
 <%--                <asp:Label ID="lblUserName" runat="server" Width="80px"></asp:Label>--%>
-                <asp:TextBox ID="lblUserName" class="" runat="server" style="width:100px;background-color: #FFAA00;" ></asp:TextBox>
+                <asp:TextBox ID="lblUserName" class="" runat="server" style="width:100px;background-color: #fff; border:none;" TabIndex="-1" ></asp:TextBox>
                 </td>
             <td>生产线 : </td>
             <td>
@@ -57,15 +58,13 @@
             <td>检查日：</td>
             <td><asp:TextBox ID="tbxDate_key" class="" runat="server" maxLength="20" style="width:100px;background-color: #FFAA00;"></asp:TextBox></td>
             <td colspan="2">未入力时 7日内</td>
-            <td>&nbsp;</td>
-            <td></td>
-            <td>
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" OnClick="btnSelect_Click" height="24" Width="60"/>
+            <td colspan="2">
+                <input type="button" id="btnPreDay" value="前一日" style="width:60px; height:30px;" />
+                <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" OnClick="btnSelect_Click" height="35" Width="100"/>
+                <input type="button" id="btnNextDay" value="下一日" style="width:60px; height:30px;" />
+            </td>
 
-                </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+                <td colspan="4" style="text-align:right;"><asp:Label ID="lblSou" runat="server" Text="" Width="400px" ></asp:Label></td>
             </tr>
         </table>
 
