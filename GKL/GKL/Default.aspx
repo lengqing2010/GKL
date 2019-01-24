@@ -67,7 +67,8 @@
                     <asp:LinkButton ID="lbUser" runat="server">用户MS</asp:LinkButton><br />
                     <asp:LinkButton ID="lbProject" runat="server">工程MS</asp:LinkButton><br />
                     <asp:LinkButton ID="lbTools" runat="server">治具MS</asp:LinkButton><br />
-                    <asp:LinkButton ID="lbPic" runat="server">图片MS</asp:LinkButton><br />
+                    <%--<asp:LinkButton ID="lbPic" runat="server">图片MS</asp:LinkButton>--%>
+                    <a href="APP/PictureImport.zip">图片MS</a><br />
                     <asp:LinkButton ID="lbCheckMethod" runat="server">检查方法MS</asp:LinkButton><br />
 
 

@@ -23,7 +23,7 @@ Public Class MUserDA
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
-    Public Function SelMUser(ByVal userCd_key As String) As Data.DataTable
+    Public Function SelMUser(ByVal userCd_key As String, Optional ByVal flg As String = "") As Data.DataTable
 
         'SQLコメント
         '--**テーブル：用户MS : m_user
@@ -35,9 +35,17 @@ Public Class MUserDA
         sb.AppendLine(", user_name")                                               '用户名
         sb.AppendLine("FROM m_user")
         sb.AppendLine("WHERE 1=1")
-        If userCd_key <> "" Then
-            sb.AppendLine("AND user_cd like @user_cd_key")   '用户CD
+
+        If flg = "" Then
+            If userCd_key <> "" Then
+                sb.AppendLine("AND user_cd like @user_cd_key")   '用户CD
+            End If
+        ElseIf flg = "ajax" Then
+            If userCd_key <> "" Then
+                sb.AppendLine("AND user_cd = '" & userCd_key & "'")   '用户CD
+            End If
         End If
+
 
         'PARAM
         Dim paramList As New List(Of SqlParameter)
@@ -51,6 +59,8 @@ Public Class MUserDA
         Return dsInfo.Tables("m_user")
 
     End Function
+
+
 
 
     ''' <summary>

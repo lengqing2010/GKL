@@ -46,7 +46,7 @@ Partial Class AJAX
             End If
         ElseIf kbn = "user" Then
             Dim BC As New MUserBC
-            Dim dt As Data.DataTable = BC.SelMUser(Request.QueryString("user_cd"))
+            Dim dt As Data.DataTable = BC.SelMUser(Request.QueryString("user_cd"), "ajax")
             If dt.Rows.Count > 0 Then
                 Response.Write(dt.Rows(0).Item("user_name") & "," & dt.Rows(0).Item("line_id"))
                 Response.End()

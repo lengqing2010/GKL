@@ -191,7 +191,7 @@
             return false;
         }
 
-        htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=user&user_cd=" + $(this).val() + "&line_id=" + $("#tbxLineId").val(), async: false });
+        htmlobj = $.ajax({ url: "AJAX.aspx?a=" + new Date() + "&kbn=user&user_cd=" + $(this).val() + "&line_id=" + $("#tbxLineId_key").val(), async: false });
         if (htmlobj.responseText == "") {
             alert("用户不存在");
             setTimeout(function () { obj.focus(); }, 100);
@@ -201,11 +201,25 @@
         }
     });
 
+    $("#zongl").click(function (e) {
+        window.open("apexcharts/Default.aspx?line_id=" + $("#tbxLineId_key").val() + "&chk_date=" + $("#tbxDate_key").val())
+    });
+
     $("#tbxCheckUser,#tbxMakeNo_key,#tbxCode_key").focus(function (e) {
         $(this)[0].select();
     });
 
+
+
     $("#tbxCheckUser").keydown(function (e) {
+        if (e.keyCode == 13) {
+            $("#tbxMakeNo_key")[0].select();
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    $("#tbxLineId_key").keydown(function (e) {
         if (e.keyCode == 13) {
             $("#tbxMakeNo_key")[0].select();
             e.preventDefault();

@@ -21,10 +21,10 @@ Public Class MUserBC
     ''' <para>2019/01/07  作成者：李さん 新規作成 </para>
     ''' </history>
 
-    Public Function SelMUser(ByVal userCd_key As String) As Data.DataTable
+    Public Function SelMUser(ByVal userCd_key As String, Optional ByVal flg As String = "") As Data.DataTable
         'SQLコメント
         Return DA.SelMUser( _
-               userCd_key)
+               userCd_key, flg)
 
     End Function
 

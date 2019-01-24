@@ -10,6 +10,27 @@ Partial Class apexcharts_Default
             tbxDate_key.Attributes("itType") = "date"
             tbxDate_key.Attributes("itLength") = "20"
             tbxDate_key.Attributes("itName") = "登録日"
+
+            Dim line_id As String
+            Dim chk_date As String
+            If Request.QueryString("line_id") IsNot Nothing Then
+                line_id = Request.QueryString("line_id")
+                chk_date = Request.QueryString("chk_date")
+                Me.tbxLineId_key.Text = line_id
+
+                If chk_date.Trim <> "" Then
+                    chk_date = DateAdd(DateInterval.Month, -1, CDate(chk_date)).ToString("yyyy/MM/dd")
+                Else
+                    chk_date = DateAdd(DateInterval.Month, -1, Now).ToString("yyyy/MM/dd")
+                End If
+
+                Me.tbxDate_key.Text = chk_date
+
+
+
+            End If
+
+
         End If
 
 

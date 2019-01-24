@@ -22,6 +22,7 @@
     <form id="form1" runat="server">
         <div class='title_div' style="width:1000px;">
             <%Response.Write(Common.SetTitle("检查一览"));%>
+            
             <asp:Button ID="btnBack" runat="server" Text="返回" CssClass="jq_back" OnClick="btnBack_Click" />
         </div>        
 
@@ -39,7 +40,7 @@
                 </td>
             <td>生产线 : </td>
             <td>
-              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:80px;background-color: #fff;" Text="SRM1312A" ></asp:TextBox>
+              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:80px;background-color: #fff;" Text="" ></asp:TextBox>
                 </td>
 
             <td>作番 : &nbsp;</td>
@@ -61,10 +62,16 @@
             <td colspan="2">
                 <input type="button" id="btnPreDay" value="前一日" style="width:60px; height:30px;" />
                 <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" OnClick="btnSelect_Click" height="35" Width="100"/>
-                <input type="button" id="btnNextDay" value="下一日" style="width:60px; height:30px;" />
+                <input type="button" id="btnNextDay" value="下一日" style="width:60px; height:30px;" />&nbsp;
             </td>
 
-                <td colspan="4" style="text-align:right;"><asp:Label ID="lblSou" runat="server" Text="" Width="400px" ></asp:Label></td>
+                <td colspan="4" style="text-align:right;">
+                <input type="button" value="总览" id="zongl" style="width:60px; height:30px;"/>
+                    <a href="APP/scanner.zip" style="height:40px;">扫描App</a>
+                    <asp:Label ID="lblSou" runat="server" Text="" Width="300px" ></asp:Label>
+
+                </td>
+            
             </tr>
         </table>
 

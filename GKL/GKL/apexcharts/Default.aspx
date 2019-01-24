@@ -36,7 +36,7 @@
             生产线：
             <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
             <datalist id="line_id_list" runat="server"></datalist>
-            检查日：
+            开始检查日：
             <asp:TextBox ID="tbxDate_key" class="" runat="server" maxLength="20" style="width:100px;background-color: #FFAA00;"></asp:TextBox>
             <asp:Button ID="Button1" runat="server" Text="検索" />
         </div>
@@ -81,7 +81,7 @@
             foreColor: "#fff",//
             toolbar: {
                 autoSelected: "pan",
-                show: false
+                show: true
             }
         },
         colors: ['#fff', '#00BAEC'],
@@ -92,12 +92,12 @@
             borderColor: ['red', 'blue'],
             yaxis: {
                 lines: {
-                    show: false
+                    show: true
                 }
             }
         },
         dataLabels: {
-            enabled: false
+            enabled: true
         },
         fill: {
             gradient: {
