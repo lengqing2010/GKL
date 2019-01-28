@@ -14,3 +14,4 @@
 <td><asp:LinkButton ID="LinkButton2" runat="server">帐票出力</asp:LinkButton> </td>
 </tr>
 </table>
+<datalist id="line_id_list"></datalist>

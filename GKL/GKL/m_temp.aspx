@@ -35,9 +35,9 @@
             <td>生产线 : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
-              <datalist id="line_id_list" runat="server"></datalist>
-    
+   
             </td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td></td>
             <td>&nbsp;</td>
@@ -47,6 +47,9 @@
             <td>
               <asp:TextBox ID="tbxTempId_key" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="temp_ids"></asp:TextBox>
               <datalist id="temp_ids" runat="server"></datalist>
+            </td>
+            <td>
+        <asp:Button ID="btnSelect" runat="server" Text="検索" style="height:24px;width:80px;" CssClass="jq_sel" />
             </td>
             <td>
                 <input type ="button" value="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" style="height:24px;width:80px;"  />
@@ -66,8 +69,9 @@
               <asp:TextBox ID="tbxChkMethodId_key" class="jq_chk_method_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td>
-        <asp:Button ID="btnSelect" runat="server" Text="検索" style="height:24px;width:80px;" CssClass="jq_sel" />
-                </td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
             <td></td>
             <td>&nbsp;</td>
             </tr>
@@ -106,7 +110,7 @@
               <td style="width:70px;">
                   检查模板编号
               </td>
-              <td style="width:70px;">
+              <td style="width:80px;">
                   检查项目ID 
               </td>
               <td style="width:70px;">
@@ -115,7 +119,7 @@
               <td style="width:110px;">
                   工程名 
               </td>
-              <td style="width:70px;">
+              <td style="width:80px;">
                   图片ID
               </td>
               <td style="width:110px;">
@@ -159,8 +163,8 @@
               <td style="width:70px;">
               <asp:TextBox ID="tbxTempId" class="jq_temp_id_ipt" runat="server" maxLength="10" style="width:64px;background-color: #FFAA00;"></asp:TextBox>
           </td>
-              <td style="width:70px;">
-              <asp:TextBox ID="tbxChkMethodId" class="jq_chk_method_id_ipt" runat="server" maxLength="10" style="width:64px;background-color: #FFAA00;"></asp:TextBox>
+              <td style="width:80px;">
+              <asp:TextBox ID="tbxChkMethodId" class="jq_chk_method_id_ipt" runat="server" maxLength="10" style="width:74px;background-color: #FFAA00;"></asp:TextBox>
           </td>
               <td style="width:70px;">
               <asp:TextBox ID="tbxProjectId" class="jq_project_id_ipt" runat="server" maxLength="10" style="width:64px;"></asp:TextBox>
@@ -168,8 +172,8 @@
               <td style="width:110px;">
               <asp:TextBox ID="tbxProjectName" class="jq_project_name_ipt" runat="server" maxLength="40" style="width:104px;"></asp:TextBox>
           </td>
-              <td style="width:70px;">
-              <asp:TextBox ID="tbxPicId" class="jq_pic_id_ipt" runat="server" maxLength="10" style="width:64px;"></asp:TextBox>
+              <td style="width:80px;">
+              <asp:TextBox ID="tbxPicId" class="jq_pic_id_ipt" runat="server" maxLength="10" style="width:74px;"></asp:TextBox>
           </td>
               <td style="width:110px;">
               <asp:TextBox ID="tbxPicName" class="jq_pic_name_ipt" runat="server" maxLength="200" style="width:104px; "></asp:TextBox>
@@ -213,10 +217,10 @@
       <Columns>
           <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("temp_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_temp_id" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("chk_method_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_chk_method_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("chk_method_id")%></ItemTemplate><ItemStyle Width="80px" HorizontalAlign="Left" CssClass="jq_chk_method_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("project_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_project_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("project_name")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_project_name" /></asp:TemplateField>
-          <asp:TemplateField><ItemTemplate ><%#Eval("pic_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_pic_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("pic_id")%></ItemTemplate><ItemStyle Width="80px" HorizontalAlign="Left" CssClass="jq_pic_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("pic_name")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_pic_name" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("chk_km_name")%></ItemTemplate><ItemStyle Width="110px" HorizontalAlign="Left" CssClass="jq_chk_km_name" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("pic_sign")%></ItemTemplate><ItemStyle Width="20px" HorizontalAlign="Left" CssClass="jq_pic_sign" /></asp:TemplateField>
@@ -230,6 +234,11 @@
       </Columns>
    </asp:GridView>
 <%--</div>--%>
+        <br />
+        <div style="width:560px; text-align:right;">
+            <asp:FileUpload ID="GetUploadFileContent" runat="server" Width="500" />
+            <asp:Button ID="btnUpload" runat="server" Text="导入" />
+        </div>
 
         <asp:TextBox ID="hidLineId" runat="server" class="jq_line_id_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidTempId" runat="server" class="jq_temp_id_ipt" style=" visibility:hidden;"></asp:TextBox>
@@ -249,6 +258,8 @@
         <asp:TextBox ID="hidKjExplain" runat="server" class="jq_kj_explain_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidOldRowIdx" runat="server" class="jq_hidOldRowIdx" style=" visibility:hidden;"></asp:TextBox>
     </div>
+
+
     </form>
 
 

@@ -28,8 +28,9 @@
             <tr>
             <td>生产线 : &nbsp;</td>
             <td>
-              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
-            </td>
+              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
+                <datalist id="line_id_list"></datalist>
+              </td>
             <td></td>
             </tr>
             <tr>
@@ -43,7 +44,7 @@
         <br /> 
 
 <!--Button部-->
-        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" />
+        <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel" style="margin-left:10px;" />
         <asp:Button ID="btnUpdate" runat="server" Text="更新" CssClass="jq_upd" />
         <asp:Button ID="btnInsert" runat="server" Text="登録" CssClass="jq_ins" />
         <asp:Button ID="btnDelete" runat="server" Text="削除" CssClass="jq_del" />
@@ -67,7 +68,7 @@
 </div>
 
 <!--明細Body部-->
-<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">
+<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:580px; margin-top :0px; border-collapse :collapse ;">
       <table class='ms_input' style="width:560px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
@@ -89,7 +90,7 @@
       </Columns>
    </asp:GridView>
 </div>
-
+    
         <asp:TextBox ID="hidLineId" runat="server" class="jq_line_id_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidTempId" runat="server" class="jq_temp_id_ipt" style=" visibility:hidden;"></asp:TextBox>
         <asp:TextBox ID="hidTempName" runat="server" class="jq_temp_name_ipt" style=" visibility:hidden;"></asp:TextBox>

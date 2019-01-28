@@ -395,6 +395,75 @@ $(document).ready(function () {
         }
     });
 
+    //生产线 
+    $('#tbxLineId_key').bind('input propertychange', function () {
+        var optionFound;
+        optionFound = false;
+        var likeCnt;
+        likeCnt = 0;
+        var txt;
+        txt = "";
+        datalist = this.list;
+        for (var j = 0; j < datalist.options.length; j++) {
+            if (datalist.options[j].value.toUpperCase().indexOf(this.value.toUpperCase()) >= 0) {
+                optionFound = true;
+                txt = datalist.options[j].value;
+                likeCnt++;
+                if (likeCnt >= 2) { break; }
+            }
+        }
+        if (likeCnt == 1) { this.value = txt; }
+    });
+
+    //生产线 / 检查模板编号
+    $("#tbxLineId_key,#tbxTempId_key").focus(function (e) {
+            $(this)[0].select();
+            e.preventDefault();
+            return false;
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: '../AJAX.aspx?kbn=lines',
+        async: true, //true:yibu
+        datatype: 'html',//'xml', 'html', 'script', 'json', 'jsonp', 'text'.
+        //when complete
+        complete: function (XMLHttpRequest, textStatus) {
+            $("#line_id_list")[0].innerHTML = XMLHttpRequest.responseText;
+        }
+    });
+
+    //检查模板编号
+    if ($("#temp_ids").length > 0) {
+
+        $.ajax({
+            type: 'POST',
+            url: 'AJAX.aspx?kbn=tempsIds&line_id=' + $("#tbxLineId_key").val(),
+            async: true, //true:yibu
+            datatype: 'html',//'xml', 'html', 'script', 'json', 'jsonp', 'text'.
+            //when complete
+            complete: function (XMLHttpRequest, textStatus) {
+                $("#temp_ids")[0].innerHTML = XMLHttpRequest.responseText;
+            }
+        });
+
+        $("#tbxLineId_key").change(function () {
+            $.ajax({
+                type: 'POST',
+                url: 'AJAX.aspx?kbn=tempsIds&line_id=' + $("#tbxLineId_key").val(),
+                async: true, //true:yibu
+                datatype: 'html',//'xml', 'html', 'script', 'json', 'jsonp', 'text'.
+                //when complete
+                complete: function (XMLHttpRequest, textStatus) {
+                    $("#temp_ids")[0].innerHTML = XMLHttpRequest.responseText;
+                }
+            });
+        });
+    }
+
+
+
+
 });
 
 
@@ -934,4 +1003,44 @@ function WaitPanelRemove() {
     setTimeout(function () {
         $('.datagrid-mask').remove();
     }, 0);
+}
+
+
+
+document.onkeydown = function() {
+    //Enter　Key時	
+    if (event.keyCode == 13) {
+        //Text　AREA　OK
+        if (event.srcElement.type == 'textarea') { return true; }
+        //ボタン　　　OK
+        if (event.srcElement.type == 'submit' || event.srcElement.type == 'button') {
+            window.setTimeout('DobuttonClick', 1);
+            event.keyCode = 0;
+            return true;
+        }
+        //Link　　　　OK
+        if (event.srcElement.tagName == 'A') {
+            event.keyCode = 0;
+            return true;
+        }
+
+
+        var inputs = $(document).find("input:text"); // 获取表单中的所有输入框  
+        var idx = inputs.index(document.activeElement); // 获取当前焦点输入框所处的位置  
+        if (idx == inputs.length - 1) {// 判断是否是最后一个输入框  
+            //if (confirm("最后一个输入框已经输入,是否提交?")) // 用户确认  
+            //    $("form[name='contractForm']").submit(); // 提交表单  
+        } else {
+            inputs[idx + 1].focus(); // 设置焦点  
+            inputs[idx + 1].select(); // 选中文字  
+        }
+        return false;// 取消默认的提交行为  
+
+
+        //上記以外　Tab　Key           
+        event.keyCode = 9;
+        return false;
+    }
+
+    return true;
 }

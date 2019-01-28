@@ -457,7 +457,7 @@ Public Class MTempDA
         'SQL文
         sb.AppendLine("SELECT")
         sb.AppendLine("case when m_project.project_id IS null then N'工程不存在'  else '' end as 工程检查")
-        sb.AppendLine(",case when m_temp_name.line_id IS null then N'工程名不存在'  else '' end as 工程名检查")
+        sb.AppendLine(",case when m_temp_name.line_id IS null then N'模板名不存在'  else '' end as 模板名检查")
         sb.AppendLine(",case when m_tools.line_id IS null and ISNULL(m_temp.tool_id,'') <>'' then N'治具不存在' else '' end as 治具检查")
         sb.AppendLine(",case when m_picture.line_id IS null and ISNULL(m_temp.pic_id,'') <>'' then N'图片不存在' else '' end as 图片检查")
         sb.AppendLine(",case when m_check_method.chk_id IS null then N'检查规则不存在'  else '' end as 检查规则检查")

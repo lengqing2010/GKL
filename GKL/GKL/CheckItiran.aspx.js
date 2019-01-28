@@ -205,7 +205,7 @@
         window.open("apexcharts/Default.aspx?line_id=" + $("#tbxLineId_key").val() + "&chk_date=" + $("#tbxDate_key").val())
     });
 
-    $("#tbxCheckUser,#tbxMakeNo_key,#tbxCode_key").focus(function (e) {
+    $("#tbxCheckUser,#tbxMakeNo_key,#tbxCode_key,#tbxDate_key").focus(function (e) {
         $(this)[0].select();
     });
 
