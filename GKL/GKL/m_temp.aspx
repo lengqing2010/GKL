@@ -41,6 +41,7 @@
             <td>&nbsp;</td>
             <td></td>
             <td>&nbsp;</td>
+            <td>&nbsp;</td>
             </tr>
             <tr>
             <td>检查模板编号 : &nbsp;</td>
@@ -59,9 +60,13 @@
                 <asp:Button ID="btnCopy" runat="server" Text="复制到" CssClass="jq_sel"  style="height:24px;width:80px;"/>
             </td>
             <td>
-                新模板ID：
+                新模板ID/名：
               <asp:TextBox ID="tbxTempId_new" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
                 &nbsp;</td>
+            <td>
+                <asp:TextBox ID="tbxTempName_new" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+
+            </td>
             </tr>
             <tr>
             <td>检查项目ID : &nbsp;</td>
@@ -73,6 +78,7 @@
             <td>
                 &nbsp;</td>
             <td></td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
             </tr>
         </table>
@@ -235,9 +241,11 @@
    </asp:GridView>
 <%--</div>--%>
         <br />
-        <div style="width:560px; text-align:right;">
-            <asp:FileUpload ID="GetUploadFileContent" runat="server" Width="500" />
+        <hr />
+        <div style="width:1200px; text-align:left; ">
+            <asp:FileUpload ID="GetUploadFileContent" runat="server" Width="500px" />
             <asp:Button ID="btnUpload" runat="server" Text="导入" />
+            <a href="APP/模板MS_CSV.xlsm">CSV作成用 参照</a>
         </div>
 
         <asp:TextBox ID="hidLineId" runat="server" class="jq_line_id_ipt" style=" visibility:hidden;"></asp:TextBox>

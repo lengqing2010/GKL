@@ -125,4 +125,20 @@
         window.open("ChkTemp.aspx?a=" + new Date() + "&temp_id=" + $("#tbxTempId_key").val() + "&line_id=" + $("#tbxLineId_key").val());
     });
 
+
+    $("#btnSelect").click(function () {
+
+        if ($("#tbxLineId_key").val() == "") {
+            alert("请输入生产线");
+            $("#tbxLineId_key").focus();
+            return false;
+        }
+
+        if ($("#tbxTempId_key").val() == "") {
+            alert("检查模板编号");
+            $("#tbxTempId_key").focus();
+            return false;
+        }
+    });
+
 });

@@ -233,6 +233,16 @@ Me.hidOldRowIdx.Text = ""
             Common.ShowMsg(Me.Page, "复制完了")
             tbxTempId_key.Text = Me.tbxTempId_new.Text.Trim
             Me.tbxTempId_new.Text = ""
+
+            Try
+                Dim MTempNameBC As New MTempNameBC
+                MTempNameBC.InsMTempName(tbxLineId_key.Text, tbxTempId_new.Text, tbxTempName_new.Text)
+            Catch ex As Exception
+
+            End Try
+
+
+
             MsInit()
 
         Catch ex As Exception

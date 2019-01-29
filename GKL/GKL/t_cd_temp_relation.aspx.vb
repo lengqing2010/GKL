@@ -203,7 +203,7 @@ Partial Class t_cd_temp_relation
         Dim UpLoadStream As System.IO.Stream = GetUploadFileContent.PostedFile.InputStream
         UpLoadStream.Read(input, 0, FileLen)
         UpLoadStream.Position = 0
-        Dim sr As System.IO.StreamReader = New System.IO.StreamReader(UpLoadStream, System.Text.Encoding.[Default])
+        Dim sr As System.IO.StreamReader = New System.IO.StreamReader(UpLoadStream, System.Text.Encoding.UTF8)
         'Msg.Text = "您上传的文件内容是：<br/><br/>" & sr.ReadToEnd()
 
         arr = sr.ReadToEnd.Split(vbNewLine)
