@@ -14,8 +14,16 @@
 
     <!--JS-->
     <script language="javascript" type="text/javascript" src="./js/jquery-1.4.1.min.js"></script>
+    <link href="jquery-ui.css" rel="stylesheet" />
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+
+
     <script language="javascript" type="text/javascript" src="./JidouTemp.js"></script>
     <script language="javascript" type="text/javascript" src="./m_user.aspx.js"></script>
+
+
+
 
     <!--CSS-->
     <link href="tmp.css" rel="stylesheet" type="text/css" />
@@ -33,13 +41,12 @@
             <uc1:Links runat="server" ID="Links" />
         </div>
         <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
-
 <!--条件部-->
         <table class='jyouken_panel' cellpadding="0" cellspacing="0">
             <tr>
             <td>用户CD : &nbsp;</td>
             <td>
-              <asp:TextBox ID="tbxUserCd_key" class="jq_user_cd_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+              <asp:TextBox ID="tbxUserCd_key" placeholder="请输入员工编号" class="jq_user_cd_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td>
                 <asp:Button ID="btnSelect" runat="server" Text="検索" CssClass="jq_sel"  Height="24" Width="50"/>
@@ -79,13 +86,13 @@
       <table class='ms_input' style="width:520px" cellpadding="0" cellspacing="0">
           <tr>
               <td style="width:170px;">
-              <asp:TextBox ID="tbxUserCd" class="jq_user_cd_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
+              <asp:TextBox ID="tbxUserCd" placeholder="请输入员工编号" class="jq_user_cd_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
           </td>
               <td style="width:170px;">
-              <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:164px;"></asp:TextBox>
+              <asp:TextBox ID="tbxLineId" placeholder="生产线编号" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:164px;"></asp:TextBox>
           </td>
               <td style="">
-              <asp:TextBox ID="tbxUserName" class="jq_user_name_ipt" runat="server" maxLength="10" style="width:160px;"></asp:TextBox>
+              <asp:TextBox ID="tbxUserName" placeholder="用户名汉字" class="jq_user_name_ipt" runat="server" maxLength="10" style="width:160px;"></asp:TextBox>
           </td>
           </tr>
       </table>

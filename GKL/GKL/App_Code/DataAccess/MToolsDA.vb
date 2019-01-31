@@ -41,8 +41,8 @@ Public Class MToolsDA
         If toolId_key <> "" Then
             'sb.AppendLine("AND tool_id=@tool_id_key")   '治具ID
             sb.AppendLine("AND tool_id like @tool_id_key")   '治具ID
-        End If
-        If lineId_key <> "" Then
+        'End If
+        'If lineId_key <> "" Then
             sb.AppendLine("AND line_id=@line_id_key")   '生产线
         End If
         sb.AppendLine("ORDER BY line_id")

@@ -22,7 +22,7 @@ Partial Class m_temp_name
             KoteiInit()
 
             '明細項目設定
-            MsInit()
+            'MsInit()
         End If
 
     End Sub

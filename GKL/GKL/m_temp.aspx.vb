@@ -230,9 +230,7 @@ Me.hidOldRowIdx.Text = ""
 
         Try
             BC.CopyTemp(tbxLineId_key.Text.Trim, Me.tbxTempId_key.Text.Trim, Me.tbxTempId_new.Text.Trim)
-            Common.ShowMsg(Me.Page, "复制完了")
-            tbxTempId_key.Text = Me.tbxTempId_new.Text.Trim
-            Me.tbxTempId_new.Text = ""
+
 
             Try
                 Dim MTempNameBC As New MTempNameBC
@@ -240,6 +238,12 @@ Me.hidOldRowIdx.Text = ""
             Catch ex As Exception
 
             End Try
+
+            Common.ShowMsg(Me.Page, "复制完了")
+            tbxTempId_key.Text = Me.tbxTempId_new.Text.Trim
+            Me.tbxTempId_new.Text = ""
+            tbxTempName_new.Text = ""
+
 
 
 

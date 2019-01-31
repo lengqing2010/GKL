@@ -37,9 +37,11 @@
               <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
    
             </td>
-            <td>&nbsp;</td>
+            <td>
+                <input type ="button" value="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" style="height:24px;width:80px;"  /></td>
             <td>&nbsp;</td>
             <td></td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             </tr>
@@ -50,18 +52,17 @@
               <datalist id="temp_ids" runat="server"></datalist>
             </td>
             <td>
-        <asp:Button ID="btnSelect" runat="server" Text="検索" style="height:24px;width:80px;" CssClass="jq_sel" />
-            </td>
-            <td>
-                <input type ="button" value="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" style="height:24px;width:80px;"  />
-              <%--  <asp:Button ID="btnNewTelement" runat="server" Text="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" CssClass="jq_sel" />--%>
-            </td>
-            <td>
                 <asp:Button ID="btnCopy" runat="server" Text="复制到" CssClass="jq_sel"  style="height:24px;width:80px;"/>
             </td>
             <td>
+                &nbsp;<%--  <asp:Button ID="btnNewTelement" runat="server" Text="新规模板" OnClick="window.open('m_temp_name.aspx'); return false;" CssClass="jq_sel" />--%></td>
+            <td>
+                &nbsp;</td>
+            <td>
                 新模板ID/名：
               <asp:TextBox ID="tbxTempId_new" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
+                &nbsp;</td>
+            <td>
                 &nbsp;</td>
             <td>
                 <asp:TextBox ID="tbxTempName_new" class="jq_temp_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
@@ -74,10 +75,12 @@
               <asp:TextBox ID="tbxChkMethodId_key" class="jq_chk_method_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
             </td>
             <td>
-                &nbsp;</td>
+        <asp:Button ID="btnSelect" runat="server" Text="検索" style="height:24px;width:80px;" CssClass="jq_sel" />
+                </td>
             <td>
                 &nbsp;</td>
             <td></td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             </tr>

@@ -101,8 +101,8 @@
                 return false;
             }
         } else if (htmlobj.responseText == "3") {
-            alert("新模板名称未登录");
-            return false;
+            //alert("新模板名称未登录");
+            //return false;
 
         }
 

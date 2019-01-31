@@ -50,9 +50,9 @@
     //$('.jq_del')[0].disabled = true;
     //$('#btnComlete')[0].disabled = true;
 
-    disabledIt($('.jq_upd')[0]);
-    disabledIt($('.jq_del')[0]);
-    disabledIt($('#btnComlete')[0]);
+    DisabledIt($('.jq_upd')[0]);
+    DisabledIt($('.jq_del')[0]);
+    DisabledIt($('#btnComlete')[0]);
 
     $(".jq_ms tr").click(function () {
         //
@@ -63,31 +63,20 @@
 
 
         } else {
-            disabledIt($('.jq_upd')[0]);
-            disabledIt($('.jq_del')[0]);
-            disabledIt($('#btnComlete')[0]);
+            DisabledIt($('.jq_upd')[0]);
+            DisabledIt($('.jq_del')[0]);
+            DisabledIt($('#btnComlete')[0]);
 
         }
   
     })
 
-    function disabledIt(obj) {
-        $(obj).attr("disabled", true);
-        $(obj).css('color', '#aaa');
-
-    }
-
-    function UndisabledIt(obj) {
-        $(obj).removeAttr("disabled");
-        $(obj).css('color', '#000');
-
-    }
 
 
     //disabledIt($("#tbxLineId_key"));
     
     //图片Disable
-    disabledIt($("#lblUserName"));
+    DisabledIt($("#lblUserName"));
     $("#lblUserName").attr("tabindex", "-1");
 
     document.onsubmit = function () {

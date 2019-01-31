@@ -124,17 +124,17 @@ Public Class MUserDA
 
         sb.AppendLine("FROM m_user")
         sb.AppendLine("WHERE 1=1")
-        If userCd_key <> "" Then
-            sb.AppendLine("AND user_cd=@user_cd_key")   '用户CD
-        End If
+        'If userCd_key <> "" Then
+        sb.AppendLine("AND user_cd=@user_cd_key")   '用户CD
+        ' End If
 
         'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(SqlHelperNew.MakeParam("@user_cd_key", SqlDbType.nvarchar, 10, userCd_key))
+        paramList.Add(SqlHelperNew.MakeParam("@user_cd_key", SqlDbType.NVarChar, 10, userCd_key))
 
-        paramList.Add(SqlHelperNew.MakeParam("@user_cd", SqlDbType.nvarchar, 10, userCd))
-        paramList.Add(SqlHelperNew.MakeParam("@line_id", SqlDbType.nvarchar, 10, lineId))
-        paramList.Add(SqlHelperNew.MakeParam("@user_name", SqlDbType.nvarchar, 10, userName))
+        paramList.Add(SqlHelperNew.MakeParam("@user_cd", SqlDbType.NVarChar, 10, userCd))
+        paramList.Add(SqlHelperNew.MakeParam("@line_id", SqlDbType.NVarChar, 10, lineId))
+        paramList.Add(SqlHelperNew.MakeParam("@user_name", SqlDbType.NVarChar, 10, userName))
 
 
         SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
@@ -208,13 +208,13 @@ Public Class MUserDA
         'SQL文
         sb.AppendLine("DELETE FROM m_user")
         sb.AppendLine("WHERE 1=1")
-        If userCd_key <> "" Then
-            sb.AppendLine("AND user_cd=@user_cd_key")   '用户CD
-        End If
+        'If userCd_key <> "" Then
+        sb.AppendLine("AND user_cd=@user_cd_key")   '用户CD
+        'End If
 
         'PARAM
         Dim paramList As New List(Of SqlParameter)
-        paramList.Add(SqlHelperNew.MakeParam("@user_cd_key", SqlDbType.nvarchar, 10, userCd_key))
+        paramList.Add(SqlHelperNew.MakeParam("@user_cd_key", SqlDbType.NVarChar, 10, userCd_key))
 
 
         SqlHelperNew.ExecuteNonQuery(DataAccessManager.Connection, CommandType.Text, sb.ToString(), paramList.ToArray)
