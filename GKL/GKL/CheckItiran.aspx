@@ -40,7 +40,7 @@
                 </td>
             <td>生产线 : </td>
             <td>
-              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:80px;background-color: #fff;" Text="" ></asp:TextBox>
+              <asp:TextBox ID="tbxLineId_key"  placeholder="生产线CD" class="jq_line_id_key" runat="server" style="width:80px;background-color: #fff;" Text="" ></asp:TextBox>
                 </td>
 
             <td>作番 : &nbsp;</td>

@@ -34,7 +34,7 @@
             <tr>
             <td>生产线 : &nbsp;</td>
             <td>
-              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
+              <asp:TextBox ID="tbxLineId_key"  placeholder="生产线CD" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
    
             </td>
             <td>
@@ -111,9 +111,9 @@
 
 <!--明細Title部-->
 <%--<div id="divGvwTitle" class='jq_title_div' runat ="server" style="overflow:hidden ;margin-left:0px; width:1004px; margin-top :0px; border-collapse :collapse ;">--%>
-      <table class='ms_title' style="width:1505px" cellpadding="0" cellspacing="0">
+      <table class='ms_title' style="width:1535px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:70px;">
+              <td style="width:100px;">
                   生产线
               </td>
               <td style="width:70px;">
@@ -163,12 +163,11 @@
               </td>
           </tr>
       </table>
-      <table class='ms_input' style="width:1505px" cellpadding="0" cellspacing="0">
+      <table class='ms_input' style="width:1535px" cellpadding="0" cellspacing="0">
           <tr>
-              <td style="width:70px;">
-                            <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:64px;background-color: #FFAA00;"></asp:TextBox>
-
-                      </td>
+              <td style="width:100px;">
+                    <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" list="line_id_list" runat="server" maxLength="10" style="width:94px;background-color: #FFAA00;"></asp:TextBox>
+              </td>
               <td style="width:70px;">
               <asp:TextBox ID="tbxTempId" class="jq_temp_id_ipt" runat="server" maxLength="10" style="width:64px;background-color: #FFAA00;"></asp:TextBox>
           </td>
@@ -222,9 +221,9 @@
 <!--明細Body部-->
 <%--<div id="divGvw" class='jq_ms_div' runat ="server" style="overflow:scroll ; height:294px;margin-left:0px; width:1020px; margin-top :0px; border-collapse :collapse ;">--%>
 
-   <asp:GridView CssClass ="jq_ms" Width="1505px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
+   <asp:GridView CssClass ="jq_ms" Width="1535px"  runat="server" ID="gvMs" EnableTheming="True" ShowHeader="False" AutoGenerateColumns="False" BorderColor="black" style=" margin-top :-1px; " TabIndex="-1" >
       <Columns>
-          <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
+          <asp:TemplateField><ItemTemplate ><%#Eval("line_id")%></ItemTemplate><ItemStyle Width="100px" HorizontalAlign="Left" CssClass="jq_line_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("temp_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_temp_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("chk_method_id")%></ItemTemplate><ItemStyle Width="80px" HorizontalAlign="Left" CssClass="jq_chk_method_id" /></asp:TemplateField>
           <asp:TemplateField><ItemTemplate ><%#Eval("project_id")%></ItemTemplate><ItemStyle Width="70px" HorizontalAlign="Left" CssClass="jq_project_id" /></asp:TemplateField>

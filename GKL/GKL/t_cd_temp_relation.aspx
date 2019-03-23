@@ -33,7 +33,7 @@
             <tr>
             <td>生产线 : &nbsp;</td>
             <td>
-                      <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
+                      <asp:TextBox ID="tbxLineId_key" placeholder="生产线CD" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
             </td>
             <td></td>
             </tr>

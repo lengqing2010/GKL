@@ -149,12 +149,12 @@ Public Class PicImport
         'SQL文
         sb.AppendLine("DELETE FROM m_picture")
         sb.AppendLine("WHERE 1=1")
-        If picId_key <> "" Then
-            sb.AppendLine("AND pic_id=@pic_id_key")   'pic_id
-        End If
-        If lineId_key <> "" Then
-            sb.AppendLine("AND line_id=@line_id_key")   'line_id
-        End If
+        'If picId_key <> "" Then
+        sb.AppendLine("AND pic_id=@pic_id_key")   'pic_id
+        'End If
+        'If lineId_key <> "" Then
+        sb.AppendLine("AND line_id=@line_id_key")   'line_id
+        'End If
 
         'PARAM
         Dim paramList As New List(Of SqlParameter)

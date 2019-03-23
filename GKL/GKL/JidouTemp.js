@@ -1086,6 +1086,7 @@ rc.msg = {
             function (result) {
                 if (callback) callback(result);
             });
+        setTimeout(function () { document.getElementById('mb_btn_ok').focus(); }, 100);
     },
     confirm: function (message, title, callback) {
         if (title == null) title = "操作确认";
@@ -1094,7 +1095,7 @@ rc.msg = {
             null,
             "confirm",
             function (result) {
-                if (callback) callback(result);
+                if (callback) callback(resultd
             });
     },
     _show: function (title, msg, value, type, callback) {

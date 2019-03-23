@@ -35,17 +35,15 @@
             <td>工程ID : &nbsp;</td>
             <td>
               <asp:TextBox ID="tbxProjectId_key" class="jq_project_id_key" runat="server" style="width:160px;background-color: #FFAA00;"></asp:TextBox>
-           
-                 </td>
+            </td>
             <td>
-
             </td>
             </tr>
             <tr>
             <td>生产线 : &nbsp;</td>
             <td>
              
-              <asp:TextBox ID="tbxLineId_key" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
+              <asp:TextBox ID="tbxLineId_key" placeholder="生产线CD" class="jq_line_id_key" runat="server" style="width:160px;background-color: #FFAA00;" list="line_id_list"></asp:TextBox>
 
             </td>
             <td>
@@ -85,7 +83,7 @@
               <asp:TextBox ID="tbxProjectId" class="jq_project_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
           </td>
               <td style="width:170px;">
-              <asp:TextBox ID="tbxLineId" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
+              <asp:TextBox ID="tbxLineId" placeholder="生产线CD" list="line_id_list" class="jq_line_id_ipt" runat="server" maxLength="10" style="width:164px;background-color: #FFAA00;"></asp:TextBox>
           </td>
               <td style="">
               <asp:TextBox ID="tbxProjectName" class="jq_project_name_ipt" runat="server" maxLength="40" style="width:200px;"></asp:TextBox>
